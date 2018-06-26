@@ -1,0 +1,8 @@
+--append=yes
+--recurse=yes
+--languages=php
+--exclude=.git
+--exclude=log
+--exclude=*.js
+--exclude=*.css
+--exclude=vendor

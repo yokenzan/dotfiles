@@ -1,0 +1,16 @@
+[user]
+    name  =
+    email =
+[core]
+    autocrlf = false
+    filemode = false
+    editor = vim
+[url "git@github.com:"]
+    pushInsteadOf = git://github.com/
+    pushInsteadOf = https://github.com/
+[url "http://"]
+    insteadOf = git://
+[url "https://"]
+    insteadOf = git://
+[color]
+    ui = true
