@@ -1,0 +1,216 @@
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+on_i = 1
+hook_add = '''
+    imap <C-l> <Plug>(neosnippet_expand_or_jump)
+    smap <C-l> <Plug>(neosnippet_expand_or_jump)
+    xmap <C-l> <Plug>(neosnippet_expand_target)
+'''
+
+
+[[plugins]]
+repo = 'OmniSharp/omnisharp-roslyn'
+on_i = 1
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_i = 1
+
+
+[[plugins]]
+repo  = 'OmniSharp/omnisharp-vim'
+on_ft = ['cs']
+on_i  = 1
+if    = 'has("python")'
+hook_source = '''
+    let g:OmniSharp_server_path = '~/.vim/dein/repos/github.com/OmniSharp/omnisharp-server/OmniSharp/bin/Debug/OmniSharp'
+    let g:OmniSharp_selector_ui = 'unite'
+    let g:OmniSharp_start_server = 1
+    " let g:OmniSharp_translate_cygwin_wsl = 1
+    let g:Omnisharp_stop_server = 2
+'''
+
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml', 'conf']
+
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby', 'eruby']
+
+
+[[plugins]]
+repo = 'Shougo/neocomplcache.vim'
+if = '!has("lua")'
+on_i = 1
+hook_source = '''
+    " neocomplcache
+    let g:acp_enableAtStartup = 0
+    " Use neocomplcache.
+    let g:neocomplcache_enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplcache_enable_smart_case = 1
+    let g:neocomplcache_enable_ignore_case = 1
+    let g:neocomplcache_auto_completion_start_length = 2
+    let g:neocomplcache_manual_completion_start_length = 2
+    " Set minimum syntax keyword length.
+    let g:neocomplcache_min_syntax_length = 2
+    " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+    let g:neocomplcache_enable_camel_case_completion = 1
+    let g:neocomplcache_enable_underbar_completion = 0
+    if !exists('g:neocomplcache_force_omni_patterns')
+        let g:neocomplcache_force_omni_patterns = {}
+    endif
+    let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+    let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplcache_force_omni_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
+    let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+'''
+
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+if = 'has("lua")'
+on_i = 1
+hook_source = '''
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_ignore_case = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 2
+    let g:neocomplete#min_keyword_length = 2
+    let g:neocomplete#auto_completion_start_length = 2
+    let g:neocomplete#enable_fuzzy_completion = 1
+    let g:neocomplete#enable_auto_select = 0
+    let g:neocomplete#enable_auto_delimiter = 1
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+    let g:neocomplete#sources#dictionary#dictionaries = {
+                \ 'default' : ''
+                \ }
+
+    if !exists('g:neocomplete_force_omni_input_patterns')
+        let g:neocomplete_force_omni_input_patterns = {}
+    endif
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+    " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+'''
+
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+on_ft = ['ruby', 'eruby']
+if = 'has("ruby")'
+hook_source = '''
+    let g:textobj_ruby_more_mappings = 1
+'''
+
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+on_ft = ['ruby', 'eruby']
+if = 'has("ruby")'
+hook_source = '''
+    let g:rubycomplete_buffer_loading = 1
+    let g:rubycomplete_classes_in_global = 1
+    let g:rubycomplete_rails = 1
+'''
+
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = ['ruby', 'eruby']
+
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'eruby', 'xml', 'php']
+
+
+[[plugins]]
+repo = 'othree/html5.vim'
+on_ft = ['html', 'eruby', 'php']
+
+
+[[plugins]]
+repo = 'joonty/vdebug'
+if = 'has("python3")'
+on_ft = ['php', 'html']
+hook_post_source = '''
+    let g:vdebug_options= {
+    \    "port" : 9000,
+    \    "server" : '',
+    \    "timeout" : 20,
+    \    "on_close" : 'detach',
+    \    "break_on_open" : 0,
+    \    "ide_key" : 'XDEBUG_VIM',
+    \    "path_maps" : {},
+    \    "debug_window_level" : 0,
+    \    "debug_file_level" : 0,
+    \    "debug_file" : "",
+    \    "watch_window_style" : 'expanded',
+    \    "marker_default" : '⬦',
+    \    "marker_closed_tree" : '▸',
+    \    "marker_open_tree" : '▾'
+    \}
+'''
+
+
+# [[plugins]]
+# repo = 'violetyk/neocomplete-php.vim'
+# if = 'has("lua")'
+# on_ft = ['php', 'html']
+# on_i = 1
+
+
+# [[plugins]]
+# repo = 'm2mdas/phpcomplete-extended'
+# on_ft = ['php', 'html']
+# on_i = 1
+
+
+# [[plugins]]
+# repo = 'm2mdas/phpcomplete-extended-symfony'
+# on_ft = ['php', 'html']
+# on_i = 1
+
+
+# [[plugins]]
+# repo = 'm2mdas/phpcomplete-extended-laravel'
+# on_ft = ['php', 'html']
+# on_i = 1
+
+
+# [[plugins]]
+# repo = 'shawncplus/phpcomplete.vim'
+# on_ft = ['php']
+# on_i = 1
+
+
+# [[plugins]]
+# repo = 'lvht/phpcd.vim'
+# on_ft = ['php']
+# hook_add = '''
+# '''
+
+
+[[plugins]]
+repo = 'justmao945/vim-clang'
+on_ft = ['c', 'cpp']
+on_i = 1
+hook_add = '''
+    let g:clang_c_completeopt   = 'menuone'
+    let g:clang_cpp_completeopt = 'menuone'
+'''
+

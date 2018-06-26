@@ -1,0 +1,258 @@
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+hook_add = '''
+    set helplang=ja
+'''
+
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+hook_add = '''
+    let g:ref_phpmanual_path = $HOME . '/.vim/ref/php-chunked-xhtml'
+    let g:ref_detect_filetype = {
+    \       'php' : 'phpmanual'
+    \}
+'''
+
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+    let g:ale_sign_column_always = 1
+    let g:ale_sign_error = '!!'
+    " let g:ale_php_phpcs_use_global = 1
+    " let g:ale_php_phpcs_standard = 'PSR2'
+'''
+
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    aug enableNERDTree
+        au VimEnter * nested noremap <Space>nt :NERDTreeToggle<Return>
+        au VimEnter * nested noremap <Space>nc :NERDTreeCWD<Return>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+    " let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline_theme = 'light'
+    " let g:airline#extensions#default#layout = [
+    "             \ ['a', 'c'],
+    "             \ ['x', 'y', 'z']
+    "             \ ]
+    aug enableAirline
+        au VimEnter * nested noremap <Space>bn :bn<CR>
+        au VimEnter * nested noremap <Space>bp :bp<CR>
+    aug END
+'''
+depends = ['vim-airline/vim-airline-themes']
+
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+
+[[plugins]]
+repo = 'bkad/CamelCaseMotion'
+hook_add = '''
+    map  <silent> ]w <Plug>CamelCaseMotion_w
+    map  <silent> ]b <Plug>CamelCaseMotion_b
+    map  <silent> ]e <Plug>CamelCaseMotion_e
+    omap <silent> ]iw <Plug>CamelCaseMotion_iw
+    vmap <silent> ]iw <Plug>CamelCaseMotion_iw
+    omap <silent> ]ib <Plug>CamelCaseMotion_ib
+    vmap <silent> ]ib <Plug>CamelCaseMotion_ib
+    omap <silent> ]ie <Plug>CamelCaseMotion_ie
+    vmap <silent> ]ie <Plug>CamelCaseMotion_ie
+'''
+
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+    let g:unite_split_rule = 'rightbelow'
+    let g:unite_winwidth = 40
+    let g:unite_source_history_yank_enable = 1
+    let g:unite_source_file_mru_limit = 200
+
+    aug enableUniteKeybindings
+        au VimEnter * nested nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ur :<C-u>Unite buffer-name=register register<CR>
+        au VimEnter * nested nnoremap <silent> <Space>um :<C-u>Unite file_mru buffer<CR>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+hook_add = '''
+    aug enableOutline
+        au VimEnter * nested noremap <Space>uo :Unite -vertical outline<Return>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    " let g:indentLine_setColors = 0
+'''
+
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+    let quickrun_config = {
+    \   "_" : {
+    \       "outputter/buffer/close_on_empty" : 1,
+    \       "runner" : "vimproc"
+    \   }
+    \}
+    aug enableQuickRun
+        au VimEnter * nested noremap <Space>qr :QuickRun<Return>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'osyo-manga/vim-textobj-multiblock'
+
+
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+hook_add = '''
+    let g:calendar_google_calendar = 1
+    let g:calendar_google_task = 1
+'''
+
+
+[[plugins]]
+repo = 'itchyny/thumbnail.vim'
+hook_add = '''
+    aug enableThumbnail
+        au VimEnter * nested noremap <Space>th :Thumbnail<Return>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'tyru/eskk.vim'
+
+
+
+
+# colorschemes
+
+[[plugins]]
+repo = 'sjl/badwolf'
+
+
+[[plugins]]
+repo = 'jpo/vim-railscasts-theme'
+
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+
+[[plugins]]
+repo = 'chr4/jellygrass.vim'
+
+
+[[plugins]]
+repo = 'nightsense/nemo'
+
+
+[[plugins]]
+repo = 'nightsense/office'
+
+
+[[plugins]]
+repo = 'nightsense/strawberry'
+
+
+[[plugins]]
+repo = 'Dru89/vim-adventurous'
+
+
+[[plugins]]
+repo = 'Heorhiy/VisualStudioDark.vim'
+
+
+[[plugins]]
+repo = 'felipesousa/rupza'
+
+
+[[plugins]]
+repo = 'jalvesaq/southernlights'
+
+
+[[plugins]]
+repo = 'anoike/vim-moneyforward'
+
+
+[[plugins]]
+repo = 'nightsense/simplifysimplify'
+
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+
+[[plugins]]
+repo = 'schickele/vim' # :colorscheme fruchtig
+
+
+[[plugins]]
+repo = 'GGalizzi/cake-vim'
+
