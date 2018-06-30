@@ -14,3 +14,5 @@
     insteadOf = git://
 [color]
     ui = true
+[http]
+    sslVerify = false
