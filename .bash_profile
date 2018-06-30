@@ -9,7 +9,7 @@ fi
 
 PATH=$PATH:$HOME/bin:/usr/local/bin
 
-if [ -d "$PATH:$HOME/.gem/ruby/2.3.0/bin" ]; then
+if [ -d "$HOME/.gem/ruby/2.3.0/bin" ]; then
     export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
 fi
 
