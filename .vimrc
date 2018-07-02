@@ -115,7 +115,8 @@ source $VIMRUNTIME/macros/matchit.vim
 " nnoremap j gj
 " nnoremap k gk
 nnoremap Y y$
-nmap <C-]> g<C-]> 
+nmap <C-]> g<C-]>
+nmap <C-w><C-]> <C-w>g<C-]>
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
