@@ -59,3 +59,9 @@ alias glns='git log --name-status'
 alias gp='git pull'
 alias gpr='git pull --rebase'
 
+
+if [ -d "$HOME/.rbenv" ]; then
+    alias re='rbenv exec'
+    alias reb='rbenv exec bundle'
+    alias rebe='rbenv exec bundle exec'
+fi
