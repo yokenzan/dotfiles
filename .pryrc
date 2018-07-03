@@ -1,11 +1,11 @@
 #Coding:UTF-8
-require 'yokenzan/extension/datetime'
+require 'date'
 
 
 # Encoding.default_external = 'UTF-8'
 # Encoding.default_internal = 'UTF-8'
-STDOUT.set_encoding('Windows-31J', 'UTF-8')
-STDIN .set_encoding('Windows-31J', 'UTF-8')
+# STDOUT.set_encoding('Windows-31J', 'UTF-8')
+# STDIN .set_encoding('Windows-31J', 'UTF-8')
 
 
 
@@ -16,7 +16,7 @@ Pry.config.prompt = proc do | obj, nest_level, _pry_ |
   version  << "\001\e[0m\002"
 
   datetime =  "\001\e[0;32m\002"
-  datetime << DateTime.now.ymdhmsf_sl
+  datetime << DateTime.now.strftime('%y/%m/%d %H:%M:%S')
   datetime << "\001\e[0m\002"
 
   " #{version} #{datetime} #{Pry.config.prompt_name}(#{Pry.view_clip(obj)})$ "
