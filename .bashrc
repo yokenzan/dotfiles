@@ -186,12 +186,20 @@ export HISTSIZE=9999
 #     ps aux | grep $1 | grep -v grep | awk '{ print "kill -9", $1 }' | sh
 # }
 
-function wincmd()
-{
+function wincmd() {
     CMD=$1
     shift
     $CMD $* 2>&1 | iconv -f CP932 -t UTF-8
 }
+
+
+# Ex) fz vim find .
+function fz() {
+    CMD=$1
+    shift
+    $CMD $($* | fzy)
+}
+
 
 # Some people use a different file for aliases
 if [ -f "${HOME}/.bash_aliases" ]; then
