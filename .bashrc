@@ -70,7 +70,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
 # export PROMPT_COMMAND="history -a"
 
 function c() {
-    pygmentize -O style=monokai -f console256 -g $1 | less -NFR
+    pygmentize -O style=monokai -f console256 -g $1 | less -NR
 }
 
 function share_history {
