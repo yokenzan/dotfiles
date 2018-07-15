@@ -65,4 +65,5 @@ if [ -d "$HOME/.rbenv" ]; then
     alias re='rbenv exec'
     alias reb='rbenv exec bundle'
     alias rebe='rbenv exec bundle exec'
+    alias reber='rbenv exec bundle exec rails'
 fi

@@ -4,7 +4,7 @@ rm -rf $HOME/.vim
 
 mkdir -p $HOME/.vim/backup $HOME/.vim/swap $HOME/.vim/undo
 mkdir -p $HOME/.vim/dein   $HOME/.vim/dein/repos/github.com
-mkdir -p $HOME/.vim/ref
+mkdir -p $HOME/.tmux/plugins
 
 ln -sf $HOME/.dotfiles/.gitconfig        $HOME
 
@@ -29,3 +29,8 @@ ln -sf $HOME/.dotfiles/.vim/ref          $HOME/.vim
 ln -sf $HOME/.dotfiles/.vim/dein/.config $HOME/.vim/dein
 
 git clone git://github.com/Shougo/dein.vim.git $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
+git clone git://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
+
+
+git clone git://github.com/rbenv/rbenv.git ~/.rbenv
+git clone git://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
