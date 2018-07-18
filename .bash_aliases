@@ -37,6 +37,7 @@ alias tmux='tmux -2'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
+alias google='w3m http://google.com'
 
 
 alias g='git'
@@ -64,4 +65,5 @@ if [ -d "$HOME/.rbenv" ]; then
     alias re='rbenv exec'
     alias reb='rbenv exec bundle'
     alias rebe='rbenv exec bundle exec'
+    alias reber='rbenv exec bundle exec rails'
 fi
