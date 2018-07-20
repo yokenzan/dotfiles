@@ -256,3 +256,59 @@ repo = 'schickele/vim' # :colorscheme fruchtig
 [[plugins]]
 repo = 'GGalizzi/cake-vim'
 
+
+[[plugins]]
+repo = 'reedes/vim-colors-pencil'
+hook_add = '''
+    let g:pencil_higher_contrast_ui = 1
+    let g:pencil_neutral_code_bg    = 1
+    let g:pencil_gutter_color       = 1
+'''
+
+
+[[plugins]]
+repo = 'freeo/vim-kalisi'
+
+
+
+[[plugins]]
+repo = 'romainl/Apprentice'
+
+
+[[plugins]]
+repo = 'AlessandroYorba/Despacio'
+
+
+[[plugins]]
+repo = 'junegunn/seoul256.vim'
+
+
+[[plugins]]
+repo = 'fneu/breezy'
+
+
+
+[[plugins]]
+repo = 'sickill/vim-monokai'
+
+
+[[plugins]]
+repo = 'vim-scripts/phd'
+
+
+[[plugins]]
+repo = 'vim-scripts/summerfruit256.vim'
+
+
+[[plugins]]
+repo = 'challenger-deep-theme/vim'
+
+
+[[plugins]]
+repo = 'jwalton512/vim-blade'
+hook_source = '''
+    syntax on
+    let g:blade_custom_directives = ['datetime', 'namespaced::directive']
+    let g:blade_custom_directives_pairs = {'cache': 'endcache'}
+'''
+

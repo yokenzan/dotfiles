@@ -56,7 +56,7 @@ set showtabline=2
 
 set number
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 
 " Setting Color
@@ -115,8 +115,8 @@ source $VIMRUNTIME/macros/matchit.vim
 " nnoremap j gj
 " nnoremap k gk
 nnoremap Y y$
-nmap <C-]> g<C-]>
-nmap <C-w><C-]> <C-w>g<C-]>
+" nmap <C-]> g<C-]>
+" nmap <C-w><C-]> <C-w>g<C-]>
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -199,19 +199,31 @@ let howm_filename = '%Y%m%d_%H%M%S.md'
 let howm_fileencoding = 'utf-8'
 
 
+" set background=light
+
+" colorscheme apprentice
 " colorscheme adventurous
 " colorscheme badwolf
 " colorscheme cake
 " colorscheme desert
 " colorscheme fruchtig
+" colorscheme kalisi
 " colorscheme koehler
-colorscheme molokai
+" colorscheme molokai
 " colorscheme moneyforward
+" colorscheme monokai
+colorscheme phd
 " colorscheme railscasts
 " colorscheme rupza
 " colorscheme slate
 " colorscheme southernlights
 " colorscheme strawberry-light
+" colorscheme summerfruit256
+" colorscheme seoul256
+" colorscheme seoul256-light
+
+highlight PmenuSel guifg=white guibg=lightmagenta
+highlight SpellBad ctermbg=magenta guibg=magenta
 
 
 " autocmd BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
