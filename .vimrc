@@ -56,7 +56,7 @@ set showtabline=2
 
 set number
 set cursorline
-" set cursorcolumn
+set cursorcolumn
 
 
 " Setting Color
@@ -115,14 +115,14 @@ source $VIMRUNTIME/macros/matchit.vim
 " nnoremap j gj
 " nnoremap k gk
 nnoremap Y y$
-" nmap <C-]> g<C-]>
-" nmap <C-w><C-]> <C-w>g<C-]>
+nmap <C-]> g<C-]>
+nmap <C-w><C-]> <C-w>g<C-]>
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
