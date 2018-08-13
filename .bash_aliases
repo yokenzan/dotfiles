@@ -33,32 +33,36 @@ alias lla='ll -A'                              # all but . and ..
 alias l='ls -CF'                              #
 alias j2u='iconv -f cp932 -t utf-8'
 alias v='vim'
+alias vo='vim -O'
 alias tmux='tmux -2'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
-alias google='w3m http://google.com'
+alias tinker='php artisan tinker'
+alias artisan='php artisan'
 
 
 alias g='git'
-alias gb='git branch'
-alias gbb='git branch -b'
-alias gs='git status'
 alias ga='git add'
 alias gaa='git add -A'
+alias gb='git branch'
+alias gbb='git branch -b'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gcm='git commit --amend'
 alias gcmn='git commit --amend --no-edit'
+alias gco='git checkout'
+alias gcp='git cherrypick'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git log'
-alias glp='git log -p'
-alias glo='git log --oneline'
-alias gls='git log --stat'
 alias glns='git log --name-status'
+alias glo='git log --oneline'
+alias glp='git log -p'
+alias gls='git log --stat'
 alias gp='git pull'
 alias gpr='git pull --rebase'
+alias gs='git status'
 
 
 if [ -d "$HOME/.rbenv" ]; then
@@ -67,3 +71,9 @@ if [ -d "$HOME/.rbenv" ]; then
     alias rebe='rbenv exec bundle exec'
     alias reber='rbenv exec bundle exec rails'
 fi
+
+
+google()
+{
+    w3m https://google.com/search?q=$1
+}
