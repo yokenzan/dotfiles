@@ -3,14 +3,20 @@ if &compatible
 endif
 
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if has('win32')
+    set runtimepath+=~/.vim/dein/win32/repos/github.com/Shougo/dein.vim
+    let s:dein_dir = expand('~/.vim/dein/win32')
+else
+    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+    let s:dein_dir = expand('~/.vim/dein')
+endif
 set runtimepath+=~/.vim
 
 
 " Setting dein.vim
 
-if dein#load_state(expand('~/.vim/dein'))
-    call dein#begin(expand('~/.vim/dein'))
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
 
     let s:toml_dir     = $HOME . '/' . '.vim/dein/.config/toml'
     let s:startup_toml = s:toml_dir . '/' . 'dein_startup.toml'
