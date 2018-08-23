@@ -217,6 +217,8 @@ hook_add = '''
 repo = 'tyru/eskk.vim'
 
 
+# [[plugins]]
+# repo = 'tyru/skkdict.vim'
 
 
 # colorschemes
@@ -298,7 +300,6 @@ hook_add = '''
 repo = 'freeo/vim-kalisi'
 
 
-
 [[plugins]]
 repo = 'romainl/Apprentice'
 
@@ -313,7 +314,6 @@ repo = 'junegunn/seoul256.vim'
 
 [[plugins]]
 repo = 'fneu/breezy'
-
 
 
 [[plugins]]
@@ -339,4 +339,48 @@ hook_source = '''
     let g:blade_custom_directives = ['datetime', 'namespaced::directive']
     let g:blade_custom_directives_pairs = {'cache': 'endcache'}
 '''
+
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
+
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+
+[[plugins]]
+repo = 'nice/sweater'
+
+
+[[plugins]]
+repo = 'vim-scripts/Blueshift'
+
+
+[[plugins]]
+repo = 'vim-scripts/oceanlight'
+
+
+[[plugins]]
+repo = 'noahfrederick/vim-hemisu'
+
+
+[[plugins]]
+repo = 'vim-scripts/simpleandfriendly.vim'
+
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+
+
+[[plugins]]
+repo = 'Lokaltog/vim-distinguished'
+
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
 
