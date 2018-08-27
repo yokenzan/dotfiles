@@ -48,6 +48,9 @@ set ambiwidth=double
 set formatoptions+=mMj
 
 
+" set spell
+" set spelllang=en,cjk
+
 " Setting Title and CommandLine
 
 set showcmd
@@ -127,7 +130,7 @@ nmap <C-w><C-]> <C-w>g<C-]>
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-inoremap <C-j> <Down>
+" inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
