@@ -69,6 +69,7 @@ repo = 'airblade/vim-gitgutter'
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     aug enableNERDTree
+        au!
         au VimEnter * nested noremap <Space>nt :NERDTreeToggle<Return>
         au VimEnter * nested noremap <Space>nc :NERDTreeCWD<Return>
     aug END
@@ -95,10 +96,6 @@ hook_add = '''
     "             \ ['a', 'c'],
     "             \ ['x', 'y', 'z']
     "             \ ]
-    aug enableAirline
-        au VimEnter * nested noremap <Space>bn :bn<CR>
-        au VimEnter * nested noremap <Space>bp :bp<CR>
-    aug END
 '''
 depends = ['vim-airline/vim-airline-themes']
 
@@ -149,14 +146,21 @@ hook_add = '''
     let g:unite_split_rule = 'rightbelow'
     let g:unite_winwidth = 40
     let g:unite_source_history_yank_enable = 1
-    let g:unite_source_file_mru_limit = 200
+    let g:unite_source_file_mru_limit = 1000
 
     aug enableUniteKeybindings
-        au VimEnter * nested nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ur :<C-u>Unite buffer-name=register register<CR>
-        au VimEnter * nested nnoremap <silent> <Space>um :<C-u>Unite file_mru buffer<CR>
+        au!
+        au VimEnter * nested nnoremap <silent> <Space>ut  :<C-u>Unite tab<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Unite buffer<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Unite -buffer-name=register register<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Unite jump<CR>
+        " ファイル関係
+        au VimEnter * nested nnoremap <silent> <Space>uf   :<C-u>Unite file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ufm  :<C-u>Unite file_mru<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ufg  :<C-u>UniteWithBufferDir  -buffer-name=files file_mru buffer file_rec/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ufa  :<C-u>UniteWithBufferDir  -buffer-name=files file_mru buffer file_rec<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ufb  :<C-u>UniteWithBufferDir  -buffer-name=files file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ufc  :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
     aug END
 '''
 
@@ -218,7 +222,7 @@ repo = 'tyru/eskk.vim'
 hook_add = '''
     let g:eskk#directory = "~/.skk"
     let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8', }
-    let g:eskk#large_dictionary = { 'path': "~/.eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
+    let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
     set imdisable
     let g:eskk#enable_completion = 1
     let g:eskk#server = {
@@ -226,9 +230,6 @@ hook_add = '''
     \   'port': 55100,
     \}
 '''
-
-# [[plugins]]
-# repo = 'tyru/skkdict.vim'
 
 
 # colorschemes
@@ -393,4 +394,13 @@ repo = 'Lokaltog/vim-distinguished'
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
+
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
 

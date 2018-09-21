@@ -40,3 +40,5 @@
   (setq default-input-method "japanese-skk")
   (require 'skk-study)
 )
+
+(load-theme 'deeper-blue t)
