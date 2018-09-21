@@ -1,3 +1,4 @@
+shopt -s expand_aliases
 # Aliases
 #
 #
@@ -32,14 +33,26 @@ alias la='ls -A'                              # all but . and ..
 alias lla='ll -A'                              # all but . and ..
 alias l='ls -CF'                              #
 alias j2u='iconv -f cp932 -t utf-8'
+alias u2j='iconv -t cp932 -f utf-8'
 alias v='vim'
 alias vo='vim -O'
+alias vs='vim -S Session.vim'
+alias vd='vim -u NONE -N'
 alias tmux='tmux -2'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
+
+# PHP
+
 alias tinker='php artisan tinker'
+alias tink='php artisan tinker'
 alias artisan='php artisan'
+alias art='php artisan'
+alias seed='php artisan db:seed'
+alias migrate='php artisan migrate'
+alias rollback='php artisan migrate:rollback'
+alias runtest='./phpunit --color=always'
 
 
 alias g='git'
@@ -77,3 +90,24 @@ google()
 {
     w3m https://google.com/search?q=$1
 }
+
+
+laravel_update() {
+    sudo chmod -R 777 .
+
+    ctags --recurse=yes --append=yes --languages=PHP --exclude=*.css --exclude=_ide_helper.php
+    gtags
+
+    composer dump-autoload
+
+    echo
+    echo
+
+    art ide-helper:generate -H
+
+    echo
+    echo
+
+    ./phpunit --color=always
+}
+

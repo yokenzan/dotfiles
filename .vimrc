@@ -238,3 +238,4 @@ highlight Todo     cterm=reverse
 
 " autocmd BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
 
+let $BASH_ENV = "~/.bash_aliases"
