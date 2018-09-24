@@ -27,8 +27,10 @@ hook_source = '''
     let g:OmniSharp_server_path = '~/.vim/dein/repos/github.com/OmniSharp/omnisharp-server/OmniSharp/bin/Debug/OmniSharp'
     let g:OmniSharp_selector_ui = 'unite'
     let g:OmniSharp_start_server = 1
-    " let g:OmniSharp_translate_cygwin_wsl = 1
     let g:Omnisharp_stop_server = 2
+    if has('win32unix')
+        let g:OmniSharp_translate_cygwin_wsl = 1
+    endif
 '''
 
 
@@ -44,7 +46,7 @@ on_ft = ['ruby', 'eruby']
 
 [[plugins]]
 repo = 'Shougo/neocomplcache.vim'
-if = '!has("lua") && !has("python3")'
+if = '!has("lua") && !has("python3") && !has("nvim")'
 on_i = 1
 hook_source = '''
     " neocomplcache
@@ -74,7 +76,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
-if = 'has("lua") && !has("python3")'
+if = 'has("lua") && !has("python3") && !has("nvim")'
 on_i = 1
 hook_source = '''
     let g:neocomplete#enable_at_startup = 1
@@ -101,7 +103,7 @@ hook_source = '''
         let g:neocomplete#sources#omni#input_patterns = {}
     endif
     let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
-    " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
     let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
     let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
     let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
@@ -111,7 +113,7 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_i = 1
-if = 'has("python3")'
+if = 'has("python3") && has("nvim")'
 hook_add = '''
     let g:deoplete#enable_at_atartup = 1
 '''
@@ -119,11 +121,13 @@ hook_add = '''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc''
+if   = 'has("nvim")'
 depends = ['deoplete.nvim']
 
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
+if   = 'has("nvim")'
 depends = ['deoplete.nvim']
 
 
@@ -150,17 +154,13 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = ['ruby', 'eruby']
-
-
-[[plugins]]
-repo = 'othree/html5.vim'
-on_ft = ['html', 'eruby', 'php']
+on_i = 1
 
 
 [[plugins]]
 repo = 'joonty/vdebug'
 if = 'has("python3")'
-on_ft = ['php', 'html']
+on_ft = ['php']
 hook_post_source = '''
     let g:vdebug_options= {
     \    "port" : 9000,
@@ -181,37 +181,6 @@ hook_post_source = '''
 '''
 
 
-# [[plugins]]
-# repo = 'violetyk/neocomplete-php.vim'
-# if = 'has("lua")'
-# on_ft = ['php', 'html']
-# on_i = 1
-
-
-# [[plugins]]
-# repo = 'm2mdas/phpcomplete-extended'
-# on_ft = ['php', 'html']
-# on_i = 1
-
-
-# [[plugins]]
-# repo = 'm2mdas/phpcomplete-extended-symfony'
-# on_ft = ['php', 'html']
-# on_i = 1
-
-
-# [[plugins]]
-# repo = 'm2mdas/phpcomplete-extended-laravel'
-# on_ft = ['php', 'html']
-# on_i = 1
-
-
-# [[plugins]]
-# repo = 'shawncplus/phpcomplete.vim'
-# on_ft = ['php']
-# on_i = 1
-
-
 [[plugins]]
 repo = 'lvht/phpcd.vim'
 on_ft = ['php']
@@ -221,7 +190,6 @@ build = 'composer install'
 [[plugins]]
 repo = 'justmao945/vim-clang'
 on_ft = ['c', 'cpp']
-on_i = 1
 hook_add = '''
     let g:clang_c_completeopt   = 'menuone'
     let g:clang_cpp_completeopt = 'menuone'

@@ -1,4 +1,4 @@
-# To the extent possible under law, the author(s) have dedicated all 
+# to the extent possible under law, the author(s) have dedicated all 
 # copyright and related and neighboring rights to this software to the 
 # public domain worldwide. This software is distributed without any warranty. 
 # You should have received a copy of the CC0 Public Domain Dedication along 
@@ -69,9 +69,6 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
 
-function c() {
-    pygmentize -O style=monokai -f console256 -g $1 | less -NR
-}
 
 function share_history {
     history -a
@@ -93,9 +90,9 @@ export HISTSIZE=9999
 # Functions
 #
 # Some people use a different file for functions
-# if [ -f "${HOME}/.bash_functions" ]; then
-#   source "${HOME}/.bash_functions"
-# fi
+if [ -f "${HOME}/.bash_functions" ]; then
+  source "${HOME}/.bash_functions"
+fi
 #
 # Some example functions:
 #
@@ -165,50 +162,6 @@ export HISTSIZE=9999
 # 
 # alias cd=cd_func
 
-# function pullrepo() {
-#     pushd /repo
-#     echo
-#     for i in `ls -F | grep / --color=none`; do
-#         echo
-#         echo '-----------------------------------'
-#         cd $i
-#         pwd
-#         git pull
-#         cd ..
-#         echo
-#     done
-#     echo
-#     popd
-# }
-#
-
-# function pkill() {
-#     ps aux | grep $1 | grep -v grep | awk '{ print "kill -9", $1 }' | sh
-# }
-
-function wincmd() {
-    CMD=$1
-    shift
-    $CMD $* 2>&1 | iconv -f CP932 -t UTF-8
-}
-
-
-# Ex) fz vim find .
-function fz() {
-    CMD=$1
-    shift
-    $CMD $($* | fzy)
-}
-
-
-# Ex) rgrep before after dir1/ dir2/
-function rgrep() {
-    BEFORE=$1
-    AFTER=$2
-    shift
-    shift
-    grep $* -rle "${BEFORE}" | xargs sed -i -e "s/${BEFORE}/${AFTER}/g"
-}
 
 
 # Some people use a different file for aliases
@@ -222,21 +175,29 @@ if [ -f /etc/bashrc ]; then
 fi
 
 
-
-
 # Setting prompt
-source /usr/share/git-core/contrib/completion/git-prompt.sh
+source $HOME/.config/git/completion/git-prompt.sh
+source $HOME/.config/git/completion/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 
 
-if [[ $VIMRUNTIME != "" ]] ; then
-    export PS1='\n\[\033[36m\]\u@\h\[\033[00m\] \[\033[32m\](vim)\[\033[00m\] \[\033[1;35m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
-else 
-    export PS1='\n\[\033[36m\]\u@\h\[\033[00m\] \[\033[1;35m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
+if [ $(echo $OS | grep -e 'Windows') ]; then
+    if [[ $VIMRUNTIME != "" ]] ; then
+        export PS1='\n\[\033[32m\]\u@\h\[\033[00m\] \[\033[33m\](vim)\[\033[00m\] \[\033[1;34m\]\w\n\[\033[31m\]$(__git_ps1)\[\033[00m\] \[\033[35m\]\$\[\033[00m\] '
+    else
+        export PS1='\n\[\033[32m\]\u@\h\[\033[00m\] \[\033[1;34m\]\w\n\[\033[31m\]$(__git_ps1)\[\033[00m\] \[\033[35m\]\$\[\033[00m\] '
+    fi
+else
+    if [[ $VIMRUNTIME != "" ]] ; then
+        export PS1='\n\[\033[36m\]\u@\h\[\033[00m\] \[\033[32m\](vim)\[\033[00m\] \[\033[1;35m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
+    else
+        export PS1='\n\[\033[36m\]\u@\h\[\033[00m\] \[\033[1;35m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
+    fi
 fi
+
 
 
 bind '"\C-g": "\e"'
 stty stop undef
-EDITOR=/usr/local/bin/vim
+EDITOR=vim
 

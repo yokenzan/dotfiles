@@ -17,12 +17,6 @@ hook_add = '''
     \   'wiki': {
     \     'url': 'http://ja.wikipedia.org/wiki/%s',
     \   },
-    \   'lm': {
-    \     'url': 'http://www.ldoceonline.com/jp/dictionary/%s',
-    \   },
-    \   'wl': {
-    \     'url': 'http://www.ldoceonline.com/jp/search?/q=%s',
-    \   },
     \ }
 
 
@@ -31,15 +25,8 @@ hook_add = '''
     " function! g:ref_source_webdict_sites.je.filter(output)
     "   return join(split(a:output, "\n")[15 :], "\n")
     " endfunction
-    " function! g:ref_source_webdict_sites.ej.filter(output)
-    "   return join(split(a:output, "\n")[15 :], "\n")
-    " endfunction
-    " function! g:ref_source_webdict_sites.wiki.filter(output)
-    "   return join(split(a:output, "\n")[17 :], "\n")
-    " endfunction
 
-    " nmap <Leader>rj :<C-u>Ref webdict je<Space>
-    " nmap <Leader>re :<C-u>Ref webdict ej<Space>
+    " nmap <Leader>wiki :<C-u>Ref webdict wiki<Space>
 '''
 
 
@@ -148,19 +135,18 @@ hook_add = '''
     let g:unite_source_history_yank_enable = 1
     let g:unite_source_file_mru_limit = 1000
 
-    aug enableUniteKeybindings
+    aug enableUniteKeyBindings
         au!
         au VimEnter * nested nnoremap <silent> <Space>ut  :<C-u>Unite tab<CR>
         au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Unite buffer<CR>
         au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Unite -buffer-name=register register<CR>
         au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Unite jump<CR>
         " ファイル関係
-        au VimEnter * nested nnoremap <silent> <Space>uf   :<C-u>Unite file<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ufm  :<C-u>Unite file_mru<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ufg  :<C-u>UniteWithBufferDir  -buffer-name=files file_mru buffer file_rec/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ufa  :<C-u>UniteWithBufferDir  -buffer-name=files file_mru buffer file_rec<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ufb  :<C-u>UniteWithBufferDir  -buffer-name=files file<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ufc  :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Unite file_mru<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Unite -buffer-name=files file_rec/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Unite -buffer-name=files file_rec<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>UniteWithBufferDir  -buffer-name=files file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
     aug END
 '''
 
@@ -169,9 +155,31 @@ hook_add = '''
 repo = 'Shougo/unite-outline'
 hook_add = '''
     aug enableOutline
-        au VimEnter * nested noremap <Space>uo :Unite -vertical outline<Return>
+        au!
+        au VimEnter * nested nnoremap <Space>uo :<C-u>Unite -vertical outline<CR>
     aug END
 '''
+
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+hook_add = '''
+    aug enableNeoyank
+        au!
+        au VimEnter * nested noremap <Space>uy :<C-u>Unite history/yank<CR>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'hewes/unite-gtags'
+hook_add = '''
+    nnoremap <silent> <Space>gc :<C-u>Unite gtags/context<CR>
+    nnoremap <silent> <Space>gf :<C-u>Unite gtags/file<CR>
+    nnoremap <silent> <Space>gd :<C-u>Unite gtags/def<CR>
+    nnoremap <silent> <Space>gr :<C-u>Unite gtags/ref<CR>
+'''
+
 
 
 [[plugins]]
@@ -191,7 +199,8 @@ hook_add = '''
     \   }
     \}
     aug enableQuickRun
-        au VimEnter * nested noremap <Space>qr :QuickRun<Return>
+        au!
+        au VimEnter * nested noremap <Space>qr :<C-u>QuickRun<CR>
     aug END
 '''
 
@@ -212,7 +221,8 @@ hook_add = '''
 repo = 'itchyny/thumbnail.vim'
 hook_add = '''
     aug enableThumbnail
-        au VimEnter * nested noremap <Space>th :Thumbnail<Return>
+        au!
+        au VimEnter * nested noremap <Space>th :<C-u>Thumbnail<CR>
     aug END
 '''
 
@@ -232,34 +242,39 @@ hook_add = '''
 '''
 
 
+[[plugins]]
+repo = 'jwalton512/vim-blade'
+hook_source = '''
+    syntax on
+    let g:blade_custom_directives = ['datetime', 'namespaced::directive']
+    let g:blade_custom_directives_pairs = {'cache': 'endcache'}
+'''
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+
+[[plugins]]
+repo = 'othree/html5.vim'
+
+
 # colorschemes
+
 
 [[plugins]]
 repo = 'sjl/badwolf'
 
 
 [[plugins]]
-repo = 'jpo/vim-railscasts-theme'
-
-
-[[plugins]]
 repo = 'tomasr/molokai'
-
-
-[[plugins]]
-repo = 'chr4/jellygrass.vim'
-
-
-[[plugins]]
-repo = 'nightsense/nemo'
-
-
-[[plugins]]
-repo = 'nightsense/office'
-
-
-[[plugins]]
-repo = 'nightsense/strawberry'
 
 
 [[plugins]]
@@ -283,15 +298,7 @@ repo = 'anoike/vim-moneyforward'
 
 
 [[plugins]]
-repo = 'nightsense/simplifysimplify'
-
-
-[[plugins]]
 repo = 'w0ng/vim-hybrid'
-
-
-[[plugins]]
-repo = 'schickele/vim' # :colorscheme fruchtig
 
 
 [[plugins]]
@@ -340,28 +347,11 @@ repo = 'vim-scripts/summerfruit256.vim'
 
 
 [[plugins]]
-repo = 'challenger-deep-theme/vim'
-
-
-[[plugins]]
-repo = 'jwalton512/vim-blade'
-hook_source = '''
-    syntax on
-    let g:blade_custom_directives = ['datetime', 'namespaced::directive']
-    let g:blade_custom_directives_pairs = {'cache': 'endcache'}
-'''
-
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'
 
 
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
-
-
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
 
 
 [[plugins]]
@@ -373,15 +363,7 @@ repo = 'vim-scripts/Blueshift'
 
 
 [[plugins]]
-repo = 'vim-scripts/oceanlight'
-
-
-[[plugins]]
 repo = 'noahfrederick/vim-hemisu'
-
-
-[[plugins]]
-repo = 'vim-scripts/simpleandfriendly.vim'
 
 
 [[plugins]]
@@ -390,17 +372,5 @@ repo = 'morhetz/gruvbox'
 
 [[plugins]]
 repo = 'Lokaltog/vim-distinguished'
-
-
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-
-
-[[plugins]]
-repo = 'aklt/plantuml-syntax'
-
-
-[[plugins]]
-repo = 'mattn/emmet-vim'
 
 

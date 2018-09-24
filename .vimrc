@@ -3,6 +3,49 @@ if &compatible
 endif
 
 
+" Setting Additional Keybinds
+
+nnoremap Y y$
+
+nmap <C-]> g<C-]>
+nmap <C-w><C-]> <C-w>g<C-]>
+
+inoremap <expr> <Tab>   pumvisible() ? "\<Tab>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<S-Tab>" : "\<S-Tab>"
+
+inoremap <C-k> <Up>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+
+cmap <C-g> <Esc>
+imap <C-g> <Esc>
+nmap <C-g> <Esc>
+omap <C-g> <Esc>
+vmap <C-g> <Esc>
+
+
+function! ToggleCursorLine()
+    if &cul
+        set nocul
+    else
+        set cul
+    endif
+endfunction
+
+function! ToggleCursorColumn()
+    if &cuc
+        set nocuc
+    else
+        set cuc
+    endif
+endfunction
+
+nnoremap <silent> <Space>tl :<C-u>call ToggleCursorLine()<CR>
+nnoremap <silent> <Space>tc :<C-u>call ToggleCursorColumn()<CR>
+
+
+" Setting dein.vim
+
 if has('win32')
     set runtimepath+=~/.vim/dein/win32/repos/github.com/Shougo/dein.vim
     let s:dein_dir = expand('~/.vim/dein/win32')
@@ -12,8 +55,6 @@ else
 endif
 set runtimepath+=~/.vim
 
-
-" Setting dein.vim
 
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
@@ -48,9 +89,6 @@ set ambiwidth=double
 set formatoptions+=mMj
 
 
-" set spell
-" set spelllang=en,cjk
-
 " Setting Title and CommandLine
 
 set showcmd
@@ -64,8 +102,8 @@ set showtabline=2
 " Setting Visibility of Line Number or Current Line and Column
 
 set number
-set cursorline
-set cursorcolumn
+set nocursorline
+set nocursorcolumn
 
 
 " Setting Color
@@ -117,34 +155,6 @@ set matchpairs+=（:）,「:」,『:』,｛:｝
 set matchtime=1
 
 source $VIMRUNTIME/macros/matchit.vim
-
-
-" Setting Additional Keybinds
-
-" nnoremap j gj
-" nnoremap k gk
-nnoremap Y y$
-nmap <C-]> g<C-]>
-nmap <C-w><C-]> <C-w>g<C-]>
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-
-cmap <C-g> <Esc>
-imap <C-g> <Esc>
-nmap <C-g> <Esc>
-omap <C-g> <Esc>
-vmap <C-g> <Esc>
-
-nnoremap <silent> <Space>f :Gtags -f %<CR>
-nnoremap <silent> <Space>j :GtagsCursor<CR>
-nnoremap <silent> <Space>d :<C-u>exe('Gtags '.expand('<cword>'))<CR>
-nnoremap <silent> <Space>r :<C-u>exe('Gtags -r '.expand('<cword>'))<CR>
 
 
 " Disable Auto Indent When Paste Characters
@@ -200,29 +210,29 @@ endif
 
 " Setting QFixHowm
 
-set runtimepath+=/tools/qfixhowm
-let QFixHowm_Key = 'g'
-let QFixHowm_FileType = 'markdown'
-let howm_dir = '~/.howm'
-let howm_filename = '%Y%m%d_%H%M%S.md'
-let howm_fileencoding = 'utf-8'
+if has('win32unix') || has('win32')
+    set runtimepath+=/tools/qfixhowm
+    let QFixHowm_Key = 'g'
+    let QFixHowm_FileType = 'markdown'
+    let howm_dir = '~/.howm'
+    let howm_filename = '%Y%m%d_%H%M%S.md'
+    let howm_fileencoding = 'utf-8'
+endif
 
 
-" set background=light
+" Setting ColorScheme
 
 " colorscheme apprentice
 " colorscheme adventurous
-" colorscheme badwolf
+colorscheme badwolf
 " colorscheme cake
 " colorscheme desert
-" colorscheme fruchtig
 " colorscheme kalisi
 " colorscheme koehler
 " colorscheme molokai
 " colorscheme moneyforward
 " colorscheme monokai
-colorscheme phd
-" colorscheme railscasts
+" colorscheme phd
 " colorscheme rupza
 " colorscheme slate
 " colorscheme southernlights
@@ -231,11 +241,21 @@ colorscheme phd
 " colorscheme seoul256
 " colorscheme seoul256-light
 
-highlight PmenuSel guifg=white guibg=lightmagenta
-highlight SpellBad ctermbg=magenta guibg=magenta
-highlight Todo     cterm=reverse
+" highlight PmenuSel guifg=white guibg=lightmagenta
+" highlight SpellBad ctermbg=magenta guibg=magenta
+" highlight Todo     cterm=reverse
+" set background=light
 
 
-" autocmd BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
+if has('win32')
+    autocmd BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
+endif
+
 
 let $BASH_ENV = "~/.bash_aliases"
+
+
+if has('win32')
+    set clipboard+=autoselect
+endif
+
