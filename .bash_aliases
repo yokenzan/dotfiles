@@ -37,7 +37,7 @@ alias u2j='iconv -t cp932 -f utf-8'
 alias v='vim'
 alias vo='vim -O'
 alias vs='vim -S Session.vim'
-alias vd='vim -u NONE -N'
+alias vu='vim -u NONE -N'
 alias tmux='tmux -2'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -54,6 +54,7 @@ alias migrate='php artisan migrate'
 alias rollback='php artisan migrate:rollback'
 alias runtest='./phpunit --color=always'
 
+# Git
 
 alias g='git'
 alias ga='git add'
@@ -77,37 +78,12 @@ alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gs='git status'
 
+# Ruby
 
-if [ -d "$HOME/.rbenv" ]; then
-    alias re='rbenv exec'
-    alias reb='rbenv exec bundle'
-    alias rebe='rbenv exec bundle exec'
-    alias reber='rbenv exec bundle exec rails'
-fi
-
-
-google()
-{
-    w3m https://google.com/search?q=$1
-}
+alias re='rbenv exec'
+alias reb='rbenv exec bundle'
+alias rebe='rbenv exec bundle exec'
+alias reber='rbenv exec bundle exec rails'
 
 
-laravel_update() {
-    sudo chmod -R 777 .
-
-    ctags --recurse=yes --append=yes --languages=PHP --exclude=*.css --exclude=_ide_helper.php
-    gtags
-
-    composer dump-autoload
-
-    echo
-    echo
-
-    art ide-helper:generate -H
-
-    echo
-    echo
-
-    ./phpunit --color=always
-}
 
