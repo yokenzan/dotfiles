@@ -74,7 +74,9 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-    let g:airline_powerline_fonts = 1
+    if !has('win32')
+        let g:airline_powerline_fonts = 1
+    endif
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
     " let g:airline#extensions#tabline#buffer_idx_mode = 1
