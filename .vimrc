@@ -5,15 +5,9 @@ endif
 
 " Setting dein.vim
 
-if has('win32')
-    set runtimepath+=~/.vim/dein/win32/repos/github.com/Shougo/dein.vim
-    let s:dein_dir = expand('~/.vim/dein/win32')
-else
-    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-    let s:dein_dir = expand('~/.vim/dein')
-endif
 set runtimepath+=~/.vim
-
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+let s:dein_dir = has('win32') ? expand('~/.vim/dein/win32') : expand('~/.vim/dein')
 
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
