@@ -176,10 +176,10 @@ hook_add = '''
 [[plugins]]
 repo = 'hewes/unite-gtags'
 hook_add = '''
-    nnoremap <silent> <Space>gc :<C-u>Unite gtags/context<CR>
-    nnoremap <silent> <Space>gf :<C-u>Unite gtags/file<CR>
-    nnoremap <silent> <Space>gd :<C-u>Unite gtags/def<CR>
-    nnoremap <silent> <Space>gr :<C-u>Unite gtags/ref<CR>
+    nnoremap <silent> <Space>gc :<C-u>Unite -resume -auto-preview gtags/context<CR>
+    nnoremap <silent> <Space>gf :<C-u>Unite -resume -auto-preview gtags/file<CR>
+    nnoremap <silent> <Space>gd :<C-u>Unite -resume -auto-preview gtags/def<CR>
+    nnoremap <silent> <Space>gr :<C-u>Unite -resume -auto-preview gtags/ref<CR>
 '''
 
 
