@@ -211,6 +211,11 @@ nnoremap <silent> <Space>tl :<C-u>call ToggleCursorLine()<CR>
 nnoremap <silent> <Space>tc :<C-u>call ToggleCursorColumn()<CR>
 
 
+nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
+
+
+
+
 " Setting ColorScheme
 
 " colorscheme apprentice
