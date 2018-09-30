@@ -3,58 +3,11 @@ if &compatible
 endif
 
 
-" Setting Additional Keybinds
-
-nnoremap Y y$
-
-nmap <C-]> g<C-]>
-nmap <C-w><C-]> <C-w>g<C-]>
-
-inoremap <expr> <Tab>   pumvisible() ? "\<Tab>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<S-Tab>" : "\<S-Tab>"
-
-inoremap <C-k> <Up>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-
-cmap <C-g> <Esc>
-imap <C-g> <Esc>
-nmap <C-g> <Esc>
-omap <C-g> <Esc>
-vmap <C-g> <Esc>
-
-
-function! ToggleCursorLine()
-    if &cul
-        set nocul
-    else
-        set cul
-    endif
-endfunction
-
-function! ToggleCursorColumn()
-    if &cuc
-        set nocuc
-    else
-        set cuc
-    endif
-endfunction
-
-nnoremap <silent> <Space>tl :<C-u>call ToggleCursorLine()<CR>
-nnoremap <silent> <Space>tc :<C-u>call ToggleCursorColumn()<CR>
-
-
 " Setting dein.vim
 
-if has('win32')
-    set runtimepath+=~/.vim/dein/win32/repos/github.com/Shougo/dein.vim
-    let s:dein_dir = expand('~/.vim/dein/win32')
-else
-    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-    let s:dein_dir = expand('~/.vim/dein')
-endif
 set runtimepath+=~/.vim
-
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+let s:dein_dir = has('win32') ? expand('~/.vim/dein/win32') : expand('~/.vim/dein')
 
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
@@ -218,6 +171,49 @@ if has('win32unix') || has('win32')
     let howm_filename = '%Y%m%d_%H%M%S.md'
     let howm_fileencoding = 'utf-8'
 endif
+
+
+" Setting Additional Keybinds
+
+nnoremap Y y$
+
+inoremap <expr> <Tab>   pumvisible() ? "\<Tab>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<S-Tab>" : "\<S-Tab>"
+
+inoremap <C-k> <Up>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+
+cmap <C-g> <Esc>
+imap <C-g> <Esc>
+nmap <C-g> <Esc>
+omap <C-g> <Esc>
+vmap <C-g> <Esc>
+
+
+function! ToggleCursorLine()
+    if &cul
+        set nocul
+    else
+        set cul
+    endif
+endfunction
+
+function! ToggleCursorColumn()
+    if &cuc
+        set nocuc
+    else
+        set cuc
+    endif
+endfunction
+
+nnoremap <silent> <Space>tl :<C-u>call ToggleCursorLine()<CR>
+nnoremap <silent> <Space>tc :<C-u>call ToggleCursorColumn()<CR>
+
+
+nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
+
+
 
 
 " Setting ColorScheme
