@@ -27,7 +27,7 @@ function laravel_update() {
     echo
     echo
 
-    art ide-helper:generate -H
+    php artisan ide-helper:generate -H
 
     echo
     echo

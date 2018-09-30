@@ -74,7 +74,9 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-    let g:airline_powerline_fonts = 1
+    if !has('win32')
+        let g:airline_powerline_fonts = 1
+    endif
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
     " let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -174,10 +176,10 @@ hook_add = '''
 [[plugins]]
 repo = 'hewes/unite-gtags'
 hook_add = '''
-    nnoremap <silent> <Space>gc :<C-u>Unite gtags/context<CR>
-    nnoremap <silent> <Space>gf :<C-u>Unite gtags/file<CR>
-    nnoremap <silent> <Space>gd :<C-u>Unite gtags/def<CR>
-    nnoremap <silent> <Space>gr :<C-u>Unite gtags/ref<CR>
+    nnoremap <silent> <Space>gc :<C-u>Unite -resume -auto-preview gtags/context<CR>
+    nnoremap <silent> <Space>gf :<C-u>Unite -resume -auto-preview gtags/file<CR>
+    nnoremap <silent> <Space>gd :<C-u>Unite -resume -auto-preview gtags/def<CR>
+    nnoremap <silent> <Space>gr :<C-u>Unite -resume -auto-preview gtags/ref<CR>
 '''
 
 
