@@ -25,23 +25,32 @@ alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 
 # Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty'                 # classify files in colour
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-alias lla='ll -A'                              # all but . and ..
-alias l='ls -CF'                              #
+alias ls='ls -hF --color=tty'
+alias ll='ls -l'
+alias l='ls -CF'
+alias g='grep -rne'
+alias f='find . -name'
+alias ff='find . -type f -name'
+alias fd='find . -type d -name'
 alias j2u='iconv -f cp932 -t utf-8'
 alias u2j='iconv -t cp932 -f utf-8'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias -- -='cd -'
+
+# Vim
+
 alias v='vim'
 alias vo='vim -O'
 alias vs='vim -S Session.vim'
 alias vu='vim -u NONE -N'
-alias tmux='tmux -2'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias -- -='cd -'
+
+# tmux
+
+alias t='tmux -2'
+alias td='t detach'
+alias ta='t atach'
+alias tl='t ls'
 
 # PHP
 
@@ -56,27 +65,45 @@ alias runtest='./phpunit --color=always'
 
 # Git
 
-alias g='git'
+# add
 alias ga='git add'
 alias gaa='git add -A'
-alias gb='git branch'
-alias gbb='git branch -b'
+# commit
 alias gc='git commit'
 alias gca='git commit -a'
 alias gcm='git commit --amend'
 alias gcmn='git commit --amend --no-edit'
-alias gco='git checkout'
-alias gcp='git cherrypick'
+# config
+alias gcg='git config --global'
+alias gcgl='git config --global -l'
+alias gcl='git config --local'
+alias gcll='git config --local -l'
+# diff
 alias gd='git diff'
 alias gdc='git diff --cached'
+# log
 alias gl='git log'
 alias glns='git log --name-status'
 alias glo='git log --oneline'
 alias glp='git log -p'
 alias gls='git log --stat'
+# stash
+alias gss='git stash save'
+alias gsp='git stash pop'
+alias gsl='git stash list'
+alias gsa='git stash apply'
+alias gsa='git stash apply'
+# grep
+alias gg='git grep -e'
+alias ggw='git grep -w'
+alias ggi='git grep -i'
+# others
+alias gb='git branch'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
 alias gp='git pull'
-alias gpr='git pull --rebase'
 alias gs='git status'
+
 
 # Ruby
 
