@@ -37,6 +37,7 @@ hook_add = '''
     let g:ale_sign_error = '!!'
     " let g:ale_php_phpcs_use_global = 1
     " let g:ale_php_phpcs_standard = 'PSR2'
+    let g:ale_php_phpstan_executable = './phpstan'
 '''
 
 
