@@ -48,9 +48,9 @@ alias vu='vim -u NONE -N'
 # tmux
 
 alias t='tmux -2'
-alias td='t detach'
-alias ta='t atach'
-alias tl='t ls'
+alias td='tmux -2 detach'
+alias ta='tmux -2 a'
+alias tl='tmux -2 ls'
 
 # PHP
 

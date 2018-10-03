@@ -32,6 +32,6 @@ PATH=$PATH:$HOME/bin:/usr/local/bin
 
 # 初回シェル時のみtmux実行
 if [ $SHLVL = 1 ]; then
-    tmux
+    tmux -2
 fi
 
