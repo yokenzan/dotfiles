@@ -236,17 +236,24 @@ colorscheme badwolf
 " colorscheme summerfruit256
 " colorscheme seoul256
 " colorscheme seoul256-light
+" colorscheme gruvbox
+colorscheme PaperColor
+" colorscheme distinguished
+" colorscheme hemisu
 
 " highlight PmenuSel guifg=white guibg=lightmagenta
 " highlight SpellBad ctermbg=magenta guibg=magenta
 " highlight Todo     cterm=reverse
+set background=dark
 " set background=light
-
+" set notermguicolors
 
 if has('win32')
     autocmd BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
 endif
 
+
+autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 let $BASH_ENV = "~/.bash_aliases"
 

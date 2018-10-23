@@ -45,93 +45,6 @@ on_ft = ['ruby', 'eruby']
 
 
 [[plugins]]
-repo = 'Shougo/neocomplcache.vim'
-if = '!has("lua") && !has("python3") && !has("nvim")'
-on_i = 1
-hook_source = '''
-    " neocomplcache
-    let g:acp_enableAtStartup = 0
-    " Use neocomplcache.
-    let g:neocomplcache_enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 1
-    let g:neocomplcache_enable_ignore_case = 1
-    let g:neocomplcache_auto_completion_start_length = 2
-    let g:neocomplcache_manual_completion_start_length = 2
-    " Set minimum syntax keyword length.
-    let g:neocomplcache_min_syntax_length = 2
-    " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-    let g:neocomplcache_enable_camel_case_completion = 1
-    let g:neocomplcache_enable_underbar_completion = 0
-    if !exists('g:neocomplcache_force_omni_patterns')
-        let g:neocomplcache_force_omni_patterns = {}
-    endif
-    let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
-    let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplcache_force_omni_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
-    let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-    let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-'''
-
-
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = 'has("lua") && !has("nvim")'
-on_i = 1
-hook_source = '''
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_ignore_case = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 2
-    let g:neocomplete#min_keyword_length = 2
-    let g:neocomplete#auto_completion_start_length = 2
-    let g:neocomplete#enable_fuzzy_completion = 1
-    let g:neocomplete#enable_auto_select = 0
-    let g:neocomplete#enable_auto_delimiter = 1
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-    let g:neocomplete#sources#dictionary#dictionaries = {
-                \ 'default' : ''
-                \ }
-
-    if !exists('g:neocomplete_force_omni_input_patterns')
-        let g:neocomplete_force_omni_input_patterns = {}
-    endif
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
-    let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-    let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-    let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-'''
-
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_i = 1
-if = 'has("python3") && has("nvim")'
-hook_add = '''
-    let g:deoplete#enable_at_atartup = 1
-'''
-
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc''
-if   = 'has("nvim")'
-depends = ['deoplete.nvim']
-
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if   = 'has("nvim")'
-depends = ['deoplete.nvim']
-
-
-[[plugins]]
 repo = 'rhysd/vim-textobj-ruby'
 on_ft = ['ruby', 'eruby']
 if = 'has("ruby")'
@@ -182,16 +95,55 @@ hook_post_source = '''
 
 
 [[plugins]]
-repo = 'lvht/phpcd.vim'
-on_ft = ['php']
-build = 'composer install'
-
-
-[[plugins]]
 repo = 'justmao945/vim-clang'
 on_ft = ['c', 'cpp']
 hook_add = '''
     let g:clang_c_completeopt   = 'menuone'
     let g:clang_cpp_completeopt = 'menuone'
+'''
+
+
+[[plugins]]
+repo = 'phpactor/phpactor'
+on_ft = ['php']
+build = 'composer install'
+hook_add = '''
+    function! DefinitionJumpWithPhpactor()
+        split
+        call phpactor#GotoDefinition()
+    endfunction
+
+    aug enablePhpactorKeyBindings
+        au!
+        " Include use statement
+        nmap <UniteKeyBindingsLeader>u :<C-u>call phpactor#UseAdd()<CR>
+        " Invoke the context menu
+        nmap <Leader>mm :<C-u>call phpactor#ContextMenu()<CR>
+        " Invoke the navigation menu
+        nmap <Leader>nn :<C-u>call phpactor#Navigate()<CR>
+        " Goto definition of class or class member under the cursor
+        nmap <Leader>o :<C-u>call phpactor#GotoDefinition()<CR>
+        " Goto definition of class or class member under the cursor
+        nmap <C-w><Leader>o :<C-u>call DefinitionJumpWithPhpactor()<CR>
+        " Transform the classes in the current file
+        nmap <Leader>tt :<C-u>call phpactor#Transform()<CR>
+        " Generate a new class (replacing the current file)
+        nmap <Leader>cc :<C-u>call phpactor#ClassNew()<CR>
+        " Extract expression (normal mode)
+        nmap <silent><Leader>ee :<C-u>call phpactor#ExtractExpression(v:false)<CR>
+        " Extract expression from selection
+        vmap <silent><Leader>ee :<C-u>call phpactor#ExtractExpression(v:true)<CR>
+        " Extract method from selection
+        vmap <silent><Leader>em :<C-u>call phpactor#ExtractMethod()<CR>
+    aug END
+'''
+
+
+[[plugins]]
+repo  = 'kristijanhusak/deoplete-phpactor'
+on_ft = ['php']
+hook_add = '''
+    " let g:deoplete#sources = {}
+    " let g:deoplete#sources.php = ['omni', 'phpactor', 'ultisnips', 'buffer']
 '''
 
