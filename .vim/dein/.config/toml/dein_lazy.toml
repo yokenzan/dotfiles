@@ -116,7 +116,7 @@ hook_add = '''
     aug enablePhpactorKeyBindings
         au!
         " Include use statement
-        nmap <UniteKeyBindingsLeader>u :<C-u>call phpactor#UseAdd()<CR>
+        nmap <Leader>u :<C-u>call phpactor#UseAdd()<CR>
         " Invoke the context menu
         nmap <Leader>mm :<C-u>call phpactor#ContextMenu()<CR>
         " Invoke the navigation menu
