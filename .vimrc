@@ -207,6 +207,16 @@ function! ToggleCursorColumn()
     endif
 endfunction
 
+function! ToggleCursorLineAndColumn()
+    if &cuc && &cul
+        set nocul
+        set nocuc
+    else
+        set cul
+        set cuc
+    endif
+endfunction
+
 function! ToggleLineWrapping()
     if &wrap
         set nowrap
@@ -218,10 +228,9 @@ endfunction
 
 nnoremap <silent> <Space>tl :<C-u>call ToggleCursorLine()<CR>
 nnoremap <silent> <Space>tc :<C-u>call ToggleCursorColumn()<CR>
+nnoremap <silent> <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <silent> <Space>tw :<C-u>call ToggleLineWrapping()<CR>
-
-
-nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
+nnoremap <silent> <Space>ms :<C-u>mks! Session.vim<CR>
 
 
 

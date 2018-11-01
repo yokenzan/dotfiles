@@ -138,6 +138,10 @@ hook_add = '''
     aug END
 '''
 
+[[plugins]]
+repo  = 'phpactor/ncm2-phpactor'
+on_ft = ['php']
+
 
 [[plugins]]
 repo  = 'kristijanhusak/deoplete-phpactor'
