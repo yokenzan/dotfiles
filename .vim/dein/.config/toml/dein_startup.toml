@@ -305,6 +305,17 @@ hook_add = '''
 '''
 
 
+[[plugins]] 
+repo     = 'fuenor/qfixhowm'
+hook_add = '''
+    let QFixHowm_Key      = 'g'
+    let QFixHowm_FileType = 'markdown'
+    let howm_dir          = '~/.howm'
+    let howm_filename     = '%Y%m%d_%H%M%S.md'
+    let howm_fileencoding = 'utf-8'
+'''
+
+
 # colorschemes
 
 
