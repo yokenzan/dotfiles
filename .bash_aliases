@@ -113,4 +113,10 @@ alias rebe='rbenv exec bundle exec'
 alias reber='rbenv exec bundle exec rails'
 
 
+# Windows
+
+if [ $(echo $OS | grep -e 'Windows') ]; then
+    # launch Explorer with pwd
+    alias here='start .'
+fi
 
