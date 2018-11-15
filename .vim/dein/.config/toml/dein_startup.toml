@@ -38,6 +38,8 @@ hook_add = '''
 
     let g:ale_lint_on_save          = 1
     let g:ale_lint_on_text_changed  = 0
+    let g:ale_lint_on_enter         = 1
+    let g:ale_lint_on_insert_leave  = 0
 
     let g:ale_set_quickfix          = 1
 '''
@@ -294,6 +296,7 @@ if       = 'has("python3")'
 hook_add = '''
     autocmd BufEnter * call ncm2#enable_for_buffer()
     set completeopt=noinsert,menuone,noselect
+    set shortmess+=c
 '''
 
 
