@@ -161,18 +161,6 @@ if has('win32')
 endif
 
 
-" Setting QFixHowm
-
-if has('win32unix') || has('win32')
-    set runtimepath+=/tools/qfixhowm
-    let QFixHowm_Key = 'g'
-    let QFixHowm_FileType = 'markdown'
-    let howm_dir = '~/.howm'
-    let howm_filename = '%Y%m%d_%H%M%S.md'
-    let howm_fileencoding = 'utf-8'
-endif
-
-
 " Setting Additional Keybinds
 
 nnoremap Y y$
