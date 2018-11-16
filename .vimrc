@@ -168,7 +168,6 @@ nnoremap Y y$
 inoremap <expr> <Tab>   pumvisible() ? "\<Tab>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<S-Tab>" : "\<S-Tab>"
 
-inoremap <C-k> <Up>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
@@ -178,22 +177,6 @@ nmap <C-g> <Esc>
 omap <C-g> <Esc>
 vmap <C-g> <Esc>
 
-
-function! ToggleCursorLine()
-    if &cul
-        set nocul
-    else
-        set cul
-    endif
-endfunction
-
-function! ToggleCursorColumn()
-    if &cuc
-        set nocuc
-    else
-        set cuc
-    endif
-endfunction
 
 function! ToggleCursorLineAndColumn()
     if &cuc && &cul
@@ -205,20 +188,13 @@ function! ToggleCursorLineAndColumn()
     endif
 endfunction
 
-function! ToggleLineWrapping()
-    if &wrap
-        set nowrap
-    else
-        set wrap
-    endif
-endfunction
 
-
-nnoremap <silent> <Space>tl :<C-u>call ToggleCursorLine()<CR>
-nnoremap <silent> <Space>tc :<C-u>call ToggleCursorColumn()<CR>
-nnoremap <silent> <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
-nnoremap <silent> <Space>tw :<C-u>call ToggleLineWrapping()<CR>
-nnoremap <silent> <Space>ms :<C-u>mks! Session.vim<CR>
+nnoremap <Space>tl :<C-u>set cul!<CR>
+nnoremap <Space>tc :<C-u>set cuc!<CR>
+nnoremap <Space>tw :<C-u>set wrap!<CR>
+nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
+nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
+nnoremap / /\v
 
 
 
