@@ -195,7 +195,27 @@ nnoremap <Space>tw :<C-u>set wrap!<CR>
 nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap / /\v
+nnoremap <Esc><Esc> :noh<CR><ESC>
 
+
+command! -count=1 Glo :r! git log --oneline --no-merges -<count>
+
+
+" 共有ファイルに選択範囲を出力
+function! YankToSharedFile() range
+    let l:filename = "~/Desktop/neurons/vbox_share/clipped"
+    execute ":" . a:firstline . "," . a:lastline "w! " . l:filename
+endfunction
+
+
+" 共有ファイルの内容をカーソル位置に出力
+function! PasteFromSharedFile()
+    r ~/Desktop/neurons/vbox_share/clipped
+endfunction
+
+nnoremap cy :call YankToSharedFile()<CR>
+xnoremap cy :call YankToSharedFile()<CR>
+nnoremap cp :<C-u>call PasteFromSharedFile()<CR>
 
 
 
@@ -231,8 +251,12 @@ set background=dark
 " set background=light
 " set notermguicolors
 
-if has('win32')
-    autocmd BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
+if has('win32unix')
+    augroup WinCmd
+        au!
+        autocmd! BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
+        autocmd! BufWritePost *.pu !cat % | iconv -f utf-8 -t cp932 | /c/ProgramData/Oracle/Java/javapath/java -jar /c/ProgramData/chocolatey/lib/plantuml/tools/plantuml.jar -tsvg -p > %.svg
+    augroup END
 endif
 
 
