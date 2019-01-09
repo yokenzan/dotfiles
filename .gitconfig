@@ -16,3 +16,7 @@
     ui = true
 [http]
     sslVerify = false
+[merge]
+	ff = false
+[pull]
+	ff = only

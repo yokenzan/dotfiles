@@ -55,7 +55,7 @@ set showtabline=2
 " Setting Visibility of Line Number or Current Line and Column
 
 set number
-set nocursorline
+set cursorline
 set nocursorcolumn
 
 
@@ -203,14 +203,14 @@ command! -count=1 Glo :r! git log --oneline --no-merges -<count>
 
 " 共有ファイルに選択範囲を出力
 function! YankToSharedFile() range
-    let l:filename = "~/Desktop/neurons/vbox_share/clipped"
+    let l:filename = "path/to/shared_file"
     execute ":" . a:firstline . "," . a:lastline "w! " . l:filename
 endfunction
 
 
 " 共有ファイルの内容をカーソル位置に出力
 function! PasteFromSharedFile()
-    r ~/Desktop/neurons/vbox_share/clipped
+    r path/to/shared_file
 endfunction
 
 nnoremap cy :call YankToSharedFile()<CR>
