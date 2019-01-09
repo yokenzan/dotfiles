@@ -45,8 +45,23 @@ if [ $(echo $OS | grep -e 'Windows') ]; then
     }
 
 
-    function plantuml() {
+    function pu2svg() {
         cat $1 | iconv -f utf-8 -t cp932 | /c/ProgramData/Oracle/Java/javapath/java -jar /c/ProgramData/Chocolatey/lib/plantuml/tools/plantuml.jar -tsvg -p > $1.svg
+    }
+
+    function pu2png() {
+        cat $1 | iconv -f utf-8 -t cp932 | /c/ProgramData/Oracle/Java/javapath/java -jar /c/ProgramData/Chocolatey/lib/plantuml/tools/plantuml.jar -tpng -p > $1.png
+    }
+
+
+    function viewpu() {
+        pu2png $1
+        img2sixel $1.png
+    }
+
+
+    function md2html() {
+        /user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o $1.html $1
     }
 fi
 
