@@ -44,6 +44,7 @@ alias v='vim'
 alias vo='vim -O'
 alias vs='vim -S Session.vim'
 alias vu='vim -u NONE -N'
+alias e='emacs -nw'
 
 # tmux
 
@@ -103,6 +104,7 @@ alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gp='git pull'
 alias gs='git status'
+alias sshinit='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa.ppk && ssh -T git@github.com && ssh -T git@bitbucket.org'
 
 
 # Ruby
