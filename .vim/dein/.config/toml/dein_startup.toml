@@ -326,11 +326,29 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
+repo = 'prabirshrestha/async.vim'
+if   = 'has("python3")'
+
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
 if   = 'has("python3")'
 hook_add = '''
-    let g:deoplete#enable_at_startup = 1
+    if executable('solargraph')
+        " gem install solargraph
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'solargraph',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+            \ 'initialization_options': {"diagnostics": "true"},
+            \ 'whitelist': ['ruby'],
+            \ })
+    endif
 '''
+
+
+[[plugins]]
+repo = 'ncm2/ncm2-vim-lsp'
+if   = 'has("python3")'
 
 
 [[plugins]] 
