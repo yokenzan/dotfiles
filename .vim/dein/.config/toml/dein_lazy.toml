@@ -9,29 +9,8 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'OmniSharp/omnisharp-roslyn'
-on_i = 1
-
-
-[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 on_i = 1
-
-
-[[plugins]]
-repo  = 'OmniSharp/omnisharp-vim'
-on_ft = ['cs']
-on_i  = 1
-if    = 'has("python")'
-hook_source = '''
-    let g:OmniSharp_server_path = '~/.vim/dein/repos/github.com/OmniSharp/omnisharp-server/OmniSharp/bin/Debug/OmniSharp'
-    let g:OmniSharp_selector_ui = 'unite'
-    let g:OmniSharp_start_server = 1
-    let g:Omnisharp_stop_server = 2
-    if has('win32unix')
-        let g:OmniSharp_translate_cygwin_wsl = 1
-    endif
-'''
 
 
 [[plugins]]
@@ -40,27 +19,11 @@ on_ft = ['toml', 'conf']
 
 
 [[plugins]]
-repo = 'tpope/vim-rails'
-on_ft = ['ruby', 'eruby']
-
-
-[[plugins]]
 repo = 'rhysd/vim-textobj-ruby'
 on_ft = ['ruby', 'eruby']
 if = 'has("ruby")'
 hook_source = '''
     let g:textobj_ruby_more_mappings = 1
-'''
-
-
-[[plugins]]
-repo = 'vim-ruby/vim-ruby'
-on_ft = ['ruby', 'eruby']
-if = 'has("ruby")'
-hook_source = '''
-    let g:rubycomplete_buffer_loading = 1
-    let g:rubycomplete_classes_in_global = 1
-    let g:rubycomplete_rails = 1
 '''
 
 
@@ -138,16 +101,9 @@ hook_add = '''
     aug END
 '''
 
+
 [[plugins]]
 repo  = 'phpactor/ncm2-phpactor'
 on_ft = ['php']
 
-
-[[plugins]]
-repo  = 'kristijanhusak/deoplete-phpactor'
-on_ft = ['php']
-hook_add = '''
-    " let g:deoplete#sources = {}
-    " let g:deoplete#sources.php = ['omni', 'phpactor', 'ultisnips', 'buffer']
-'''
 
