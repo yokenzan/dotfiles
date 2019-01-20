@@ -1,6 +1,4 @@
-if &compatible
-    set nocompatible
-endif
+set nocompatible
 
 
 " Setting dein.vim
