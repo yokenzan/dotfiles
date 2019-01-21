@@ -1,0 +1,4 @@
+keycode 100 = Zenkaku_Hankaku
+keycode 135 = Alt_R
+add mod1    = Alt_R
+
