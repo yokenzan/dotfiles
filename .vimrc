@@ -239,12 +239,13 @@ set background=dark
 " set background=light
 " set notermguicolors
 
-if has('win32unix')
-    augroup WinCmd
-        au!
-        autocmd! BufWritePost *.md !/user/AppData/Local/Pandoc/pandoc -f markdown -t html5 --css /tools/pandoc/style.css --standalone -o %:p.html %:p
-        autocmd! BufWritePost *.pu !cat % | iconv -f utf-8 -t cp932 | /c/ProgramData/Oracle/Java/javapath/java -jar /c/ProgramData/chocolatey/lib/plantuml/tools/plantuml.jar -tsvg -p > %.svg
-    augroup END
+
+if executable('plantuml')
+    autocmd! BufWritePost *.pu !plantuml %
+endif
+
+if executable('pandoc')
+    autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/.github_style.css --standalone -o %:p.html %:p
 endif
 
 
