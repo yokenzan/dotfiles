@@ -219,28 +219,18 @@ nnoremap cp :<C-u>call PasteFromSharedFile()<CR>
 
 " Setting ColorScheme
 
-" colorscheme apprentice
-" colorscheme adventurous
-colorscheme badwolf
+" colorscheme badwolf
 " colorscheme cake
 " colorscheme desert
-" colorscheme kalisi
 " colorscheme koehler
 " colorscheme molokai
-" colorscheme moneyforward
 " colorscheme monokai
 " colorscheme phd
 " colorscheme rupza
 " colorscheme slate
-" colorscheme southernlights
-" colorscheme strawberry-light
-" colorscheme summerfruit256
-" colorscheme seoul256
-" colorscheme seoul256-light
 " colorscheme gruvbox
 colorscheme PaperColor
 " colorscheme distinguished
-" colorscheme hemisu
 
 " highlight PmenuSel guifg=white guibg=lightmagenta
 " highlight SpellBad ctermbg=magenta guibg=magenta

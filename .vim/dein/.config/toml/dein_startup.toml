@@ -309,10 +309,12 @@ repo = 'othree/html5.vim'
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
+if   = '!has("nvim")'
 
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
+if   = '!has("nvim")'
 
 
 [[plugins]]
@@ -376,23 +378,7 @@ repo = 'tomasr/molokai'
 
 
 [[plugins]]
-repo = 'Dru89/vim-adventurous'
-
-
-[[plugins]]
-repo = 'Heorhiy/VisualStudioDark.vim'
-
-
-[[plugins]]
 repo = 'felipesousa/rupza'
-
-
-[[plugins]]
-repo = 'jalvesaq/southernlights'
-
-
-[[plugins]]
-repo = 'anoike/vim-moneyforward'
 
 
 [[plugins]]
