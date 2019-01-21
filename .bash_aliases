@@ -27,6 +27,7 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'
 alias ll='ls -l'
+alias lla='ll -a'
 alias l='ls -CF'
 alias g='grep -rne'
 alias f='find . -name'
@@ -60,6 +61,7 @@ alias tink='php artisan tinker'
 alias artisan='php artisan'
 alias art='php artisan'
 alias seed='php artisan db:seed'
+alias seedc='seed --class'
 alias migrate='php artisan migrate'
 alias rollback='php artisan migrate:rollback'
 alias runtest='./phpunit --color=always'
@@ -81,38 +83,43 @@ alias gcl='git config --local'
 alias gcll='git config --local -l'
 # diff
 alias gd='git diff'
-alias gdc='git diff --cached'
+alias gdc='gd --cached'
+alias glw='gd --word-diff'
 # log
 alias gl='git log'
 alias glns='git log --name-status'
 alias glo='git log --oneline'
 alias glp='git log -p'
 alias gls='git log --stat'
+alias glw='git log --word-diff'
 # stash
 alias gss='git stash save'
 alias gsp='git stash pop'
 alias gsl='git stash list'
 alias gsa='git stash apply'
-alias gsa='git stash apply'
+alias gsd='git stash drop'
 # grep
-alias gg='git grep -e'
-alias ggw='git grep -w'
-alias ggi='git grep -i'
+alias gg='git grep'
+alias ggw='gg -w'
+alias ggi='gg -i'
 # others
 alias gb='git branch'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gp='git pull'
+alias gpf='git pull --ff'
 alias gs='git status'
+alias gmsf='git merge --squash --ff'
+
 alias sshinit='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa.ppk && ssh -T git@github.com && ssh -T git@bitbucket.org'
 
 
 # Ruby
 
 alias re='rbenv exec'
-alias reb='rbenv exec bundle'
-alias rebe='rbenv exec bundle exec'
-alias reber='rbenv exec bundle exec rails'
+alias reb='re bundle'
+alias rebe='reb exec'
+alias reber='rebe rails'
 
 
 # Windows

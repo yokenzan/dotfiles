@@ -37,11 +37,11 @@ hook_add = '''
     let g:ale_sign_error            = '!!'
 
     let g:ale_lint_on_save          = 1
+    let g:ale_lint_on_enter         = 0
     let g:ale_lint_on_text_changed  = 0
-    let g:ale_lint_on_enter         = 1
     let g:ale_lint_on_insert_leave  = 0
 
-    let g:ale_set_quickfix          = 1
+    let g:ale_set_quickfix          = 0
 '''
 
 
@@ -89,9 +89,9 @@ hook_add = '''
     let g:airline#extensions#hunks#enabled      = 0
     let g:airline#extensions#whitespace#enabled = 0
 
-    " let g:airline#extensions#tabline#enabled = 1
-    " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-    " let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#tabline#enabled = 0
+    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+    let g:airline#extensions#tabline#buffer_idx_mode = 0
 
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', 'paste', 'branch'])
@@ -103,7 +103,7 @@ hook_add = '''
         \ ['x', 'y', 'z']
         \ ]
 '''
-depends = ['vim-airline/vim-airline-themes']
+depends = ['vim-airline-themes']
 
 
 [[plugins]]
@@ -223,9 +223,9 @@ hook_add = '''
 [[plugins]]
 repo = 'hewes/unite-gtags'
 hook_add = '''
-    nnoremap <silent> <Space>gc :<C-u>Unite -resume -auto-preview gtags/context<CR>
-    nnoremap <silent> <Space>gf :<C-u>Unite -resume -auto-preview gtags/file<CR>
-    nnoremap <silent> <Space>gd :<C-u>Unite -resume -auto-preview gtags/def<CR>
+    " nnoremap <silent> <Space>gc :<C-u>Unite -resume -auto-preview gtags/context<CR>
+    nnoremap <silent> <Space>gf :<C-u>Unite gtags/file<CR>
+    " nnoremap <silent> <Space>gd :<C-u>Unite -resume -auto-preview gtags/def<CR>
     nnoremap <silent> <Space>gr :<C-u>Unite -resume -auto-preview gtags/ref<CR>
 '''
 
@@ -326,13 +326,14 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-if   = 'has("python3")'
+repo    = 'prabirshrestha/async.vim'
+if      = 'has("python3")'
+depends = ['vim-lsp']
 
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-if   = 'has("python3")'
+repo     = 'prabirshrestha/vim-lsp'
+if       = 'has("python3")'
 hook_add = '''
     if executable('solargraph')
         " gem install solargraph
@@ -344,6 +345,7 @@ hook_add = '''
             \ })
     endif
 '''
+depends  = ['ncm2-vim-lsp']
 
 
 [[plugins]]
@@ -402,35 +404,6 @@ repo = 'GGalizzi/cake-vim'
 
 
 [[plugins]]
-repo = 'reedes/vim-colors-pencil'
-hook_add = '''
-    let g:pencil_higher_contrast_ui = 1
-    let g:pencil_neutral_code_bg    = 1
-    let g:pencil_gutter_color       = 1
-'''
-
-
-[[plugins]]
-repo = 'freeo/vim-kalisi'
-
-
-[[plugins]]
-repo = 'romainl/Apprentice'
-
-
-[[plugins]]
-repo = 'AlessandroYorba/Despacio'
-
-
-[[plugins]]
-repo = 'junegunn/seoul256.vim'
-
-
-[[plugins]]
-repo = 'fneu/breezy'
-
-
-[[plugins]]
 repo = 'sickill/vim-monokai'
 
 
@@ -439,31 +412,14 @@ repo = 'vim-scripts/phd'
 
 
 [[plugins]]
-repo = 'vim-scripts/summerfruit256.vim'
-
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-
-[[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
 
 
 [[plugins]]
-repo = 'nice/sweater'
-
-
-[[plugins]]
-repo = 'vim-scripts/Blueshift'
-
-
-[[plugins]]
-repo = 'noahfrederick/vim-hemisu'
-
-
-[[plugins]]
 repo = 'morhetz/gruvbox'
+hook_add = '''
+    let g:gruvbox_contrast_light="hard"
+'''
 
 
 [[plugins]]
