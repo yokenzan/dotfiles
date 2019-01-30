@@ -10,12 +10,20 @@
 (add-to-list 'default-frame-alist '(font . "Osaka―等幅-11"))
 
 
+;; 行番号
 (global-linum-mode t)
 (column-number-mode t)
 
 (show-paren-mode t)
 
-(setq scroll-step 1)
+
+(setq scroll-conservatively 1)
+(setq scroll-margin 4)
+
+;; カーソル行ハイライトON
+(global-hl-line-mode)
+;; メニューバーOFF
+(menu-bar-mode -1)
 
 
 (require 'package)
@@ -30,14 +38,14 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (gruvbox-dark-medium)))
+ '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
     ("e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" "595617a3c537447aa7e76ce05c8d43146a995296ea083211225e7efc069c598f" "fd3c7bd752f48dcb7efa5f852ef858c425b1c397b73851ff8816c0580eab92f1" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "a622aaf6377fe1cd14e4298497b7b2cae2efc9e0ce362dade3a58c16c89e089c" "2a9039b093df61e4517302f40ebaf2d3e95215cb2f9684c8c1a446659ee226b9" default)))
  '(package-selected-packages
    (quote
-    (gruvbox-theme ivy company-phpactor company-phpactor\
-		   phpactor company ## php-mode ddskk)))
+    (flycheck-phpstan magit gruvbox-theme ivy company-phpactor company-phpactor\
+		      phpactor company ## php-mode ddskk)))
  '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#1d2021"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -71,6 +79,41 @@
 ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
 (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete)
 
+(with-eval-after-load 'php-mode
+  (define-key php-mode-map (kbd "C-M-i") 'company-phpactor))
 
+(setq vc-follow-symlinks t)
 
 (ivy-mode 1)
+
+
+;; MRUリストの設定
+(setq recentf-max-saved-items 2000)
+(setq recentf-auto-cleanup 'never)
+(recentf-mode 1)
+
+
+;; SKKの設定
+(setq skk-server-host "localhost")
+(setq skk-server-portnum 55100)
+(setq skk-share-private-jisyo t)
+(setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
+(setq skk-show-icon t)
+(setq skk-show-annotation t)
+
+
+
+;; PHPのLINT設定
+(defun my-php-mode-hook ()
+  "My PHP-mode hook."
+  (require 'flycheck-phpstan)
+  (flycheck-mode t)
+  (flycheck-select-checker 'phpstan)
+  (flycheck-select-checker 'phpmd))
+
+(add-hook 'php-mode-hook 'my-php-mode-hook)
+
+
+(global-flycheck-mode)
+(setq flycheck-indication-mode 'left-fringe)
+

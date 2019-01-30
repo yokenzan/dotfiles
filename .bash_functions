@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 
 # colored less
 function c() {
@@ -55,4 +57,13 @@ if [ $(echo $OS | grep -e 'Windows') ]; then
         pandoc -f markdown -t html5 --css ~/.dotfiles/.github_style.css --standalone -o $1.html $1
     }
 fi
+
+
+function ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger $@
+    else
+        exit
+    fi
+}
 

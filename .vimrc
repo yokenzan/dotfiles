@@ -53,7 +53,7 @@ set showtabline=2
 " Setting Visibility of Line Number or Current Line and Column
 
 set number
-set cursorline
+set nocursorline
 set nocursorcolumn
 
 
@@ -169,12 +169,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<S-Tab>" : "\<S-Tab>"
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
-cmap <C-g> <Esc>
-imap <C-g> <Esc>
-nmap <C-g> <Esc>
-omap <C-g> <Esc>
-vmap <C-g> <Esc>
-
 
 function! ToggleCursorLineAndColumn()
     if &cuc && &cul
@@ -216,6 +210,7 @@ xnoremap cy :call YankToSharedFile()<CR>
 nnoremap cp :<C-u>call PasteFromSharedFile()<CR>
 
 
+inoremap <C-r><C-r> <C-r>0
 
 " Setting ColorScheme
 
