@@ -33,7 +33,7 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
-    let g:ale_sign_column_always    = 0
+    let g:ale_sign_column_always    = 1
     let g:ale_sign_error            = '!!'
 
     let g:ale_lint_on_save          = 1
@@ -172,10 +172,59 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
+repo     = 'Shougo/denite.nvim'
+if       = 'has("python3")'
+hook_add = '''
+    call denite#custom#map(
+                \ 'insert',
+                \ '<C-n>',
+                \ '<denite:move_to_next_line>',
+                \ 'noremap'
+                \)
+    call denite#custom#map(
+                \ 'insert',
+                \ '<C-p>',
+                \ '<denite:move_to_previous_line>',
+                \ 'noremap'
+                \)
+    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+    call denite#custom#var('file_rec/git', 'command',
+                \ ['git', 'ls-files', '-co', '--exclude-standard']
+                \)
+    call denite#custom#alias('source', 'grep/git', 'grep')
+    call denite#custom#var('grep/git', 'command',
+                \ ['git', 'grep']
+                \)
+
+    aug enableDeniteKeyBindings
+        au!
+        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Denite buffer<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite -buffer-name=register register<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Denite jump<CR>
+        " ファイル関係
+        au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Denite -buffer-name=files file_mru<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Denite -buffer-name=files file_rec/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Denite -buffer-name=files file_rec<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>DeniteBufferDir -buffer-name=files file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>Denite          -buffer-name=files file<CR>
+        " grep関係
+        au VimEnter * nested nnoremap <silent> <Space>gg  :<C-u>Denite -auto-preview grep/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Denite -auto-preview grep<CR>
+        au VimEnter * nested nnoremap <silent> <Space>rg  :<C-u>Denite -resume -auto-preview grep/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>rp  :<C-u>Denite -resume -auto-preview grep<CR>
+
+        au VimEnter * nested nnoremap <silent> <Space>uo  :<C-u>Denite outline<CR>
+    aug END
+'''
+depends  = ['neoyank']
+
+
+[[plugins]]
+repo     = 'Shougo/unite.vim'
+if       = '!has("python3")'
 hook_add = '''
     let g:unite_split_rule = 'rightbelow'
-    let g:unite_winwidth = 40
+    let g:unite_winwidth = 45
     let g:unite_source_history_yank_enable = 1
     let g:unite_source_file_mru_limit = 1000
 
@@ -198,14 +247,16 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent> <Space>rp  :<C-u>Unite -resume -auto-preview grep<CR>
     aug END
 '''
+depends  = ['neoyank', 'unite-outline']
 
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
+repo     = 'Shougo/unite-outline'
+if       = '!has("python3")'
 hook_add = '''
     aug enableOutline
         au!
-        au VimEnter * nested nnoremap <Space>uo :<C-u>Unite -vertical outline<CR>
+        au VimEnter * nested nnoremap <Space>uo :<C-u>Unite outline<CR>
     aug END
 '''
 
