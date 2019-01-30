@@ -1,4 +1,6 @@
-set nocompatible
+if &compatible
+    set nocompatible
+endif
 
 
 " Setting dein.vim
@@ -243,8 +245,10 @@ if executable('pandoc')
     autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/.github_style.css --standalone -o %:p.html %:p
 endif
 
+if dein#check_install('phpactor') == 0
+    autocmd FileType php setlocal omnifunc=phpactor#Complete
+endif
 
-autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 let $BASH_ENV = "~/.bash_aliases"
 
