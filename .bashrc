@@ -178,29 +178,40 @@ fi
 # Setting prompt
 source $HOME/.config/git/completion/git-prompt.sh
 source $HOME/.config/git/completion/git-completion.bash
-GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUPSTREAM=1
 
 
 if [ $(echo $OS | grep -e 'Windows') ]; then
-    if [[ $VIMRUNTIME != "" ]] ; then
-        export PS1="\n\[\033[38;5;214m\]\D{%Y/%m/%d %H:%M:%S} \[\033[32m\]\u@\h\[\033[00m\] \[\033[1;33m\](vim)\[\033[00m\] \[\033[38;5;33m\]\w\n\[\033[31m\]$(__git_ps1)\[\033[00m\] \[\033[38;5;213m\]\$\[\033[00m\] "
-    else
-        export PS1="\n\[\033[38;5;214m\]\D{%Y/%m/%d %H:%M:%S} \[\033[32m\]\u@\h\[\033[00m\] \[\033[34m\]\w\n\[\033[31m\]$(__git_ps1)\[\033[00m\] \[\033[35m\]\$\[\033[00m\] "
-    fi
-else
-    PS1="\n\[\033[38;5;213m\]\D{%Y/%m/%d %H:%M:%S} \[\033[36m\]\u@\h\[\033[00m\]"
+    PS1='\n\[\033[38;5;214m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[38;5;220m\]\u@\h\[\033[00m\]'
 
     # Vim
     if [[ $VIMRUNTIME != "" ]] ; then
-        PS1="$PS1 \[\033[1;32m\](vim)\[\033[00m\]"
+        PS1=$PS1' \[\033[6;1;33m\](vim)\[\033[00m\]'
     fi
 
     # Ranger
     if [[ $RANGER_LEVEL != "" ]] ; then
-        PS1="$PS1 \[\033[38;5;228m\](ranger)\[\033[00m\]"
+        PS1=$PS1' \[\033[6;38;5;213m\](ranger)\[\033[00m\]'
     fi
 
-    export PS1="$PS1 \[\033[35m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] "
+    export PS1=$PS1' \[\033[3;35m\]\w\[\033[00m\]\n\[\033[31m\]$(__git_ps1)\[\033[00m\] \[\033[38;5;213m\]\$\[\033[00m\] '
+else
+    PS1='\n\[\033[38;5;213m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[36m\]\u@\h\[\033[00m\]'
+
+    # Vim
+    if [[ $VIMRUNTIME != "" ]] ; then
+        PS1=$PS1' \[\033[6;1;32m\](vim)\[\033[00m\]'
+    fi
+
+    # Ranger
+    if [[ $RANGER_LEVEL != "" ]] ; then
+        PS1=$PS1' \[\033[6;38;5;228m\](ranger)\[\033[00m\]'
+    fi
+
+    export PS1=$PS1' \[\033[3;35m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
 fi
 
 
