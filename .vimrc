@@ -250,6 +250,18 @@ if dein#check_install('phpactor') == 0
 endif
 
 
+function! OpenVimConfigsByTabSplit()
+    tabedit ~/.vimrc
+    vnew    ~/.vim/dein/.config/toml/dein_lazy.toml
+    new     ~/.vim/dein/.config/toml/dein_startup.toml
+endfunction
+nnoremap  <Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
+
+
+command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
+
+
+
 let $BASH_ENV = "~/.bash_aliases"
 
 

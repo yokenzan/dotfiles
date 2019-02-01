@@ -104,8 +104,6 @@ alias ggw='gg -w'
 alias ggi='gg -i'
 # others
 alias gb='git branch'
-alias gco='git checkout'
-alias gcp='git cherry-pick'
 alias gp='git pull'
 alias gpf='git pull --ff'
 alias gs='git status'
