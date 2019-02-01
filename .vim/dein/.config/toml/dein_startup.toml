@@ -198,22 +198,31 @@ hook_add = '''
 
     aug enableDeniteKeyBindings
         au!
-        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Denite buffer<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite -buffer-name=register register<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Denite jump<CR>
+        " ヘルプ
+        au VimEnter * nested nnoremap <silent> <Space>uh  :<C-u>Denite help<CR>
+        " バッファ
+        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Denite          -matchers=matcher/substring -mode=normal buffer<CR>
+        " レジスタ
+        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite          -matchers=matcher/substring -mode=normal register<CR>
+        " ジャンプ
+        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Denite          -matchers=matcher/substring -mode=normal jump<CR>
+        " アウトライン
+        au VimEnter * nested nnoremap <silent> <Space>uo  :<C-u>Denite -mode=normal -split=vertical unite:outline<CR>
+        " コマンド履歴
+        au VimEnter * nested nnoremap <silent> <Space>q:  :<C-u>Denite -mode=normal -reversed command_history<CR>
         " ファイル関係
-        au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Denite -buffer-name=files file_mru<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Denite -buffer-name=files file_rec/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Denite -buffer-name=files file_rec<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>DeniteBufferDir -buffer-name=files file<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>Denite          -buffer-name=files file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>DeniteBufferDir -matchers=matcher/substring -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>Denite          -matchers=matcher/substring -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_mru<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_rec/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_rec<CR>
         " grep関係
-        au VimEnter * nested nnoremap <silent> <Space>gg  :<C-u>Denite -auto-preview grep/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Denite -auto-preview grep<CR>
-        au VimEnter * nested nnoremap <silent> <Space>rg  :<C-u>Denite -resume -auto-preview grep/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>rp  :<C-u>Denite -resume -auto-preview grep<CR>
-
-        au VimEnter * nested nnoremap <silent> <Space>uo  :<C-u>Denite outline<CR>
+        au VimEnter * nested nnoremap <silent> <Space>gg  :<C-u>Denite -no-empty grep/git<CR>
+        au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Denite -no-empty grep<CR>
+        " 検索結果の再表示と移動
+        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite -resume<CR>
+        au VimEnter * nested nnoremap <silent> <Space>up  :<C-u>Denite -resume -select=-1 -immediately<CR>
+        au VimEnter * nested nnoremap <silent> <Space>un  :<C-u>Denite -resume -select=+1 -immediately<CR>
     aug END
 '''
 depends  = ['neoyank']
@@ -221,38 +230,38 @@ depends  = ['neoyank']
 
 [[plugins]]
 repo     = 'Shougo/unite.vim'
-if       = '!has("python3")'
 hook_add = '''
-    let g:unite_split_rule = 'rightbelow'
-    let g:unite_winwidth = 45
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_file_mru_limit = 1000
+    if !has('python3')
+        let g:unite_split_rule = 'rightbelow'
+        let g:unite_winwidth   = 45
+        let g:unite_source_history_yank_enable = 1
+        let g:unite_source_file_mru_limit      = 1000
 
-    aug enableUniteKeyBindings
-        au!
-        au VimEnter * nested nnoremap <silent> <Space>ut  :<C-u>Unite tab<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Unite buffer<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Unite -buffer-name=register register<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Unite jump<CR>
-        " ファイル関係
-        au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Unite file_mru<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Unite -buffer-name=files file_rec/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Unite -buffer-name=files file_rec<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>UniteWithBufferDir  -buffer-name=files file<CR>
-        au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
-        " grep関係
-        au VimEnter * nested nnoremap <silent> <Space>gg  :<C-u>Unite -auto-preview grep/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Unite -auto-preview grep<CR>
-        au VimEnter * nested nnoremap <silent> <Space>rg  :<C-u>Unite -resume -auto-preview grep/git<CR>
-        au VimEnter * nested nnoremap <silent> <Space>rp  :<C-u>Unite -resume -auto-preview grep<CR>
-    aug END
+        aug enableUniteKeyBindings
+            au!
+            au VimEnter * nested nnoremap <silent> <Space>ut  :<C-u>Unite tab<CR>
+            au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Unite buffer<CR>
+            au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Unite -buffer-name=register register<CR>
+            au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Unite jump<CR>
+            " ファイル関係
+            au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Unite file_mru<CR>
+            au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Unite -buffer-name=files file_rec/git<CR>
+            au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Unite -buffer-name=files file_rec<CR>
+            au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>UniteWithBufferDir  -buffer-name=files file<CR>
+            au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
+            " grep関係
+            au VimEnter * nested nnoremap <silent> <Space>gg  :<C-u>Unite -auto-preview grep/git<CR>
+            au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Unite -auto-preview grep<CR>
+            au VimEnter * nested nnoremap <silent> <Space>rg  :<C-u>Unite -resume -auto-preview grep/git<CR>
+            au VimEnter * nested nnoremap <silent> <Space>rp  :<C-u>Unite -resume -auto-preview grep<CR>
+        aug END
+    endif
 '''
 depends  = ['neoyank', 'unite-outline']
 
 
 [[plugins]]
 repo     = 'Shougo/unite-outline'
-if       = '!has("python3")'
 hook_add = '''
     aug enableOutline
         au!

@@ -12,6 +12,7 @@
 
 ;; 行番号
 (global-linum-mode t)
+(setq linum-format "%4d ")
 (column-number-mode t)
 
 (show-paren-mode t)
@@ -108,12 +109,19 @@
   "My PHP-mode hook."
   (require 'flycheck-phpstan)
   (flycheck-mode t)
-  (flycheck-select-checker 'phpstan)
-  (flycheck-select-checker 'phpmd))
+  (flycheck-select-checker 'phpstan))
 
 (add-hook 'php-mode-hook 'my-php-mode-hook)
 
 
-(global-flycheck-mode)
-(setq flycheck-indication-mode 'left-fringe)
+;; (global-flycheck-mode)
+;; (setq flycheck-indication-mode 'left-fringe)
+;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
 
+
+(setq display-time-day-and-date t)  ;; 曜日・月・日
+(setq display-time-24hr-format t)   ;; 24時表示
+(display-time-mode t)
+
+
+(setq frame-title-format "%f")
