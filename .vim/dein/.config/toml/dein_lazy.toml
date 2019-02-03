@@ -94,6 +94,8 @@ hook_add = '''
         nmap <Leader>cc :<C-u>call phpactor#ClassNew()<CR>
         " Extract expression (normal mode)
         nmap <silent><Leader>ee :<C-u>call phpactor#ExtractExpression(v:false)<CR>
+        " show Full namespace of class under cursor
+        nmap <silent><Leader>hh :<C-u>call phpactor#Hover()<CR>
         " Extract expression from selection
         vmap <silent><Leader>ee :<C-u>call phpactor#ExtractExpression(v:true)<CR>
         " Extract method from selection

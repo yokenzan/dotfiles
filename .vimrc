@@ -248,6 +248,7 @@ endif
 if dein#check_install('phpactor') == 0
     autocmd FileType php setlocal omnifunc=phpactor#Complete
 endif
+set completeopt=noinsert,menuone,noselect
 
 
 function! OpenVimConfigsByTabSplit()

@@ -17,16 +17,25 @@ hook_add = '''
     \   'wiki': {
     \     'url': 'http://ja.wikipedia.org/wiki/%s',
     \   },
+    \   'ee': {
+    \     'url': 'http://googledictionary.freecollocation.com/meaning?word=%s',
+    \   },
     \ }
 
+    "デフォルト
+    let g:ref_source_webdict_sites.default = 'ee'
 
-    "出力に対するフィルタ。最初の数行を削除
+    function! g:ref_source_webdict_sites.ee.filter(output)
+      return join(split(a:output, "\n")[5 :], "\n")
+    endfunction
 
-    " function! g:ref_source_webdict_sites.je.filter(output)
-    "   return join(split(a:output, "\n")[15 :], "\n")
-    " endfunction
+    function! g:ref_source_webdict_sites.wiki.filter(output)
+      return join(split(a:output, "\n")[5 :], "\n")
+    endfunction
 
-    " nmap <Leader>wiki :<C-u>Ref webdict wiki<Space>
+    nnoremap <Space>re :<C-u>Ref webdict ee
+    nnoremap <Space>rw :<C-u>Ref webdict wiki
+    nnoremap <Space>rp :<C-u>Ref phpmanual
 '''
 
 
@@ -175,57 +184,56 @@ hook_add = '''
 repo     = 'Shougo/denite.nvim'
 if       = 'has("python3")'
 hook_add = '''
-    call denite#custom#map(
-                \ 'insert',
-                \ '<C-n>',
-                \ '<denite:move_to_next_line>',
-                \ 'noremap'
-                \)
-    call denite#custom#map(
-                \ 'insert',
-                \ '<C-p>',
-                \ '<denite:move_to_previous_line>',
-                \ 'noremap'
-                \)
-    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-    call denite#custom#var('file_rec/git', 'command',
-                \ ['git', 'ls-files', '-co', '--exclude-standard']
-                \)
-    call denite#custom#alias('source', 'grep/git', 'grep')
-    call denite#custom#var('grep/git', 'command',
-                \ ['git', 'grep']
-                \)
-
-    aug enableDeniteKeyBindings
+    aug enableDeniteKeyMap
         au!
-        " ヘルプ
         au VimEnter * nested nnoremap <silent> <Space>uh  :<C-u>Denite help<CR>
-        " バッファ
-        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Denite          -matchers=matcher/substring -mode=normal buffer<CR>
-        " レジスタ
-        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite          -matchers=matcher/substring -mode=normal register<CR>
-        " ジャンプ
-        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Denite          -matchers=matcher/substring -mode=normal jump<CR>
-        " アウトライン
-        au VimEnter * nested nnoremap <silent> <Space>uo  :<C-u>Denite -mode=normal -split=vertical unite:outline<CR>
-        " コマンド履歴
+        au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Denite -matchers=matcher/substring -mode=normal buffer<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite -matchers=matcher/substring -mode=normal register<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uy  :<C-u>Denite -matchers=matcher/substring -mode=normal neoyank<CR>
+        au VimEnter * nested nnoremap <silent> <Space>uj  :<C-u>Denite -matchers=matcher/substring -mode=normal jump<CR>
         au VimEnter * nested nnoremap <silent> <Space>q:  :<C-u>Denite -mode=normal -reversed command_history<CR>
+        au VimEnter * nested nnoremap <silent> <Space>ul  :<C-u>Denite -mode=insert -auto-resize line<CR>
+
         " ファイル関係
         au VimEnter * nested nnoremap <silent> <Space>uf  :<C-u>DeniteBufferDir -matchers=matcher/substring -mode=normal file<CR>
         au VimEnter * nested nnoremap <silent> <Space>uc  :<C-u>Denite          -matchers=matcher/substring -mode=normal file<CR>
         au VimEnter * nested nnoremap <silent> <Space>um  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_mru<CR>
         au VimEnter * nested nnoremap <silent> <Space>ug  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_rec/git<CR>
         au VimEnter * nested nnoremap <silent> <Space>ua  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_rec<CR>
+
         " grep関係
         au VimEnter * nested nnoremap <silent> <Space>gg  :<C-u>Denite -no-empty grep/git<CR>
         au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Denite -no-empty grep<CR>
+
         " 検索結果の再表示と移動
         au VimEnter * nested nnoremap <silent> <Space>ur  :<C-u>Denite -resume<CR>
         au VimEnter * nested nnoremap <silent> <Space>up  :<C-u>Denite -resume -select=-1 -immediately<CR>
         au VimEnter * nested nnoremap <silent> <Space>un  :<C-u>Denite -resume -select=+1 -immediately<CR>
     aug END
+
+    call denite#custom#map(
+                \ 'insert', '<C-n>', '<denite:move_to_next_line>',     'noremap'
+                \)
+    call denite#custom#map(
+                \ 'insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap'
+                \)
+
+    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+    call denite#custom#var('file_rec/git', 'command',
+                \ ['git', 'ls-files', '-co', '--exclude-standard']
+                \)
+
+    call denite#custom#alias('source', 'grep/git', 'grep')
+    call denite#custom#var('grep/git', 'command',
+                \ ['git', 'grep']
+                \)
+    call denite#custom#var('grep/git', 'recursive_opts', [])
+    call denite#custom#var('grep/git', 'pattern_opt',    [])
+    " call denite#custom#var('grep/git', 'default_opts',   ['--no-color'])
+
+    call denite#custom#option('default', 'prompt', '$')
 '''
-depends  = ['neoyank']
+depends  = ['neoyank',  'unite-outline']
 
 
 [[plugins]]
@@ -237,7 +245,7 @@ hook_add = '''
         let g:unite_source_history_yank_enable = 1
         let g:unite_source_file_mru_limit      = 1000
 
-        aug enableUniteKeyBindings
+        aug enableUniteKeyBindingsUnlessHasPython
             au!
             au VimEnter * nested nnoremap <silent> <Space>ut  :<C-u>Unite tab<CR>
             au VimEnter * nested nnoremap <silent> <Space>ub  :<C-u>Unite buffer<CR>
@@ -254,34 +262,32 @@ hook_add = '''
             au VimEnter * nested nnoremap <silent> <Space>gp  :<C-u>Unite -auto-preview grep<CR>
             au VimEnter * nested nnoremap <silent> <Space>rg  :<C-u>Unite -resume -auto-preview grep/git<CR>
             au VimEnter * nested nnoremap <silent> <Space>rp  :<C-u>Unite -resume -auto-preview grep<CR>
+
+            au VimEnter * nested nnoremap <Space>uy :<C-u>Unite history/yank<CR>
         aug END
     endif
 '''
-depends  = ['neoyank', 'unite-outline']
+depends  = ['neoyank', 'unite-outline', 'unite-gtags', 'neoyank.vim']
 
 
 [[plugins]]
 repo     = 'Shougo/unite-outline'
 hook_add = '''
-    aug enableOutline
+    " 常にunite-outlineをつかう
+    aug enableUniteOutline
         au!
-        au VimEnter * nested nnoremap <Space>uo :<C-u>Unite outline<CR>
+        au VimEnter * nested nnoremap <Space>uo :<C-u>Unite -vertical outline<CR>
     aug END
 '''
 
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-hook_add = '''
-    aug enableNeoyank
-        au!
-        au VimEnter * nested noremap <Space>uy :<C-u>Unite history/yank<CR>
-    aug END
-'''
+repo     = 'Shougo/neoyank.vim'
 
 
 [[plugins]]
-repo = 'hewes/unite-gtags'
+repo     = 'hewes/unite-gtags'
+if       = '!has("python3")'
 hook_add = '''
     " nnoremap <silent> <Space>gc :<C-u>Unite -resume -auto-preview gtags/context<CR>
     nnoremap <silent> <Space>gf :<C-u>Unite gtags/file<CR>
@@ -350,9 +356,6 @@ hook_source = '''
     let g:blade_custom_directives = ['datetime', 'namespaced::directive']
     let g:blade_custom_directives_pairs = {'cache': 'endcache'}
 '''
-
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
 
 
 [[plugins]]
@@ -471,4 +474,7 @@ hook_add = '''
 [[plugins]]
 repo = 'Lokaltog/vim-distinguished'
 
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
 
