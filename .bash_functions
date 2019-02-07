@@ -67,3 +67,13 @@ function ranger() {
     fi
 }
 
+
+
+function fcd() {
+    cd "$(find -type d | fzy --lines=20)"
+}
+
+
+function fv() {
+    vim "$(find -type f | fzy --lines=20)"
+}

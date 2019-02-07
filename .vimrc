@@ -55,8 +55,6 @@ set showtabline=2
 " Setting Visibility of Line Number or Current Line and Column
 
 set number
-set nocursorline
-set nocursorcolumn
 
 
 " Setting Color
@@ -173,12 +171,12 @@ inoremap <C-f> <Right>
 
 
 function! ToggleCursorLineAndColumn()
-    if &cuc && &cul
-        set nocul
-        set nocuc
+    if &cursorcolumn && &cursorline
+        set nocursorline
+        set nocursorcolumn
     else
-        set cul
-        set cuc
+        set cursorline
+        set cursorcolumn
     endif
 endfunction
 
@@ -242,13 +240,14 @@ if executable('plantuml')
 endif
 
 if executable('pandoc')
-    autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/.github_style.css --standalone -o %:p.html %:p
+    autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:p.html %:p
 endif
 
 if dein#check_install('phpactor') == 0
     autocmd FileType php setlocal omnifunc=phpactor#Complete
 endif
 set completeopt=noinsert,menuone,noselect
+set shortmess+=c
 
 
 function! OpenVimConfigsByTabSplit()
@@ -261,6 +260,8 @@ nnoremap  <Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
+vnoremap < <gv
+vnoremap > >gv
 
 
 let $BASH_ENV = "~/.bash_aliases"
@@ -270,3 +271,7 @@ if has('win32')
     set clipboard+=autoselect
 endif
 
+
+autocmd BufEnter,WinEnter * setlocal cursorline
+autocmd BufLeave,WinLeave * setlocal nocursorline
+autocmd BufLeave,WinLeave * setlocal nocursorcolumn

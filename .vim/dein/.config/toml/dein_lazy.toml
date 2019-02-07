@@ -107,5 +107,6 @@ hook_add = '''
 [[plugins]]
 repo  = 'phpactor/ncm2-phpactor'
 on_ft = ['php']
+on_i  = 1
 
 
