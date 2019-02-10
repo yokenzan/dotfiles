@@ -63,8 +63,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
-# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
-# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 #
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
@@ -75,7 +74,7 @@ function share_history {
     history -c
     history -r
 }
-PROMPT_COMMAND='share_history'
+export PROMPT_COMMAND='share_history'
 shopt -u histappend
 export HISTSIZE=9999
 
@@ -178,13 +177,13 @@ fi
 # Setting prompt
 source $HOME/.config/git/completion/git-prompt.sh
 source $HOME/.config/git/completion/git-completion.bash
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=1
-GIT_PS1_SHOWUPSTREAM=1
+GIT_PS1_SHOWUNTRACKEDFILES=1    # %
+GIT_PS1_SHOWDIRTYSTATE=1        # * / +
+GIT_PS1_SHOWSTASHSTATE=1        # $
+GIT_PS1_SHOWUPSTREAM=1          # < / > / = / <>
 
 
-if [ $(echo $OS | grep -e 'Windows') ]; then
+if [ $(uname | grep -qe 'NT') ]; then
     PS1='\n\[\033[38;5;214m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[38;5;220m\]\u@\h\[\033[00m\]'
 
     # Vim

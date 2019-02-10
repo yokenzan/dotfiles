@@ -127,7 +127,7 @@ alias reber='rebe rails'
 
 # Windows
 
-if [ $(echo $OS | grep -e 'Windows') ]; then
+if [ $(uname | grep -qe 'NT') ]; then
     # launch Explorer with pwd
     alias here='start .'
 fi

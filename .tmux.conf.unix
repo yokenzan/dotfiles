@@ -1,0 +1,12 @@
+# vim: ft=tmux
+
+# アクティブなペインを目立たせる
+set -g pane-active-border-fg colour241
+set -g pane-active-border-bg colour213
+
+set -g status-fg black
+set -g status-bg colour213
+
+set -g status-left "#[default,bold,reverse]  #S  #[default]#[fg=black,bg=colour201,bold] %Y.%m.%d(%a) %H:%M:%S #[default,bold] #h #[default] - "
+
+
