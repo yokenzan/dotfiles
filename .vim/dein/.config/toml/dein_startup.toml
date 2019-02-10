@@ -1,4 +1,8 @@
 [[plugins]]
+repo = 'Shougo/dein.vim'
+
+
+[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
     set helplang=ja
@@ -50,8 +54,8 @@ hook_add = '''
 
     let g:ale_lint_on_save          = 1
     let g:ale_lint_on_enter         = 0
-    let g:ale_lint_on_text_changed  = 0
-    let g:ale_lint_on_insert_leave  = 0
+    let g:ale_lint_on_text_changed  = 1
+    let g:ale_lint_on_insert_leave  = 1
 
     let g:ale_set_quickfix          = 0
 
@@ -80,7 +84,6 @@ hook_add = '''
     aug enableNERDTree
         au!
         au VimEnter * nested noremap <Space>nt :NERDTreeToggle<Return>
-        au VimEnter * nested noremap <Space>nc :NERDTreeCWD<Return>
     aug END
 '''
 
@@ -241,7 +244,7 @@ hook_add = '''
 
     call denite#custom#option('default', 'prompt', '$')
 '''
-depends  = ['neoyank',  'unite-outline']
+depends  = ['neoyank.vim',  'unite-outline']
 
 
 [[plugins]]
@@ -275,7 +278,7 @@ hook_add = '''
         aug END
     endif
 '''
-depends  = ['neoyank', 'unite-outline', 'unite-gtags', 'neoyank.vim']
+depends  = ['unite-outline', 'unite-gtags', 'neoyank.vim']
 
 
 [[plugins]]
@@ -372,6 +375,9 @@ repo = 'aklt/plantuml-syntax'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+hook_add = '''
+    let g:user_emmet_leader_key='<C-]>'
+'''
 
 
 [[plugins]]
@@ -379,8 +385,9 @@ repo = 'othree/html5.vim'
 
 
 [[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if   = '!has("nvim") && has("python3")'
+repo    = 'roxma/vim-hug-neovim-rpc'
+if      = '!has("nvim") && has("python3")'
+depends = ['nvim-yarp']
 
 
 [[plugins]]
@@ -394,6 +401,25 @@ if       = 'has("python3")'
 hook_add = '''
     autocmd BufEnter * call ncm2#enable_for_buffer()
 '''
+depends  = ['ncm2-neosnippet']
+
+
+[[plugins]]
+repo     = 'ncm2/ncm2-neosnippet'
+if       = 'has("python3")'
+hook_add = '''
+    imap <expr><C-l> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : ncm2_neosnippet#expand_or("\<Tab>", 'n')
+    smap <expr><C-l> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+'''
+depends  = ['neosnippet.vim', 'neosnippet-snippets']
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 
 [[plugins]]
@@ -482,5 +508,8 @@ repo = 'Lokaltog/vim-distinguished'
 
 
 [[plugins]]
-repo = 'Shougo/dein.vim'
+repo = 'ayu-theme/ayu-vim'
+hook_add = '''
+    let ayucolor="light"  " light, mirage, dark
+'''
 

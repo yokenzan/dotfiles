@@ -57,15 +57,6 @@ set showtabline=2
 set number
 
 
-" Setting Color
-
-syntax on
-set t_Co=256
-set termguicolors
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-
-
 " Setting Visibility of TAB RETURN EOL SPACE etc
 
 set list
@@ -78,6 +69,7 @@ set showbreak=↪
 filetype plugin indent on
 set autoindent
 set smartindent
+set breakindent
 set expandtab
 set softtabstop=4
 set shiftwidth=4
@@ -147,7 +139,7 @@ set iminsert=0
 set display=lastline
 set pumheight=30
 set ttimeoutlen=30
-set hidden
+set hidden              " allow buffers hide from screen without saving
 
 
 " Setting Sessions
@@ -159,12 +151,9 @@ if has('win32')
 endif
 
 
-" Setting Additional Keybinds
 
 nnoremap Y y$
 
-inoremap <expr> <Tab>   pumvisible() ? "\<Tab>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<S-Tab>" : "\<S-Tab>"
 
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
@@ -212,7 +201,14 @@ nnoremap cp :<C-u>call PasteFromSharedFile()<CR>
 
 inoremap <C-r><C-r> <C-r>0
 
-" Setting ColorScheme
+
+" Setting Color & ColorScheme
+
+syntax on
+set t_Co=256
+set termguicolors
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 
 " colorscheme badwolf
 " colorscheme cake
@@ -260,6 +256,9 @@ nnoremap  <Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
+
+" keep region selecting after indent
+
 vnoremap < <gv
 vnoremap > >gv
 
@@ -272,6 +271,18 @@ if has('win32')
 endif
 
 
+" Line/Column Highlight Setting
+
 autocmd BufEnter,WinEnter * setlocal cursorline
 autocmd BufLeave,WinLeave * setlocal nocursorline
 autocmd BufLeave,WinLeave * setlocal nocursorcolumn
+
+
+" Background Transparency Setting
+
+" highlight Normal      ctermbg=NONE guibg=NONE
+" highlight NonText     ctermbg=NONE guibg=NONE
+" highlight SpecialKey  ctermbg=NONE guibg=NONE
+" highlight EndOfBuffer ctermbg=NONE guibg=NONE
+
+
