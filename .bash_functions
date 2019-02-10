@@ -39,7 +39,7 @@ function laravel_update() {
 }
 
 
-if [ $(echo $OS | grep -e 'Windows') ]; then
+if [ $(uname | grep -qe 'NT') ]; then
 
     function wincmd() {
         CMD=$1
@@ -54,14 +54,14 @@ if [ $(echo $OS | grep -e 'Windows') ]; then
 
 
     function md2html() {
-        pandoc -f markdown -t html5 --css ~/.dotfiles/.github_style.css --standalone -o $1.html $1
+        pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o $1.html $1
     }
 fi
 
 
-function ranger() {
+function r() {
     if [ -z "$RANGER_LEVEL" ]; then
-        /usr/bin/ranger $@
+        ranger $@
     else
         exit
     fi
