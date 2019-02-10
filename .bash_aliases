@@ -45,7 +45,12 @@ alias v='vim'
 alias vo='vim -O'
 alias vs='vim -S Session.vim'
 alias vu='vim -u NONE -N'
-alias e='emacs -nw'
+alias vq='vim -c :q'
+
+
+# EMacs
+
+alias e='emacsclient -a "" -nw'
 
 # tmux
 
