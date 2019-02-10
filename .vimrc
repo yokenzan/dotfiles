@@ -228,7 +228,6 @@ colorscheme PaperColor
 " highlight Todo     cterm=reverse
 set background=dark
 " set background=light
-" set notermguicolors
 
 
 if executable('plantuml')
