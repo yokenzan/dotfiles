@@ -1,0 +1,66 @@
+[[plugins]]
+repo    = 'roxma/vim-hug-neovim-rpc'
+if      = '!has("nvim") && has("python3")'
+depends = ['nvim-yarp']
+
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if   = '!has("nvim") && has("python3")'
+
+
+[[plugins]]
+repo     = 'ncm2/ncm2'
+if       = 'has("python3")'
+hook_add = '''
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+'''
+depends  = ['ncm2-neosnippet']
+
+
+[[plugins]]
+repo     = 'ncm2/ncm2-neosnippet'
+if       = 'has("python3")'
+hook_add = '''
+    imap <expr><C-l> neosnippet#expandable() ? ncm2_neosnippet#expand_or("\<Tab>", 'n') : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<Tab>"
+    smap <expr><C-l> neosnippet#expandable() ? ncm2_neosnippet#expand_or("\<Tab>", 'n') : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<Tab>"
+'''
+depends  = ['neosnippet.vim', 'neosnippet-snippets']
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+
+[[plugins]]
+repo    = 'prabirshrestha/async.vim'
+if      = 'has("python3")'
+depends = ['vim-lsp']
+
+
+[[plugins]]
+repo     = 'prabirshrestha/vim-lsp'
+if       = 'has("python3")'
+hook_add = '''
+    if executable('solargraph')
+        " gem install solargraph
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'solargraph',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+            \ 'initialization_options': {"diagnostics": "true"},
+            \ 'whitelist': ['ruby'],
+            \ })
+    endif
+'''
+depends  = ['ncm2-vim-lsp']
+
+
+[[plugins]]
+repo = 'ncm2/ncm2-vim-lsp'
+if   = 'has("python3")'
+
+

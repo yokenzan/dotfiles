@@ -1,26 +1,11 @@
 [[plugins]]
-repo = 'cespare/vim-toml'
+repo  = 'cespare/vim-toml'
 on_ft = ['toml', 'conf']
 
 
 [[plugins]]
-repo = 'rhysd/vim-textobj-ruby'
-on_ft = ['ruby', 'eruby']
-if = 'has("ruby")'
-hook_source = '''
-    let g:textobj_ruby_more_mappings = 1
-'''
-
-
-[[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = ['ruby', 'eruby']
-on_i = 1
-
-
-[[plugins]]
-repo = 'joonty/vdebug'
-if = 'has("python3")'
+repo  = 'joonty/vdebug'
+if    = 'has("python3") && !has("win32") && !has("win32unix")'
 on_ft = ['php']
 hook_post_source = '''
     let g:vdebug_options= {
@@ -43,7 +28,7 @@ hook_post_source = '''
 
 
 [[plugins]]
-repo = 'justmao945/vim-clang'
+repo  = 'justmao945/vim-clang'
 on_ft = ['c', 'cpp']
 hook_add = '''
     let g:clang_c_completeopt   = 'menuone'
@@ -52,7 +37,8 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'phpactor/phpactor'
+repo  = 'phpactor/phpactor'
+if    = '!has("win32") && !has("win32unix")'
 on_ft = ['php']
 build = 'composer install'
 hook_add = '''
@@ -91,7 +77,7 @@ hook_add = '''
 
 [[plugins]]
 repo  = 'phpactor/ncm2-phpactor'
+if    = '!has("win32") && !has("win32unix")'
 on_ft = ['php']
 on_i  = 1
-
 
