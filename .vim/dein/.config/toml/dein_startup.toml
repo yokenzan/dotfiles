@@ -162,34 +162,6 @@ hook_add = '''
 '''
 
 
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-hook_add = '''
-    " 日付表記の選択
-    call textobj#user#plugin('datetime', {
-                \       'date' : {
-                \           'pattern' : '\<\d\{2,4\}[-\/]\d\d[-\/]\d\d\>',
-                \           'select'  : ['ad', 'id'],
-                \       },
-                \   })
-
-    " コメント部分の選択
-    call textobj#user#plugin('comment', {
-                \       '-' : {
-                \           'select-a-function' : 'WholeComment',
-                \           'select-a' : 'a/',
-                \       },
-                \   })
-
-    function! WholeComment()
-        normal! [/
-        let head_pos = getpos('.')
-        normal! ]/
-        let tail_pos = getpos('.')
-        return['v', head_pos, tail_pos]
-    endfunction
-'''
-
 
 [[plugins]]
 repo     = 'Shougo/denite.nvim'
@@ -307,7 +279,6 @@ hook_add = '''
 '''
 
 
-
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
@@ -329,10 +300,6 @@ hook_add = '''
         au VimEnter * nested noremap <Space>qr :<C-u>QuickRun<CR>
     aug END
 '''
-
-
-[[plugins]]
-repo = 'osyo-manga/vim-textobj-multiblock'
 
 
 [[plugins]]
@@ -384,72 +351,6 @@ hook_add = '''
 repo = 'othree/html5.vim'
 
 
-[[plugins]]
-repo    = 'roxma/vim-hug-neovim-rpc'
-if      = '!has("nvim") && has("python3")'
-depends = ['nvim-yarp']
-
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if   = '!has("nvim") && has("python3")'
-
-
-[[plugins]]
-repo     = 'ncm2/ncm2'
-if       = 'has("python3")'
-hook_add = '''
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-'''
-depends  = ['ncm2-neosnippet']
-
-
-[[plugins]]
-repo     = 'ncm2/ncm2-neosnippet'
-if       = 'has("python3")'
-hook_add = '''
-    imap <expr><C-l> neosnippet#expandable() ? ncm2_neosnippet#expand_or("\<Tab>", 'n') : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<Tab>"
-    smap <expr><C-l> neosnippet#expandable() ? ncm2_neosnippet#expand_or("\<Tab>", 'n') : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<Tab>"
-'''
-depends  = ['neosnippet.vim', 'neosnippet-snippets']
-
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-
-[[plugins]]
-repo    = 'prabirshrestha/async.vim'
-if      = 'has("python3")'
-depends = ['vim-lsp']
-
-
-[[plugins]]
-repo     = 'prabirshrestha/vim-lsp'
-if       = 'has("python3")'
-hook_add = '''
-    if executable('solargraph')
-        " gem install solargraph
-        au User lsp_setup call lsp#register_server({
-            \ 'name': 'solargraph',
-            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-            \ 'initialization_options': {"diagnostics": "true"},
-            \ 'whitelist': ['ruby'],
-            \ })
-    endif
-'''
-depends  = ['ncm2-vim-lsp']
-
-
-[[plugins]]
-repo = 'ncm2/ncm2-vim-lsp'
-if   = 'has("python3")'
-
-
 [[plugins]] 
 repo     = 'fuenor/qfixhowm'
 hook_add = '''
@@ -461,55 +362,49 @@ hook_add = '''
 '''
 
 
-# colorschemes
-
-
 [[plugins]]
-repo = 'sjl/badwolf'
-
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
-
-[[plugins]]
-repo = 'felipesousa/rupza'
-
-
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-
-[[plugins]]
-repo = 'GGalizzi/cake-vim'
-
-
-[[plugins]]
-repo = 'sickill/vim-monokai'
-
-
-[[plugins]]
-repo = 'vim-scripts/phd'
-
-
-[[plugins]]
-repo = 'NLKNguyen/papercolor-theme'
-
-
-[[plugins]]
-repo = 'morhetz/gruvbox'
+repo = 'kana/vim-textobj-user'
 hook_add = '''
-    let g:gruvbox_contrast_light="hard"
+    " 日付表記の選択
+    call textobj#user#plugin('datetime', {
+                \       'date' : {
+                \           'pattern' : '\<\d\{2,4\}[-\/]\d\d[-\/]\d\d\>',
+                \           'select'  : ['ad', 'id'],
+                \       },
+                \   })
+
+    " コメント部分の選択
+    call textobj#user#plugin('comment', {
+                \       '-' : {
+                \           'select-a-function' : 'WholeComment',
+                \           'select-a' : 'a/',
+                \       },
+                \   })
+
+    function! WholeComment()
+        normal! [/
+        let head_pos = getpos('.')
+        normal! ]/
+        let tail_pos = getpos('.')
+        return['v', head_pos, tail_pos]
+    endfunction
 '''
 
 
 [[plugins]]
-repo = 'Lokaltog/vim-distinguished'
+repo = 'osyo-manga/vim-textobj-multiblock'
 
 
 [[plugins]]
-repo = 'ayu-theme/ayu-vim'
-hook_add = '''
-    let ayucolor="light"  " light, mirage, dark
+repo  = 'rhysd/vim-textobj-ruby'
+on_ft = ['ruby', 'eruby']
+hook_source = '''
+    let g:textobj_ruby_more_mappings = 1
 '''
+
+
+[[plugins]]
+repo  = 'tpope/vim-endwise'
+on_ft = ['ruby', 'eruby']
+
 

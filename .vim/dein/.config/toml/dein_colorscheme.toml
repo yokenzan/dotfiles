@@ -1,0 +1,49 @@
+[[plugins]]
+repo = 'sjl/badwolf'
+
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+
+[[plugins]]
+repo = 'felipesousa/rupza'
+
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+
+[[plugins]]
+repo = 'GGalizzi/cake-vim'
+
+
+[[plugins]]
+repo = 'sickill/vim-monokai'
+
+
+[[plugins]]
+repo = 'vim-scripts/phd'
+
+
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
+
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+hook_add = '''
+    let g:gruvbox_contrast_light="hard"
+'''
+
+
+[[plugins]]
+repo = 'Lokaltog/vim-distinguished'
+
+
+[[plugins]]
+repo = 'ayu-theme/ayu-vim'
+hook_add = '''
+    let ayucolor="mirage"  " light, mirage, dark
+'''
+

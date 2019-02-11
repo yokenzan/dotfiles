@@ -1,7 +1,13 @@
 #!/bin/bash
 
 rm -rf $HOME/.vim
-mkdir -p $HOME/.vim/backup $HOME/.vim/swap $HOME/.vim/undo $HOME/.vim/dein $HOME/.vim/ref $HOME/.vim/dein/repos/github.com
+mkdir -p \
+    $HOME/.vim/backup   \
+    $HOME/.vim/swap     \
+    $HOME/.vim/undo     \
+    $HOME/.vim/dein     \
+    $HOME/.vim/ref      \
+    $HOME/.vim/dein/repos/github.com
 
 
 ln -sf $HOME/.dotfiles/.vimrc            $HOME
