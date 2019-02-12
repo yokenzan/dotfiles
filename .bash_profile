@@ -35,3 +35,7 @@ if [ $SHLVL = 1 ]; then
     tmux -2
 fi
 
+
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+

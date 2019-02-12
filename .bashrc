@@ -217,3 +217,5 @@ fi
 stty stop undef
 export EDITOR=vim
 
+
+complete -cf sudo
