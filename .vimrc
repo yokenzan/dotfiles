@@ -194,9 +194,9 @@ function! PasteFromSharedFile()
     r path/to/shared_file
 endfunction
 
-nnoremap cy :call YankToSharedFile()<CR>
-xnoremap cy :call YankToSharedFile()<CR>
-nnoremap cp :<C-u>call PasteFromSharedFile()<CR>
+nnoremap <silent>cy :call YankToSharedFile()<CR>
+xnoremap <silent>cy :call YankToSharedFile()<CR>
+nnoremap <silent>cp :<C-u>call PasteFromSharedFile()<CR>
 
 
 inoremap <C-r><C-r> <C-r>0
@@ -251,7 +251,7 @@ function! OpenVimConfigsByTabSplit()
     vnew    ~/.vim/dein/.config/toml/dein_lazy.toml
     new     ~/.vim/dein/.config/toml/dein_startup.toml
 endfunction
-nnoremap  <Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
+nnoremap  <silent><Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
 
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
