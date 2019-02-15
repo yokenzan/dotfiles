@@ -81,3 +81,110 @@ if    = '!has("win32") && !has("win32unix")'
 on_ft = ['php']
 on_i  = 1
 
+
+[[plugins]]
+repo     = 'Shougo/denite.nvim'
+on_cmd   = ['Denite', 'DeniteBufferDir']
+if       = 'has("python3")'
+hook_add = '''
+    aug enableDeniteKeyMap
+        au!
+        au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite help<CR>
+        au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -matchers=matcher/substring -mode=normal buffer<CR>
+        au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -matchers=matcher/substring -mode=normal register<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -matchers=matcher/substring -mode=normal jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -mode=normal -reversed command_history<CR>
+        au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite -mode=insert -auto-resize line<CR>
+
+        " ファイル関係
+        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir -matchers=matcher/substring -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>Denite          -matchers=matcher/substring -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_rec/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite          -matchers=matcher/substring -mode=normal file_rec<CR>
+
+        " grep関係
+        au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -matchers=amtcher/substring -mode=normal -auto-preview grep/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>gp  :<C-u>Denite -no-empty -matchers=amtcher/substring -mode=normal -auto-preview grep<CR>
+
+        " 検索結果の再表示と移動
+        au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
+        au VimEnter * nested nnoremap <silent><C-p>      :<C-u>Denite -resume -no-empty -select=-1 -immediately<CR>
+        au VimEnter * nested nnoremap <silent><C-n>      :<C-u>Denite -resume -no-empty -select=+1 -immediately<CR>
+    aug END
+'''
+hook_post_source = '''
+    call denite#custom#map(
+                \ 'insert', '<C-n>', '<denite:move_to_next_line>',     'noremap'
+                \)
+    call denite#custom#map(
+                \ 'insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap'
+                \)
+
+    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+    call denite#custom#var('file_rec/git', 'command',
+                \ ['git', 'ls-files', '-co', '--exclude-standard']
+                \)
+
+    call denite#custom#alias('source', 'grep/git', 'grep')
+    call denite#custom#var('grep/git', 'command',
+                \ ['git', 'grep']
+                \)
+    call denite#custom#var('grep/git', 'recursive_opts', [])
+    call denite#custom#var('grep/git', 'pattern_opt',    [])
+    " call denite#custom#var('grep/git', 'default_opts',   ['--no-color'])
+
+    call denite#custom#option('default', 'prompt', '$')
+'''
+depends  = ['neoyank.vim', 'neomru.vim']
+
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+
+[[plugins]]
+repo     = 'Shougo/neoyank.vim'
+
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+hook_post_source = '''
+    " 日付表記の選択
+    call textobj#user#plugin('datetime', {
+                \       'date' : {
+                \           'pattern' : '\<\d\{2,4\}[-\/]\d\d[-\/]\d\d\>',
+                \           'select'  : ['ad', 'id'],
+                \       },
+                \   })
+
+    " コメント部分の選択
+    call textobj#user#plugin('comment', {
+                \       '-' : {
+                \           'select-a-function' : 'WholeComment',
+                \           'select-a' : 'a/',
+                \       },
+                \   })
+
+    function! WholeComment()
+        normal! [/
+        let head_pos = getpos('.')
+        normal! ]/
+        let tail_pos = getpos('.')
+        return['v', head_pos, tail_pos]
+    endfunction
+'''
+
+
+[[plugins]]
+repo  = 'rhysd/vim-textobj-ruby'
+on_ft = ['ruby', 'eruby']
+hook_source = '''
+    let g:textobj_ruby_more_mappings = 1
+'''
+
+
+[[plugins]]
+repo  = 'tpope/vim-endwise'
+on_ft = ['ruby', 'eruby']
+
