@@ -176,7 +176,7 @@ nnoremap <Space>tw :<C-u>set wrap!<CR>
 nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap / /\v
-nnoremap <Esc><Esc> :noh<CR><ESC>
+nnoremap <silent><Esc><Esc> :noh<CR><ESC>
 
 
 command! -count=1 Glo :r! git log --oneline --no-merges -<count>
@@ -232,18 +232,24 @@ set background=dark
 
 
 if executable('plantuml')
-    autocmd! BufWritePost *.pu !plantuml %
+    augroup PlantUMLAutoCommand
+        autocmd!
+        autocmd! BufWritePost *.pu silent !java -jar /usr/share/plantuml/plantuml.jar -tsvg %
+    augroup END
 endif
 
 if executable('pandoc')
-    autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:p.html %:p
+    augroup PandocAutoCommand
+        autocmd!
+        autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:p.html %:p
+    augroup END<`0`>
 endif
 
-if dein#check_install('phpactor') == 0
-    autocmd FileType php setlocal omnifunc=phpactor#Complete
-endif
+autocmd FileType php   setlocal omnifunc=phpactor#Complete
 set completeopt=noinsert,menuone,noselect
-set shortmess+=c
+set shortmess+=a
+set shortmess-=w
+set shortmess-=c
 
 
 function! OpenVimConfigsByTabSplit()
@@ -255,6 +261,8 @@ nnoremap  <silent><Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
 
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
+
+nnoremap <Space><Space>cd <silent>:<C-u>! composer dumpautoload<CR>
 
 
 " keep region selecting after indent
