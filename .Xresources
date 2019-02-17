@@ -1,0 +1,40 @@
+!! ~/.Xresources
+
+*background:  #000000
+*foreground:  #ffffff
+*cursorColor: #ff00ff
+
+
+URxvt.geometry:             140x40
+URxvt.scrollBar:            false
+URxvt.cursorBlink:          true
+URxvt.cursorUnderline:      false
+URxvt.pointerBlank:         true
+URxvt.visualBell:           false
+URxvt.saveLines:            30000
+URxvt.fading:               30
+
+URxvt.letterSpace:          0
+URxvt.lineSpace:            0
+
+URxvt.loginShell: true
+URxvt.termName: xterm-256color
+! URxvt.transparent: true
+
+! URxvt.allow_bold: false
+! URxvt.boldMode: false
+! URxvt.colorBDMode: false
+URxvt.intensityStyles: false
+
+! URxvt*font: xft:Migu\ 1M\ for\ Powerline:size=12:antialias=true
+! URxvt.font: xft:Migu\ 1M\ for\ Powerline-12
+! URxvt.font: xft:Cica:size=12:antialias=true
+URxvt.font: xft:Migu\ 1M-11, \
+            xft:Cica
+
+
+URxvt.depth:      32
+URxvt.background: [85]#000000
+URxvt.colorIT:    [90]#8ec07c
+URxvt.colorBD:    [90]#fe8019
+URxvt.colorUL:    [90]#83a598

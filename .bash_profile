@@ -38,6 +38,7 @@ fi
 
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 
 if [ -f ~/.Xmodmap ]; then

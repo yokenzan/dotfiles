@@ -7,7 +7,7 @@ ln -sf $HOME/.dotfiles/.bashrc           $HOME
 ln -sf $HOME/.dotfiles/.bash_profile     $HOME
 ln -sf $HOME/.dotfiles/.bash_aliases     $HOME
 ln -sf $HOME/.dotfiles/.bash_functions   $HOME
-
+ln -sf /home/cyrt/.dotfiles/.Xresources  $HOME
 
 ln -sf $HOME/.dotfiles/.inputrc          $HOME
 ln -sf $HOME/.dotfiles/.editrc           $HOME
@@ -18,7 +18,7 @@ ln -sf $HOME/.dotfiles/.curlrc           $HOME
 ln -sf $HOME/.dotfiles/.globalrc         $HOME
 ln -sf $HOME/.dotfiles/.ctags            $HOME
 
-ln -sf $HOME/.dotfiles/.emacs            $HOME/.emacs.d
+ln -sf $HOME/.dotfiles/.emacs            $HOME/.emacs.d/init.el
 
 
 if [ $(uname | grep -qe 'NT') ]; then
