@@ -2,8 +2,7 @@
 
 *background:  #000000
 *foreground:  #ffffff
-*cursorColor: #ff00ff
-
+*cursorColor: #ff0000
 
 URxvt.geometry:             140x40
 URxvt.scrollBar:            false
@@ -14,27 +13,51 @@ URxvt.visualBell:           false
 URxvt.saveLines:            30000
 URxvt.fading:               30
 
-URxvt.letterSpace:          0
-URxvt.lineSpace:            0
+URxvt.letterSpace:          -1
+URxvt.lineSpace:            -2
 
 URxvt.loginShell: true
 URxvt.termName: xterm-256color
 ! URxvt.transparent: true
 
-! URxvt.allow_bold: false
-! URxvt.boldMode: false
-! URxvt.colorBDMode: false
+! URxvt.allow_bold: true
+! URxvt.boldMode: true
+! URxvt.colorBDMode: true
+!
 URxvt.intensityStyles: false
 
-! URxvt*font: xft:Migu\ 1M\ for\ Powerline:size=12:antialias=true
-! URxvt.font: xft:Migu\ 1M\ for\ Powerline-12
-! URxvt.font: xft:Cica:size=12:antialias=true
-URxvt.font: xft:Migu\ 1M-11, \
-            xft:Cica
+! URxvt*font:                 xft:Ubuntu\ Mono-12, xft:Migu\ 1M\ for\ Powerline
+! URxvt.font:                 xft:Ricty\ Discord-12, \
+!                             xft:Cica, \
+!                             xft:Migu\ 1M\ for\ Powerline
+URxvt.font:                 xft:Cica:size=12
+URxvt.boldFont:             xft:Cica:size=12
+URxvt.italicFont:           xft:Cica:size=12
+URxvt.boldItalicFont:       xft:Cica:size=12
 
+URxvt.depth:                32
+URxvt.foreground:           [85]#fffbf6
+URxvt.background:           [85]#050711
 
-URxvt.depth:      32
-URxvt.background: [85]#000000
-URxvt.colorIT:    [90]#8ec07c
-URxvt.colorBD:    [90]#fe8019
-URxvt.colorUL:    [90]#83a598
+URxvt.color0:               [100]#282828
+URxvt.color1:               [100]#eb4129
+URxvt.color2:               [100]#abe047
+URxvt.color3:               [100]#f6c744
+URxvt.color4:               [100]#47a0f3
+URxvt.color5:               [100]#7b5cb0
+URxvt.color6:               [100]#64dbed
+URxvt.color7:               [100]#e5e9f0
+
+URxvt.color8:               [100]#565656
+URxvt.color9:               [100]#ec5357
+URxvt.color10:              [100]#c0e17d
+URxvt.color11:              [100]#f9da6a
+URxvt.color12:              [100]#49a4f8
+URxvt.color13:              [100]#a47de9
+URxvt.color14:              [100]#99faf2
+URxvt.color15:              [100]#ffffff
+
+URxvt.colorIT:              [100]#8ec07c
+URxvt.colorBD:              [100]#ff80ff
+URxvt.colorUL:              [100]#fe8019
+

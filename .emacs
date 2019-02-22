@@ -1,5 +1,7 @@
-(global-set-key "\C-h" 'delete-backward-char)
-(global-set-key "\M-h" 'backward-kill-word)
+; (global-set-key "\C-h" 'delete-backward-char)
+(define-key key-translation-map [?\C-h] [?\C-?])
+(global-set-key (kbd "C-M-h") 'backward-kill-word)
+(global-set-key (kbd "C-x C-M-f") 'project-find-file)
 
 
 ; バックアップファイルをつくらない
