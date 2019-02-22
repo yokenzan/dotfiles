@@ -70,10 +70,26 @@ function r() {
 
 
 function fcd() {
-    cd "$(find -type d | fzy --lines=20)"
+    cd "$(find -type d | fzy --lines=30)"
 }
 
 
 function fv() {
-    vim "$(find -type f | fzy --lines=20)"
+    vim "$(find -type f | fzy --lines=30)"
 }
+
+
+function fgl() {
+    git ls-files | fzy --lines=30
+}
+
+
+function fgc() {
+    git checkout $(git branch --format='%(refname:lstrip=2)' | fzy --lines=30)
+}
+
+
+function ee() {
+    w3m http://googledictionary.freecollocation.com/meaning?word=${1// /+}
+}
+

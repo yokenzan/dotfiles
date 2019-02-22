@@ -140,6 +140,8 @@ set display=lastline
 set pumheight=30
 set ttimeoutlen=30
 set hidden              " allow buffers hide from screen without saving
+set updatetime=100
+set signcolumn=yes
 
 
 " Setting Sessions
@@ -262,7 +264,7 @@ nnoremap  <silent><Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
-nnoremap <Space><Space>cd <silent>:<C-u>! composer dumpautoload<CR>
+nnoremap <Space><Space>cd :<C-u>! composer dumpautoload<CR>
 
 
 " keep region selecting after indent
@@ -294,3 +296,5 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 " highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 
+autocmd VimEnter * imap <C-\> <Plug>(eskk:toggle)
+autocmd VimEnter * cmap <C-\> <Plug>(eskk:toggle)

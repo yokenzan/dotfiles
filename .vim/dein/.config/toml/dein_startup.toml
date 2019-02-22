@@ -39,9 +39,9 @@ hook_add = '''
 
     aug enableRefKeyMaps
         au!
-        nnoremap <Space>re :<C-u>Ref webdict ee
-        nnoremap <Space>rw :<C-u>Ref webdict wiki
-        nnoremap <Space>rp :<C-u>Ref phpmanual
+        nnoremap <Space>re :<C-u>Ref webdict ee 
+        nnoremap <Space>rw :<C-u>Ref webdict wiki 
+        nnoremap <Space>rp :<C-u>Ref phpmanual 
     aug END
 '''
 
@@ -119,8 +119,8 @@ hook_add = '''
     let g:airline#extensions#hunks#enabled      = 0
     let g:airline#extensions#whitespace#enabled = 0
 
-    let g:airline#extensions#tabline#enabled = 0
-    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+    let g:airline#extensions#tabline#enabled         = 0
+    let g:airline#extensions#tabline#formatter       = 'unique_tail_improved'
     let g:airline#extensions#tabline#buffer_idx_mode = 0
 
     let g:airline_theme     = 'light'
@@ -132,6 +132,8 @@ hook_add = '''
         \ ['a', 'b', 'c'],
         \ ['x', 'y', 'z']
         \ ]
+
+    let g:airline_symbols.branch = ''
 '''
 depends = ['vim-airline-themes']
 
@@ -307,4 +309,83 @@ hook_add = '''
 
 [[plugins]]
 repo  = 'tpope/vim-repeat'
+
+
+[[plugins]]
+repo     = 'kana/vim-textobj-user'
+hook_add = '''
+    function! TextObjUserSetting()
+        " 日付表記の選択
+        call textobj#user#plugin('datetime', {
+                    \       'date' : {
+                    \           'pattern' : '\<\d\{2,4\}[-\/]\d\d[-\/]\d\d\>',
+                    \           'select'  : ['ad', 'id'],
+                    \       },
+                    \   })
+
+        " コメント部分の選択
+        call textobj#user#plugin('comment', {
+                    \       '-' : {
+                    \           'select-a-function' : 'WholeComment',
+                    \           'select-a' : 'a/',
+                    \       },
+                    \   })
+
+        function! WholeComment()
+            normal! [/
+            let head_pos = getpos('.')
+            normal! ]/
+            let tail_pos = getpos('.')
+            return['v', head_pos, tail_pos]
+        endfunction
+    endfunction
+
+    au VimEnter * nested call TextObjUserSetting()
+'''
+
+
+# [[plugins]]
+# repo     = 'itchyny/lightline.vim'
+# hook_add = '''
+#     let g:lightline = {
+#                 \   'active': {
+#                 \     'left': [ [ 'mode', 'paste' ],
+#                 \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+#                 \   },
+#                 \   'component_function' : {
+#                 \     'gitbranch': 'fugitive#head',
+#                 \     'mode'     : 'LightlineMode',
+#                 \   },
+#                 \   'mode_map': {
+#                 \     'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'VL', "\<C-v>": 'VB',
+#                 \     'c': 'C', 's': 'S', 'S': 'SL', "\<C-s>": 'SB', 't': 'T'
+#                 \   },
+#                 \   'separator': { 'left': '', 'right': '' },
+#                 \   'subseparator': { 'left': '', 'right': '' },
+#                 \ }
+#
+#     function! LightlineMode()
+#         return mode() == 'i' && &iminsert > 0 ? 'IL' : lightline#mode()
+#     endfunction
+#
+#
+#     let g:lightline#colorscheme#default#palette#inactive#right = [
+#                 \     ['#000000', '#ffffff', 0, 255],
+#                 \     ['#000000', '#ffffff', 0, 255],
+#                 \     ['#000000', '#ffffff', 0, 255]
+#                 \ ]
+#     let g:lightline#colorscheme#default#palette#active#left = [
+#                 \     ['#000000', '#ffffff', 0, 255],
+#                 \     ['#000000', '#ffffff', 0, 255],
+#                 \     ['#000000', '#ffffff', 0, 255]
+#                 \ ]
+#     let g:lightline#colorscheme#default#palette#inactive#left = [
+#                 \     ['#000000', '#ffffff', 0, 255],
+#                 \     ['#000000', '#ffffff', 0, 255],
+#                 \     ['#000000', '#ffffff', 0, 255]
+#                 \ ]
+#
+#                 " \   'left': [
+#                 " \       [...], [...]]}, 'replace': {'right': [['#606060', '#d0d0d0', 241, 252], ['#bcbcbc', '#585858', 250, 240], ['#9e9e9e', '#303030', 247, 236]], 'middle': [['#8a8a8a', '#303030', 245, 236]], 'left': [['#ffffff', '#df0000', 231, 160, 'bold'], ['#ffffff', '#585858', 231
+# '''
 
