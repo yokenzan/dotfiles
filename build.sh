@@ -60,5 +60,21 @@ if [ $? ]; then
     make && sudo make install
 fi
 
-v -c "call dein#install()"
+vim -c "call dein#install()"
+
+
+
+#build alacritty
+
+cd $HOME/wk/repos/oss/
+git clone git://github.com/jwilm/alacritty.git
+cd alacritty
+curl https://sh.rustup.rs -sSf | sh
+rustup override set stable
+rustup update stable
+sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev xclip
+cargo build --release
+sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+sudo desktop-file-install alacritty.desktop
+sudo update-desktop-database
 
