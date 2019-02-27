@@ -5,7 +5,7 @@
  sudo apt update sudo apt upgrade
 
  # install basic packages
- sudo apt install -y curl git tig ibus-skk xsel tmux highlight w3m w3m-img rxvt-unicode-256color emacs fzy
+ sudo apt install -y curl git tig ibus-skk xsel tmux highlight w3m w3m-img rxvt-unicode-256color emacs fzy global
 
  # install web server and database related packages
  sudo apt install -y apache2 mysql-client mysql-server libsqlite3-dev sqlite3
@@ -54,7 +54,13 @@ cd vim
     --enable-acl \
     --without-x \
     --enable-multibyte \
-    --enable-cscope
+    --enable-cscope \
+    --enable-xim \
+    --enable-fontset \
+    --disable-selinux \
+    --enable-nls \
+    --disable-netbeans \
+    --disable-xsmp
 
 if [ $? ]; then
     make && sudo make install
