@@ -60,8 +60,10 @@ set number
 " Setting Visibility of TAB RETURN EOL SPACE etc
 
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-set showbreak=↪
+" set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" set showbreak=↪
+set listchars=tab:^-,trail:~,eol:$,extends:»,precedes:«,nbsp:%
+set showbreak="> "
 
 
 " Setting TAB and Indent
@@ -102,7 +104,7 @@ source $VIMRUNTIME/macros/matchit.vim
 
 " Disable Auto Indent When Paste Characters
 
-if &term =~ "xterm" || &term =~ "screen"
+if &term =~ 'xterm' || &term =~ 'screen'
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
     let &pastetoggle = "\e[201~"
@@ -247,7 +249,7 @@ if executable('pandoc')
     augroup END<`0`>
 endif
 
-autocmd FileType php   setlocal omnifunc=phpactor#Complete
+autocmd FileType php setlocal omnifunc=phpactor#Complete
 set completeopt=noinsert,menuone,noselect
 set shortmess+=a
 set shortmess-=w
@@ -273,7 +275,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 
-let $BASH_ENV = "~/.bash_aliases"
+let $BASH_ENV = '~/.bash_aliases'
 
 
 if has('win32')

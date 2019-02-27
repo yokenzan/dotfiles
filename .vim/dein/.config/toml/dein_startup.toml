@@ -109,6 +109,13 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
+    let g:skk_status = ""
+
+    function! SkkStatusline()
+        let s:skk_status = eskk#is_enabled() ? g:eskk#statusline_mode_strings[eskk#get_mode()] : g:skk_status
+        return s:skk_status != '' ? s:skk_status . ' ' : g:skk_status
+    endfunction
+
     let g:airline_powerline_fonts  = 0
     let g:airline_detect_crypt     = 0
     let g:airline_detect_iminsert  = 0
@@ -124,16 +131,17 @@ hook_add = '''
     let g:airline#extensions#tabline#buffer_idx_mode = 0
 
     let g:airline_theme     = 'light'
-    let g:airline_section_a = airline#section#create(['mode', 'paste', 'branch'])
+    let g:airline_section_a = airline#section#create(['mode', 'paste'])
+    let g:airline_section_b = airline#section#create([
+                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n'
+                \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
-    let g:airline_section_z = airline#section#create(['L%l C%c %P'])
+    let g:airline_section_z = airline#section#create(['L%l/%L:C%c %P'])
 
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
         \ ['x', 'y', 'z']
         \ ]
-
-    let g:airline_symbols.branch = ''
 '''
 depends = ['vim-airline-themes']
 
@@ -269,6 +277,9 @@ hook_add = '''
     \   'host': 'localhost',
     \   'port': 55100,
     \}
+    let g:eskk#marker_henkan         = '＃'
+    let g:eskk#marker_henkan_select  = '＠'
+    let g:eskk#show_candidates_count = 2
 '''
 
 

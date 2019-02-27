@@ -61,3 +61,6 @@ URxvt.colorIT:              [100]#8ec07c
 URxvt.colorBD:              [100]#ff80ff
 URxvt.colorUL:              [100]#fe8019
 
+URxvt.transparent:          true
+URxvt.shading:              25
+
