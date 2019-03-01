@@ -297,6 +297,3 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 " highlight SpecialKey  ctermbg=NONE guibg=NONE
 " highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
-
-autocmd VimEnter * imap <C-\> <Plug>(eskk:toggle)
-autocmd VimEnter * cmap <C-\> <Plug>(eskk:toggle)
