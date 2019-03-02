@@ -183,7 +183,8 @@ GIT_PS1_SHOWSTASHSTATE=1        # $
 GIT_PS1_SHOWUPSTREAM=1          # < / > / = / <>
 
 
-if [ $(uname | grep -qe 'NT') ]; then
+uname | grep -q 'NT' > /dev/null 2>&1
+if [ $? = 0 ]; then
     PS1='\n\[\033[38;5;214m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[38;5;220m\]\u@\h\[\033[00m\]'
 
     # Vim

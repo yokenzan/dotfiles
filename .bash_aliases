@@ -23,13 +23,13 @@ shopt -s expand_aliases
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
+alias g='grep . --color=always -r --include=*.php --exclude=_ide_helper.php --exclude-dir=.git --exclude-dir=storage'
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'
 alias ll='ls -l'
 alias lla='ll -a'
 alias l='ls -CF'
-alias g='grep -rne'
 alias f='find . -name'
 alias ff='find . -type f -name'
 alias fd='find . -type d -name'

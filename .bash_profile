@@ -40,6 +40,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
+export LANG=en_US.UTF-8
+
 
 if [ -f ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
