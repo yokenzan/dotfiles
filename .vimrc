@@ -254,14 +254,6 @@ set shortmess-=w
 set shortmess-=c
 
 
-function! OpenVimConfigsByTabSplit()
-    tabedit ~/.vimrc
-    vnew    ~/.vim/dein/.config/toml/dein_lazy.toml
-    new     ~/.vim/dein/.config/toml/dein_startup.toml
-endfunction
-nnoremap  <silent><Space>vv :<C-u>call OpenVimConfigsByTabSplit()<CR>
-
-
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
 nnoremap <Space><Space>cd :<C-u>! composer dumpautoload<CR>
