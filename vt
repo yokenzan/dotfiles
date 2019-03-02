@@ -1,8 +1,0 @@
-#!/bin/bash
-ps aux | grep urxvtd | grep -sqv grep
-
-if [ $? -eq 1 ]; then
-    urxvtd &
-fi
-
-urxvtc
