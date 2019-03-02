@@ -109,6 +109,32 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
+    function! SkkStatusline()
+        return eskk#is_enabled()
+                    \ ? g:eskk#statusline_mode_strings[eskk#get_mode()] . ' '
+                    \ : ''
+    endfunction
+
+    let g:airline_mode_map = {
+                \ '__' : '-',
+                \ 'c'  : 'C',
+                \ 'i'  : 'I',
+                \ 'ic' : 'I-C',
+                \ 'ix' : 'I-X',
+                \ 'n'  : 'N',
+                \ 'ni' : '(N)',
+                \ 'no' : '(N)',
+                \ 'R'  : 'R',
+                \ 'Rv' : 'R-V',
+                \ 's'  : 'S',
+                \ 'S'  : 'S-L',
+                \ '' : 'S-B',
+                \ 't'  : 'T',
+                \ 'v'  : 'V',
+                \ 'V'  : 'V-L',
+                \ '' : 'V-B',
+                \ }
+
     let g:airline_powerline_fonts  = 0
     let g:airline_detect_crypt     = 0
     let g:airline_detect_iminsert  = 0
@@ -124,16 +150,17 @@ hook_add = '''
     let g:airline#extensions#tabline#buffer_idx_mode = 0
 
     let g:airline_theme     = 'light'
-    let g:airline_section_a = airline#section#create(['mode', 'paste', 'branch'])
+    let g:airline_section_a = airline#section#create(['mode', 'paste'])
+    let g:airline_section_b = airline#section#create([
+                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n'
+                \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
-    let g:airline_section_z = airline#section#create(['L%l C%c %P'])
+    let g:airline_section_z = airline#section#create(['L%l/%L:C%c %p%%'])
 
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
         \ ['x', 'y', 'z']
         \ ]
-
-    let g:airline_symbols.branch = ''
 '''
 depends = ['vim-airline-themes']
 
@@ -269,6 +296,9 @@ hook_add = '''
     \   'host': 'localhost',
     \   'port': 55100,
     \}
+    let g:eskk#marker_henkan         = '＃'
+    let g:eskk#marker_henkan_select  = '＠'
+    let g:eskk#show_candidates_count = 2
 '''
 
 
@@ -342,50 +372,4 @@ hook_add = '''
 
     au VimEnter * nested call TextObjUserSetting()
 '''
-
-
-# [[plugins]]
-# repo     = 'itchyny/lightline.vim'
-# hook_add = '''
-#     let g:lightline = {
-#                 \   'active': {
-#                 \     'left': [ [ 'mode', 'paste' ],
-#                 \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-#                 \   },
-#                 \   'component_function' : {
-#                 \     'gitbranch': 'fugitive#head',
-#                 \     'mode'     : 'LightlineMode',
-#                 \   },
-#                 \   'mode_map': {
-#                 \     'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'VL', "\<C-v>": 'VB',
-#                 \     'c': 'C', 's': 'S', 'S': 'SL', "\<C-s>": 'SB', 't': 'T'
-#                 \   },
-#                 \   'separator': { 'left': '', 'right': '' },
-#                 \   'subseparator': { 'left': '', 'right': '' },
-#                 \ }
-#
-#     function! LightlineMode()
-#         return mode() == 'i' && &iminsert > 0 ? 'IL' : lightline#mode()
-#     endfunction
-#
-#
-#     let g:lightline#colorscheme#default#palette#inactive#right = [
-#                 \     ['#000000', '#ffffff', 0, 255],
-#                 \     ['#000000', '#ffffff', 0, 255],
-#                 \     ['#000000', '#ffffff', 0, 255]
-#                 \ ]
-#     let g:lightline#colorscheme#default#palette#active#left = [
-#                 \     ['#000000', '#ffffff', 0, 255],
-#                 \     ['#000000', '#ffffff', 0, 255],
-#                 \     ['#000000', '#ffffff', 0, 255]
-#                 \ ]
-#     let g:lightline#colorscheme#default#palette#inactive#left = [
-#                 \     ['#000000', '#ffffff', 0, 255],
-#                 \     ['#000000', '#ffffff', 0, 255],
-#                 \     ['#000000', '#ffffff', 0, 255]
-#                 \ ]
-#
-#                 " \   'left': [
-#                 " \       [...], [...]]}, 'replace': {'right': [['#606060', '#d0d0d0', 241, 252], ['#bcbcbc', '#585858', 250, 240], ['#9e9e9e', '#303030', 247, 236]], 'middle': [['#8a8a8a', '#303030', 245, 236]], 'left': [['#ffffff', '#df0000', 231, 160, 'bold'], ['#ffffff', '#585858', 231
-# '''
 

@@ -5,6 +5,7 @@
     autocrlf = false
     filemode = false
     editor = vim
+	quotepath = false
 [url "git@github.com:"]
     pushInsteadOf = git://github.com/
     pushInsteadOf = https://github.com/
