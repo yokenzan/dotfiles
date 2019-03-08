@@ -373,3 +373,23 @@ hook_add = '''
     au VimEnter * nested call TextObjUserSetting()
 '''
 
+
+[[plugins]]
+repo     = 'easymotion/vim-easymotion'
+hook_add = '''
+    " デフォルト
+    " nnoremap <Space>f f
+    " nnoremap <Space>t t
+    " nnoremap <Space>F F
+    " nnoremap <Space>T T
+    " ダイグラフ
+    nnoremap <Space>f f<C-k>
+    nnoremap <Space>t t<C-k>
+    nnoremap <Space>F F<C-k>
+    nnoremap <Space>T T<C-k>
+    " easymotion
+    " map f <Plug>(easymotion-fl)
+    " map t <Plug>(easymotion-tl)
+    " map F <Plug>(easymotion-Fl)
+    " map T <Plug>(easymotion-Tl)
+'''
