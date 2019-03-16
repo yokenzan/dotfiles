@@ -135,19 +135,17 @@ hook_add = '''
                 \ '' : 'V-B',
                 \ }
 
-    let g:airline_powerline_fonts  = 0
-    let g:airline_detect_crypt     = 0
-    let g:airline_detect_iminsert  = 0
-    let g:airline_detect_spell     = 0
-    let g:airline_detect_spelllang = 0
+    let g:airline_powerline_fonts   = 0
+    let g:airline_detect_crypt      = 0
+    let g:airline_detect_iminsert   = 0
+    let g:airline_detect_spell      = 0
+    let g:airline_detect_spelllang  = 0
+    let g:airline_inactive_collapse = 0
 
     let g:airline#extensions                    = []
     let g:airline#extensions#hunks#enabled      = 0
     let g:airline#extensions#whitespace#enabled = 0
-
-    let g:airline#extensions#tabline#enabled         = 0
-    let g:airline#extensions#tabline#formatter       = 'unique_tail_improved'
-    let g:airline#extensions#tabline#buffer_idx_mode = 0
+    let g:airline#extensions#tabline#enabled    = 0
 
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', 'paste'])
@@ -376,20 +374,4 @@ hook_add = '''
 
 [[plugins]]
 repo     = 'easymotion/vim-easymotion'
-hook_add = '''
-    " デフォルト
-    " nnoremap <Space>f f
-    " nnoremap <Space>t t
-    " nnoremap <Space>F F
-    " nnoremap <Space>T T
-    " ダイグラフ
-    nnoremap <Space>f f<C-k>
-    nnoremap <Space>t t<C-k>
-    nnoremap <Space>F F<C-k>
-    nnoremap <Space>T T<C-k>
-    " easymotion
-    " map f <Plug>(easymotion-fl)
-    " map t <Plug>(easymotion-tl)
-    " map F <Plug>(easymotion-Fl)
-    " map T <Plug>(easymotion-Tl)
-'''
+
