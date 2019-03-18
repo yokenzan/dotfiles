@@ -84,6 +84,11 @@ function fgl() {
 }
 
 
+function vfg() {
+    vim "$(git ls-files | fzy --lines=30)"
+}
+
+
 function fgc() {
     git checkout $(git branch --format='%(refname:lstrip=2)' | fzy --lines=30)
 }
