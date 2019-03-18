@@ -61,9 +61,10 @@ set number
 
 set list
 " set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-" set showbreak=↪
-set listchars=tab:^-,trail:~,eol:$,extends:»,precedes:«,nbsp:%
-set showbreak="> "
+set listchars=tab:^-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set showbreak=↪
+" set listchars=tab:^-,trail:~,eol:$,extends:»,precedes:«,nbsp:%
+" set showbreak="> "
 
 
 " Setting TAB and Indent
@@ -179,24 +180,36 @@ nnoremap <Space>tc :<C-u>set cuc!<CR>
 nnoremap <Space>tw :<C-u>set wrap!<CR>
 nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
-nnoremap / /\v
-nnoremap <silent><Esc><Esc> :noh<CR><ESC>
+nnoremap /  /\v
+nnoremap // /\V
+nnoremap ?  ?\v
+nnoremap ?/ ?\V
+nnoremap <silent><Esc><Esc> :<C-u>noh<CR><ESC>
 
 
 command! -count=1 Glo :r! git log --oneline --no-merges -<count>
 
 
-" 共有ファイルに選択範囲を出力
+" 手動のクリップボード連携
 function! YankToSharedFile() range
-    let l:filename = "path/to/shared_file"
-    execute ":" . a:firstline . "," . a:lastline "w! " . l:filename
+    if executable('xsel')
+        silent '<,'>w !xsel --clipboard --input
+    else
+        let l:filename = "path/to/shared_file"
+        execute ":" . a:firstline . "," . a:lastline "w! " . l:filename
+    endif
 endfunction
 
 
-" 共有ファイルの内容をカーソル位置に出力
+" 手動のクリップボード連携
 function! PasteFromSharedFile()
-    r path/to/shared_file
+    if executable('xsel')
+        r !xsel -bo
+    else
+        r path/to/shared_file
+    endif
 endfunction
+
 
 nnoremap <silent>cy :call YankToSharedFile()<CR>
 xnoremap <silent>cy :call YankToSharedFile()<CR>
@@ -246,7 +259,7 @@ if executable('pandoc')
     augroup PandocAutoCommand
         autocmd!
         autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:p.html %:p
-    augroup END<`0`>
+    augroup END
 endif
 
 autocmd FileType php setlocal omnifunc=phpactor#Complete
@@ -259,6 +272,7 @@ set shortmess-=c
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
 nnoremap <Space><Space>cd :<C-u>! composer dumpautoload<CR>
+nnoremap <Space><Space>s  :<C-u>source Session.vim<CR>
 
 " search motions with digraphs
 nnoremap <Space><Space>f f<C-k>
