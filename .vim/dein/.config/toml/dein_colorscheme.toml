@@ -44,6 +44,6 @@ repo = 'Lokaltog/vim-distinguished'
 [[plugins]]
 repo = 'ayu-theme/ayu-vim'
 hook_add = '''
-    let ayucolor="mirage"  " light, mirage, dark
+    let g:ayucolor="mirage"  " light, mirage, dark
 '''
 
