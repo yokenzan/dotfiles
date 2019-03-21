@@ -1,22 +1,21 @@
 [user]
-    name  =
-    email =
+	email =
 [core]
-    autocrlf = false
-    filemode = false
-    editor = vim
+	autocrlf = false
+	filemode = false
+	editor = vim
 	quotepath = false
 [url "git@github.com:"]
-    pushInsteadOf = git://github.com/
-    pushInsteadOf = https://github.com/
+	pushInsteadOf = git://github.com/
+	pushInsteadOf = https://github.com/
 [url "http://"]
-    insteadOf = git://
+	insteadOf = git://
 [url "https://"]
-    insteadOf = git://
+	insteadOf = git://
 [color]
-    ui = true
+	ui = true
 [http]
-    sslVerify = false
+	sslVerify = false
 [merge]
 	ff = false
 	tool = vimdiff
