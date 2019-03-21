@@ -7,6 +7,9 @@
  # install basic packages
  sudo apt install -y curl git tig ibus-skk xsel tmux highlight w3m w3m-img rxvt-unicode-256color emacs fzy global
 
+ # install i3 window manager
+ sudo apt install -y i3 rofi feh
+
  # install web server and database related packages
  sudo apt install -y apache2 mysql-client mysql-server libsqlite3-dev sqlite3
 
