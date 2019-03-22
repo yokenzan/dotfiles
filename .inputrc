@@ -34,7 +34,6 @@
 # "\eOF": end-of-line
 
 # Allow 8-bit input/output
-# 20170827 yokenzan added.
 set meta-flag on
 set input-meta on
 set output-meta on
@@ -54,23 +53,25 @@ set convert-meta off
   #set bell-style visible
 
   # Show all instead of beeping first
-  set show-all-if-ambiguous off
+  set show-all-if-ambiguous on
 
   # Filename completion/expansion
   set completion-ignore-case on
-  #set show-all-if-ambiguous on
 
   # Expand homedir name
   #set expand-tilde on
 
   # Append "/" to all dirnames
-  #set mark-directories on
-  #set mark-symlinked-directories on
+  set mark-directories on
+  set mark-symlinked-directories on
 
   # visible-stats
   # Append a mark according to the file type in a listing
-  set visible-stats off
+  # set visible-stats off
+  set visible-stats on
   set mark-directories on
+  set colored-stats on
+  set colored-completion-prefix on
 
   # Match all files
   #set match-hidden-files on
