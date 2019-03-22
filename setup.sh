@@ -1,6 +1,11 @@
 #!/bin/bash
 
-mkdir -p $HOME/.config/composer
+mkdir -p \
+    $HOME/.config/composer  \
+    $HOME/.config/alacritty \
+    $HOME/.config/i3        \
+    $HOME/.config/ranger
+
 mkdir -p $HOME/.emacs.d
 
 ln -sf $HOME/.dotfiles/.bashrc           $HOME
@@ -19,6 +24,16 @@ ln -sf $HOME/.dotfiles/.ctags            $HOME
 
 ln -sf $HOME/.dotfiles/.emacs            $HOME/.emacs.d/init.el
 ln -sf $HOME/.dotfiles/composer.json     $HOME/.config/composer
+
+
+ln -sf $HOME/.dotfiles/.config/i3/config               $HOME/.config/i3
+ln -sf $HOME/.dotfiles/.config/alacritty/alacritty.yml $HOME/.config/alacritty
+
+ln -sf $HOME/.dotfiles/.config/ranger/commands.py      $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/commands_full.py $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/rc.conf          $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/rifle.conf       $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/scope.sh         $HOME/.config/ranger
 
 
 if [ $(uname | grep -qe 'NT') ]; then

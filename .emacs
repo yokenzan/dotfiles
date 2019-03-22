@@ -123,9 +123,9 @@
 (add-hook 'php-mode-hook 'my-php-mode-hook)
 
 
-;; (global-flycheck-mode)
-;; (setq flycheck-indication-mode 'left-fringe)
-;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
+(global-flycheck-mode)
+(setq flycheck-indication-mode 'left-fringe)
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 
 (setq display-time-day-and-date t)  ;; 曜日・月・日
