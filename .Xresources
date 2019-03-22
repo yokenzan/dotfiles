@@ -13,12 +13,13 @@ URxvt.visualBell:           false
 URxvt.saveLines:            30000
 URxvt.fading:               30
 
-URxvt.letterSpace:          -1
+URxvt.letterSpace:          0
 URxvt.lineSpace:            -2
 
 URxvt.loginShell: true
 URxvt.termName: xterm-256color
 ! URxvt.transparent: true
+! Urxvt.shading: 80
 
 ! URxvt.allow_bold: true
 ! URxvt.boldMode: true
