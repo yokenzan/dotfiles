@@ -286,6 +286,8 @@ nnoremap <Space><Space>T T<C-k>
 vnoremap < <gv
 vnoremap > >gv
 
+nnoremap q! q:k<CR>
+
 
 let $BASH_ENV = '~/.bash_aliases'
 
