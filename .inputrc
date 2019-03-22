@@ -49,9 +49,6 @@ set convert-meta off
   # Don't ring bell on completion
   set bell-style none
 
-  # or, don't beep at me - show me
-  #set bell-style visible
-
   # Show all instead of beeping first
   set show-all-if-ambiguous on
 
@@ -67,11 +64,18 @@ set convert-meta off
 
   # visible-stats
   # Append a mark according to the file type in a listing
-  # set visible-stats off
   set visible-stats on
-  set mark-directories on
   set colored-stats on
   set colored-completion-prefix on
+  set skip-completed-text on
+  set blink-matching-paren on
+
+  # mode setting
+  set show-mode-in-prompt on
+  set vi-cmd-mode-string "\e[34;1m[N]\e[0m "
+  set vi-ins-mode-string "\e[38;5;40;7m I \e[0m "
+  set emacs-mode-string  ""
+
 
   # Match all files
   #set match-hidden-files on
