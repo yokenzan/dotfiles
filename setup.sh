@@ -22,6 +22,7 @@ ln -sf $HOME/.dotfiles/.curlrc           $HOME
 ln -sf $HOME/.dotfiles/.globalrc         $HOME
 ln -sf $HOME/.dotfiles/.ctags            $HOME
 ln -sf $HOME/.dotfiles/.i3status.conf    $HOME
+ln -sf $HOME/.dotfiles/.tigrc            $HOME
 
 ln -sf $HOME/.dotfiles/.emacs                          $HOME/.emacs.d/init.el
 ln -sf $HOME/.dotfiles/composer.json                   $HOME/.config/composer
