@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-cat "$1" | u2j | java -jar /usr/local/bin/plantuml.jar -tsvg -p  > "$1.svg"
