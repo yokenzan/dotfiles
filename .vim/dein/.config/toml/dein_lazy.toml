@@ -75,7 +75,7 @@ on_i  = 1
 
 [[plugins]]
 repo     = 'Shougo/denite.nvim'
-on_cmd   = ['Denite', 'DeniteBufferDir']
+on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteProjectDir', 'DeniteCursorWord']
 if       = 'has("python3")'
 hook_add = '''
     aug enableDeniteKeyMap
@@ -83,7 +83,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal buffer<CR>
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal register<CR>
-        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal -auto-highlight jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal -auto-preview jump<CR>
 
         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -matchers=matcher/substring -auto-highlight -smartcase -mode=insert -auto-resize line<CR>
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -matchers=matcher/substring -auto-highlight -smartcase -mode=normal line<CR>
@@ -124,7 +124,7 @@ hook_post_source = '''
 
     call denite#custom#source('file_rec', 'sorters',  ['sorter/word'])
 
-    " file_rec/git
+    " file/git
 
     call denite#custom#alias('source', 'file/git', 'file_rec')
     call denite#custom#var(
@@ -132,7 +132,7 @@ hook_post_source = '''
                 \ ['git', 'ls-files', '-co', '--exclude-standard']
                 \)
 
-    " git grep
+    " grep/git
 
     call denite#custom#alias('source', 'grep/git', 'grep')
     call denite#custom#var('grep/git', 'command',
