@@ -83,16 +83,19 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal buffer<CR>
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal register<CR>
-        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal -auto-preview jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal -auto-highlight jump<CR>
+
+        au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -matchers=matcher/substring -auto-highlight -smartcase -mode=insert -auto-resize line<CR>
+        au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -matchers=matcher/substring -auto-highlight -smartcase -mode=normal line<CR>
+
         au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -mode=normal -smartcase -reversed command_history<CR>
-        au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite -mode=insert -smartcase -auto-resize line<CR>
 
         " ファイル関係
-        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir -matchers=matcher/substring -smartcase -mode=normal file<CR>
-        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>Denite          -matchers=matcher/substring -smartcase -mode=normal file<CR>
-        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite          -matchers=matcher/substring -smartcase -mode=normal file_mru<CR>
-        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>Denite          -matchers=matcher/substring -smartcase -mode=normal file/git<CR>
-        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite          -matchers=matcher/substring -smartcase -mode=normal file_rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -matchers=matcher/substring -smartcase -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -matchers=matcher/substring -smartcase -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -matchers=matcher/substring -smartcase -mode=normal file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -matchers=matcher/substring -smartcase -mode=normal file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -matchers=matcher/substring -smartcase -mode=normal file_rec<CR>
 
         " grep関係
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview grep/git<CR>
