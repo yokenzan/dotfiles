@@ -7,8 +7,9 @@ I'm sorry for my bad English.
 ## Installation
 
 ```bash
-git clone git@github.com:yokenzan/dotfiles
+git clone git@github.com:yokenzan/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-# sh setup.sh
+./setup.sh
+./build.sh
 ```
 
