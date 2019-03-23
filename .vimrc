@@ -87,7 +87,7 @@ set backspace=indent,eol,start
 
 " Setting Search
 
-set wrapscan
+set nowrapscan
 set incsearch
 set ignorecase
 set smartcase
