@@ -80,11 +80,12 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-    let g:gitgutter_sign_added               = '▶'
-    let g:gitgutter_sign_modified            = '▶'
-    let g:gitgutter_sign_removed             = '▶'
-    let g:gitgutter_sign_removed_first_line  = '▶'
-    let g:gitgutter_sign_modified_removed    = '▶'
+    let g:gitgutter_sign_base               = '▶'
+    let g:gitgutter_sign_added              = g:gitgutter_sign_base
+    let g:gitgutter_sign_modified           = g:gitgutter_sign_base
+    let g:gitgutter_sign_removed            = g:gitgutter_sign_base
+    let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_base
+    let g:gitgutter_sign_modified_removed   = g:gitgutter_sign_base
 '''
 
 

@@ -248,12 +248,12 @@ set background=dark
 " set background=light
 
 
-if executable('plantuml')
-    augroup PlantUMLAutoCommand
-        autocmd!
-        autocmd! BufWritePost *.pu silent !java -jar /usr/share/plantuml/plantuml.jar -tsvg %
-    augroup END
-endif
+" if executable('plantuml')
+"     augroup PlantUMLAutoCommand
+"         autocmd!
+"         autocmd! BufWritePost *.pu silent !java -jar /usr/share/plantuml/plantuml.jar -tsvg %
+"     augroup END
+" endif
 
 if executable('pandoc')
     augroup PandocAutoCommand
