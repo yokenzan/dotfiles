@@ -1,5 +1,6 @@
 [user]
-	email =
+	name = yokenzan
+	email = 31175068+yokenzan@users.noreply.github.com
 [core]
 	autocrlf = false
 	filemode = false
