@@ -4,37 +4,24 @@
 *foreground:  #ffffff
 *cursorColor: #ff0000
 
-URxvt.geometry:             140x40
+URxvt.geometry:             110x36
 URxvt.scrollBar:            false
 URxvt.cursorBlink:          true
 URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         true
 URxvt.visualBell:           false
-URxvt.saveLines:            30000
+URxvt.saveLines:            40000
 URxvt.fading:               30
 
 URxvt.letterSpace:          0
-URxvt.lineSpace:            -2
+URxvt.lineSpace:            0
 
-URxvt.loginShell: true
-URxvt.termName: xterm-256color
-! URxvt.transparent: true
-! Urxvt.shading: 80
+URxvt.loginShell:           true
+URxvt.termName:             xterm-256color
+URxvt.intensityStyles:      false
 
-! URxvt.allow_bold: true
-! URxvt.boldMode: true
-! URxvt.colorBDMode: true
-!
-URxvt.intensityStyles: false
+URxvt*font:                 xft:Ubuntu\ Mono\ derivative\ Powerline-11,xft:Ricty\ Discord,xft:Migu\ 1M\ for\ Powerline,sft:Cica
 
-! URxvt*font:                 xft:Ubuntu\ Mono-12, xft:Migu\ 1M\ for\ Powerline
-! URxvt.font:                 xft:Ricty\ Discord-12, \
-!                             xft:Cica, \
-!                             xft:Migu\ 1M\ for\ Powerline
-URxvt.font:                 xft:Cica:size=12
-URxvt.boldFont:             xft:Cica:size=12
-URxvt.italicFont:           xft:Cica:size=12
-URxvt.boldItalicFont:       xft:Cica:size=12
 
 URxvt.depth:                32
 URxvt.foreground:           [85]#fffbf6
@@ -48,7 +35,6 @@ URxvt.color4:               [100]#47a0f3
 URxvt.color5:               [100]#7b5cb0
 URxvt.color6:               [100]#64dbed
 URxvt.color7:               [100]#e5e9f0
-
 URxvt.color8:               [100]#565656
 URxvt.color9:               [100]#ec5357
 URxvt.color10:              [100]#c0e17d
