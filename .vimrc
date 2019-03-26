@@ -60,11 +60,8 @@ set number
 " Setting Visibility of TAB RETURN EOL SPACE etc
 
 set list
-" set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-set listchars=tab:^-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:^-,trail:~,eol:↲,extends:»,precedes:«,nbsp:%
 set showbreak=↪
-" set listchars=tab:^-,trail:~,eol:$,extends:»,precedes:«,nbsp:%
-" set showbreak="> "
 
 
 " Setting TAB and Indent
@@ -223,7 +220,11 @@ inoremap <C-r><C-r> <C-r>0
 
 syntax on
 set t_Co=256
-set notermguicolors
+if $SHLVL > 1
+    set termguicolors
+else
+    set notermguicolors
+endif
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 
@@ -286,7 +287,7 @@ nnoremap <Space><Space>T T<C-k>
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap q! q:k<CR>
+" nnoremap q! :<C-u><C-p><CR>
 
 
 let $BASH_ENV = '~/.bash_aliases'
@@ -311,3 +312,16 @@ highlight NonText     ctermbg=NONE guibg=NONE
 highlight SpecialKey  ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
+
+imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
+imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
+
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-d>  <Del>
+cnoremap <C-e>  <End>
+cnoremap <C-f>  <Right>
+cnoremap <C-n>  <Down>
+cnoremap <C-p>  <Up>
+cnoremap <C-[>b <S-Left>
+cnoremap <C-[>f <S-Right>
