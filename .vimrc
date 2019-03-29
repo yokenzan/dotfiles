@@ -213,9 +213,6 @@ xnoremap <silent>cy :call YankToSharedFile()<CR>
 nnoremap <silent>cp :<C-u>call PasteFromSharedFile()<CR>
 
 
-inoremap <C-r><C-r> <C-r>0
-
-
 " Setting Color & ColorScheme
 
 syntax on
@@ -315,6 +312,9 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
+
+nnoremap ]q :<C-u>cn<CR>
+nnoremap [q :<C-u>cN<CR>
 
 cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>

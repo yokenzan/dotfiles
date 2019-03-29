@@ -33,6 +33,11 @@ if    = 'executable("php")'
 on_ft = ['php']
 build = 'composer install'
 hook_add = '''
+    let g:phpactorBranch               = 'develop'
+    let g:phpactorOmniAutoClassImport  = v:true
+    let g:phpactorCompletionIgnoreCase = 0
+
+
     function! DefinitionJumpWithPhpactor()
         split
         call phpactor#GotoDefinition()
@@ -108,8 +113,8 @@ hook_add = '''
 
         " 検索結果の再表示と移動
         au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
-        au VimEnter * nested nnoremap <silent><C-p>      :<C-u>Denite -resume -no-empty -select=-1 -immediately<CR>
-        au VimEnter * nested nnoremap <silent><C-n>      :<C-u>Denite -resume -no-empty -select=+1 -immediately<CR>
+        au VimEnter * nested nnoremap <silent>[u         :<C-u>Denite -resume -no-empty -select=-1 -immediately<CR>
+        au VimEnter * nested nnoremap <silent>]u         :<C-u>Denite -resume -no-empty -select=+1 -immediately<CR>
     aug END
 '''
 hook_post_source = '''
