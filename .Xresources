@@ -13,14 +13,15 @@ URxvt.visualBell:           false
 URxvt.saveLines:            40000
 URxvt.fading:               30
 
-URxvt.letterSpace:          0
+URxvt.letterSpace:          1
 URxvt.lineSpace:            0
 
 URxvt.loginShell:           true
 URxvt.termName:             xterm-256color
 URxvt.intensityStyles:      false
 
-URxvt*font:                 xft:Ubuntu\ Mono\ derivative\ Powerline-11,xft:Ricty\ Discord,xft:Migu\ 1M\ for\ Powerline,sft:Cica
+! URxvt*font:                 xft:Ricty\ Discord-12,xft:Ubuntu\ Mono\ derivative\ Powerline-12,xft:Migu\ 1M\ for\ Powerline,sft:Cica
+URxvt*font:                 xft:Osaka－等幅-12,xft:Ricty\ Discord,xft:Ubuntu\ Mono\ derivative\ Powerline-12,xft:Migu\ 1M\ for\ Powerline,sft:Cica
 
 
 URxvt.depth:                32
@@ -50,4 +51,10 @@ URxvt.colorUL:              [100]#fe8019
 
 URxvt.transparent:          true
 URxvt.shading:              25
+
+!URxvt*inputMethod: ibus
+!URxvt*imLocale:  en_US.UTF-8
+!URxvt*preeditType: OnTheSpot
+!URxvt*preeditType: OverTheSpot
+URxvt*url-launcher: vivaldi
 
