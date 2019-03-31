@@ -63,6 +63,7 @@ hook_add = '''
     aug enableALEKeyMaps
         au!
         nmap <silent><Space>al :<C-u>ALELint<CR>
+        nmap <silent><Space>ad :<C-u>ALEDetail<CR>
         nmap <silent>[a        :<C-u>ALEPrevious<CR>
         nmap <silent>]a        :<C-u>ALENext<CR>
     aug END
@@ -154,7 +155,7 @@ hook_add = '''
                 \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n'
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
-    let g:airline_section_z = airline#section#create(['L%l/%L:C%c %p%%'])
+    let g:airline_section_z = airline#section#create(['%l/%L:%c'])
 
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
