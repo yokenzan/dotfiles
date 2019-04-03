@@ -87,8 +87,10 @@ hook_add = '''
         au!
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal buffer<CR>
-        au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal register<CR>
+        au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal register<CR>
+        au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal neoyank<CR>
         au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal -auto-preview jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal -auto-preview mark<CR>
 
         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -matchers=matcher/substring -auto-highlight -smartcase -mode=insert -auto-resize line<CR>
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -matchers=matcher/substring -auto-highlight -smartcase -mode=normal line<CR>
@@ -105,6 +107,7 @@ hook_add = '''
         " grep関係
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview grep/git<CR>
         au VimEnter * nested nnoremap <silent><Space>gp  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview grep<CR>
+        au VimEnter * nested nnoremap <silent><Space>rl  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview grep:~/.vim/ref/laravel.doc<CR>
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview gitlog<CR>
