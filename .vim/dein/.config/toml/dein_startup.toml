@@ -237,7 +237,9 @@ hook_add = '''
     " 常にunite-outlineをつかう
     aug enableUniteOutline
         au!
-        au VimEnter * nested nnoremap <Space>uo :<C-u>Unite -winwidth=50 -vertical -no-empty outline<CR>
+        " with auto highlight
+        au VimEnter * nested nnoremap <silent><Space>uO :<C-u>Unite -winwidth=50 -vertical -no-empty -no-quit -auto-highlight outline<CR>
+        au VimEnter * nested nnoremap <silent><Space>uo :<C-u>Unite -winwidth=50 -vertical -no-empty outline<CR>
     aug END
 '''
 
