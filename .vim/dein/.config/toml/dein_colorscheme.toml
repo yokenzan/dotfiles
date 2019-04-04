@@ -33,8 +33,10 @@ repo = 'NLKNguyen/papercolor-theme'
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
-    let g:gruvbox_contrast_light = "hard"
-    let g:gruvbox_contrast_dark  = "hard"
+    let g:gruvbox_contrast_light = "medium"
+    let g:gruvbox_contrast_dark  = "soft"
+    let g:gruvbox_number_column  = "bg1"
+    let g:gruvbox_italic         = 1
 '''
 
 
@@ -47,4 +49,22 @@ repo = 'ayu-theme/ayu-vim'
 hook_add = '''
     let g:ayucolor="mirage"  " light, mirage, dark
 '''
+
+
+[[plugins]]
+repo = 'rakr/vim-one'
+hook_add = '''
+    let g:one_allow_italics = 1
+'''
+
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+    let g:solarized_termcolors = 256
+    let g:solarized_bold       = 1
+    let g:solarized_underline  = 1
+    let g:solarized_italic     = 1
+'''
+
 

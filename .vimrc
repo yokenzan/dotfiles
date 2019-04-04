@@ -218,7 +218,8 @@ nnoremap <silent>cp :<C-u>call PasteFromSharedFile()<CR>
 syntax on
 set t_Co=256
 if $SHLVL > 1
-    set termguicolors
+    " set termguicolors
+    set notermguicolors
 else
     set notermguicolors
 endif
@@ -234,16 +235,20 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " colorscheme phd
 " colorscheme rupza
 " colorscheme slate
-colorscheme gruvbox
+" colorscheme gruvbox
 " colorscheme PaperColor
 " colorscheme distinguished
 " colorscheme ayu
+" colorscheme autumnleaf
+colorscheme solarized
+" colorscheme one
+
 
 " highlight PmenuSel guifg=white guibg=lightmagenta
-" highlight SpellBad ctermbg=magenta guibg=magenta
+" highlight SpellBad term=bold,underline
 " highlight Todo     cterm=reverse
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 
 
 " if executable('plantuml')
@@ -315,13 +320,20 @@ imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
 nnoremap ]q :<C-u>cn<CR>
 nnoremap [q :<C-u>cN<CR>
+" emcasの<C-u>のマネ
+nnoremap Q   4
+nnoremap QQ  8
+nnoremap QQQ 16
 
-cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-d>  <Del>
-cnoremap <C-e>  <End>
-cnoremap <C-f>  <Right>
-cnoremap <C-n>  <Down>
-cnoremap <C-p>  <Up>
+nnoremap <C-n> :<C-u>bn<CR>
+nnoremap <C-p> :<C-u>bN<CR>
+
+" cnoremap <C-a>  <Home>
+" cnoremap <C-b>  <Left>
+" cnoremap <C-d>  <Del>
+" cnoremap <C-e>  <End>
+" cnoremap <C-f>  <Right>
+" cnoremap <C-n>  <Down>
+" cnoremap <C-p>  <Up>
 cnoremap <C-[>b <S-Left>
 cnoremap <C-[>f <S-Right>
