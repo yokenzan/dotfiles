@@ -20,8 +20,8 @@ URxvt.loginShell:           true
 URxvt.termName:             xterm-256color
 URxvt.intensityStyles:      false
 
-! URxvt*font:                 xft:Ricty\ Discord-12,xft:Ubuntu\ Mono\ derivative\ Powerline-12,xft:Migu\ 1M\ for\ Powerline,sft:Cica
-URxvt*font:                 xft:Osaka－等幅-12,xft:Ricty\ Discord,xft:Ubuntu\ Mono\ derivative\ Powerline-12,xft:Migu\ 1M\ for\ Powerline,sft:Cica
+! URxvt*font:                 xft:Ricty\ Discord-12,xft:Ubuntu\ Mono\ derivative\ Powerline-12,xft:Migu\ 1M\ for\ Powerline,xft:Cica
+URxvt*font:                 xft:Osaka－等幅-12,xft:Ricty\ Discord,xft:Ubuntu\ Mono\ derivative\ Powerline-12,xft:Migu\ 1M\ for\ Powerline,xft:Cica
 
 
 URxvt.depth:                32
