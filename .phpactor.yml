@@ -1,0 +1,9 @@
+xdebug_disable: true
+navigator.destinations:
+    source:     src/<kernel>.php
+    unit_test:  tests/Unit/<kernel>Test.php
+code_transform.class_new.variants:
+    source:     default
+    unit_test:  phpunit_test
+    exception:  exception
+
