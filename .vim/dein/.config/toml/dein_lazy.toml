@@ -111,7 +111,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>gP  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-highlight grep<CR>
 
         " Laravel関係
-        au VimEnter * nested nnoremap <silent><Space>rl  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview grep:~/.vim/ref/laravel.doc/original-en<CR>
+        au VimEnter * nested nnoremap <silent><Space>rl  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja/<CR>
         au VimEnter * nested nnoremap <silent><Space>rL  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/original-en<CR>
 
         " git
