@@ -85,39 +85,41 @@ if       = 'has("python3")'
 hook_add = '''
     aug enableDeniteKeyMap
         au!
-        au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal register<CR>
-        au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -matchers=matcher/substring -smartcase -mode=normal neoyank<CR>
+        au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase -mode=normal register<CR>
+        au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase -mode=normal neoyank<CR>
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
-        au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -matchers=matcher/substring -smartcase -mode=normal buffer<CR>
-        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=switch -matchers=matcher/substring -smartcase -mode=normal -auto-preview jump<CR>
-        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=switch -matchers=matcher/substring -smartcase -mode=normal -auto-preview mark<CR>
+        au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase -mode=normal buffer<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=switch -smartcase -mode=normal -auto-preview jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=switch -smartcase -mode=normal -auto-preview mark<CR>
 
-        au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -matchers=matcher/substring -auto-highlight -smartcase -mode=insert -auto-resize line<CR>
-        au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -matchers=matcher/substring -auto-highlight -smartcase -mode=normal line<CR>
+        au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -auto-highlight -smartcase -mode=insert -auto-resize line<CR>
+        au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -auto-highlight -smartcase -mode=normal line<CR>
 
         au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -mode=normal -smartcase -reversed command_history<CR>
 
         " ファイル関係
-        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -default-action=switch -no-empty -matchers=matcher/substring -smartcase -mode=normal file<CR>
-        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -default-action=switch -no-empty -matchers=matcher/substring -smartcase -mode=normal file<CR>
-        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -default-action=switch -no-empty -matchers=matcher/substring -smartcase -mode=normal file_mru<CR>
-        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -default-action=switch -no-empty -matchers=matcher/substring -smartcase -mode=normal file/rec<CR>
-        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -default-action=switch -no-empty -matchers=matcher/substring -smartcase -mode=normal file/git<CR>
-
-        " grep関係
-        au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview   grep/git<CR>
-        au VimEnter * nested nnoremap <silent><Space>gG  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-highlight grep/git<CR>
-        au VimEnter * nested nnoremap <silent><Space>gp  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview   grep<CR>
-        au VimEnter * nested nnoremap <silent><Space>gP  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-highlight grep<CR>
-
-        " Laravel関係
-        au VimEnter * nested nnoremap <silent><Space>rl  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja/<CR>
-        au VimEnter * nested nnoremap <silent><Space>rL  :<C-u>Denite           -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/original-en<CR>
+        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -default-action=switch -no-empty -smartcase -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -default-action=switch -no-empty -smartcase -mode=normal file<CR>
+        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -default-action=switch -no-empty -smartcase -mode=normal file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -default-action=switch -no-empty -smartcase -mode=normal file/rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -default-action=switch -no-empty -smartcase -mode=normal file/git<CR>
 
         " git
+        au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite           -no-empty -smartcase -mode=normal -auto-preview   grep/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>gG  :<C-u>Denite           -no-empty -smartcase -mode=normal -auto-highlight grep/git<CR>
         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview gitlog<CR>
         au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview gitstatus<CR>
         au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -matchers=matcher/substring -smartcase -mode=normal -auto-preview gitbranch<CR>
+
+        " grep関係
+        au VimEnter * nested nnoremap <silent><Space>gp  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   grep<CR>
+        au VimEnter * nested nnoremap <silent><Space>gP  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-highlight grep<CR>
+        au VimEnter * nested nnoremap <silent><Space>Gp  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   grep::!<CR>
+        au VimEnter * nested nnoremap <silent><Space>GP  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-highlight grep::!<CR>
+
+        " Laravel関係
+        au VimEnter * nested nnoremap <silent><Space>rl  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja/<CR>
+        au VimEnter * nested nnoremap <silent><Space>rL  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/original-en<CR>
 
         " 検索結果の再表示と移動
         au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
@@ -126,6 +128,9 @@ hook_add = '''
     aug END
 '''
 hook_post_source = '''
+
+    " keymap
+
     call denite#custom#map(
                 \ 'insert', '<C-n>', '<denite:move_to_next_line>',      'noremap'
                 \)
@@ -148,14 +153,6 @@ hook_post_source = '''
                 \ 'normal', 'v',     '<denite:do_action:vsplitswitch>', 'noremap'
                 \)
 
-    " file
-
-    call denite#custom#source('file',     'sorters',  ['sorter/word'])
-
-    " file/rec
-
-    call denite#custom#source('file/rec', 'sorters',  ['sorter/word'])
-
     " file/git
 
     call denite#custom#alias('source', 'file/git', 'file/rec')
@@ -163,7 +160,6 @@ hook_post_source = '''
                 \ 'file/git', 'command',
                 \ ['git', 'ls-files', '-co', '--exclude-standard']
                 \)
-    call denite#custom#source('file/git', 'sorters',  ['sorter/word'])
 
     " grep/git
 
@@ -189,6 +185,18 @@ hook_post_source = '''
                 \ ]
                 \)
     call denite#custom#var('grep', 'patten_opt', ['-E'])
+
+
+    for source in ['buffer', 'jump', 'register', 'neoyank', 'mark', 'line', 'file/mru', 'grep', 'grep/git', 'gitlog', 'gitstatus', 'gitbranch']
+        call denite#custom#source(source, 'matchers', ['matcher/substring'])
+    endfor
+
+
+    for source in ['file', 'file/rec', 'file/git']
+        call denite#custom#source(source, 'matchers', ['matcher/substring'])
+        call denite#custom#source(source, 'sorters',  ['sorter/word'])
+    endfor
+
 
     " prompt
 
