@@ -17,7 +17,7 @@
  sudo apt install -y ruby2.5 ruby2.5-dev
 
  # install php related packages
- sudo apt install -y php7.2 php7.2-dev php7.2-curl php7.2-gmp php7.2-mysql php7.2-readline php7.2-tidy php7.2-xml php7.2-cli php7.2-intl php7.2-json php7.2-gd php7.2-zip php-xdebug
+ sudo apt install -y php7.2 php7.2-dev php7.2-curl php7.2-gmp php7.2-mysql php7.2-readline php7.2-tidy php7.2-xml php7.2-cli php7.2-intl php7.2-json php7.2-gd php7.2-zip php-xdebug php7.2-mbstring
 
  # install python related packages
  sudo apt install -y python3.7 python3.7-dev python3-pip
