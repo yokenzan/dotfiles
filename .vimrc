@@ -53,7 +53,7 @@ set title
 set ruler
 set cmdheight=2
 set laststatus=2
-set showtabline=2
+set showtabline=1
 set number
 
 
@@ -320,6 +320,7 @@ imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
 nnoremap ]q :<C-u>cn<CR>
 nnoremap [q :<C-u>cN<CR>
+
 " emcasの<C-u>のマネ
 nnoremap Q   4
 nnoremap QQ  8
@@ -328,12 +329,11 @@ nnoremap QQQ 16
 nnoremap <C-n> :<C-u>bn<CR>
 nnoremap <C-p> :<C-u>bN<CR>
 
-" cnoremap <C-a>  <Home>
-" cnoremap <C-b>  <Left>
-" cnoremap <C-d>  <Del>
-" cnoremap <C-e>  <End>
-" cnoremap <C-f>  <Right>
-" cnoremap <C-n>  <Down>
-" cnoremap <C-p>  <Up>
 cnoremap <C-[>b <S-Left>
 cnoremap <C-[>f <S-Right>
+
+
+set colorcolumn=80
+
+nnoremap <C-s>s :<C-u>terminal ++rows=20<CR>
+nnoremap <C-s>v :<C-u>vertical terminal<CR>

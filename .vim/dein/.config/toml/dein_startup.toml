@@ -81,7 +81,11 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-    let g:gitgutter_sign_base               = ''
+    if has('gui_running')
+        let g:gitgutter_sign_base               = '▶'
+    else
+        let g:gitgutter_sign_base               = ''
+    endif
     let g:gitgutter_sign_added              = g:gitgutter_sign_base
     let g:gitgutter_sign_modified           = g:gitgutter_sign_base
     let g:gitgutter_sign_removed            = g:gitgutter_sign_base
@@ -171,6 +175,12 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+    nnoremap <Space>fs :<C-u>Gstatus<CR>
+    nnoremap <Space>fr :<C-u>Gread<CR>
+    nnoremap <Space>fb :<C-u>Gblame<CR>
+    nnoremap <Space>fd :<C-u>Gdiff<CR>
+'''
 
 
 [[plugins]]
@@ -277,16 +287,6 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'itchyny/thumbnail.vim'
-hook_add = '''
-    aug enableThumbnail
-        au!
-        au VimEnter * nested noremap <Space>th :<C-u>Thumbnail<CR>
-    aug END
-'''
-
-
-[[plugins]]
 repo = 'tyru/eskk.vim'
 hook_add = '''
     let g:eskk#directory = "~/.skk"
@@ -331,11 +331,11 @@ repo = 'othree/html5.vim'
 [[plugins]] 
 repo     = 'fuenor/qfixhowm'
 hook_add = '''
-    let QFixHowm_Key      = '<Space>'
-    let QFixHowm_FileType = 'markdown'
-    let howm_dir          = '~/.howm'
-    let howm_filename     = '%Y%m%d_%H%M%S.md'
-    let howm_fileencoding = 'utf-8'
+    let g:QFixHowm_Key      = '<Space>'
+    let g:QFixHowm_FileType = 'markdown'
+    let g:howm_dir          = '~/.howm'
+    let g:howm_filename     = '%Y%m%d_%H%M%S.md'
+    let g:howm_fileencoding = 'utf-8'
 '''
 
 
@@ -379,3 +379,11 @@ hook_add = '''
 [[plugins]]
 repo     = 'easymotion/vim-easymotion'
 
+
+
+[[plugins]]
+repo     = 'junegunn/vim-easy-align'
+hook_add = '''
+    nmap ga <Plug>(EasyAlign)
+    xmap ga <Plug>(EasyAlign)
+'''
