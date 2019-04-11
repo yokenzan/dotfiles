@@ -34,7 +34,7 @@ repo = 'NLKNguyen/papercolor-theme'
 repo = 'morhetz/gruvbox'
 hook_add = '''
     let g:gruvbox_contrast_light = "medium"
-    let g:gruvbox_contrast_dark  = "soft"
+    let g:gruvbox_contrast_dark  = "medium"
     let g:gruvbox_number_column  = "bg1"
     let g:gruvbox_italic         = 1
 '''
