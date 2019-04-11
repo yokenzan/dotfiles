@@ -70,12 +70,12 @@ function r() {
 
 
 function fcd() {
-    cd "$(find -type d | fzy --lines=30)"
+    cd "$(find -H -type d | grep -v .git | fzy --lines=30)"
 }
 
 
 function fv() {
-    vim "$(find -type f | fzy --lines=30)"
+    vim "$(find -type f | grep -v .git | fzy --lines=30)"
 }
 
 
