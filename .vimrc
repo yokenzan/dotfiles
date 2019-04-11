@@ -78,7 +78,7 @@ set tabstop=4
 
 " Setting Behavior of Cursor
 
-set whichwrap=h,l,<,>,b
+set whichwrap=h,l,<,>,b,[,]
 set backspace=indent,eol,start
 
 
@@ -188,43 +188,50 @@ command! -count=1 Glo :r! git log --oneline --no-merges -<count>
 
 
 " 手動のクリップボード連携
-function! YankToSharedFile() range
-    if executable('xsel')
-        silent '<,'>w !xsel --clipboard --input
-    else
-        let l:filename = "path/to/shared_file"
-        execute ":" . a:firstline . "," . a:lastline "w! " . l:filename
-    endif
-endfunction
+if !has('clipboard')
+    function! YankToSharedFile() range
+        if executable('xsel')
+            silent '<,'>w !xsel --clipboard --input
+        else
+            let l:filename = "path/to/shared_file"
+            execute ":" . a:firstline . "," . a:lastline "w! " . l:filename
+        endif
+    endfunction
 
 
-" 手動のクリップボード連携
-function! PasteFromSharedFile()
-    if executable('xsel')
-        r !xsel -bo
-    else
-        r path/to/shared_file
-    endif
-endfunction
+    function! PasteFromSharedFile()
+        if executable('xsel')
+            r !xsel -bo
+        else
+            r path/to/shared_file
+        endif
+    endfunction
 
 
-nnoremap <silent>cy :call YankToSharedFile()<CR>
-xnoremap <silent>cy :call YankToSharedFile()<CR>
-nnoremap <silent>cp :<C-u>call PasteFromSharedFile()<CR>
+    nnoremap <silent>cy :call YankToSharedFile()<CR>
+    xnoremap <silent>cy :call YankToSharedFile()<CR>
+    nnoremap <silent>cp :<C-u>call PasteFromSharedFile()<CR>
+endif
+
+
 
 
 " Setting Color & ColorScheme
 
 syntax on
 set t_Co=256
-if $SHLVL > 1
-    " set termguicolors
-    set notermguicolors
-else
-    set notermguicolors
-endif
+
+set termguicolors
+" if $SHLVL > 1
+"     " set termguicolors
+"     set notermguicolors
+" else
+"     set notermguicolors
+" endif
+
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+
 
 " colorscheme badwolf
 " colorscheme cake
@@ -274,7 +281,6 @@ set shortmess-=c
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
-nnoremap <Space><Space>cd :<C-u>! composer dumpautoload<CR>
 nnoremap <Space><Space>s  :<C-u>source Session.vim<CR>
 
 " search motions with digraphs
@@ -288,8 +294,6 @@ nnoremap <Space><Space>T T<C-k>
 
 vnoremap < <gv
 vnoremap > >gv
-
-" nnoremap q! :<C-u><C-p><CR>
 
 
 let $BASH_ENV = '~/.bash_aliases'
@@ -318,10 +322,6 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
-nnoremap ]q :<C-u>cn<CR>
-nnoremap [q :<C-u>cN<CR>
-
-" emcasの<C-u>のマネ
 nnoremap Q   4
 nnoremap QQ  8
 nnoremap QQQ 16
@@ -329,11 +329,20 @@ nnoremap QQQ 16
 nnoremap <C-n> :<C-u>bn<CR>
 nnoremap <C-p> :<C-u>bN<CR>
 
+nnoremap ]q :<C-u>cn<CR>
+nnoremap [q :<C-u>cN<CR>
+
 cnoremap <C-[>b <S-Left>
 cnoremap <C-[>f <S-Right>
 
-
-set colorcolumn=80
-
 nnoremap <C-s>s :<C-u>terminal ++rows=20<CR>
 nnoremap <C-s>v :<C-u>vertical terminal<CR>
+
+" set gdefault
+set colorcolumn=80
+set noshowmode
+set lazyredraw
+
+set splitbelow
+set splitright
+set autoread
