@@ -47,10 +47,16 @@ alias vs='vim -S Session.vim'
 alias vu='vim -u NONE -N'
 alias vq='vim -c :q'
 
+alias gv='gvim &'
+alias gvo='gvim -O &'
+alias gvs='gvim -S Session.vim &'
+alias gvu='gvim -u NONE -N &'
+alias gvq='gvim -c :q &'
 
 # EMacs
 
-alias e='emacsclient -a "" -nw'
+alias ec='emacsclient -a "" -nw'
+alias e='emacs &'
 
 # tmux
 
