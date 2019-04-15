@@ -55,10 +55,14 @@ hook_add = '''
 
     let g:ale_lint_on_save          = 1
     let g:ale_lint_on_enter         = 0
-    let g:ale_lint_on_text_changed  = 1
-    let g:ale_lint_on_insert_leave  = 1
-
     let g:ale_set_quickfix          = 0
+    if has('gui_running')
+        let g:ale_lint_on_text_changed  = 0
+        let g:ale_lint_on_insert_leave  = 0
+    else
+        let g:ale_lint_on_text_changed  = 1
+        let g:ale_lint_on_insert_leave  = 1
+    endif
 
     aug enableALEKeyMaps
         au!
@@ -125,33 +129,36 @@ hook_add = '''
                 \ '__' : '-',
                 \ 'c'  : 'C',
                 \ 'i'  : 'I',
-                \ 'ic' : 'I-C',
-                \ 'ix' : 'I-X',
+                \ 'ic' : 'IC',
+                \ 'ix' : 'IX',
                 \ 'n'  : 'N',
                 \ 'ni' : '(I)',
                 \ 'no' : '(O)',
                 \ 'R'  : 'R',
-                \ 'Rv' : 'R-V',
+                \ 'Rv' : 'RV',
                 \ 's'  : 'S',
-                \ 'S'  : 'S-L',
-                \ '' : 'S-B',
+                \ 'S'  : 'SL',
+                \ '' : 'SB',
                 \ 't'  : 'T',
                 \ 'v'  : 'V',
-                \ 'V'  : 'V-L',
-                \ '' : 'V-B',
+                \ 'V'  : 'VL',
+                \ '' : 'VB',
                 \ }
 
-    let g:airline_powerline_fonts   = 0
-    let g:airline_detect_crypt      = 0
-    let g:airline_detect_iminsert   = 0
-    let g:airline_detect_spell      = 0
-    let g:airline_detect_spelllang  = 0
-    let g:airline_inactive_collapse = 0
+    let g:airline_powerline_fonts    = 0
+    let g:airline_detect_crypt       = 0
+    let g:airline_detect_iminsert    = 0
+    let g:airline_detect_spell       = 0
+    let g:airline_detect_spelllang   = 0
+    let g:airline_highlighting_cache = 0
+    let g:airline_inactive_collapse  = 0
 
-    let g:airline#extensions                    = []
-    let g:airline#extensions#hunks#enabled      = 0
-    let g:airline#extensions#whitespace#enabled = 0
-    let g:airline#extensions#tabline#enabled    = 0
+    let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
+
+    let g:airline#extensions                       = []
+    let g:airline#extensions#hunks#enabled         = 0
+    let g:airline#extensions#whitespace#enabled    = 0
+    let g:airline#extensions#tabline#enabled       = 0
 
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', 'paste'])
@@ -176,7 +183,7 @@ repo = 'vim-airline/vim-airline-themes'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-    nnoremap <Space>fs :<C-u>Gstatus<CR>
+    nnoremap <Space>fs :<C-u>belowright Gstatus<CR>
     nnoremap <Space>fr :<C-u>Gread<CR>
     nnoremap <Space>fb :<C-u>Gblame<CR>
     nnoremap <Space>fd :<C-u>Gdiff<CR>

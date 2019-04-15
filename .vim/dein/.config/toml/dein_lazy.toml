@@ -39,7 +39,7 @@ hook_add = '''
 
 
     function! DefinitionJumpWithPhpactor()
-        split
+        belowright split
         call phpactor#GotoDefinition()
     endfunction
 

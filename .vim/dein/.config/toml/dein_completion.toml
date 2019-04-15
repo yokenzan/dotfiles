@@ -15,7 +15,7 @@ if       = 'has("python3")'
 hook_add = '''
     autocmd BufEnter * call ncm2#enable_for_buffer()
 '''
-depends  = ['ncm2-neosnippet']
+depends  = ['ncm2-neosnippet', 'ncm2-path']
 
 
 [[plugins]]
@@ -30,6 +30,9 @@ depends  = ['neosnippet.vim', 'neosnippet-snippets']
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+    let g:neosnippet#snippets_directory = '~/.vim/snippets'
+'''
 
 
 [[plugins]]
@@ -63,4 +66,8 @@ depends  = ['ncm2-vim-lsp']
 repo = 'ncm2/ncm2-vim-lsp'
 if   = 'has("python3")'
 
+
+[[plugins]]
+repo = 'ncm2/ncm2-path'
+if   = 'has("python3")'
 

@@ -338,8 +338,9 @@ cnoremap <C-[>f <S-Right>
 nnoremap <C-s>s :<C-u>terminal ++rows=20<CR>
 nnoremap <C-s>v :<C-u>vertical terminal<CR>
 
+
 " set gdefault
-set colorcolumn=80
+" set colorcolumn=80
 set noshowmode
 set lazyredraw
 
