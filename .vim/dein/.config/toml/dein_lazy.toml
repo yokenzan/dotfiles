@@ -85,6 +85,8 @@ if       = 'has("python3")'
 hook_add = '''
     aug enableDeniteKeyMap
         au!
+        au VimEnter * nested nnoremap <silent><Space>mm  :<C-u>Denite -mode=normal menu<CR>
+
         au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase -mode=normal register<CR>
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase -mode=normal neoyank<CR>
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
@@ -110,16 +112,6 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitlog<CR>
         au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitstatus<CR>
         au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitbranch<CR>
-
-        " grep関係
-        au VimEnter * nested nnoremap <silent><Space>gp  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   grep<CR>
-        au VimEnter * nested nnoremap <silent><Space>gP  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-highlight grep<CR>
-        au VimEnter * nested nnoremap <silent><Space>Gp  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   grep::!<CR>
-        au VimEnter * nested nnoremap <silent><Space>GP  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-highlight grep::!<CR>
-
-        " Laravel関係
-        au VimEnter * nested nnoremap <silent><Space>rl  :<C-u>Denite -no-empty -default-action=split -smartcase -mode=normal -auto-preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja/<CR>
-        au VimEnter * nested nnoremap <silent><Space>rL  :<C-u>Denite -no-empty -default-action=split -smartcase -mode=normal -auto-preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/original-en<CR>
 
         " 検索結果の再表示と移動
         au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
@@ -185,6 +177,7 @@ hook_post_source = '''
                 \   '--exclude=GTAGS',
                 \   '--exclude=GRTAGS',
                 \   '--exclude=_ide_helper.php',
+                \   '--exclude=query',
                 \ ]
                 \)
     call denite#custom#var('grep', 'patten_opt', ['-E'])
@@ -204,6 +197,39 @@ hook_post_source = '''
     " prompt
 
     call denite#custom#option('default', 'prompt', '$')
+
+
+    let s:menus = {}
+
+    let s:menus.laravel = {
+                \ 'description' : 'Laravel Operations'
+                \ }
+    let s:menus.laravel.command_candidates = [
+                \ ['Open Controller', 'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
+                \ ['Open Domain',     'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
+                \ ['Open Service',    'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
+                \ ['Open Dao',        'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
+                \ ['Open Model',      'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Model$      -path=app/Models                   file/rec'],
+                \ ['Open Middleware', 'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
+                \ ['Open Request',    'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
+                \ ['Open View',       'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ View$       -path=resources/views              file/rec'],
+                \ ['Open Test',       'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Test$       -path=tests                        file/rec'],
+                \ ['Open Illuminate', 'Denite -default-action=switch -smartcase -mode=normal -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
+                \ ['Document grep',   'Denite -no-empty -default-action=split -smartcase -mode=normal -auto-preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja'],
+                \ ['Document titles', 'Denite -no-empty -default-action=split -smartcase -mode=normal -auto-preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/translation-ja'],
+                \]
+
+    let s:menus.grep = {
+                \ 'description' : 'Grep Operations'
+                \ }
+    let s:menus.grep.command_candidates = [
+                \ ['Grep',                       'Denite -no-empty -smartcase -mode=normal -auto-preview   grep'],
+                \ ['Grep with directory config', 'Denite -no-empty -smartcase -mode=normal -auto-preview   grep::!'],
+                \]
+
+
+    call denite#custom#var('menu', 'menus', s:menus)
+
 '''
 depends  = ['neoyank.vim', 'neomru.vim', 'denite-git']
 
