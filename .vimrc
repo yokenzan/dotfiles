@@ -329,6 +329,9 @@ imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 nnoremap Q   4
 nnoremap QQ  8
 nnoremap QQQ 16
+onoremap Q   4
+onoremap QQ  8
+onoremap QQQ 16
 
 nnoremap <C-n> :<C-u>bn<CR>
 nnoremap <C-p> :<C-u>bN<CR>
