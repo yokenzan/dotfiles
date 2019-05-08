@@ -86,13 +86,15 @@ hook_add = '''
     aug enableDeniteKeyMap
         au!
         au VimEnter * nested nnoremap <silent><Space>mm  :<C-u>Denite -mode=normal menu<CR>
+        au VimEnter * nested nnoremap <silent><Space>ml  :<C-u>Denite -mode=normal menu:laravel<CR>
+        au VimEnter * nested nnoremap <silent><Space>mg  :<C-u>Denite -mode=normal menu:grep<CR>
 
         au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase -mode=normal register<CR>
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase -mode=normal neoyank<CR>
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase -mode=normal buffer<CR>
-        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=switch -smartcase -mode=normal -auto-preview jump<CR>
-        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=switch -smartcase -mode=normal -auto-preview mark<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -mode=normal -auto-preview jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -mode=normal -auto-preview mark<CR>
 
         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -no-empty -auto-highlight -smartcase -mode=insert -auto-resize line<CR>
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-highlight -smartcase -mode=normal line<CR>
@@ -108,7 +110,6 @@ hook_add = '''
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   grep/git<CR>
-        au VimEnter * nested nnoremap <silent><Space>gG  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-highlight grep/git<CR>
         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitlog<CR>
         au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitstatus<CR>
         au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitbranch<CR>

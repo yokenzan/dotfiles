@@ -1,4 +1,5 @@
 [[plugins]]
+
 repo    = 'roxma/vim-hug-neovim-rpc'
 if      = '!has("nvim") && has("python3")'
 depends = ['nvim-yarp']
@@ -15,7 +16,7 @@ if       = 'has("python3")'
 hook_add = '''
     autocmd BufEnter * call ncm2#enable_for_buffer()
 '''
-depends  = ['ncm2-neosnippet', 'ncm2-path']
+depends  = ['ncm2-neosnippet']
 
 
 [[plugins]]
@@ -64,10 +65,5 @@ depends  = ['ncm2-vim-lsp']
 
 [[plugins]]
 repo = 'ncm2/ncm2-vim-lsp'
-if   = 'has("python3")'
-
-
-[[plugins]]
-repo = 'ncm2/ncm2-path'
 if   = 'has("python3")'
 
