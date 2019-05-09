@@ -268,7 +268,7 @@ set background=light
 if executable('pandoc')
     augroup PandocAutoCommand
         autocmd!
-        autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:p.html %:p
+        autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:r.html %:p
     augroup END
 endif
 
