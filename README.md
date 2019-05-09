@@ -1,6 +1,6 @@
 # dotfiles
 
-my configulation files.
+my configuration files.
 
 I'm sorry for my bad English.
 
