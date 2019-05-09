@@ -389,7 +389,8 @@ repo     = 'easymotion/vim-easymotion'
 
 
 [[plugins]]
-repo     = 'junegunn/vim-easy-align'
+repo     = 'yokenzan/vim-easy-align'
+rev      = 'customize'
 hook_add = '''
     nmap ga <Plug>(EasyAlign)
     xmap ga <Plug>(EasyAlign)
