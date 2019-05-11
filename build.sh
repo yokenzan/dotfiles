@@ -5,7 +5,7 @@
  sudo apt update sudo apt upgrade
 
  # install basic packages
- sudo apt install -y curl git tig ibus-skk xsel tmux highlight w3m w3m-img rxvt-unicode-256color emacs fzy global
+ sudo apt install -y curl git tig ibus-skk xsel highlight w3m w3m-img rxvt-unicode-256color mlterm emacs fzy global
 
  # install i3 window manager
  sudo apt install -y i3 rofi feh
@@ -29,6 +29,8 @@
  # install packages needed to build vim
  sudo apt install -y gettext build-essential libtinfo-dev libacl1-dev libgpm-dev
 
+ # install packages needed to build tmux
+ sudo apt install -y libevent-dev libncurses5 libncurses5-dev
 
 wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 sudo mv composer.phar /usr/local/bin/composer
@@ -71,6 +73,18 @@ fi
 
 vim -c "call dein#install()"
 
+
+#build TMUX
+
+cd $HOME/wk/repos/oss
+git clone git://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure
+
+if [ $? ]; then
+    make && sudo make install
+fi
 
 
 #build alacritty
