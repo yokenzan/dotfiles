@@ -46,27 +46,34 @@ hook_add = '''
     aug enablePhpactorKeyBindings
         au!
         " Include use statement
-        nmap <Leader>u :<C-u>call phpactor#UseAdd()<CR>
+        nmap <silent><Space>pu           :<C-u>call phpactor#UseAdd()<CR>
         " Invoke the context menu
-        nmap <Leader>mm :<C-u>call phpactor#ContextMenu()<CR>
+        nmap <silent><Space>pcm          :<C-u>call phpactor#ContextMenu()<CR>
         " Invoke the navigation menu
-        nmap <Leader>nn :<C-u>call phpactor#Navigate()<CR>
+        nmap <silent><Space>pn           :<C-u>call phpactor#Navigate()<CR>
         " Goto definition of class or class member under the cursor
-        nmap <Leader>o :<C-u>call phpactor#GotoDefinition()<CR>
+        nmap <silent><Space>p<C-]>       :<C-u>call phpactor#GotoDefinition()<CR>
         " Goto definition of class or class member under the cursor
-        nmap <C-w><Leader>o :<C-u>call DefinitionJumpWithPhpactor()<CR>
+        nmap <silent><Space>p<C-w><C-]>  :<C-u>call DefinitionJumpWithPhpactor()<CR>
         " Transform the classes in the current file
-        nmap <Leader>tt :<C-u>call phpactor#Transform()<CR>
+        nmap <silent><Space>pt           :<C-u>call phpactor#Transform()<CR>
         " Generate a new class (replacing the current file)
-        nmap <Leader>cc :<C-u>call phpactor#ClassNew()<CR>
+        nmap <silent><Space>pcn          :<C-u>call phpactor#ClassNew()<CR>
+        "
+        nmap <silent><Space>pcf          :<C-u>call phpactor#CopyFile()<CR>
+
+        nmap <silent><Space>pmf          :<C-u>call phpactor#MoveFile()<CR>
         " Extract expression (normal mode)
-        nmap <silent><Leader>ee :<C-u>call phpactor#ExtractExpression(v:false)<CR>
+        nmap <silent><Space>pee          :<C-u>call phpactor#ExtractExpression(v:false)<CR>
         " show Full namespace of class under cursor
-        nmap <silent><Leader>hh :<C-u>call phpactor#Hover()<CR>
+        nmap <silent><Space>ph           :<C-u>call phpactor#Hover()<CR>
+        " Find references
+        nmap <silent><Space>pfr          :<C-u>call phpactor#FindReferences()<CR>
+
         " Extract expression from selection
-        vmap <silent><Leader>ee :<C-u>call phpactor#ExtractExpression(v:true)<CR>
+        vmap <silent><Space>pee          :<C-u>call phpactor#ExtractExpression(v:true)<CR>
         " Extract method from selection
-        vmap <silent><Leader>em :<C-u>call phpactor#ExtractMethod()<CR>
+        vmap <silent><Space>pem          :<C-u>call phpactor#ExtractMethod()<CR>
     aug END
 '''
 
