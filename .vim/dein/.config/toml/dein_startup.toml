@@ -291,10 +291,6 @@ hook_add = '''
     \       "runner" : "vimproc"
     \   }
     \}
-    aug enableQuickRun
-        au!
-        au VimEnter * nested noremap <Space>qr :<C-u>QuickRun<CR>
-    aug END
 '''
 
 
@@ -400,3 +396,8 @@ hook_add = '''
     nmap ga <Plug>(EasyAlign)
     xmap ga <Plug>(EasyAlign)
 '''
+
+
+[[plugins]]
+repo     = 'dhruvasagar/vim-table-mode'
+
