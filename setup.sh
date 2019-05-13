@@ -4,7 +4,8 @@ mkdir -p \
     $HOME/.config/composer  \
     $HOME/.config/alacritty \
     $HOME/.config/i3        \
-    $HOME/.config/ranger
+    $HOME/.config/ranger    \
+    $HOME/.mlterm
 
 mkdir -p $HOME/.emacs.d
 
@@ -35,6 +36,9 @@ ln -sf $HOME/.dotfiles/.config/ranger/commands_full.py $HOME/.config/ranger
 ln -sf $HOME/.dotfiles/.config/ranger/rc.conf          $HOME/.config/ranger
 ln -sf $HOME/.dotfiles/.config/ranger/rifle.conf       $HOME/.config/ranger
 ln -sf $HOME/.dotfiles/.config/ranger/scope.sh         $HOME/.config/ranger
+
+ln -sf /home/cyrt/.dotfiles/.mlterm/aafont             $home/.mlterm
+ln -sf /home/cyrt/.dotfiles/.mlterm/main               $home/.mlterm
 
 
 if [ $(uname | grep -qe 'NT') ]; then
