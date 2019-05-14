@@ -98,6 +98,7 @@ set matchpairs+=（:）,「:」,『:』,｛:｝
 set matchtime=1
 
 source $VIMRUNTIME/macros/matchit.vim
+runtime ftplugin/man.vim
 
 
 " Disable Auto Indent When Paste Characters

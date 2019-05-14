@@ -38,3 +38,4 @@ end
 if defined? PryStackExplorer
   Pry.commands.alias_command 'st', 'show-stack'
 end
+# vim:ft=ruby
