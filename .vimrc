@@ -350,7 +350,8 @@ nnoremap <C-s>v :<C-u>vertical terminal<CR>
 
 " set gdefault
 " set colorcolumn=80
-set noshowmode
+" needed for showing ^X mode in completion
+set showmode
 set lazyredraw
 
 set splitbelow
