@@ -28,7 +28,16 @@ repo = 'vim-scripts/phd'
 
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
-
+hook_add = '''
+    let g:PaperColor_Theme_Options = {
+    \   'theme': {
+    \     'default': {
+    \       'allow_bold':   1,
+    \       'allow_italic': 1
+    \     }
+    \   }
+    \ }
+'''
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
