@@ -117,6 +117,7 @@ hook_add = '''
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   grep/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>gG  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   igrep/git<CR>
         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitlog<CR>
         au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitstatus<CR>
         au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -smartcase -mode=normal -auto-preview   gitbranch<CR>
@@ -172,6 +173,7 @@ hook_post_source = '''
                 \)
     call denite#custom#var('grep/git', 'recursive_opts', [])
     call denite#custom#var('grep/git', 'pattern_opt',    [])
+    call denite#custom#var('grep/git', 'default_opts',   ['-nH'])
 
     " grep
 
@@ -190,8 +192,18 @@ hook_post_source = '''
                 \)
     call denite#custom#var('grep', 'patten_opt', ['-E'])
 
+    " grep/git ignore case
 
-    for source in ['jump', 'register', 'neoyank', 'mark', 'line', 'file_mru', 'grep', 'grep/git', 'gitlog', 'gitstatus', 'gitbranch']
+    call denite#custom#alias('source', 'igrep/git', 'grep')
+    call denite#custom#var('igrep/git', 'command',
+                \ ['git', 'grep']
+                \)
+    call denite#custom#var('igrep/git', 'recursive_opts', [])
+    call denite#custom#var('igrep/git', 'pattern_opt',    [])
+    call denite#custom#var('igrep/git', 'default_opts',   ['-inH'])
+
+
+    for source in ['jump', 'register', 'neoyank', 'mark', 'line', 'file_mru', 'grep', 'grep/git', 'igrep/git', 'gitlog', 'gitstatus', 'gitbranch']
         call denite#custom#source(source, 'matchers', ['matcher/substring'])
     endfor
 
