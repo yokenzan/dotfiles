@@ -37,44 +37,44 @@ hook_add = '''
     let g:phpactorOmniAutoClassImport  = v:true
     let g:phpactorCompletionIgnoreCase = 0
 
+    autocmd FileType php call s:enablePhpactorKeyBindings()
 
     function! DefinitionJumpWithPhpactor()
         belowright split
         call phpactor#GotoDefinition()
     endfunction
 
-    aug enablePhpactorKeyBindings
-        au!
+    function! s:enablePhpactorKeyBindings() abort
         " Include use statement
-        nmap <silent><Space>pu           :<C-u>call phpactor#UseAdd()<CR>
+        nnoremap <silent><buffer><Space>pu           :<C-u>call phpactor#UseAdd()<CR>
         " Invoke the context menu
-        nmap <silent><Space>pcm          :<C-u>call phpactor#ContextMenu()<CR>
+        nnoremap <silent><buffer><Space>pcm          :<C-u>call phpactor#ContextMenu()<CR>
         " Invoke the navigation menu
-        nmap <silent><Space>pn           :<C-u>call phpactor#Navigate()<CR>
+        nnoremap <silent><buffer><Space>pn           :<C-u>call phpactor#Navigate()<CR>
         " Goto definition of class or class member under the cursor
-        nmap <silent><Space>p<C-]>       :<C-u>call phpactor#GotoDefinition()<CR>
+        nnoremap <silent><buffer><Space>p<C-]>       :<C-u>call phpactor#GotoDefinition()<CR>
         " Goto definition of class or class member under the cursor
-        nmap <silent><Space>p<C-w><C-]>  :<C-u>call DefinitionJumpWithPhpactor()<CR>
+        nnoremap <silent><buffer><Space>p<C-w><C-]>  :<C-u>call DefinitionJumpWithPhpactor()<CR>
         " Transform the classes in the current file
-        nmap <silent><Space>pt           :<C-u>call phpactor#Transform()<CR>
+        nnoremap <silent><buffer><Space>pt           :<C-u>call phpactor#Transform()<CR>
         " Generate a new class (replacing the current file)
-        nmap <silent><Space>pcn          :<C-u>call phpactor#ClassNew()<CR>
-        "
-        nmap <silent><Space>pcf          :<C-u>call phpactor#CopyFile()<CR>
+        nnoremap <silent><buffer><Space>pcn          :<C-u>call phpactor#ClassNew()<CR>
 
-        nmap <silent><Space>pmf          :<C-u>call phpactor#MoveFile()<CR>
+        nnoremap <silent><buffer><Space>pcf          :<C-u>call phpactor#CopyFile()<CR>
+
+        nnoremap <silent><buffer><Space>pmf          :<C-u>call phpactor#MoveFile()<CR>
         " Extract expression (normal mode)
-        nmap <silent><Space>pee          :<C-u>call phpactor#ExtractExpression(v:false)<CR>
+        nnoremap <silent><buffer><Space>pee          :<C-u>call phpactor#ExtractExpression(v:false)<CR>
         " show Full namespace of class under cursor
-        nmap <silent><Space>ph           :<C-u>call phpactor#Hover()<CR>
+        nnoremap <silent><buffer><Space>ph           :<C-u>call phpactor#Hover()<CR>
         " Find references
-        nmap <silent><Space>pfr          :<C-u>call phpactor#FindReferences()<CR>
+        nnoremap <silent><buffer><Space>pfr          :<C-u>call phpactor#FindReferences()<CR>
 
         " Extract expression from selection
-        vmap <silent><Space>pee          :<C-u>call phpactor#ExtractExpression(v:true)<CR>
+        vnoremap <silent><buffer><Space>pee          :<C-u>call phpactor#ExtractExpression(v:true)<CR>
         " Extract method from selection
-        vmap <silent><Space>pem          :<C-u>call phpactor#ExtractMethod()<CR>
-    aug END
+        vnoremap <silent><buffer><Space>pem          :<C-u>call phpactor#ExtractMethod()<CR>
+    endfunction
 '''
 
 
