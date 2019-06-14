@@ -11,10 +11,6 @@ repo = 'felipesousa/rupza'
 
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-
-[[plugins]]
 repo = 'GGalizzi/cake-vim'
 
 
@@ -42,7 +38,7 @@ hook_add = '''
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
-    let g:gruvbox_contrast_light = "medium"
+    let g:gruvbox_contrast_light = "hard"
     let g:gruvbox_contrast_dark  = "medium"
     let g:gruvbox_number_column  = "bg1"
     let g:gruvbox_italic         = 1
