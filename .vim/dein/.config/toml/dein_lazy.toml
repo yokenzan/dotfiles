@@ -39,11 +39,6 @@ hook_add = '''
 
     autocmd FileType php call s:enablePhpactorKeyBindings()
 
-    function! DefinitionJumpWithPhpactor()
-        belowright split
-        call phpactor#GotoDefinition()
-    endfunction
-
     function! s:enablePhpactorKeyBindings() abort
         " Include use statement
         nnoremap <silent><buffer><Space>pu           :<C-u>call phpactor#UseAdd()<CR>
@@ -54,7 +49,9 @@ hook_add = '''
         " Goto definition of class or class member under the cursor
         nnoremap <silent><buffer><Space>p<C-]>       :<C-u>call phpactor#GotoDefinition()<CR>
         " Goto definition of class or class member under the cursor
-        nnoremap <silent><buffer><Space>p<C-w><C-]>  :<C-u>call DefinitionJumpWithPhpactor()<CR>
+        nnoremap <silent><buffer><Space>pv<C-]>      :<C-u>call phpactor#GotoDefinitionVsplit()<CR>
+        " Goto definition of class or class member under the cursor
+        nnoremap <silent><buffer><Space>ps<C-]>      :<C-u>call phpactor#GotoDefinitionHsplit()<CR>
         " Transform the classes in the current file
         nnoremap <silent><buffer><Space>pt           :<C-u>call phpactor#Transform()<CR>
         " Generate a new class (replacing the current file)
