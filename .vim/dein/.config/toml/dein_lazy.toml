@@ -87,7 +87,6 @@ repo     = 'Shougo/denite.nvim'
 on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteProjectDir', 'DeniteCursorWord']
 on_func  = ['denite#']
 if       = 'has("python3")'
-rev      = '3.*'
 hook_add = '''
 
     " keymap within Denite
@@ -104,8 +103,12 @@ hook_add = '''
         nnoremap <silent><buffer><expr>t       denite#do_map('do_action', 'tabswitch')
         nnoremap <silent><buffer><expr>q       denite#do_map('quit')
         nnoremap <silent><buffer><expr>i       denite#do_map('open_filter_buffer')
+        nnoremap <silent><buffer><expr>a       denite#do_map('do_action', 'append')
+        nnoremap <silent><buffer><expr>y       denite#do_map('do_action', 'yank')
+        nnoremap <silent><buffer><expr>r       denite#do_map('do_action', 'replace')
         nnoremap <silent><buffer><expr><Space> denite#do_map('toggle_select').'j'
         nnoremap <silent><buffer><expr><C-c>   denite#do_map('quit')
+        nnoremap <silent><buffer><expr><C-i>   denite#do_map('choose_action')
     endfunction
 
     function! s:denite_filter_my_settings() abort
@@ -204,9 +207,17 @@ hook_post_source = '''
         call denite#custom#source(source, 'matchers', ['matcher/substring'])
     endfor
 
+    for source in ['file_mru']
+        call denite#custom#source(source, 'matchers', ['matcher/ignore_current_buffer', 'matcher/substring'])
+    endfor
 
-    for source in ['buffer', 'file', 'file/rec', 'file/git']
+    for source in ['buffer']
         call denite#custom#source(source, 'matchers', ['matcher/substring'])
+        call denite#custom#source(source, 'sorters',  ['sorter/rank'])
+    endfor
+
+    for source in ['file', 'file/rec', 'file/git']
+        call denite#custom#source(source, 'matchers', ['matcher/ignore_current_buffer', 'matcher/substring'])
         call denite#custom#source(source, 'sorters',  ['sorter/word'])
     endfor
 
