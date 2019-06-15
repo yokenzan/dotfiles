@@ -127,10 +127,10 @@ hook_add = '''
 
         au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase register<CR>
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase neoyank<CR>
-        au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase help<CR>
+        au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase -start_filter help<CR>
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase buffer<CR>
-        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -auto-action=preview jump<CR>
-        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -auto-action=preview mark<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview mark<CR>
 
         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -no-empty -auto-action=highlight -smartcase -start_filter -auto-resize line<CR>
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-action=highlight -smartcase line<CR>
@@ -138,11 +138,11 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -smartcase -reversed command_history<CR>
 
         " ファイル関係
-        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -no-empty -smartcase file<CR>
-        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -no-empty -smartcase file<CR>
-        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -no-empty -smartcase file_mru<CR>
-        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -no-empty -smartcase file/rec<CR>
-        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -no-empty -smartcase file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -no-empty -smartcase -vertical-preview file<CR>
+        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file<CR>
+        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -no-empty -smartcase -vertical-preview file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -no-empty -smartcase -vertical-preview file/rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file/git<CR>
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -auto-action=preview  grep/git<CR>
@@ -235,16 +235,16 @@ hook_post_source = '''
                 \ 'description' : 'Laravel Operations'
                 \ }
     let s:menus.laravel.command_candidates = [
-                \ ['Open Controller', 'Denite -default-action=switch -smartcase -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
-                \ ['Open Domain',     'Denite -default-action=switch -smartcase -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
-                \ ['Open Service',    'Denite -default-action=switch -smartcase -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
-                \ ['Open Dao',        'Denite -default-action=switch -smartcase -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
-                \ ['Open Model',      'Denite -default-action=switch -smartcase -prompt=Open\ Model$      -path=app/Models                   file/rec'],
-                \ ['Open Middleware', 'Denite -default-action=switch -smartcase -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
-                \ ['Open Request',    'Denite -default-action=switch -smartcase -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
-                \ ['Open View',       'Denite -default-action=switch -smartcase -prompt=Open\ View$       -path=resources/views              file/rec'],
-                \ ['Open Test',       'Denite -default-action=switch -smartcase -prompt=Open\ Test$       -path=tests                        file/rec'],
-                \ ['Open Illuminate', 'Denite -default-action=switch -smartcase -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
+                \ ['Open Controller', 'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
+                \ ['Open Domain',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
+                \ ['Open Service',    'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
+                \ ['Open Dao',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
+                \ ['Open Model',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Model$      -path=app/Models                   file/rec'],
+                \ ['Open Middleware', 'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
+                \ ['Open Request',    'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
+                \ ['Open View',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ View$       -path=resources/views              file/rec'],
+                \ ['Open Test',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Test$       -path=tests                        file/rec'],
+                \ ['Open Illuminate', 'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
                 \ ['Document grep',   'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja'],
                 \ ['Document titles', 'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/translation-ja'],
                 \]
