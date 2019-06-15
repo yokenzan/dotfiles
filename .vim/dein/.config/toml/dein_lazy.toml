@@ -122,6 +122,8 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>mm  :<C-u>Denite menu<CR>
         au VimEnter * nested nnoremap <silent><Space>ml  :<C-u>Denite menu:laravel<CR>
         au VimEnter * nested nnoremap <silent><Space>mg  :<C-u>Denite menu:grep<CR>
+        au VimEnter * nested nnoremap <silent><Space>mv  :<C-u>Denite menu:vim_config<CR>
+        au VimEnter * nested nnoremap <silent><Space>mb  :<C-u>Denite menu:bash_config<CR>
 
         au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase register<CR>
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase neoyank<CR>
@@ -255,6 +257,26 @@ hook_post_source = '''
                 \ ['Grep with directory config', 'Denite -no-empty -smartcase -auto-action=preview   grep::!'],
                 \]
 
+    let s:menus.bash_config = {
+                \ 'description' : 'Bash Config Operations'
+                \ }
+    let s:menus.bash_config.file_candidates = [
+                \ ['.bashrc',         '~/.dotfiles/.bashrc'],
+                \ ['.bash_profile',   '~/.dotfiles/.bash_profile'],
+                \ ['.bash_functions', '~/.dotfiles/.bash_functions'],
+                \ ['.bash_alieses',   '~/.dotfiles/.bash_alieses'],
+                \]
+
+    let s:menus.vim_config = {
+                \ 'description' : 'Vim Config Operations'
+                \ }
+    let s:menus.vim_config.file_candidates = [
+                \ ['.vimrc',                          '~/.dotfiles/.vimrc'],
+                \ ['startup loaded libraries config', '~/.dotfiles/.vim/dein/.config/toml/dein_startup.toml'],
+                \ ['lazy loaded libraries config',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
+                \ ['completion libraries config',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
+                \ ['colorscheme config',              '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
+                \]
 
     call denite#custom#var('menu', 'menus', s:menus)
 
