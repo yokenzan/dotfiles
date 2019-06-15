@@ -437,3 +437,14 @@ repo     = 'dhruvasagar/vim-table-mode'
 repo     = 'osyo-manga/vim-textobj-multiblock'
 
 
+[[plugins]]
+repo    = 'roxma/vim-hug-neovim-rpc'
+if      = '!has("nvim") && has("python3")'
+depends = ['nvim-yarp']
+
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if   = '!has("nvim") && has("python3")'
+
+

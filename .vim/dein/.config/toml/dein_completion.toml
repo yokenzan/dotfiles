@@ -1,39 +1,9 @@
 [[plugins]]
-
-repo    = 'roxma/vim-hug-neovim-rpc'
-if      = '!has("nvim") && has("python3")'
-depends = ['nvim-yarp']
-
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if   = '!has("nvim") && has("python3")'
-
-
-[[plugins]]
-repo     = 'ncm2/ncm2'
-if       = 'has("python3")'
-hook_add = '''
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-'''
-depends  = ['ncm2-neosnippet']
-
-
-[[plugins]]
-repo     = 'ncm2/ncm2-neosnippet'
-if       = 'has("python3")'
-hook_add = '''
-    imap <expr><C-l> neosnippet#expandable() ? ncm2_neosnippet#expand_or("\<Tab>", 'n') : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<Tab>"
-    smap <expr><C-l> neosnippet#expandable() ? ncm2_neosnippet#expand_or("\<Tab>", 'n') : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<Tab>"
-'''
-depends  = ['neosnippet.vim', 'neosnippet-snippets']
-
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 hook_add = '''
     let g:neosnippet#snippets_directory = '~/.vim/snippets'
 '''
+depends = ['neosnippet-snippets', 'coc.nvim']
 
 
 [[plugins]]
@@ -41,29 +11,56 @@ repo = 'Shougo/neosnippet-snippets'
 
 
 [[plugins]]
-repo    = 'prabirshrestha/async.vim'
-if      = 'has("python3")'
-depends = ['vim-lsp']
-
-
-[[plugins]]
-repo     = 'prabirshrestha/vim-lsp'
-if       = 'has("python3")'
+repo  = 'neoclide/coc.nvim'
+merge = 0
+build = 'yarn install --frozen-lockfile'
 hook_add = '''
-    if executable('solargraph')
-        " gem install solargraph
-        au User lsp_setup call lsp#register_server({
-            \ 'name': 'solargraph',
-            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-            \ 'initialization_options': {"diagnostics": "true"},
-            \ 'whitelist': ['ruby'],
-            \ })
-    endif
+
+    " Use <c-space> to trigger completion.
+    inoremap <silent><expr><c-space> coc#refresh()
+
+    nmap <silent>[C <Plug>(coc-diagnostic-prev)
+    nmap <silent>]C <Plug>(coc-diagnostic-next)
+
+    nmap <silent><space>c<C-]> <Plug>(coc-definition)
+    nmap <silent><space>ctd    <Plug>(coc-type-definition)
+    nmap <silent><space>ci     <Plug>(coc-implementation)
+    nmap <silent><space>cfr    <Plug>(coc-references)
+
+    nnoremap <silent><space>K :call <SID>show_documentation()<CR>
+
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
+
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " Remap for rename current word
+    nmap <Space>cr <Plug>(coc-rename)
+
+    " Remap for format selected region
+    xmap <Space>cf <Plug>(coc-format-selected)
+    nmap <Space>cf <Plug>(coc-format-selected)
+
+    " Remap for do codeAction of selected region
+    xmap <Space>ca <Plug>(coc-codeaction-selected)
+    nmap <Space>ca <Plug>(coc-codeaction-selected)
+
+
+    smap <silent><expr><C-l>
+                \ neosnippet#jumpable()   ? "\<Plug>(neosnippet_jump)"   :
+                \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+                \ "\<Tab>"
+
+    imap <silent><expr><C-l>
+                \ pumvisible() ? coc#_select_confirm() :
+                \ neosnippet#jumpable()   ? "\<Plug>(neosnippet_jump)"   :
+                \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+                \ coc#refresh()
 '''
-depends  = ['ncm2-vim-lsp']
-
-
-[[plugins]]
-repo = 'ncm2/ncm2-vim-lsp'
-if   = 'has("python3")'
 
