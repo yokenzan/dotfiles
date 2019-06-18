@@ -172,11 +172,19 @@ function! ToggleCursorLineAndColumn()
     endif
 endfunction
 
+function! ToggleBackground()
+    if &background == 'dark'
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
 
 nnoremap <Space>tl :<C-u>set cul!<CR>
 nnoremap <Space>tc :<C-u>set cuc!<CR>
 nnoremap <Space>tw :<C-u>set wrap!<CR>
 nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
+nnoremap <Space>tB :<C-u>call ToggleBackground()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap /  /\v
 nnoremap // /\V
