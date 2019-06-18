@@ -85,16 +85,15 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-    if has('gui_running')
-        let g:gitgutter_sign_base               = '▶'
-    else
-        let g:gitgutter_sign_base               = ''
-    endif
-    let g:gitgutter_sign_added              = g:gitgutter_sign_base
-    let g:gitgutter_sign_modified           = g:gitgutter_sign_base
-    let g:gitgutter_sign_removed            = g:gitgutter_sign_base
-    let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_base
-    let g:gitgutter_sign_modified_removed   = g:gitgutter_sign_base
+    let s:gitgutter_sign_candidates         = ['ゝ', '', '〇']
+    let s:gitgutter_sign_index              = 0
+
+    let s:gitgutter_sign_base               = s:gitgutter_sign_candidates[s:gitgutter_sign_index]
+    let g:gitgutter_sign_added              = s:gitgutter_sign_base
+    let g:gitgutter_sign_modified           = s:gitgutter_sign_base
+    let g:gitgutter_sign_removed            = s:gitgutter_sign_base
+    let g:gitgutter_sign_removed_first_line = s:gitgutter_sign_base
+    let g:gitgutter_sign_modified_removed   = s:gitgutter_sign_base
 '''
 
 
@@ -168,14 +167,16 @@ hook_add = '''
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', ' ', 'paste'])
     let g:airline_section_b = airline#section#create([
-                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n'
+                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n',
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
 
+    call extend(g:airline_symbols, { 'paste': 'P', 'spell': 'S' }, 'force')
+
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
-        \ ['error', 'x', 'y', 'z']
+        \ ['x', 'y', 'z'],
         \ ]
 '''
 depends = ['vim-airline-themes']
