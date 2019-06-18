@@ -243,27 +243,25 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_Cs = "\<Esc>[4:3m"
 let &t_Ce = "\<Esc>[4:0m"
 
+" colorscheme PaperColor
+" colorscheme ayu
 " colorscheme badwolf
 " colorscheme cake
 " colorscheme desert
+" colorscheme distinguished
+colorscheme gruvbox
+" colorscheme iceberg
 " colorscheme koehler
 " colorscheme molokai
 " colorscheme monokai
+" colorscheme one
 " colorscheme phd
 " colorscheme rupza
 " colorscheme slate
-" colorscheme gruvbox
-" colorscheme PaperColor
-" colorscheme distinguished
-" colorscheme ayu
-" colorscheme autumnleaf
-colorscheme solarized
-" colorscheme one
+" colorscheme solarized8_flat
+" colorscheme solarized8_high
+" colorscheme solarized8_low
 
-
-" highlight PmenuSel guifg=white guibg=lightmagenta
-" highlight SpellBad term=bold,underline
-" highlight Todo     cterm=reverse
 " set background=dark
 set background=light
 
