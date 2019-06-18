@@ -325,10 +325,10 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 
 " Background Transparency Setting
 
-highlight Normal      ctermbg=NONE guibg=NONE
-highlight NonText     ctermbg=NONE guibg=NONE
-highlight SpecialKey  ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
+" highlight Normal      ctermbg=NONE guibg=NONE
+" highlight NonText     ctermbg=NONE guibg=NONE
+" highlight SpecialKey  ctermbg=NONE guibg=NONE
+" highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
