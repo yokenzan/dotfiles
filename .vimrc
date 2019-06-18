@@ -300,6 +300,10 @@ onoremap <Space><Space>f f<C-k>
 onoremap <Space><Space>t t<C-k>
 onoremap <Space><Space>F F<C-k>
 onoremap <Space><Space>T T<C-k>
+vnoremap <Space><Space>f f<C-k>
+vnoremap <Space><Space>t t<C-k>
+vnoremap <Space><Space>F F<C-k>
+vnoremap <Space><Space>T T<C-k>
 
 
 " keep region selecting after indent
