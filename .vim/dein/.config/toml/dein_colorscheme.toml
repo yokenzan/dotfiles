@@ -35,6 +35,7 @@ hook_add = '''
     \ }
 '''
 
+
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
@@ -71,3 +72,5 @@ hook_add = '''
 '''
 
 
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
