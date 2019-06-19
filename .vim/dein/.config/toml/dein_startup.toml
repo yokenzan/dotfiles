@@ -80,7 +80,7 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-    let s:gitgutter_sign_candidates         = ['ゝ', '', '〇']
+    let s:gitgutter_sign_candidates         = ['ゝ', '', '〇', '●']
     let s:gitgutter_sign_index              = 0
 
     let s:gitgutter_sign_base               = s:gitgutter_sign_candidates[s:gitgutter_sign_index]
