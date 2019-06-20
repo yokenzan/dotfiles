@@ -142,7 +142,7 @@ hook_add = '''
     let g:airline_powerline_fonts    = 0
     let g:airline_detect_crypt       = 0
     let g:airline_detect_iminsert    = 0
-    let g:airline_detect_spell       = 0
+    let g:airline_detect_spell       = 1
     let g:airline_detect_spelllang   = 0
     let g:airline_highlighting_cache = 0
     let g:airline_inactive_collapse  = 0
@@ -160,14 +160,14 @@ hook_add = '''
     let g:airline#extensions#ale#close_lnum_symbol = ''
 
     let g:airline_theme     = 'light'
-    let g:airline_section_a = airline#section#create(['mode', ' ', 'paste'])
+    let g:airline_section_a = airline#section#create(['mode', 'paste'])
     let g:airline_section_b = airline#section#create([
                 \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n',
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
 
-    call extend(g:airline_symbols, { 'paste': 'P', 'spell': 'S' }, 'force')
+    call extend(g:airline_symbols, { 'paste': ' P', 'spell': ' S' }, 'force')
 
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
