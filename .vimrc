@@ -180,11 +180,20 @@ function! ToggleBackground()
     endif
 endfunction
 
+function! ToggleConcealLevel()
+    if &conceallevel == 0
+        set conceallevel=2
+    else
+        set conceallevel=0
+    endif
+endfunction
+
 nnoremap <Space>tl :<C-u>set cul!<CR>
 nnoremap <Space>tc :<C-u>set cuc!<CR>
 nnoremap <Space>tw :<C-u>set wrap!<CR>
 nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <Space>tB :<C-u>call ToggleBackground()<CR>
+nnoremap <Space>tC :<C-u>call ToggleConcealLevel()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap /  /\v
 nnoremap // /\V
