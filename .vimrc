@@ -143,6 +143,7 @@ set ttimeoutlen=30
 set hidden              " allow buffers hide from screen without saving
 set updatetime=100
 set signcolumn=yes
+set conceallevel=0
 
 
 " Setting Sessions
@@ -193,6 +194,7 @@ nnoremap <Space>tc :<C-u>set cuc!<CR>
 nnoremap <Space>tw :<C-u>set wrap!<CR>
 nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <Space>tB :<C-u>call ToggleBackground()<CR>
+nnoremap <Space>tS :<C-u>set spell!<CR>
 nnoremap <Space>tC :<C-u>call ToggleConcealLevel()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap /  /\v
@@ -238,14 +240,7 @@ endif
 
 syntax on
 set t_Co=256
-
 set termguicolors
-" if $SHLVL > 1
-"     " set termguicolors
-    " set notermguicolors
-" else
-"     set notermguicolors
-" endif
 
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
