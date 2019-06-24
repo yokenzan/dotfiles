@@ -87,6 +87,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -no-empty -smartcase -vertical-preview file<CR>
         au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file<CR>
         au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -no-empty -smartcase -vertical-preview file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>up  :<C-u>Denite           -no-empty -smartcase -vertical-preview -matchers=matcher/project_files,matcher/ignore_current_buffer,matcher/substring file_mru<CR>
         au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -no-empty -smartcase -vertical-preview file/rec<CR>
         au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file/git<CR>
 
@@ -130,12 +131,14 @@ hook_post_source = '''
                 \   '-nH',
                 \   '--exclude-dir=.git',
                 \   '--exclude-dir=storage',
+                \   '--exclude-dir=query',
+                \   '--exclude-dir=pdfjs',
+                \   '--exclude-dir=node_modules',
                 \   '--exclude=tags',
                 \   '--exclude=GPATH',
                 \   '--exclude=GTAGS',
                 \   '--exclude=GRTAGS',
                 \   '--exclude=_ide_helper.php',
-                \   '--exclude=query',
                 \ ]
                 \)
     call denite#custom#var('grep', 'patten_opt', ['-E'])
@@ -222,6 +225,13 @@ hook_post_source = '''
                 \ ['lazy loaded libraries config',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
                 \ ['completion libraries config',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
                 \ ['colorscheme config',              '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
+                \]
+
+    let s:menus.misc = {
+                \ 'description' : 'Misc Operations'
+                \ }
+    let s:menus.misc.command_candidates = [
+                \ ['Show messages','Denite output:messages'],
                 \]
 
     call denite#custom#var('menu', 'menus', s:menus)
