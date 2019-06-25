@@ -28,6 +28,43 @@ hook_post_source = '''
 
 
 [[plugins]]
+repo  = 'phpactor/phpactor'
+if    = 'executable("php")'
+on_ft = ['php']
+build = 'composer install'
+hook_add = '''
+    let g:phpactorBranch               = 'develop'
+    let g:phpactorOmniAutoClassImport  = v:true
+    let g:phpactorCompletionIgnoreCase = 0
+
+    autocmd FileType php call s:enablePhpactorKeyBindings()
+
+    function! s:enablePhpactorKeyBindings() abort
+        " Include use statement
+        nnoremap <silent><buffer><Space>pu           :<C-u>call phpactor#UseAdd()<CR>
+        " Invoke the context menu
+        nnoremap <silent><buffer><Space>pcm          :<C-u>call phpactor#ContextMenu()<CR>
+        " Invoke the navigation menu
+        nnoremap <silent><buffer><Space>pn           :<C-u>call phpactor#Navigate()<CR>
+        " Goto definition of class or class member under the cursor
+        nnoremap <silent><buffer><Space>pt           :<C-u>call phpactor#Transform()<CR>
+        " Generate a new class (replacing the current file)
+        nnoremap <silent><buffer><Space>pcn          :<C-u>call phpactor#ClassNew()<CR>
+
+        nnoremap <silent><buffer><Space>pcf          :<C-u>call phpactor#CopyFile()<CR>
+
+        nnoremap <silent><buffer><Space>pmf          :<C-u>call phpactor#MoveFile()<CR>
+        " Extract expression (normal mode)
+        nnoremap <silent><buffer><Space>pee          :<C-u>call phpactor#ExtractExpression(v:false)<CR>
+        " Extract expression from selection
+        vnoremap <silent><buffer><Space>pee          :<C-u>call phpactor#ExtractExpression(v:true)<CR>
+        " Extract method from selection
+        vnoremap <silent><buffer><Space>pem          :<C-u>call phpactor#ExtractMethod()<CR>
+    endfunction
+'''
+
+
+[[plugins]]
 repo     = 'Shougo/denite.nvim'
 on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteProjectDir', 'DeniteCursorWord']
 on_func  = ['denite#']
