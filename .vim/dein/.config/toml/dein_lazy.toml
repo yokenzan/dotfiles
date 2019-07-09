@@ -300,15 +300,5 @@ on_ft = ['ruby', 'eruby']
 
 
 [[plugins]]
-repo  = 'davidhalter/jedi'
-on_ft = ['python']
-
-
-[[plugins]]
-repo  = 'ncm2/ncm2-jedi'
-on_ft = ['python']
-
-
-[[plugins]]
 repo     = 'neoclide/denite-git'
 
