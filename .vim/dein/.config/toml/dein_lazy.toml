@@ -221,18 +221,19 @@ hook_post_source = '''
                 \ 'description' : 'Laravel Operations'
                 \ }
     let s:menus.laravel.command_candidates = [
-                \ ['Open Controller', 'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
-                \ ['Open Domain',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
-                \ ['Open Service',    'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
-                \ ['Open Dao',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
-                \ ['Open Model',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Model$      -path=app/Models                   file/rec'],
-                \ ['Open Middleware', 'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
-                \ ['Open Request',    'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
-                \ ['Open View',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ View$       -path=resources/views              file/rec'],
-                \ ['Open Test',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Test$       -path=tests                        file/rec'],
-                \ ['Open Illuminate', 'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
-                \ ['Document grep',   'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja'],
-                \ ['Document titles', 'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/translation-ja'],
+                \ ['Open Controller',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
+                \ ['Open Domain',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
+                \ ['Open Service',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
+                \ ['Open Dao',         'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
+                \ ['Open Model',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Model$      -path=app/Models                   file/rec'],
+                \ ['Open Middleware',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
+                \ ['Open Request',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
+                \ ['Open View',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ View$       -path=resources/views              file/rec'],
+                \ ['Open Test',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Test$       -path=tests                        file/rec'],
+                \ ['Open Illuminate',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
+                \ ['Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja'],
+                \ ['Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/translation-ja'],
+                \ ['Document Mockery', 'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/mockery/docs'],
                 \]
 
     let s:menus.grep = {
