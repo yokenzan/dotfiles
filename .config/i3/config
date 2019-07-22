@@ -14,9 +14,11 @@ set $mod Mod4
 exec --no-startup-id ibus-daemon
 exec --no-startup-id ibus-mozc
 exec --no-startup-id google-ime-skk
-exec --no-startup-id urxvtd
-exec --no-startup-id mlterm -j genuine
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
 exec --no-startup-id ~/.fehbg
+# exec --no-startup-id urxvtd
+# exec --no-startup-id mlterm -j genuine -L
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
