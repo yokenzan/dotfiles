@@ -134,6 +134,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitlog<CR>
         au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitstatus<CR>
         au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitbranch<CR>
+        au VimEnter * nested nnoremap <silent><Space>gc  :<C-u>Denite -no-empty -smartcase -auto-action=highlight -auto-resize gitchanged<CR>
 
         " 検索結果の再表示と移動
         au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
