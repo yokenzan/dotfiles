@@ -26,6 +26,10 @@ hook_add = '''
     nmap <silent><space>ctd    <Plug>(coc-type-definition)
     nmap <silent><space>ci     <Plug>(coc-implementation)
     nmap <silent><space>cfr    <Plug>(coc-references)
+    nmap <silent><space>ch     :<C-u>call CocAction("showSignatureHelp")<CR>
+    nmap <silent><space>cl     :<C-u>call CocAction("workspaceSymbols")<CR>
+    nmap <silent><space>co     :<C-u>CocList outline<CR>
+    nmap <silent><space>cd     :<C-u>CocList diagnostics<CR>
 
     nnoremap <silent><space>K :call <SID>show_documentation()<CR>
 
