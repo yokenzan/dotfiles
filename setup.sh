@@ -5,6 +5,7 @@ mkdir -p \
     $HOME/.config/alacritty \
     $HOME/.config/i3        \
     $HOME/.config/ranger    \
+    $HOME/.config/gtk-3.0   \
     $HOME/.mlterm
 
 mkdir -p $HOME/.emacs.d
@@ -25,20 +26,22 @@ ln -sf $HOME/.dotfiles/.ctags            $HOME
 ln -sf $HOME/.dotfiles/.i3status.conf    $HOME
 ln -sf $HOME/.dotfiles/.tigrc            $HOME
 
-ln -sf $HOME/.dotfiles/.emacs                          $HOME/.emacs.d/init.el
-ln -sf $HOME/.dotfiles/composer.json                   $HOME/.config/composer
+ln -sf $HOME/.dotfiles/.emacs                             $HOME/.emacs.d/init.el
+ln -sf $HOME/.dotfiles/composer.json                      $HOME/.config/composer
 
-ln -sf $HOME/.dotfiles/.config/i3/config               $HOME/.config/i3
-ln -sf $HOME/.dotfiles/.config/alacritty/alacritty.yml $HOME/.config/alacritty
+ln -sf $HOME/.dotfiles/.config/i3/config                  $HOME/.config/i3
+ln -sf $HOME/.dotfiles/.config/alacritty/alacritty.yml    $HOME/.config/alacritty
 
-ln -sf $HOME/.dotfiles/.config/ranger/commands.py      $HOME/.config/ranger
-ln -sf $HOME/.dotfiles/.config/ranger/commands_full.py $HOME/.config/ranger
-ln -sf $HOME/.dotfiles/.config/ranger/rc.conf          $HOME/.config/ranger
-ln -sf $HOME/.dotfiles/.config/ranger/rifle.conf       $HOME/.config/ranger
-ln -sf $HOME/.dotfiles/.config/ranger/scope.sh         $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/commands.py         $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/commands_full.py    $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/rc.conf             $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/rifle.conf          $HOME/.config/ranger
+ln -sf $HOME/.dotfiles/.config/ranger/scope.sh            $HOME/.config/ranger
 
-ln -sf /home/cyrt/.dotfiles/.mlterm/aafont             $home/.mlterm
-ln -sf /home/cyrt/.dotfiles/.mlterm/main               $home/.mlterm
+ln -sf /home/onuki/.dotfiles/.config/gtk-3.0/settings.ini $HOME/.config/gtk-3.0
+
+ln -sf /home/cyrt/.dotfiles/.mlterm/aafont                $home/.mlterm
+ln -sf /home/cyrt/.dotfiles/.mlterm/main                  $home/.mlterm
 
 
 if [ $(uname | grep -qe 'NT') ]; then
@@ -57,10 +60,9 @@ for i in $(find $HOME/.dotfiles/setup -type f); do $i; done
 chmod -R 777 $HOME/.dotfiles/build.sh
 $HOME/.dotfiles/build.sh
 
-chmod 777 $HOME/.dotfiles/vt
-sudo ln -sf $HOME/.dotfiles/vt /usr/local/bin
-
 if [ $(env | grep -ie ubuntu) ]; then
-    gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
+    mkdir $HOME/.themes
+    git clone git://github.com/debug-ito/GtkEmacs-debug-ito.git $HOME/.themes
+    gsettings set org.gnome.desktop.interface gtk-key-theme GtkEmacs-debug-ito
 fi
 
