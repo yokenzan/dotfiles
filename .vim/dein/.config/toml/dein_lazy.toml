@@ -252,7 +252,7 @@ hook_post_source = '''
                 \ ['.bashrc',         '~/.dotfiles/.bashrc'],
                 \ ['.bash_profile',   '~/.dotfiles/.bash_profile'],
                 \ ['.bash_functions', '~/.dotfiles/.bash_functions'],
-                \ ['.bash_alieses',   '~/.dotfiles/.bash_alieses'],
+                \ ['.bash_aliases',   '~/.dotfiles/.bash_aliases'],
                 \]
 
     let s:menus.vim_config = {
