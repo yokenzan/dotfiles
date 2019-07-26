@@ -20,7 +20,7 @@ shopt -s expand_aliases
 # Misc :)
 # alias less='less -r'                        # raw control characters
 # alias whence='type -a'                      # where, of a sort
-alias grep='grep --color=auto'
+alias grep='grep -P --color=auto'
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 alias g='grep . --color=always -r --include=*.php --exclude=_ide_helper.php --exclude-dir=.git --exclude-dir=storage'
@@ -67,15 +67,14 @@ alias tl='tmux -2 ls'
 
 # PHP
 
+alias comp='composer'
+alias art='php artisan'
 alias tinker='php artisan tinker'
 alias tink='php artisan tinker'
-alias artisan='php artisan'
-alias art='php artisan'
 alias seed='php artisan db:seed'
 alias seedc='seed --class'
 alias migrate='php artisan migrate'
 alias rollback='php artisan migrate:rollback'
-alias runtest='./phpunit --color=always'
 
 # Git
 
@@ -107,7 +106,7 @@ alias gss='git stash save'
 alias gsp='git stash pop'
 alias gsl='git stash list'
 # grep
-alias gg='git grep'
+alias gg='git grep -P'
 alias ggw='gg -w'
 alias ggi='gg -i'
 # others
