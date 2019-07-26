@@ -98,3 +98,11 @@ function ee() {
     w3m http://googledictionary.freecollocation.com/meaning?word=${1// /+}
 }
 
+
+function kv() {
+    ps aux          \
+        | grep vim  \
+        | head -3   \
+        | sed -e 's/^\w\+\s\+\(\w\+\).*/\1/g'   \
+        | xargs -rp kill -s 9 
+}
