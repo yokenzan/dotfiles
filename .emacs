@@ -60,7 +60,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ricty Discord" :foundry "PfEd" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "Sarasa Mono T TC" :foundry "PfEd" :slant normal :weight normal :height 100 :width normal)))))
 
 
 (when (require 'skk nil t)
@@ -134,3 +134,11 @@
 
 
 (setq frame-title-format "%f")
+
+(require 'pyim)
+(require 'pyim-basedict) ; 拼音词库设置，五笔用户 *不需要* 此行设置
+(pyim-basedict-enable)   ; 拼音词库，五笔用户 *不需要* 此行设置
+(setq default-input-method "pyim")
+
+
+(setq text-mode-hook 'turn-off-auto-fill)
