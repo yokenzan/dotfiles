@@ -40,6 +40,9 @@ hook_add = '''
     autocmd FileType php call s:enablePhpactorKeyBindings()
 
     function! s:enablePhpactorKeyBindings() abort
+        nnoremap <silent><buffer><Space>pv<C-]>      :<C-u>call phpactor#GotoDefinitionVsplit()<CR>
+        nnoremap <silent><buffer><Space>ps<C-]>      :<C-u>call phpactor#GotoDefinitionHsplit()<CR>
+        nnoremap <silent><buffer><Space>p<C-]>       :<C-u>call phpactor#GotoDefinition()<CR>
         " Include use statement
         nnoremap <silent><buffer><Space>pu           :<C-u>call phpactor#UseAdd()<CR>
         " Invoke the context menu
