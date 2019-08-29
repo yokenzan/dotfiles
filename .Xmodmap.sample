@@ -1,0 +1,4 @@
+keycode 100 = Zenkaku_Hankaku
+add mod1    = Alt_R
+keycode 117 = Super_R
+add mod4    = Muhenkan Super_R
