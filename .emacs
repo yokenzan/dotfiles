@@ -114,13 +114,13 @@
 
 
 ;; PHPのLINT設定
-(defun my-php-mode-hook ()
-  "My PHP-mode hook."
-  (require 'flycheck-phpstan)
-  (flycheck-mode t)
-  (flycheck-select-checker 'phpstan))
+ (defun my-php-mode-hook ()
+   "My PHP-mode hook."
+   ;(require 'flycheck-phpstan)
+   ;(flycheck-mode t)
+   ;(flycheck-select-checker 'phpstan))
 
-(add-hook 'php-mode-hook 'my-php-mode-hook)
+ (add-hook 'php-mode-hook 'my-php-mode-hook)
 
 
 (global-flycheck-mode)
