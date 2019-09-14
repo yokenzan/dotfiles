@@ -1,4 +1,17 @@
+! vim: ft=xmodmap
+
 keycode 100 = Zenkaku_Hankaku
 add mod1    = Alt_R
-keycode 117 = Super_R
-add mod4    = Muhenkan Super_R
+
+add mod4    = Muhenkan Menu
+
+keycode 101 = Mode_switch
+keycode 26  = e E End End
+keycode 31  = i I Tab Tab
+keycode 35  = bracketleft bracketleft Escape Escape
+keycode 38  = a A Home Home
+keycode 43  = h H Left Left
+keycode 44  = j J Down Down
+keycode 45  = k K Up Up
+keycode 46  = l L Right Right
+keycode 58  = m M Return Return
