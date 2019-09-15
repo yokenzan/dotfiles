@@ -6,12 +6,15 @@ add mod1    = Alt_R
 add mod4    = Muhenkan Menu
 
 keycode 101 = Mode_switch
-keycode 26  = e E End End
-keycode 31  = i I Tab Tab
-keycode 35  = bracketleft bracketleft Escape Escape
-keycode 38  = a A Home Home
-keycode 43  = h H Left Left
-keycode 44  = j J Down Down
-keycode 45  = k K Up Up
-keycode 46  = l L Right Right
-keycode 58  = m M Return Return
+keycode 26  = e           E           End    End
+keycode 31  = i           I           Tab    Tab
+keycode 35  = bracketleft braceleft   Escape Escape
+keycode 38  = a           A           Home   Home
+keycode 41  = f           F           Next   Next
+keycode 43  = h           H           Left   Left
+keycode 44  = j           J           Down   Down
+keycode 45  = k           K           Up     Up
+keycode 46  = l           L           Right  Right
+keycode 56  = b           B           Prior  Prior
+keycode 58  = m           M           Return Return
+
