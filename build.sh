@@ -3,7 +3,7 @@
 # update packages
 
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 # install basic packages
 sudo apt install -y curl git tig xsel highlight w3m w3m-img rxvt-unicode-256color mlterm emacs fzy global
@@ -24,19 +24,19 @@ sudo apt install -y php7.2 php7.2-dev php7.2-curl php7.2-gmp php7.2-mysql php7.2
 sudo apt install -y python3.7 python3.7-dev python3-pip
 
 # install web browser Vivaldi
-wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.3.1440.48-1_amd64.deb
-sudo dpkg -i vivaldi-stable_2.3.1440.48-1_amd64.deb
+# wget https://downloads.vivaldi.com/stable/vivaldi-stable_2.3.1440.48-1_amd64.deb
+# sudo dpkg -i vivaldi-stable_2.3.1440.48-1_amd64.deb
 
 # install packages needed to build vim
 sudo apt install -y gettext build-essential libtinfo-dev libacl1-dev libgpm-dev
 
 # install packages needed to build tmux
-sudo apt install -y libevent-dev libncurses5 libncurses5-dev
+sudo apt install -y libevent-dev libncurses5 libncurses5-dev zlib1g-dev
 
 # install Gtk3
 sudo apt install -y libxmu-dev libxpm-dev libgtk-3-0 libgtk-3-dev
 
-# install Vivaldi browser
+# install composer
 wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 sudo mv composer.phar /usr/local/bin/composer
 
