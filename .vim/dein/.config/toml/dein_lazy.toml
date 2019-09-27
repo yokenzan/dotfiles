@@ -63,6 +63,8 @@ hook_add = '''
         vnoremap <silent><buffer><Space>pee          :<C-u>call phpactor#ExtractExpression(v:true)<CR>
         " Extract method from selection
         vnoremap <silent><buffer><Space>pem          :<C-u>call phpactor#ExtractMethod()<CR>
+        " Show short information
+        nnoremap <silent><buffer><Space>ph           :<C-u>call phpactor#Hover()<CR>
     endfunction
 '''
 

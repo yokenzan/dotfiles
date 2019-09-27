@@ -119,6 +119,12 @@ hook_add = '''
                     \ : ''
     endfunction
 
+    function! ConcealLevelStatusLine()
+        return &conceallevel == 2
+                    \ ? ' 隠 '
+                    \ : ''
+    endfunction
+
     let g:airline_mode_map = {
                 \ '__' : '-',
                 \ 'c'  : 'C',
@@ -162,7 +168,7 @@ hook_add = '''
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', 'paste'])
     let g:airline_section_b = airline#section#create([
-                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n',
+                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n', '%{ConcealLevelStatusLine()}',
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
