@@ -317,4 +317,11 @@ repo  = 'dhruvasagar/vim-table-mode'
 on_ft = ['markdown']
 
 
+[[plugins]]
+repo  = 'tweekmonster/braceless.vim'
+on_ft = ['python', 'yaml', 'haml']
+hook_add = '''
+    autocmd FileType python,haml,yaml BracelessEnable +indent +fold
+'''
+
 
