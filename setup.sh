@@ -44,7 +44,7 @@ ln -sf $HOME/.dotfiles/.mlterm/aafont                     $HOME/.mlterm
 ln -sf $HOME/.dotfiles/.mlterm/main                       $HOME/.mlterm
 ln -sf $HOME/.dotfiles/.mlterm/color                      $HOME/.mlterm
 
-cp -f  /home/onuki/.dotfiles/.Xmodmap.sample              $HOME/.Xmodmap
+cp -f  $HOME/.dotfiles/.Xmodmap.sample                    $HOME/.Xmodmap
 
 
 if [ $(uname | grep -qe 'NT') ]; then
