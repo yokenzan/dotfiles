@@ -39,8 +39,6 @@ hook_add = '''
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
-    let g:gruvbox_contrast_light = "hard"
-    let g:gruvbox_contrast_dark  = "medium"
     let g:gruvbox_number_column  = "bg1"
     let g:gruvbox_italic         = 1
 '''
@@ -52,9 +50,6 @@ repo = 'Lokaltog/vim-distinguished'
 
 [[plugins]]
 repo = 'ayu-theme/ayu-vim'
-hook_add = '''
-    let g:ayucolor="mirage"  " light, mirage, dark
-'''
 
 
 [[plugins]]

@@ -235,41 +235,6 @@ endif
 
 
 
-
-" Setting Color & ColorScheme
-
-syntax on
-set t_Co=256
-set termguicolors
-
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_Cs = "\<Esc>[4:3m"
-let &t_Ce = "\<Esc>[4:0m"
-
-" colorscheme PaperColor
-" colorscheme ayu
-" colorscheme badwolf
-" colorscheme cake
-" colorscheme desert
-" colorscheme distinguished
-colorscheme gruvbox
-" colorscheme iceberg
-" colorscheme koehler
-" colorscheme molokai
-" colorscheme monokai
-" colorscheme one
-" colorscheme phd
-" colorscheme rupza
-" colorscheme slate
-" colorscheme solarized8_flat
-" colorscheme solarized8_high
-" colorscheme solarized8_low
-
-" set background=dark
-set background=light
-
-
 " if executable('plantuml')
 "     augroup PlantUMLAutoCommand
 "         autocmd!
@@ -331,14 +296,6 @@ autocmd BufLeave,WinLeave * setlocal nocursorline
 autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 
 
-" Background Transparency Setting
-
-" highlight Normal      ctermbg=NONE guibg=NONE
-" highlight NonText     ctermbg=NONE guibg=NONE
-" highlight SpecialKey  ctermbg=NONE guibg=NONE
-" highlight EndOfBuffer ctermbg=NONE guibg=NONE
-
-
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
@@ -371,3 +328,8 @@ set lazyredraw
 set splitbelow
 set splitright
 set autoread
+
+
+" Load Color Config
+source $HOME/.vimrc.colorscheme
+
