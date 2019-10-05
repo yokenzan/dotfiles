@@ -12,11 +12,6 @@ hook_add = '''
 [[plugins]]
 repo = 'thinca/vim-ref'
 hook_add = '''
-    let g:ref_phpmanual_path = $HOME . '/.vim/ref/php-chunked-xhtml'
-    let g:ref_detect_filetype = {
-    \       'php' : 'phpmanual'
-    \}
-
     let g:ref_source_webdict_sites = {
     \   'wiki': {
     \     'url': 'http://ja.wikipedia.org/wiki/%s',
@@ -39,9 +34,8 @@ hook_add = '''
 
     aug enableRefKeyMaps
         au!
-        nnoremap <Space>re :<C-u>Ref webdict ee 
-        nnoremap <Space>rw :<C-u>Ref webdict wiki 
-        nnoremap <Space>rp :<C-u>Ref phpmanual 
+        nnoremap <Space>re :<C-u>Ref webdict ee
+        nnoremap <Space>rw :<C-u>Ref webdict wiki
     aug END
 '''
 

@@ -16,12 +16,6 @@ ln -sf $HOME/.dotfiles/.vim/indent       $HOME/.vim
 ln -sf $HOME/.dotfiles/.vim/plugin       $HOME/.vim
 ln -sf $HOME/.dotfiles/.vim/dein/.config $HOME/.vim/dein
 
-
-curl -Lko $HOME/.vim/ref/php-chunked-xhtml.tar http://jp2.php.net/get/php_manual_ja.tar.gz/from/this/mirror
-cd $HOME/.vim/ref
-tar xzf   php-chunked-xhtml.tar
-cd -
-
 git clone git://github.com/Shougo/dein.vim.git                                  $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 git clone git://github.com/laravel/docs.git                                     $HOME/.vim/ref/laravel.doc
 git clone git://github.com/mockery/mockery.git                                  $HOME/.vim/ref/mockery
