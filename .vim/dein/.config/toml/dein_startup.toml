@@ -153,11 +153,11 @@ hook_add = '''
     let g:airline#extensions#hunks#enabled         = 0
     let g:airline#extensions#whitespace#enabled    = 0
     let g:airline#extensions#tabline#enabled       = 0
-    let g:airline#extensions#ale#enabled           = 0
-    let g:airline#extensions#ale#error_symbol      = ''
-    let g:airline#extensions#ale#warning_symbol    = ''
-    let g:airline#extensions#ale#open_lnum_symbol  = ''
-    let g:airline#extensions#ale#close_lnum_symbol = ''
+    " let g:airline#extensions#ale#enabled           = 0
+    " let g:airline#extensions#ale#error_symbol      = ''
+    " let g:airline#extensions#ale#warning_symbol    = ''
+    " let g:airline#extensions#ale#open_lnum_symbol  = ''
+    " let g:airline#extensions#ale#close_lnum_symbol = ''
 
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', 'paste'])
@@ -302,9 +302,10 @@ hook_add = '''
     \   'host': 'localhost',
     \   'port': 55100,
     \}
-    let g:eskk#marker_henkan         = '＃'
-    let g:eskk#marker_henkan_select  = '＠'
+    " let g:eskk#marker_henkan         = '＃'
+    " let g:eskk#marker_henkan_select  = '＠'
     let g:eskk#show_candidates_count = 2
+
     autocmd  User eskk-enable-post  CocDisable
     autocmd  User eskk-disable-post CocEnable
 '''
