@@ -311,6 +311,8 @@ hook_add = '''
     let g:eskk#marker_henkan         = '＃'
     let g:eskk#marker_henkan_select  = '＠'
     let g:eskk#show_candidates_count = 2
+    autocmd  User eskk-enable-post  CocDisable
+    autocmd  User eskk-disable-post CocEnable
 '''
 
 
