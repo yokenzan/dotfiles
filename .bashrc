@@ -227,3 +227,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+if ps aux | grep google-ime-skk | grep -vqs grep; then
+    : nothing todo
+else
+    google-ime-skk >/dev/null 2>&1 &
+fi
+
