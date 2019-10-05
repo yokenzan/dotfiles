@@ -23,7 +23,7 @@ tar xzf   php-chunked-xhtml.tar
 cd -
 
 git clone git://github.com/Shougo/dein.vim.git                                  $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
-git clone git://github.com/laravel-ja/ja-docs-5.5.git                           $HOME/.vim/ref/laravel.doc
+git clone git://github.com/laravel/docs.git                                     $HOME/.vim/ref/laravel.doc
 git clone git://github.com/mockery/mockery.git                                  $HOME/.vim/ref/mockery
 git clone git://github.com/sebastianbergmann/phpunit-documentation-english.git  $HOME/.vim/ref/phpunit
 

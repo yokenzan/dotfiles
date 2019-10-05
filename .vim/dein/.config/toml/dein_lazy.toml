@@ -239,8 +239,8 @@ hook_post_source = '''
                 \ ['Open View',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ View$       -path=resources/views              file/rec'],
                 \ ['Open Test',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Test$       -path=tests                        file/rec'],
                 \ ['Open Illuminate',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
-                \ ['Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc/translation-ja'],
-                \ ['Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc/translation-ja'],
+                \ ['Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc'],
+                \ ['Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc'],
                 \ ['Document Mockery', 'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/mockery/docs'],
                 \ ['Document PHPUnit', 'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -vertical-preview file/rec:~/.vim/ref/phpunit/src'],
                 \]
