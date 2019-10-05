@@ -16,6 +16,8 @@ ln -sf $HOME/.dotfiles/.vim/indent       $HOME/.vim
 ln -sf $HOME/.dotfiles/.vim/plugin       $HOME/.vim
 ln -sf $HOME/.dotfiles/.vim/dein/.config $HOME/.vim/dein
 
+cp -f $HOME/.dotfiles/.vimrc.colorscheme $HOME
+
 git clone git://github.com/Shougo/dein.vim.git                                  $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 git clone git://github.com/laravel/docs.git                                     $HOME/.vim/ref/laravel.doc
 git clone git://github.com/mockery/mockery.git                                  $HOME/.vim/ref/mockery
