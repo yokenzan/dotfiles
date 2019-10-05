@@ -338,15 +338,15 @@ hook_add = '''
 repo = 'othree/html5.vim'
 
 
-[[plugins]] 
-repo     = 'fuenor/qfixhowm'
-hook_add = '''
-    let g:QFixHowm_Key      = '<Space>'
-    let g:QFixHowm_FileType = 'markdown'
-    let g:howm_dir          = '~/.howm'
-    let g:howm_filename     = '%Y%m%d_%H%M%S.md'
-    let g:howm_fileencoding = 'utf-8'
-'''
+# [[plugins]] 
+# repo     = 'fuenor/qfixhowm'
+# hook_add = '''
+#     let g:QFixHowm_Key      = '<Space>'
+#     let g:QFixHowm_FileType = 'markdown'
+#     let g:howm_dir          = '~/.howm'
+#     let g:howm_filename     = '%Y%m%d_%H%M%S.md'
+#     let g:howm_fileencoding = 'utf-8'
+# '''
 
 
 [[plugins]]
