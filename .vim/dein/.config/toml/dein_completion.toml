@@ -19,8 +19,15 @@ hook_add = '''
     " Use <c-space> to trigger completion.
     inoremap <silent><expr><c-space> coc#refresh()
 
-    nmap <silent>[C <Plug>(coc-diagnostic-prev)
-    nmap <silent>]C <Plug>(coc-diagnostic-next)
+    " diagnostics
+
+    nmap <silent>[a            <Plug>(coc-diagnostic-prev)
+    nmap <silent>]a            <Plug>(coc-diagnostic-next)
+    nmap <silent><space>cd     :<C-u>CocList diagnostics<CR>
+    nmap <silent><space>cD     <Plug>(coc-diagnostic-info)
+
+    nmap <silent><space>cr     <Plug>(coc-rename)
+    nmap <silent><space>cf     <Plug>(coc-float-jump)
 
     nmap <silent><space>c<C-]> <Plug>(coc-definition)
     nmap <silent><space>ctd    <Plug>(coc-type-definition)
@@ -29,7 +36,6 @@ hook_add = '''
     nmap <silent><space>ch     :<C-u>call CocAction("showSignatureHelp")<CR>
     nmap <silent><space>cl     :<C-u>call CocAction("workspaceSymbols")<CR>
     nmap <silent><space>co     :<C-u>CocList outline<CR>
-    nmap <silent><space>cd     :<C-u>CocList diagnostics<CR>
 
     nnoremap <silent><space>K :call <SID>show_documentation()<CR>
 

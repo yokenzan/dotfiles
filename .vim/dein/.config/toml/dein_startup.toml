@@ -40,27 +40,27 @@ hook_add = '''
 '''
 
 
-[[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-    let g:ale_sign_column_always    = 1
-    let g:ale_sign_error            = 'Ｅ'
-    let g:ale_sign_warning          = 'Ｗ'
-
-    let g:ale_lint_on_save          = 1
-    let g:ale_lint_on_enter         = 0
-    let g:ale_set_quickfix          = 0
-    let g:ale_lint_on_text_changed  = 1
-    let g:ale_lint_on_insert_leave  = 1
-
-    aug enableALEKeyMaps
-        au!
-        nmap <silent><Space>al :<C-u>ALELint<CR>
-        nmap <silent><Space>ad :<C-u>ALEDetail<CR>
-        nmap <silent>[a        :<C-u>ALEPrevious<CR>
-        nmap <silent>]a        :<C-u>ALENext<CR>
-    aug END
-'''
+# [[plugins]]
+# repo = 'w0rp/ale'
+# hook_add = '''
+#     let g:ale_sign_column_always    = 1
+#     let g:ale_sign_error            = 'Ｅ'
+#     let g:ale_sign_warning          = 'Ｗ'
+#
+#     let g:ale_lint_on_save          = 1
+#     let g:ale_lint_on_enter         = 0
+#     let g:ale_set_quickfix          = 0
+#     let g:ale_lint_on_text_changed  = 1
+#     let g:ale_lint_on_insert_leave  = 1
+#
+#     aug enableALEKeyMaps
+#         au!
+#         nmap <silent><Space>al :<C-u>ALELint<CR>
+#         nmap <silent><Space>ad :<C-u>ALEDetail<CR>
+#         nmap <silent>[a        :<C-u>ALEPrevious<CR>
+#         nmap <silent>]a        :<C-u>ALENext<CR>
+#     aug END
+# '''
 
 
 [[plugins]]
