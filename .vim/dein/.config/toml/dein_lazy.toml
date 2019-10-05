@@ -267,11 +267,12 @@ hook_post_source = '''
                 \ 'description' : 'Vim Config Operations'
                 \ }
     let s:menus.vim_config.file_candidates = [
-                \ ['.vimrc',                          '~/.dotfiles/.vimrc'],
-                \ ['startup loaded libraries config', '~/.dotfiles/.vim/dein/.config/toml/dein_startup.toml'],
-                \ ['lazy loaded libraries config',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
-                \ ['completion libraries config',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
-                \ ['colorscheme config',              '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
+                \ ['.vimrc',                   '~/.vimrc'],
+                \ ['.vimrc.colorscheme',       '~/.vimrc.colorscheme'],
+                \ ['startup loaded libraries', '~/.dotfiles/.vim/dein/.config/toml/dein_startup.toml'],
+                \ ['lazy loaded libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
+                \ ['completion libraries',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
+                \ ['colorscheme libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
                 \]
 
     let s:menus.misc = {
