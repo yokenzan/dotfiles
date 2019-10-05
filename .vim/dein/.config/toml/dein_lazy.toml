@@ -311,3 +311,10 @@ on_ft = ['ruby', 'eruby']
 [[plugins]]
 repo     = 'neoclide/denite-git'
 
+
+[[plugins]]
+repo  = 'dhruvasagar/vim-table-mode'
+on_ft = ['markdown']
+
+
+
