@@ -63,7 +63,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:e:v:vs:gs:r:git push:gp:gp  --ff' # Ignore the ls command as well
 #
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
