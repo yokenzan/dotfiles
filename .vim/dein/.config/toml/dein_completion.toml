@@ -65,7 +65,7 @@ hook_add = '''
     smap <silent><expr><C-l>
                 \ neosnippet#jumpable()   ? "\<Plug>(neosnippet_jump)"   :
                 \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-                \ "\<Tab>"
+                \ coc#refresh()
 
     imap <silent><expr><C-l>
                 \ pumvisible() ? coc#_select_confirm() :
