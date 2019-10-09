@@ -51,11 +51,11 @@ hook_add = '''
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
     " Remap for rename current word
-    nmap <Space>cr <Plug>(coc-rename)
+    " nmap <Space>cr <Plug>(coc-rename)
 
     " Remap for format selected region
-    xmap <Space>cf <Plug>(coc-format-selected)
-    nmap <Space>cf <Plug>(coc-format-selected)
+    " xmap <Space>cf <Plug>(coc-format-selected)
+    " nmap <Space>cf <Plug>(coc-format-selected)
 
     " Remap for do codeAction of selected region
     xmap <Space>ca <Plug>(coc-codeaction-selected)
