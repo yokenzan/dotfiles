@@ -113,6 +113,10 @@ hook_add = '''
                     \ : ''
     endfunction
 
+    function! CocNvimStatusline()
+        return g:coc_enabled ? '補 ': ''
+    endfunction
+
     function! ConcealLevelStatusLine()
         return &conceallevel == 2
                     \ ? ' 隠 '
@@ -162,7 +166,7 @@ hook_add = '''
     let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode', 'paste'])
     let g:airline_section_b = airline#section#create([
-                \   '%{SkkStatusline()}', '%{fugitive#head()}', ' %n', '%{ConcealLevelStatusLine()}',
+                \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{fugitive#head()}', ' %n', '%{ConcealLevelStatusLine()}',
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
