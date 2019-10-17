@@ -25,19 +25,33 @@ alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 alias g='grep . --color=always -r --include=*.php --exclude=_ide_helper.php --exclude-dir=.git --exclude-dir=storage'
 
-# Some shortcuts for different directory listings
+# ls
 alias ls='ls -hF --color=tty'
-alias ll='ls -l'
-alias lla='ll -a'
-alias l='ls -CF'
+alias ll='ls -lA'
+alias lla='ls -la'
+alias l='ll'
+
+# ls with less
+alias lll='ls -lA --color=always | less -RNSJFX'
+alias llal='ls -la --color=always | less -RNSJFX'
+
+# find
 alias f='find . -name'
 alias ff='find . -type f -name'
 alias fd='find . -type d -name'
+
+# iconv
 alias j2u='iconv -f cp932 -t utf-8'
 alias u2j='iconv -t cp932 -f utf-8'
+
+# cd
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
+
+# pushd / popd
+alias pd='pushd'
+alias ppd='popd'
 
 # Vim
 
