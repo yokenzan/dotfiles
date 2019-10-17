@@ -329,6 +329,8 @@ set splitbelow
 set splitright
 set autoread
 
+set diffopt=internal,filler,algorithm:histogram,indent-heuristic
+
 
 " Load Color Config
 source $HOME/.vimrc.colorscheme
