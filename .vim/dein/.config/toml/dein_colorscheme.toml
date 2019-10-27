@@ -1,5 +1,8 @@
 [[plugins]]
-repo = 'sjl/badwolf'
+repo     = 'sjl/badwolf'
+hook_add = '''
+    let g:badwolf_darkgutter = 1
+'''
 
 
 [[plugins]]
@@ -69,3 +72,16 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
+
+[[plugins]]
+repo = 'jeetsukumaran/vim-nefertiti'
+
+
+[[plugins]]
+repo = 'vim-scripts/paroton'
+
+
+[[plugins]]
+repo = 'vim-scripts/pyte'
+
