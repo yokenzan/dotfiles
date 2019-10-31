@@ -18,10 +18,6 @@ repo = 'GGalizzi/cake-vim'
 
 
 [[plugins]]
-repo = 'sickill/vim-monokai'
-
-
-[[plugins]]
 repo = 'vim-scripts/phd'
 
 
@@ -52,26 +48,11 @@ repo = 'Lokaltog/vim-distinguished'
 
 
 [[plugins]]
-repo = 'ayu-theme/ayu-vim'
-
-
-[[plugins]]
-repo = 'rakr/vim-one'
-hook_add = '''
-    let g:one_allow_italics = 1
-'''
-
-
-[[plugins]]
 repo = 'lifepillar/vim-solarized8'
 hook_add = '''
     let g:solarized_term_italics    = 1
     let g:solarized_extra_hi_groups = 1
 '''
-
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
 
 
 [[plugins]]

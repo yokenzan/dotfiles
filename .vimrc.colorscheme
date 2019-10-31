@@ -10,28 +10,23 @@ let &t_Cs = "\<Esc>[4:3m"
 let &t_Ce = "\<Esc>[4:0m"
 
 " colorscheme PaperColor
-colorscheme ayu
 " colorscheme badwolf
 " colorscheme cake
 " colorscheme desert
 " colorscheme distinguished
 " colorscheme gruvbox
-" colorscheme iceberg
 " colorscheme koehler
 " colorscheme molokai
-" colorscheme monokai
-" colorscheme one
+colorscheme nefertiti
 " colorscheme phd
+" colorscheme pyte
 " colorscheme rupza
-" colorscheme slate
 " colorscheme solarized8_flat
 " colorscheme solarized8_high
 " colorscheme solarized8_low
 
 " set background=dark
-set background=light
-
-
+" set background=light
 
 
 " Background Transparency Setting
