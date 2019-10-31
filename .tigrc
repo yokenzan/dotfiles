@@ -1,2 +1,8 @@
-set main-view = id date author commit-title:graph=yes,refs=yes
+# vim: ft=sh
+
+set main-view    = id date author commit-title:graph=yes,refs=yes
+set tab-size     = 4
+set ignore-space = all
+
 bind main ! ?git revert %(commit)
+bind main $ +sh -c "git log --pretty='format:%h %s %b' -1 %(commit) | xsel -bi"
