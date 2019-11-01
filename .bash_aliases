@@ -29,11 +29,12 @@ alias g='grep . --color=always -r --include=*.php --exclude=_ide_helper.php --ex
 alias ls='ls -hF --color=tty'
 alias ll='ls -lA'
 alias lla='ls -la'
-alias l='ll'
 
 # ls with less
 alias lll='ls -lA --color=always | less -RNSJFX'
 alias llal='ls -la --color=always | less -RNSJFX'
+
+alias l='less'
 
 # find
 alias f='find . -name'
@@ -60,6 +61,7 @@ alias vo='vim -O'
 alias vs='vim -S Session.vim'
 alias vu='vim -u NONE -N'
 alias vq='vim -c :q'
+alias v-='vim -'
 
 alias gv='gvim &'
 alias gvo='gvim -O &'
