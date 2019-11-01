@@ -65,7 +65,7 @@
 
 (when (require 'skk nil t)
   (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
-  (setq default-input-method "japanese-skk")
+  ; (setq default-input-method "japanese-skk")
   (require 'skk-study)
   (setq skk-server-host "localhost")
   (setq skk-server-portnum 55100)
@@ -119,7 +119,7 @@
    ;(require 'flycheck-phpstan)
    ;(flycheck-mode t)
    ;(flycheck-select-checker 'phpstan))
-
+)
  (add-hook 'php-mode-hook 'my-php-mode-hook)
 
 
