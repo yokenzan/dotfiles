@@ -108,9 +108,13 @@ repo = 'tpope/vim-surround'
 repo = 'vim-airline/vim-airline'
 hook_add = '''
     function! SkkStatusline()
-        return eskk#is_enabled()
-                    \ ? g:eskk#statusline_mode_strings[eskk#get_mode()] . ' '
-                    \ : ''
+        try
+            return eskk#is_enabled()
+                        \ ? g:eskk#statusline_mode_strings[eskk#get_mode()] . ' '
+                        \ : ''
+        catch
+            return ''
+        endtry
     endfunction
 
     function! CocNvimStatusline()
