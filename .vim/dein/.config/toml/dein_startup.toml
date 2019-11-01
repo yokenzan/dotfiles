@@ -118,7 +118,11 @@ hook_add = '''
     endfunction
 
     function! CocNvimStatusline()
-        return g:coc_enabled ? '補 ': ''
+        try
+            return g:coc_enabled ? '補 ': ''
+        catch
+            return ''
+        endtry
     endfunction
 
     function! ConcealLevelStatusLine()
@@ -314,8 +318,8 @@ hook_add = '''
     " let g:eskk#marker_henkan_select  = '＠'
     let g:eskk#show_candidates_count = 2
 
-    autocmd  User eskk-enable-post  CocDisable
-    autocmd  User eskk-disable-post CocEnable
+    autocmd  User eskk-enable-post  if exists('CocDisable') | CocDisable | endif
+    autocmd  User eskk-disable-post if exists('CocEnable')  | CocEnable  | endif
 '''
 
 
