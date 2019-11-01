@@ -41,7 +41,3 @@ colorscheme nefertiti
 let g:gruvbox_contrast_light = "soft"
 let g:gruvbox_contrast_dark  = "soft"
 
-
-" ayu
-let g:ayucolor="light"  " light, mirage, dark
-

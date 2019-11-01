@@ -60,7 +60,7 @@ repo = 'jeetsukumaran/vim-nefertiti'
 
 
 [[plugins]]
-repo = 'vim-scripts/paroton'
+repo = 'vim-scripts/proton'
 
 
 [[plugins]]
