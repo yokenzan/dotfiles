@@ -318,8 +318,21 @@ hook_add = '''
     " let g:eskk#marker_henkan_select  = '＠'
     let g:eskk#show_candidates_count = 2
 
-    autocmd  User eskk-enable-post  if exists('CocDisable') | CocDisable | endif
-    autocmd  User eskk-disable-post if exists('CocEnable')  | CocEnable  | endif
+
+    function! DisableCocNvim()
+        if exists(':CocDisable') == 2
+            CocDisable
+        endif
+    endfunction
+
+    function! EnableCocNvim()
+        if exists(':CocEnable') == 2
+            CocEnable
+        endif
+    endfunction
+
+    autocmd  User eskk-enable-post  call DisableCocNvim()
+    autocmd  User eskk-disable-post call EnableCocNvim()
 '''
 
 
