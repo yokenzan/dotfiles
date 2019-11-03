@@ -7,6 +7,4 @@
 set -g status-fg colour241
 set -g status-bg colour208
 
-set -g status-left "#[default,bold,reverse]  #S  #[default]#[fg=colour241,bg=colour220,bold] %Y.%m.%d(%a) %H:%M:%S #[default,bold] #h #[default] - "
-
 
