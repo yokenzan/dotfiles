@@ -1,3 +1,4 @@
+# vim: ft=gitconfig
 [user]
 	name = yokenzan
 	email = 31175068+yokenzan@users.noreply.github.com
@@ -22,3 +23,7 @@
 	tool = vimdiff
 [pull]
 	ff = only
+[alias]
+    ls = ls-files
+    co = checkout
+    current =!git status --branch | head -1 | sed -e 's/On branch //g'
