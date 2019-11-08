@@ -195,13 +195,13 @@ __git_ps1_show_upstream ()
 		"") # no upstream
 			p="" ;;
 		"0	0") # equal to upstream
-			p="=" ;;
+			p=" 同" ;;
 		"0	"*) # ahead of upstream
-			p=">" ;;
+			p=" 前" ;;
 		*"	0") # behind upstream
-			p="<" ;;
+			p=" 後" ;;
 		*)	    # diverged from upstream
-			p="<>" ;;
+			p=" 隔" ;;
 		esac
 	else
 		case "$count" in
