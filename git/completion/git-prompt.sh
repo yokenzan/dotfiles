@@ -195,7 +195,7 @@ __git_ps1_show_upstream ()
 		"") # no upstream
 			p="" ;;
 		"0	0") # equal to upstream
-			p=" 同" ;;
+			p=" 等" ;;
 		"0	"*) # ahead of upstream
 			p=" 前" ;;
 		*"	0") # behind upstream
