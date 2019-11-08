@@ -195,11 +195,11 @@ __git_ps1_show_upstream ()
 		"") # no upstream
 			p="" ;;
 		"0	0") # equal to upstream
-			p=" 等" ;;
+			p=" 並" ;;
 		"0	"*) # ahead of upstream
-			p=" 前" ;;
+			p=" 進" ;;
 		*"	0") # behind upstream
-			p=" 後" ;;
+			p=" 退" ;;
 		*)	    # diverged from upstream
 			p=" 隔" ;;
 		esac
