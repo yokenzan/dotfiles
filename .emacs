@@ -2,6 +2,7 @@
 (define-key key-translation-map [?\C-h] [?\C-?])
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
 (global-set-key (kbd "C-x C-M-f") 'project-find-file)
+(global-set-key (kbd "C-c t") 'recentf-open-files)
 
 
 ; バックアップファイルをつくらない
