@@ -153,3 +153,10 @@ if [ $(uname | grep -qe 'NT') ]; then
     alias here='start .'
 fi
 
+# WSL
+
+if [ $WSL_DISTRO_NAME ]; then
+    # launch Explorer with pwd
+    alias here='explorer.exe .'
+fi
+
