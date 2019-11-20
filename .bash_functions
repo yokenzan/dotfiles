@@ -106,3 +106,14 @@ function kv() {
         | sed -e 's/^\w\+\s\+\(\w\+\).*/\1/g'   \
         | xargs -rp kill -s 9 
 }
+
+
+function mine() {
+    chown $(whoami):$(whoami) $*
+}
+
+
+function gongkai() {
+    chmod 777 $*
+}
+
