@@ -1,15 +1,30 @@
+snippet doc_section
+	/****************************************************
+	 * ${1:#:undocumented section}
+	 **/
+	${0}
+
 snippet inheritdoc
 	/**
 	 * {@inheritDoc}
-	 *${1}
 	 */${0}
 
 snippet docp2
 	/** @var ${1} */${0}
 
+snippet construct_public
+options head
+	public function __construct(${1})
+	{
+	    ${0:TARGET}
+	}
 
-snippet sep
-	/***************************************************
-	 * ${1}
-	 */${0}
+snippet autoload
+	require __DIR__ . '/vendor/autoload.php';
+	${0:TARGET}
 
+snippet autoloadp
+	<?php
+	
+	require __DIR__ . '/vendor/autoload.php';
+	${0:TARGET}

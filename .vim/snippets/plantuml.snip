@@ -1,0 +1,28 @@
+snippet shadowoff
+	skinparam shadowing false
+
+snippet prectangle
+	skinparam packageStyle rectangle
+
+snippet hidemember
+	hide empty members
+
+snippet class_without_content
+	${1} class "${2:#:ClassName}" as ${3:#:aliasName}
+	${0}
+
+snippet class_with_content
+	${1} class "${2:#:ClassName}" as ${3:#:aliasName} {
+	    ${0:# content}
+	}
+
+snippet startuml
+	@startuml
+	${0}
+	@enduml
+
+snippet startmindmap
+	@startmindmap
+	${0}
+	@endmindmap
+
