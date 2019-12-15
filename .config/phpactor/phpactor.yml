@@ -1,0 +1,14 @@
+xdebug_disable: true
+navigator.destinations:
+    source:       src/<kernel>.php
+    unit_test:    tests/Unit/<kernel>Test.php
+    laravel_test: tests/Unit/<kernel>Test.php
+
+navigator.autocreate:
+    source:       source
+    laravel_test: laravel_test
+
+code_transform.class_new.variants:
+    source:       source
+    laravel_test: laravel_test
+

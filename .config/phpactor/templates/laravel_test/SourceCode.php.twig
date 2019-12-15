@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ prototype.namespace }};
+
+use Tests\TestCase;
+
+{% for class in prototype.classes %}
+class {{ class.name }} extends TestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+}
+{% endfor %}
+

@@ -24,4 +24,5 @@ git clone git://github.com/Shougo/dein.vim.git                                  
 git clone git://github.com/laravel/docs.git                                     $HOME/.vim/ref/laravel.doc
 git clone git://github.com/mockery/mockery.git                                  $HOME/.vim/ref/mockery
 git clone git://github.com/sebastianbergmann/phpunit-documentation-english.git  $HOME/.vim/ref/phpunit
+git clone git://github.com/phpactor/phpactor.git                                $HOME/.vim/ref/phpactor
 
