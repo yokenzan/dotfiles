@@ -110,7 +110,8 @@ hook_add = '''
     aug enableDeniteKeyMap
         au!
         au VimEnter * nested nnoremap <silent><Space>mm  :<C-u>Denite menu<CR>
-        au VimEnter * nested nnoremap <silent><Space>ml  :<C-u>Denite menu:laravel<CR>
+        au VimEnter * nested nnoremap <silent><Space>mpl :<C-u>Denite menu:laravel_dir<CR>
+        au VimEnter * nested nnoremap <silent><Space>mpd :<C-u>Denite menu:php_document<CR>
         au VimEnter * nested nnoremap <silent><Space>mg  :<C-u>Denite menu:grep<CR>
         au VimEnter * nested nnoremap <silent><Space>mv  :<C-u>Denite menu:vim_config<CR>
         au VimEnter * nested nnoremap <silent><Space>mb  :<C-u>Denite menu:bash_config<CR>
@@ -229,20 +230,26 @@ hook_post_source = '''
                 \ 'description' : 'Laravel Operations'
                 \ }
     let s:menus.laravel.command_candidates = [
-                \ ['Open Controller',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
-                \ ['Open Domain',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
-                \ ['Open Service',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
-                \ ['Open Dao',         'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
-                \ ['Open Model',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Model$      -path=app/Models                   file/rec'],
-                \ ['Open Middleware',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
-                \ ['Open Request',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
-                \ ['Open View',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ View$       -path=resources/views              file/rec'],
-                \ ['Open Test',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Test$       -path=tests                        file/rec'],
-                \ ['Open Illuminate',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
-                \ ['Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc'],
-                \ ['Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc'],
-                \ ['Document Mockery', 'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/mockery/docs'],
-                \ ['Document PHPUnit', 'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -vertical-preview file/rec:~/.vim/ref/phpunit/src'],
+                \ ['Open Controller',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
+                \ ['Open Domain',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
+                \ ['Open Service',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
+                \ ['Open Dao',         'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
+                \ ['Open Model',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Model$      -path=app/Models                   file/rec'],
+                \ ['Open Middleware',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
+                \ ['Open Request',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
+                \ ['Open View',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ View$       -path=resources/views              file/rec'],
+                \ ['Open Test',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Test$       -path=tests                        file/rec'],
+                \ ['Open Illuminate',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
+                \ ]
+    let s:menus.php_document = {
+                \ 'description' : 'PHP Document Guide Operations'
+                \ }
+    let s:menus.php_document.command_candidates = [
+                \ ['Laravel  Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc'],
+                \ ['Laravel  Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc'],
+                \ ['Mockery  Document',         'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/mockery/docs'],
+                \ ['PHPUnit  Document',         'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -vertical-preview file/rec:~/.vim/ref/phpunit/src'],
+                \ ['PHPactor Document',         'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -input=md -vertical-preview file/rec:~/.vim/ref/phpactor/doc'],
                 \]
 
     let s:menus.grep = {
