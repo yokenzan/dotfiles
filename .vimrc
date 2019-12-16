@@ -299,6 +299,12 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
+nnoremap <C-[>h <C-w>h
+nnoremap <C-[>j <C-w>j
+nnoremap <C-[>k <C-w>k
+nnoremap <C-[>l <C-w>l
+nnoremap <C-[>c <C-w>c
+
 nnoremap Q   4
 nnoremap QQ  8
 nnoremap QQQ 16
