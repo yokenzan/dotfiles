@@ -99,9 +99,10 @@ alias ga='git add'
 alias gaa='git add -A'
 # commit
 alias gc='git commit'
-alias gca='git commit -a'
-alias gcm='git commit --amend'
-alias gcmn='git commit --amend --no-edit'
+alias gcv='gc -v'
+alias gca='gc -a'
+alias gcm='gc --amend'
+alias gcmn='gc --amend --no-edit'
 # config
 alias gcg='git config --global'
 alias gcgl='git config --global -l'
