@@ -161,3 +161,9 @@ if [ $WSL_DISTRO_NAME ]; then
     alias here='explorer.exe .'
 fi
 
+alias dcps='docker-compose ps'
+alias dcud='docker-compose up -d'
+alias dcudb='docker-compose up -d --build'
+alias dcd='docker-compose down'
+alias dcdr='docker-compose down --rmi all'
+
