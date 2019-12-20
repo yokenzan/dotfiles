@@ -233,3 +233,9 @@ else
     google-ime-skk >/dev/null 2>&1 &
 fi
 
+which symfony-autocomplete > /dev/null 2>&1
+
+if [ $? = 0 ]; then
+    eval "$(symfony-autocomplete)"
+fi
+
