@@ -88,6 +88,11 @@ set convert-meta off
 
 # MSYSTEM is emacs based
 $if mode=emacs
+  "\C-xl":  " | l\n"                     # redirect to less
+  "\C-xc":  " | xsel -bi\n"              # redirect to xsel
+  "\C-xv":  " | v -\n"                   # redirect to Vim
+  "\e[15~": " source ~/.bash_profile\n"  # F5
+
   # Common to Console & RXVT
   "\C-?": backward-kill-line         # Ctrl-BackSpace
   "\e[2~": paste-from-clipboard      # "Ins. Key"
