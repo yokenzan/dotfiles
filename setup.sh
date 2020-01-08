@@ -52,9 +52,13 @@ ln -sf $HOME/.dotfiles/.mlterm/color                      $HOME/.mlterm
 cp -f  $HOME/.dotfiles/.Xmodmap.sample                    $HOME/.Xmodmap
 
 
-if [ $(uname | grep -qe 'NT') ]; then
+if   uname | grep -qe 'NT'     ; then
     # Windows
     ln -sf $HOME/.dotfiles/.minttyrc     $HOME
+elif uname | grep -qe 'Darwin' ; then
+    # Mac
+    ln -sf $HOME/.dotfiles/.yabairc      $HOME
+    ln -sf $HOME/.dotfiles/.skhdrc       $HOME
 fi
 
 
