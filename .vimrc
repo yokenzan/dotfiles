@@ -345,7 +345,8 @@ set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 " Load Color Config
 source $HOME/.vimrc.colorscheme
 
+nnoremap <Leader>R <Nop>
+
 if filereadable('./.vimrc.project')
     source ./.vimrc.project
 endif
-
