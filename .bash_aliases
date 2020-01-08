@@ -30,10 +30,6 @@ alias ls='ls -hF --color=tty'
 alias ll='ls -lA'
 alias lla='ls -la'
 
-# ls with less
-alias lll='ls -lA --color=always | less -RNSJFX'
-alias llal='ls -la --color=always | less -RNSJFX'
-
 alias l='less'
 
 # find
@@ -68,11 +64,6 @@ alias gvo='gvim -O &'
 alias gvs='gvim -S Session.vim &'
 alias gvu='gvim -u NONE -N &'
 alias gvq='gvim -c :q &'
-
-# EMacs
-
-alias ec='emacsclient -a "" -nw'
-alias e='emacs &'
 
 # tmux
 
