@@ -54,7 +54,10 @@ hook_add = '''
     let g:ale_lint_on_insert_leave  = 0
 
     let g:ale_linters = { 'php': ['larastan']}
-    let g:ale_fixers  = { 'python': ['isort', 'black','autopep8']}
+    let g:ale_fixers  = {
+                \ 'python': ['isort', 'black','autopep8'],
+                \ 'ruby':   ['rubocop']
+                \ }
 
     let g:ale_php_phpcs_standard = 'PSR12'
 
