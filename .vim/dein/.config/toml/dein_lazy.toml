@@ -270,6 +270,11 @@ hook_post_source = '''
                 \ ['.bash_profile',   '~/.dotfiles/.bash_profile'],
                 \ ['.bash_functions', '~/.dotfiles/.bash_functions'],
                 \ ['.bash_aliases',   '~/.dotfiles/.bash_aliases'],
+                \ ['Readline',        '~/.inputrc'],
+                \ ['Tmux',            '~/.tmux.conf'],
+                \ ['Git',             '~/.gitconfig'],
+                \ ['Composer',        '~/.config/composer/composer.json'],
+                \ ['Phpactor',        '~/.config/phpactor/phpactor.yml'],
                 \]
 
     let s:menus.vim_config = {
