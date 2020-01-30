@@ -29,6 +29,7 @@ alias g='grep . --color=always -r --include=*.php --exclude=_ide_helper.php --ex
 alias ls='ls -hF --color=tty'
 alias ll='ls -lA'
 alias lla='ls -la'
+alias lsl='ls -l'
 
 alias l='less'
 
