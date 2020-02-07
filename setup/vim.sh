@@ -10,15 +10,15 @@ mkdir -p \
     $HOME/.vim/dein/repos/github.com
 
 
-ln -sf $HOME/.dotfiles/.vimrc            $HOME
-ln -sf $HOME/.dotfiles/.gvimrc           $HOME
-ln -sf $HOME/.dotfiles/.vim/indent       $HOME/.vim
-ln -sf $HOME/.dotfiles/.vim/plugin       $HOME/.vim
-ln -sf $HOME/.dotfiles/.vim/snippets     $HOME/.vim
-ln -sf $HOME/.dotfiles/.vim/dein/.config $HOME/.vim/dein
+ln -sf $HOME/.dotfiles/.vimrc                 $HOME
+ln -sf $HOME/.dotfiles/.gvimrc                $HOME
+ln -sf $HOME/.dotfiles/.vim/indent            $HOME/.vim
+ln -sf $HOME/.dotfiles/.vim/plugin            $HOME/.vim
+ln -sf $HOME/.dotfiles/.vim/snippets          $HOME/.vim
+ln -sf $HOME/.dotfiles/.vim/coc-settings.json $HOME/.vim
+ln -sf $HOME/.dotfiles/.vim/dein/.config      $HOME/.vim/dein
 
 cp -f $HOME/.dotfiles/.vimrc.colorscheme     $HOME
-cp -f $HOME/.dotfiles/.vim/coc-settings.json $HOME/.vim
 
 git clone git://github.com/Shougo/dein.vim.git                                  $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 git clone git://github.com/laravel/docs.git                                     $HOME/.vim/ref/laravel.doc
