@@ -9,7 +9,7 @@
     },
     "coc": {
         "preferences": {
-            "jumpCommand": "split"
+            "jumpCommand": "edit"
         }
     }
 }
