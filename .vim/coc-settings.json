@@ -1,13 +1,14 @@
 {
     "diagnostic": {
-        "level":       "error",
+        "enable":      true,
+        "level":       "hint",
         "errorSign":   "Ｅ",
         "warningSign": "Ｗ",
         "infoSign":    "Ｉ",
         "hintSign":    "Ｈ"
     },
     "coc": {
-        "preferences" : {
+        "preferences": {
             "jumpCommand": "split"
         }
     }
