@@ -11,6 +11,13 @@
         "preferences": {
             "jumpCommand": "edit"
         }
+    },
+    "intelephense": {
+        "environment": {
+            "includePaths": [
+                "_ide_helper.php"
+            ]
+        }
     }
 }
 
