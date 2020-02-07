@@ -1,16 +1,6 @@
 " font config
-if has('win32')
-    " set guifont=Cica:h11
-    " set guifontwide=Cica:h11
-    set guifont=Osaka－等幅:h11
-    set guifontwide=Osaka－等幅:h11
-    set renderoptions=type:directx,gamma:2.2,level:5,renmode:5
-else
-    " set guifont=Cica\ 10
-    " set guifontwide=Cica\ 10
-    set guifont=Osaka－等幅\ 10
-    set guifontwide=Osaka－等幅\ 10
-endif
+set guifont=Migu\ 1M\ for\ Powerline\ 10
+set guifontwide=Migu\ 1M\ for\ Powerline\ 10
 
 
 " config cursor color while IME is turned on
@@ -34,6 +24,6 @@ set guioptions-=r
 
 
 " color
-colorscheme gruvbox
-set background=light
+colorscheme dream-light
 
+set background=light

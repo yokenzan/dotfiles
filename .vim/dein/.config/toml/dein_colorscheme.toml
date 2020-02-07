@@ -66,3 +66,9 @@ repo = 'vim-scripts/proton'
 [[plugins]]
 repo = 'vim-scripts/pyte'
 
+
+[[plugins]]
+repo = 'crusoexia/vim-dream'
+hook_add = '''
+    let g:dream_italic = 1
+'''
