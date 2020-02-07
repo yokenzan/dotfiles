@@ -2,7 +2,6 @@
 repo  = 'cespare/vim-toml'
 on_ft = ['toml', 'conf']
 
-
 #
 # [[plugins]]
 # repo  = 'vim-vdebug/vdebug'
@@ -342,4 +341,10 @@ hook_add = '''
 
 [[plugins]]
 repo  = 'udalov/kotlin-vim'
-on_ft  = ['kotlin']
+on_ft = ['kotlin']
+
+
+[[plugins]]
+repo  = 'fwcd/kotlin-language-server'
+build = './gradlew :server:installDist'
+on_ft = ['kotlin']

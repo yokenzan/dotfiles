@@ -73,4 +73,3 @@ hook_add = '''
                 \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
                 \ coc#refresh()
 '''
-

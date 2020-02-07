@@ -18,6 +18,12 @@
                 "_ide_helper.php"
             ]
         }
+    },
+    "languageserver": {
+        "kotlin": {
+            "command": "~/.vim/dein/repos/github.com/fwcd/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+            "filetypes": ["kotlin"]
+        }
     }
 }
 
