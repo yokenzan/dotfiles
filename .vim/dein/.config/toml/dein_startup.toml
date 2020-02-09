@@ -68,6 +68,7 @@ hook_add = '''
         au!
         nmap <silent><Space>al :<C-u>ALELint<CR>
         nmap <silent><Space>ad :<C-u>ALEDetail<CR>
+        nmap <silent><Space>af :<C-u>ALEFix<CR>
         nmap <silent>[A        :<C-u>ALEPrevious<CR>
         nmap <silent>]A        :<C-u>ALENext<CR>
     aug END
