@@ -72,3 +72,11 @@ repo = 'crusoexia/vim-dream'
 hook_add = '''
     let g:dream_italic = 1
 '''
+
+
+[[plugins]]
+repo = 'jnurmine/Zenburn'
+hook_add = '''
+    let g:zenburn_enable_TagHighlight=1
+    let g:zenburn_high_Contrast=1
+'''
