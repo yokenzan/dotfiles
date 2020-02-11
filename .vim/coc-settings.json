@@ -15,9 +15,13 @@
     "intelephense": {
         "environment": {
             "includePaths": [
+                ".phpstorm.meta.php",
                 "_ide_helper.php",
                 "_ide_helper_models.php"
             ]
+        },
+        "diagnostics" : {
+            "deprecated": false
         }
     },
     "languageserver": {
