@@ -327,7 +327,7 @@ cnoremap <C-[>f <S-Right>
 
 nnoremap <C-s>s :<C-u>terminal ++rows=20<CR>
 nnoremap <C-s>v :<C-u>vertical terminal<CR>
-nnoremap <C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)/2, minheight: &lines/2 })<CR>
+nnoremap <C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns/2, minheight: &lines/2 })<CR>
 
 
 " set gdefault
