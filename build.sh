@@ -6,7 +6,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # install basic packages
-sudo apt install -y curl git tig xsel highlight w3m w3m-img rxvt-unicode-256color mlterm emacs fzy global
+sudo apt install -y curl git tig xsel highlight w3m w3m-img rxvt-unicode-256color mlterm emacs fzy global tree
 
 # install i3 window manager and related packages
 sudo apt install -y i3 rofi feh volumeicon-alsa
