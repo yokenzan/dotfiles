@@ -216,6 +216,7 @@ fi
 
 
 stty stop undef
+stty discard undef
 export EDITOR=vim
 
 
