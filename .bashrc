@@ -229,6 +229,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.config/alacritty/alacritty.bash:$PATH"
+
+if [[ $(uname) = "Darwin" ]]; then
+    export PATH="$HOME/.nodebrew/current/bin:$PATH"
+fi
+
+
 if ps aux | grep google-ime-skk | grep -vqs grep; then
     : nothing todo
 else
