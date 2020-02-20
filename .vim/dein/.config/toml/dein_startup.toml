@@ -59,7 +59,7 @@ hook_add = '''
     let g:ale_fixers  = {
                 \ 'python': ['isort', 'black','autopep8'],
                 \ 'ruby':   ['rubocop'],
-                \ 'php':    ['phpcbs']
+                \ 'php':    ['phpcbf']
                 \ }
 
     let g:ale_php_phpcs_standard = 'PSR12'
