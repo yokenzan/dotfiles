@@ -6,9 +6,11 @@ navigator.destinations:
 
 navigator.autocreate:
     source:       source
+    unit_test:    unit_test
     laravel_test: laravel_test
 
 code_transform.class_new.variants:
     source:       source
+    unit_test:    unit_test
     laravel_test: laravel_test
 
