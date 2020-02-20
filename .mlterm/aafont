@@ -1,2 +1,12 @@
-ISO10646_UCS4_1 = Sarasa Term J 13
-ISO10646_UCS4_1_FULLWIDTH = Sarasa Term J 13
+ISO10646_UCS4_1 = Iosevka TermLig Curly Slab
+ISO10646_UCS4_1_FULLWIDTH = Sarasa Mono T J
+U+FF61-FF9F = Sarasa Mono T J
+JISX0201_KATA = Sarasa Mono T J
+JISX0201_ROMAN = Sarasa Mono T J
+JISX0208_1978 = Sarasa Mono T J
+JISX0208_1983 = Sarasa Mono T J
+JISX0208_1990 = Sarasa Mono T J
+JISX0212_1990 = Sarasa Mono T J
+JISX0213_2000_1 = Sarasa Mono T J
+JISX0213_2000_2 = Sarasa Mono T J
+U+1F000-1F77F = Sarasa Mono T J
