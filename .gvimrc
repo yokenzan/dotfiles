@@ -1,17 +1,11 @@
 " font config
-set guifont=Migu\ 1M\ for\ Powerline\ 10
-set guifontwide=Migu\ 1M\ for\ Powerline\ 10
-
-
-" config cursor color while IME is turned on
-if has('multi_byte_ime') || has('xim')
-  highlight CursorIM guibg=Purple guifg=NONE
-endif
-
+"
+set guifont=Iosevka\ TermLig\ Curly\ Slab\ 11
+set guifontwide=Sarasa\ Mono\ T\ J\ 11
 
 set mouse=a
-set columns=140
-set lines=40
+set columns=150
+set lines=45
 
 set guioptions-=m
 set guioptions-=M
@@ -21,9 +15,3 @@ set guioptions+=c " use console dialog instead of popup dialog
 set guioptions+=v " arrange dialog buttons vertically
 set guioptions-=b
 set guioptions-=r
-
-
-" color
-colorscheme dream-light
-
-set background=light
