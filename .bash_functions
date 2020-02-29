@@ -17,44 +17,12 @@ function grepr() {
 }
 
 
-# for PHP Laravel
-function laravel_update() {
-    echo ">>> chmod..."
-
-    sudo chmod -R 777 .
-
-    echo ">>> generating tag files..."
-
-    ctags --recurse=yes --append=no --languages=PHP --exclude=*.css --exclude=_ide_helper.php
-
-    echo ">>> generating gtag files..."
-
-    gtags
-
-    echo ">>> executing composer..."
-
-    composer dump-autoload
-
-    echo ">>> done!"
-}
-
-
 if [ $(uname | grep -qe 'NT') ]; then
 
     function wincmd() {
         CMD=$1
             shift
             $CMD $* 2>&1 | j2u
-    }
-
-
-    function pu2svg() {
-        plantuml $1
-    }
-
-
-    function md2html() {
-        pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o $1.html $1
     }
 fi
 
