@@ -28,7 +28,6 @@ ln -sf $HOME/.dotfiles/.i3status.conf    $HOME
 ln -sf $HOME/.dotfiles/.tigrc            $HOME
 
 ln -sf $HOME/.dotfiles/.emacs            $HOME/.emacs.d/init.el
-ln -sf $HOME/.dotfiles/.fanti.emacs      $HOME/.emacs.d/.fanti.emacs
 ln -sf $HOME/.dotfiles/composer.json     $HOME/.config/composer
 
 ln -sf $HOME/.dotfiles/.config/i3/config                  $HOME/.config/i3
