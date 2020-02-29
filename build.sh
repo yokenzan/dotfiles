@@ -134,4 +134,3 @@ cargo build --release
 sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
 sudo desktop-file-install alacritty.desktop
 sudo update-desktop-database
-

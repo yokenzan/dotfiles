@@ -12,4 +12,3 @@ cd ~/.dotfiles
 ./setup.sh
 ./build.sh
 ```
-

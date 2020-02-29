@@ -75,4 +75,3 @@ $HOME/.dotfiles/build.sh
 mkdir $HOME/.themes
 git clone --depth=1 git://github.com/debug-ito/GtkEmacs-debug-ito.git $HOME/.themes/GtkEmacs-debug-ito
 gsettings set org.gnome.desktop.interface gtk-key-theme GtkEmacs-debug-ito
-
