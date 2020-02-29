@@ -48,7 +48,7 @@ ln -sf $HOME/.dotfiles/.mlterm/aafont                     $HOME/.mlterm
 ln -sf $HOME/.dotfiles/.mlterm/main                       $HOME/.mlterm
 ln -sf $HOME/.dotfiles/.mlterm/color                      $HOME/.mlterm
 
-cp -f  $HOME/.dotfiles/.Xmodmap.sample                    $HOME/.Xmodmap
+cp -f  $HOME/.dotfiles/.Xmodmap.sample                    $HOME/.Xmodmap.sample
 
 
 if   uname | grep -qe 'NT'     ; then
