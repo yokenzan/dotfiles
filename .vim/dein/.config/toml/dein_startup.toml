@@ -184,7 +184,7 @@ hook_add = '''
     " let g:airline#extensions#ale#close_lnum_symbol = ''
 
     let g:airline_theme     = 'light'
-    let g:airline_section_a = airline#section#create(['mode', 'paste'])
+    let g:airline_section_a = airline#section#create(['mode', 'paste', 'spell'])
     let g:airline_section_b = airline#section#create([
                 \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{fugitive#head()}', ' %n', '%{ConcealLevelStatusLine()}',
                 \   ])

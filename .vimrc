@@ -249,6 +249,7 @@ if executable('pandoc')
     augroup END
 endif
 
+set dictionary=/usr/share/dict/words,spell
 autocmd FileType php setlocal omnifunc=phpactor#Complete
 set completeopt=noinsert,menuone,noselect
 set shortmess+=a
