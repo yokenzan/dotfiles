@@ -250,6 +250,7 @@ if executable('pandoc')
 endif
 
 set dictionary=/usr/share/dict/words,spell
+set thesaurus=~/.vim/thesaurus.txt
 autocmd FileType php setlocal omnifunc=phpactor#Complete
 set completeopt=noinsert,menuone,noselect
 set shortmess+=a
