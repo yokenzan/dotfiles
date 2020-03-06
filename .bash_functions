@@ -35,6 +35,11 @@ function r() {
     fi
 }
 
+function mkcd() {
+    DIRNAME=$1
+    mkdir $DIRNAME && cd $DIRNAME
+}
+
 
 
 function fcd() {
