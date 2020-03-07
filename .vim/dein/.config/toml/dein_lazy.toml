@@ -121,6 +121,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase buffer<CR>
         au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview jump<CR>
         au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview mark<CR>
+        au VimEnter * nested nnoremap <silent><Space>us  :<C-u>Denite spell<CR>
 
         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -no-empty -auto-action=highlight -smartcase -start_filter -auto-resize line<CR>
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-action=highlight -smartcase line<CR>
