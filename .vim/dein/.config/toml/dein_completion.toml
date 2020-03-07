@@ -21,8 +21,8 @@ hook_add = '''
 
     " diagnostics
 
-    nmap <silent>[a            <Plug>(coc-diagnostic-prev)
-    nmap <silent>]a            <Plug>(coc-diagnostic-next)
+    nmap <silent>[A            <Plug>(coc-diagnostic-prev)
+    nmap <silent>]A            <Plug>(coc-diagnostic-next)
     nmap <silent><space>cd     :<C-u>CocList diagnostics<CR>
     nmap <silent><space>cD     <Plug>(coc-diagnostic-info)
 
