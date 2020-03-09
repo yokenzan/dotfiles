@@ -346,7 +346,9 @@ set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 
 
 " Load Color Config
-source $HOME/.vimrc.colorscheme
+if !has('gui_running')
+    source $HOME/.vimrc.colorscheme
+endif
 
 nnoremap <Leader>R <Nop>
 

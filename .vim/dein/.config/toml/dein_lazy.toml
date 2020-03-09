@@ -121,6 +121,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase buffer<CR>
         au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview jump<CR>
         au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview mark<CR>
+        au VimEnter * nested nnoremap <silent><Space>us  :<C-u>Denite spell<CR>
 
         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -no-empty -auto-action=highlight -smartcase -start_filter -auto-resize line<CR>
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-action=highlight -smartcase line<CR>
@@ -136,6 +137,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -no-empty -smartcase -vertical-preview -start_filter file/rec<CR>
         au VimEnter * nested nnoremap <silent><Space>uG  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file/git<CR>
         au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview -start_filter file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>uv  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview -start-filter file/rec:vendor<CR>
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -auto-action=preview  grep/git<CR>
