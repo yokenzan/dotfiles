@@ -1,0 +1,41 @@
+" Setting Color & ColorScheme
+
+syntax on
+
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_Cs = "\<Esc>[4:3m"
+" let &t_Ce = "\<Esc>[4:0m"
+
+" gruvbox
+let g:gruvbox_contrast_light = "soft"
+let g:gruvbox_contrast_dark  = "soft"
+
+" colorscheme PaperColor
+" colorscheme badwolf
+" colorscheme cake
+" colorscheme desert
+" colorscheme distinguished
+" colorscheme dream
+" colorscheme dream-light
+colorscheme gruvbox
+" colorscheme koehler
+" colorscheme molokai
+" colorscheme nefertiti
+" colorscheme phd
+" colorscheme pyte
+" colorscheme rupza
+" colorscheme solarized8_flat
+" colorscheme solarized8_high
+" colorscheme solarized8_low
+
+" set background=dark
+" set background=light
+
+
+" Background Transparency Setting
+
+" highlight Normal      ctermbg=NONE guibg=NONE
+" highlight NonText     ctermbg=NONE guibg=NONE
+" highlight SpecialKey  ctermbg=NONE guibg=NONE
+" highlight EndOfBuffer ctermbg=NONE guibg=NONE
