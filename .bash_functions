@@ -100,3 +100,13 @@ function lll() {
 function llal() {
     ls -la --color=always $* | less -RNSJFX
 }
+
+function sshinit() {
+    ps aux | grep ssh-agent | grep -v grep > /dev/null 2>&1
+    if [ ! $? = 0 ]; then
+        eval `ssh-agent`
+    fi
+    ssh-add ~/.ssh/id_rsa.ppk \
+        && ssh -T git@github.com \
+        && ssh -T git@bitbucket.org
+}

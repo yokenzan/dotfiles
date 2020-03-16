@@ -128,7 +128,6 @@ alias gcd='git checkout develop'
 alias gc-='git checkout -'
 alias gm-='git merge -'
 
-alias sshinit='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa.ppk && ssh -T git@github.com && ssh -T git@bitbucket.org'
 
 
 # Ruby
