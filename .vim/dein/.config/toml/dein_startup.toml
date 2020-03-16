@@ -218,6 +218,14 @@ hook_add = '''
 
 
 [[plugins]]
+repo = 'tpope/vim-rhubarb'
+
+
+[[plugins]]
+repo = 'tommcdo/vim-fubitive'
+
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
