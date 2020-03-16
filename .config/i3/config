@@ -14,10 +14,11 @@ exec $SHELL -l
 set $mod Mod4
 
 exec xmodmap ~/.Xmodmap
-exec --no-startup-id ibus-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id ~/.fehbg
+# Lubuntu Display Config
+# exec --no-startup-id xrandr --output DP-2 --mode 1920x1200 --rate 59.95 --output DP-1 --mode 1920x1080 --rate 60.00 --right-of DP-2
 # exec --no-startup-id urxvtd
 # exec --no-startup-id mlterm -j genuine -L
 
