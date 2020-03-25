@@ -14,3 +14,5 @@ code_transform.class_new.variants:
     unit_test:    unit_test
     laravel_test: laravel_test
 
+code_transform.refactor.generate_accessor.prefix: get
+code_transform.refactor.generate_accessor.upper_case_first: true
