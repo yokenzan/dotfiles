@@ -350,3 +350,8 @@ on_ft = ['kotlin']
 repo  = 'fwcd/kotlin-language-server'
 build = './gradlew :server:installDist'
 on_ft = ['kotlin']
+
+
+[[plugins]]
+repo  = 'nelsyeung/twig.vim'
+on_ft = ['twig']
