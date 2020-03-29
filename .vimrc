@@ -189,14 +189,14 @@ function! ToggleConcealLevel()
     endif
 endfunction
 
-nnoremap <Space>tl :<C-u>set cul!<CR>
-nnoremap <Space>tc :<C-u>set cuc!<CR>
-nnoremap <Space>tw :<C-u>set wrap!<CR>
-nnoremap <Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
-nnoremap <Space>tB :<C-u>call ToggleBackground()<CR>
-nnoremap <Space>tS :<C-u>set spell!<CR>
-nnoremap <Space>tC :<C-u>call ToggleConcealLevel()<CR>
-nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
+nnoremap <silent><Space>tl :<C-u>set cul!<CR>
+nnoremap <silent><Space>tc :<C-u>set cuc!<CR>
+nnoremap <silent><Space>tw :<C-u>set wrap!<CR>
+nnoremap <silent><Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
+nnoremap <silent><Space>tB :<C-u>call ToggleBackground()<CR>
+nnoremap <silent><Space>tS :<C-u>set spell!<CR>
+nnoremap <silent><Space>tC :<C-u>call ToggleConcealLevel()<CR>
+nnoremap <silent><Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap /  /\v
 nnoremap // /\V
 nnoremap ?  ?\v
@@ -260,21 +260,21 @@ set shortmess-=c
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
-nnoremap <Space><Space>s  :<C-u>source Session.vim<CR>
+nnoremap <silent><Space><Space>s  :<C-u>source Session.vim<CR>
 
 " search motions with digraphs
-nnoremap <Space><Space>f f<C-k>
-nnoremap <Space><Space>t t<C-k>
-nnoremap <Space><Space>F F<C-k>
-nnoremap <Space><Space>T T<C-k>
-onoremap <Space><Space>f f<C-k>
-onoremap <Space><Space>t t<C-k>
-onoremap <Space><Space>F F<C-k>
-onoremap <Space><Space>T T<C-k>
-vnoremap <Space><Space>f f<C-k>
-vnoremap <Space><Space>t t<C-k>
-vnoremap <Space><Space>F F<C-k>
-vnoremap <Space><Space>T T<C-k>
+nnoremap <silent><Space><Space>f f<C-k>
+nnoremap <silent><Space><Space>t t<C-k>
+nnoremap <silent><Space><Space>F F<C-k>
+nnoremap <silent><Space><Space>T T<C-k>
+onoremap <silent><Space><Space>f f<C-k>
+onoremap <silent><Space><Space>t t<C-k>
+onoremap <silent><Space><Space>F F<C-k>
+onoremap <silent><Space><Space>T T<C-k>
+vnoremap <silent><Space><Space>f f<C-k>
+vnoremap <silent><Space><Space>t t<C-k>
+vnoremap <silent><Space><Space>F F<C-k>
+vnoremap <silent><Space><Space>T T<C-k>
 
 
 " keep region selecting after indent
@@ -301,12 +301,12 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
-nnoremap <C-[>h <C-w>h
-nnoremap <C-[>j <C-w>j
-nnoremap <C-[>k <C-w>k
-nnoremap <C-[>l <C-w>l
-nnoremap <C-[>c <C-w>c
-nnoremap <C-[>r <C-w>r
+nnoremap <silent><C-[>h <C-w>h
+nnoremap <silent><C-[>j <C-w>j
+nnoremap <silent><C-[>k <C-w>k
+nnoremap <silent><C-[>l <C-w>l
+nnoremap <silent><C-[>c <C-w>c
+nnoremap <silent><C-[>r <C-w>r
 
 nnoremap Q   4
 nnoremap QQ  8
@@ -318,18 +318,18 @@ xnoremap Q   4
 xnoremap QQ  8
 xnoremap QQQ 16
 
-nnoremap <C-n> :<C-u>bn<CR>
-nnoremap <C-p> :<C-u>bN<CR>
+nnoremap <silent><C-n> :<C-u>bn<CR>
+nnoremap <silent><C-p> :<C-u>bN<CR>
 
 nnoremap ]q :<C-u>cn<CR>
 nnoremap [q :<C-u>cN<CR>
 
-cnoremap <C-[>b <S-Left>
-cnoremap <C-[>f <S-Right>
+cnoremap <silent><C-[>b <S-Left>
+cnoremap <silent><C-[>f <S-Right>
 
-nnoremap <C-s>s :<C-u>terminal ++rows=20<CR>
-nnoremap <C-s>v :<C-u>vertical terminal<CR>
-nnoremap <C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns/2, minheight: &lines/2 })<CR>
+nnoremap <silent><C-s>s :<C-u>terminal ++rows=20<CR>
+nnoremap <silent><C-s>v :<C-u>vertical terminal<CR>
+nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns/2, minheight: &lines/2 })<CR>
 
 
 " set gdefault

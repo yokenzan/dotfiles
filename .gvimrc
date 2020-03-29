@@ -16,4 +16,16 @@ set guioptions+=v " arrange dialog buttons vertically
 set guioptions-=b
 set guioptions-=r
 
+imap <expr><M-v> pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
+
+nnoremap <silent><M-h> <C-w>h
+nnoremap <silent><M-j> <C-w>j
+nnoremap <silent><M-k> <C-w>k
+nnoremap <silent><M-l> <C-w>l
+nnoremap <silent><M-c> <C-w>c
+nnoremap <silent><M-r> <C-w>r
+
+cnoremap <silent><M-b> <S-Left>
+cnoremap <silent><M-f> <S-Right>
+
 source $HOME/.gvimrc.colorscheme
