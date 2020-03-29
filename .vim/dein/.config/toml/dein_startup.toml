@@ -43,13 +43,19 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
+    let g:ale_disable_lsp           = 1
+
+    let g:ale_echo_msg_error_str    = '🚫'
+    let g:ale_echo_msg_warning_str  = '⚠ '
+    let g:ale_echo_msg_format       = '[%linter%] [%severity%] %s'
+
     let g:ale_sign_column_always    = 0
     let g:ale_sign_error            = 'AE'
     let g:ale_sign_warning          = 'AW'
 
     let g:ale_lint_on_save          = 1
     let g:ale_lint_on_enter         = 0
-    let g:ale_set_quickfix          = 0
+    let g:ale_set_quickfix          = 1
     let g:ale_lint_on_text_changed  = 0
     let g:ale_lint_on_insert_leave  = 0
 
