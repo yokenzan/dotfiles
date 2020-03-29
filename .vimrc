@@ -136,7 +136,8 @@ endif
 set wildmenu
 set wildmode=list:longest,full
 set scrolloff=4
-set iminsert=0
+set iminsert=2
+set imsearch=-1
 set display=lastline
 set pumheight=30
 set ttimeoutlen=30
