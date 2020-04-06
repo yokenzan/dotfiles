@@ -92,7 +92,8 @@ repo = 'osyo-manga/vim-precious'
 
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo     = 'airblade/vim-gitgutter'
+if       = 'executable("git")'
 hook_add = '''
     let s:gitgutter_sign_candidates         = ['ゝ', '', '〇', '●']
     let s:gitgutter_sign_index              = 0
@@ -214,7 +215,8 @@ repo = 'vim-airline/vim-airline-themes'
 
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo     = 'tpope/vim-fugitive'
+if       = 'executable("git")'
 hook_add = '''
     nnoremap <Space>fs :<C-u>belowright Gstatus<CR>
     nnoremap <Space>fr :<C-u>Gread<CR>
@@ -502,5 +504,3 @@ depends = ['nvim-yarp']
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 if   = '!has("nvim") && has("python3")'
-
-
