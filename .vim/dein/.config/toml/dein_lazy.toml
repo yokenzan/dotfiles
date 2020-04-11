@@ -2,31 +2,6 @@
 repo  = 'cespare/vim-toml'
 on_ft = ['toml', 'conf']
 
-#
-# [[plugins]]
-# repo  = 'vim-vdebug/vdebug'
-# if    = 'has("python3") && executable("php")'
-# on_ft = ['php']
-# hook_post_source = '''
-#     let g:vdebug_options= {
-#     \    "port" : 9000,
-#     \    "server" : '',
-#     \    "timeout" : 20,
-#     \    "on_close" : 'detach',
-#     \    "break_on_open" : 0,
-#     \    "ide_key" : 'XDEBUG_VIM',
-#     \    "path_maps" : {},
-#     \    "debug_window_level" : 0,
-#     \    "debug_file_level" : 0,
-#     \    "debug_file" : "",
-#     \    "watch_window_style" : 'expanded',
-#     \    "marker_default" : '⬦',
-#     \    "marker_closed_tree" : '▸',
-#     \    "marker_open_tree" : '▾'
-#     \}
-# '''
-#
-
 
 [[plugins]]
 repo  = 'phpactor/phpactor'

@@ -504,3 +504,32 @@ depends = ['nvim-yarp']
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 if   = '!has("nvim") && has("python3")'
+
+
+[[plugins]]
+repo  = 'vim-vdebug/vdebug'
+if    = 'has("python3")'
+hook_post_source = '''
+    let g:vdebug_options= {
+    \    'port' : 9000,
+    \    'timeout' : 20,
+    \    'server' : 'localhost',
+    \    'on_close' : 'stop',
+    \    'break_on_open' : 1,
+    \    'ide_key' : 'XDEBUG_VIM',
+    \    'debug_window_level' : 0,
+    \    'debug_file_level' : 0,
+    \    'debug_file' : '',
+    \    'path_maps' : {},
+    \    'watch_window_style' : 'expanded',
+    \    'marker_default' : '⬦',
+    \    'marker_closed_tree' : '▸',
+    \    'marker_open_tree' : '▾',
+    \    'sign_breakpoint' : '▷',
+    \    'sign_current' : '▶',
+    \    'sign_disabled': 'X',
+    \    'continuous_mode'  : 1,
+    \    'simplified_status': 1,
+    \    'layout': 'vertical',
+    \}
+'''
