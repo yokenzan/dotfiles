@@ -75,3 +75,4 @@ if [ $SHLVL = 1 ]; then
     tmux -2
 fi
 
+export DISPLAY=127.0.0.1:0.0
