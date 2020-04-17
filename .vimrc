@@ -197,7 +197,7 @@ nnoremap <silent><Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <silent><Space>tB :<C-u>call ToggleBackground()<CR>
 nnoremap <silent><Space>tS :<C-u>set spell!<CR>
 nnoremap <silent><Space>tC :<C-u>call ToggleConcealLevel()<CR>
-nnoremap <silent><Space>ms :<C-u>mks! Session.vim<CR>
+nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap /  /\v
 nnoremap // /\V
 nnoremap ?  ?\v
@@ -261,7 +261,7 @@ set shortmess-=c
 
 command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
-nnoremap <silent><Space><Space>s  :<C-u>source Session.vim<CR>
+nnoremap <Space><Space>s  :<C-u>source Session.vim<CR>
 
 " search motions with digraphs
 nnoremap <silent><Space><Space>f f<C-k>
