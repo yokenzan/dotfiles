@@ -53,3 +53,11 @@ snippet phpcs_suppress_property_type_hint
 
 snippet phpcs_suppress_parameter_type_hint
 	@phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint${0}
+
+snippet strict_types
+	declare(strict_types=1);
+
+snippet ifisnull
+	if (is_null(${1})) {
+	    ${2}
+	}${0}
