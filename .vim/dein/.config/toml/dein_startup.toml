@@ -152,6 +152,32 @@ hook_add = '''
                     \ : ''
     endfunction
 
+    function! WrapStatusLine()
+        return &wrap
+                    \ ? '畳'
+                    \ : ''
+    endfunction
+
+    function! SpellStatusLine()
+        return &spell
+                    \ ? '糾'
+                    \ : ''
+    endfunction
+
+    function! PasteStatusLine()
+        return &paste
+                    \ ? '貼'
+                    \ : ''
+    endfunction
+
+    function! Padspace()
+        if &paste || &spell || &conceallevel == 2 || &wrap
+            return ' '
+        endif
+
+        return ''
+    endfunction
+
     let g:airline_mode_map = {
                 \ '__' : '-',
                 \ 'c'  : 'C',
@@ -175,7 +201,7 @@ hook_add = '''
     let g:airline_powerline_fonts    = 0
     let g:airline_detect_crypt       = 0
     let g:airline_detect_iminsert    = 0
-    let g:airline_detect_spell       = 1
+    let g:airline_detect_spell       = 0
     let g:airline_detect_spelllang   = 0
     let g:airline_highlighting_cache = 0
     let g:airline_inactive_collapse  = 0
@@ -193,14 +219,16 @@ hook_add = '''
     " let g:airline#extensions#ale#close_lnum_symbol = ''
 
     let g:airline_theme     = 'xtermlight'
-    let g:airline_section_a = airline#section#create(['mode', 'paste', 'spell'])
+    " let g:airline_section_a = airline#section#create(['mode', 'paste', 'spell'])
+    let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_b = airline#section#create([
-                \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{fugitive#head()}', ' %n', '%{ConcealLevelStatusLine()}',
+                \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{fugitive#head()}', ' %n', '%{Padspace()}',
+                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}'
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
 
-    call extend(g:airline_symbols, { 'paste': ' P', 'spell': ' S' }, 'force')
+    " call extend(g:airline_symbols, { 'paste': ' P', 'spell': ' S' }, 'force')
 
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
