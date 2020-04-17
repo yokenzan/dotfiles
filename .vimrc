@@ -196,6 +196,7 @@ nnoremap <silent><Space>tw :<C-u>set wrap!<CR>
 nnoremap <silent><Space>tb :<C-u>call ToggleCursorLineAndColumn()<CR>
 nnoremap <silent><Space>tB :<C-u>call ToggleBackground()<CR>
 nnoremap <silent><Space>tS :<C-u>set spell!<CR>
+nnoremap <silent><Space>tp :<C-u>set paste!<CR>
 nnoremap <silent><Space>tC :<C-u>call ToggleConcealLevel()<CR>
 nnoremap <Space>ms :<C-u>mks! Session.vim<CR>
 nnoremap /  /\v
