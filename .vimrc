@@ -2,6 +2,10 @@ if &compatible
     set nocompatible
 endif
 
+" when running without  TMUX, these key press arent same.
+"
+" - <CR>  and <C-m>
+" - <Esc> and <C-[>
 
 " Setting dein.vim
 
@@ -203,7 +207,7 @@ nnoremap /  /\v
 nnoremap // /\V
 nnoremap ?  ?\v
 nnoremap ?/ ?\V
-nnoremap <silent><Esc><Esc> :<C-u>noh<CR><ESC>
+nnoremap <silent><C-[><C-[> :<C-u>noh<CR><Esc>
 
 
 command! -count=1 Glo :r! git log --oneline --no-merges -<count>
