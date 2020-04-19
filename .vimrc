@@ -107,7 +107,7 @@ runtime ftplugin/man.vim
 
 " Disable Auto Indent When Paste Characters
 
-if &term =~ 'xterm' || &term =~ 'screen'
+" if &term =~ 'xterm' || &term =~ 'screen'
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
     let &pastetoggle = "\e[201~"
@@ -118,7 +118,7 @@ if &term =~ 'xterm' || &term =~ 'screen'
     endfunction
 
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
+" endif
 
 
 " Setting Mouse Control
@@ -290,11 +290,6 @@ vnoremap > >gv
 
 
 let $BASH_ENV = '~/.bash_aliases'
-
-
-if has('win32')
-    set clipboard+=autoselect
-endif
 
 
 " Line/Column Highlight Setting
