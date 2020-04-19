@@ -309,6 +309,13 @@ nnoremap <silent><C-[>l <C-w>l
 nnoremap <silent><C-[>c <C-w>c
 nnoremap <silent><C-[>r <C-w>r
 
+nnoremap <silent><Esc>h <C-w>h
+nnoremap <silent><Esc>j <C-w>j
+nnoremap <silent><Esc>k <C-w>k
+nnoremap <silent><Esc>l <C-w>l
+nnoremap <silent><Esc>c <C-w>c
+nnoremap <silent><Esc>r <C-w>r
+
 nnoremap Q   4
 nnoremap QQ  8
 nnoremap QQQ 16
