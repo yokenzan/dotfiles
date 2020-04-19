@@ -148,7 +148,7 @@ hook_add = '''
 
     function! ConcealLevelStatusLine()
         return &conceallevel == 2
-                    \ ? ' 隠 '
+                    \ ? '隠'
                     \ : ''
     endfunction
 
