@@ -37,13 +37,14 @@ endif
 " colorscheme gruvbox
 " colorscheme koehler
 " colorscheme molokai
-colorscheme nefertiti
+" colorscheme nefertiti
 " colorscheme phd
 " colorscheme pyte
 " colorscheme rupza
 " colorscheme solarized8_flat
 " colorscheme solarized8_high
 " colorscheme solarized8_low
+" colorscheme zenburn
 
 " set background=dark
 " set background=light
