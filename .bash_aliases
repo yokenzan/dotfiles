@@ -129,7 +129,6 @@ alias gc-='git checkout -'
 alias gm-='git merge -'
 
 
-
 # Ruby
 
 alias re='rbenv exec'
@@ -138,23 +137,23 @@ alias rebe='reb exec'
 alias reber='rebe rails'
 
 
-# Windows
+# filer
 
 if [ $(uname | grep -qe 'NT') ]; then
     # launch Explorer with pwd
     alias here='start .'
-fi
-
-# WSL
-
-if [ $WSL_DISTRO_NAME ]; then
+elif [ $XDG_SESSION_DESKTOP = 'Lubuntu' ]; then
+    alias here='pcmanfm'
+elif [ $WSL_DISTRO_NAME ]; then
     # launch Explorer with pwd
     alias here='explorer.exe .'
 fi
+
+
+# Docker
 
 alias dcps='docker-compose ps'
 alias dcud='docker-compose up -d'
 alias dcudb='docker-compose up -d --build'
 alias dcd='docker-compose down'
 alias dcdr='docker-compose down --rmi all'
-
