@@ -20,6 +20,7 @@ ln -sf $HOME/.dotfiles/.vim/thesaurus.txt     $HOME/.vim
 ln -sf $HOME/.dotfiles/.vim/dein/.config      $HOME/.vim/dein
 
 cp -f $HOME/.dotfiles/.vimrc.colorscheme     $HOME
+cp -f $HOME/.dotfiles/.gvimrc.colorscheme    $HOME
 
 git clone --depth=5 git://github.com/Shougo/dein.vim.git                                  $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 git clone --depth=5 git://github.com/laravel/docs.git                                     $HOME/.vim/ref/laravel.doc

@@ -60,11 +60,6 @@ elif uname | grep -qe 'Darwin' ; then
     ln -sf $HOME/.dotfiles/.skhdrc       $HOME
 fi
 
-
-git clone git://github.com/rbenv/rbenv.git ~/.rbenv
-git clone git://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-
 chmod -R 777 $HOME/.dotfiles/setup
 for i in $(find $HOME/.dotfiles/setup -type f); do $i; done
 
