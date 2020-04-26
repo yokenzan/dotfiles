@@ -60,11 +60,11 @@ alias vu='vim -u NONE -N'
 alias vq='vim -c :q'
 alias v-='vim -'
 
-alias gv='gvim &'
-alias gvo='gvim -O &'
-alias gvs='gvim -S Session.vim &'
-alias gvu='gvim -u NONE -N &'
-alias gvq='gvim -c :q &'
+alias gv='gvim'
+alias gvo='gvim -O'
+alias gvs='gvim -S Session.vim'
+alias gvu='gvim -u NONE -N'
+alias gvq='gvim -c :q'
 
 # tmux
 
