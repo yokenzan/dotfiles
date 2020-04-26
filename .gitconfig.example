@@ -26,4 +26,7 @@
 [alias]
     ls = ls-files
     co = checkout
+    mt = mergetool
     current =!git status --branch | head -1 | sed -e 's/On branch //g'
+[rerere]
+	enabled = true
