@@ -29,6 +29,13 @@ else
     let &t_EI.="\e[1 q\e]12;orange\x7"
 endif
 
+" gruvbox
+let g:gruvbox_contrast_light = "soft"
+let g:gruvbox_contrast_dark  = "soft"
+
+" set background=dark
+" set background=light
+
 " colorscheme PaperColor
 " colorscheme badwolf
 " colorscheme cake
@@ -46,18 +53,9 @@ endif
 " colorscheme solarized8_low
 " colorscheme zenburn
 
-" set background=dark
-" set background=light
-
-
 " Background Transparency Setting
 
 " highlight Normal      ctermbg=NONE guibg=NONE
 " highlight NonText     ctermbg=NONE guibg=NONE
 " highlight SpecialKey  ctermbg=NONE guibg=NONE
 " highlight EndOfBuffer ctermbg=NONE guibg=NONE
-
-
-" gruvbox
-let g:gruvbox_contrast_light = "soft"
-let g:gruvbox_contrast_dark  = "soft"

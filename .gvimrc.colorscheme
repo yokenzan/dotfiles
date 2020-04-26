@@ -11,6 +11,9 @@ syntax on
 let g:gruvbox_contrast_light = "soft"
 let g:gruvbox_contrast_dark  = "soft"
 
+" set background=dark
+" set background=light
+
 " colorscheme PaperColor
 " colorscheme badwolf
 " colorscheme cake
@@ -28,10 +31,6 @@ colorscheme gruvbox
 " colorscheme solarized8_flat
 " colorscheme solarized8_high
 " colorscheme solarized8_low
-
-" set background=dark
-" set background=light
-
 
 " Background Transparency Setting
 
