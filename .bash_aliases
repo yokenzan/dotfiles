@@ -157,3 +157,5 @@ alias dcud='docker-compose up -d'
 alias dcudb='docker-compose up -d --build'
 alias dcd='docker-compose down'
 alias dcdr='docker-compose down --rmi all'
+
+alias my='mysql --pager="less -XSNF"'
