@@ -61,3 +61,29 @@ snippet ifisnull
 	if (is_null(${1})) {
 	    ${2}
 	}${0}
+
+snippet mixed
+	int|string|null${0}
+
+snippet mixed_array
+	(int|string|null)[]${0}
+
+snippet show_as_string
+    /**
+     * @return string
+     */
+	public function show${1}(): string
+    {
+        return ${2:(string)}$this->e->$1;
+    }
+
+snippet show_as_htmlstring
+    /**
+     * @return HtmlString
+     */
+	public function show${1}(): HtmlString
+    {
+        $text = sprintf('%s${2}', $this->e->$1);
+
+        return new HtmlString($text);
+    }
