@@ -339,6 +339,10 @@ nnoremap <silent><C-s>s :<C-u>terminal ++rows=20<CR>
 nnoremap <silent><C-s>v :<C-u>vertical terminal<CR>
 nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns/2, minheight: &lines/2 })<CR>
 
+" camel -> snake
+"
+" :s/\<[a-z]\+\zs\(\([A-Z]\)\([a-z]\+\)\)\+/_\l\2\3/g
+
 
 " set gdefault
 set colorcolumn=100
