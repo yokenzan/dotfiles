@@ -2,13 +2,11 @@
 
 
 # Initialize Ruby environment
-if [ -d "$HOME/.gem/ruby/" ]; then
-    export PATH=$PATH:$HOME/.gem/ruby/$(ls -r $HOME/.gem/ruby/ | head -1)/bin
-fi
-
 if [ -d "$HOME/.rbenv/bin" ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
+elif [ -d "$HOME/.gem/ruby/" ]; then
+    export PATH=$PATH:$HOME/.gem/ruby/$(ls -r $HOME/.gem/ruby/ | head -1)/bin
 fi
 
 
@@ -57,12 +55,11 @@ PATH=$PATH:$HOME/bin:/usr/local/bin
 PATH="$PATH:$HOME/.cargo/bin"
 PATH="$PATH:$HOME/.config/composer/vendor/bin"
 PATH="$PATH:$HOME/.local/bin"
-PATH="/usr/local/opt/ruby/bin:$PATH"
-PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 export PATH
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export CMPSDIR=$HOME/wk/projects/cmps
 
 
 if [ -f ~/.Xmodmap ]; then
