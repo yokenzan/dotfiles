@@ -96,6 +96,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase neoyank<CR>
         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase -start_filter help<CR>
         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase buffer<CR>
+        au VimEnter * nested nnoremap <silent><Space>uB  :<C-u>DeniteBufferDir -default-action=switch -smartcase -matchers=matcher/ignore_current_buffer,matcher/substring buffer<CR>
         au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview jump<CR>
         au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview mark<CR>
         au VimEnter * nested nnoremap <silent><Space>us  :<C-u>Denite spell<CR>
