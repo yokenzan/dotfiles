@@ -46,14 +46,14 @@
 # COMP_CVS_REMOTE=1
 #
 # Define to avoid stripping description in --option=description of './configure --help'
-# COMP_CONFIGURE_HINTS=1
+COMP_CONFIGURE_HINTS=1
 #
 # Define to avoid flattening internal contents of tar files
 # COMP_TAR_INTERNAL_PATHS=1
 #
 # Uncomment to turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
-# [[ -f /etc/bash_completion ]] && . /etc/bash_completion
+[[ -f /etc/bash_completion ]] && . /etc/bash_completion
 
 # History Options
 #
