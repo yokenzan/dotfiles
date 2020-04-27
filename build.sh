@@ -17,7 +17,7 @@ sudo apt install -y curl git tig xsel highlight w3m w3m-img fzy tree jq htop ibu
 sudo apt install -y libsqlite3-dev sqlite3
 
 # install python related packages
-sudo apt install -y python3.7 python3.7-dev python3-pip
+sudo apt install -y python3.8 python3.8-dev python3-pip
 
 pip3 install pynvim typing neovim ranger-fm
 
