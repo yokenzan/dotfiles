@@ -142,8 +142,10 @@ alias reber='rebe rails'
 if [ $(uname | grep -qe 'NT') ]; then
     # launch Explorer with pwd
     alias here='start .'
-elif [ $XDG_SESSION_DESKTOP = 'Lubuntu' ]; then
+elif [ "$XDG_SESSION_DESKTOP" = 'Lubuntu' ]; then
     alias here='pcmanfm'
+elif [ "$XDG_SESSION_DESKTOP" = 'ubuntu' ]; then
+    alias here='nautilus . &'
 elif [ $WSL_DISTRO_NAME ]; then
     # launch Explorer with pwd
     alias here='explorer.exe .'
