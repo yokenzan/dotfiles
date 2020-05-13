@@ -101,6 +101,7 @@ $if mode=emacs
     "\C-xn":  " > /dev/null\n"
     "\C-xN":  " > /dev/null 2>&1\n"
     "\C-xp":  " $(pwd) "
+    "\C-xs":  "sudo "
 
     #
     # Function key key maps
