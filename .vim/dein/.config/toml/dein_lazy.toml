@@ -133,6 +133,8 @@ hook_add = '''
 '''
 hook_post_source = '''
 
+    call denite#custom#option('default', 'preview_width', winwidth(0) / 2)
+
     " file/git
 
     call denite#custom#alias('source', 'file/git', 'file/rec')
