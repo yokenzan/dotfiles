@@ -363,6 +363,7 @@ if !has('gui_running')
 endif
 
 nnoremap <Leader>R <Nop>
+nnoremap <Leader>C :<C-u>Copen<CR>
 
 if filereadable('./.vimrc.project')
     source ./.vimrc.project
