@@ -9,9 +9,9 @@ shopt -s expand_aliases
 # \rm will call the real rm not the alias.
 #
 # Interactive operation...
-# alias rm='rm -i'
+alias rm='rm -i'
 # alias cp='cp -i'
-# alias mv='mv -i'
+alias mv='mv -i'
 #
 # Default to human readable figures
 # alias df='df -h'
