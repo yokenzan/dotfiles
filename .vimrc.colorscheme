@@ -26,7 +26,7 @@ else
     " replace
     let &t_SR.="\e[3 q\e]12;red\x7"
     " escape from insert / replace
-    let &t_EI.="\e[1 q\e]12;orange\x7"
+    let &t_EI.="\e[1 q\e]12;magenta\x7"
 endif
 
 " gruvbox
