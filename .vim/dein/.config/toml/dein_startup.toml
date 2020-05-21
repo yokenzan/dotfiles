@@ -446,6 +446,24 @@ repo  = 'tpope/vim-repeat'
 repo     = 'kana/vim-textobj-user'
 hook_add = '''
     function! TextObjUserSetting()
+        " ひらがな・カタカナ
+        call textobj#user#plugin('kana', {
+                    \       '_' : {
+                    \           'pattern' : '[ー・\u3041-\u30FA]\+',
+                    \           'select'  : ['ak', 'ik'],
+                    \       },
+                    \   })
+        " PHP
+        call textobj#user#plugin('php', {
+                    \       'variable' : {
+                    \           'pattern' : '\$\w\+',
+                    \           'select'  : ['av', 'iv'],
+                    \       },
+                    \       'argument' : {
+                    \           'pattern' : '\(\w\+\ \)\?\$\S\+\(, \?\)\?',
+                    \           'select'  : ['aa', 'ia'],
+                    \       },
+                    \   })
         " 日付表記の選択
         call textobj#user#plugin('datetime', {
                     \       'date' : {
