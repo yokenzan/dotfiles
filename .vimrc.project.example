@@ -1,1 +1,0 @@
-nnoremap <Leader>R :<C-u>w<CR>:<C-u>!tmux send-keys -t 2 "./gradlew test -i" Enter<CR><CR>

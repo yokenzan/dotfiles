@@ -1,0 +1,15 @@
+" vim: ft=vim
+
+source ~/.dotfiles/.vimrc.project.php
+
+if filereadable(getcwd() . '/.env')
+    let connection = trim(system("sed .env -n -e '/DB_CONNECTION/s/^[^=]\\+=//p'"))
+    let database   = trim(system("sed .env -n -e '/DB_DATABASE/s/^[^=]\\+=//p'"))
+    let username   = trim(system("sed .env -n -e '/DB_USERNAME/s/^[^=]\\+=//p'"))
+    let password   = trim(system("sed .env -n -e '/DB_PASSWORD/s/^[^=]\\+=//p'"))
+
+    let g:quickrun_config['sql'] = {
+                \ 'command': connection,
+                \ 'exec': [join(['%c -u', username, ' -p', password, ' ', database, ' < %s'], '')],
+                \ }
+endif

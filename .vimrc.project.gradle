@@ -1,0 +1,5 @@
+" vim: ft=vim
+
+if filereadable(getcwd() . '/gradlew')
+    nnoremap <Space>Pt :<C-u>w<CR>:<C-u>Dispatch ./gradlew test -i<CR>
+endif
