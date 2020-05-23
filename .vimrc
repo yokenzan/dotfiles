@@ -244,7 +244,7 @@ endif
 " if executable('plantuml')
 "     augroup PlantUMLAutoCommand
 "         autocmd!
-"         autocmd! BufWritePost *.pu silent !java -jar /usr/share/plantuml/plantuml.jar -tsvg %
+"         autocmd! BufWritePost *.pu Dispatch java -jar /usr/share/plantuml/plantuml.jar -tsvg %
 "     augroup END
 " endif
 
