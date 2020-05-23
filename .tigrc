@@ -6,3 +6,5 @@ set ignore-space = all
 
 bind main ! ?git revert %(commit)
 bind main $ +sh -c "git log --pretty='format:%h %s %b' -1 %(commit) | xsel -bi"
+
+bind status C !git commit -v

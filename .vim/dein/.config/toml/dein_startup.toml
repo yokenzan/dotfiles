@@ -352,8 +352,6 @@ hook_add = '''
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
-    nnoremap <Space><Space>pu :<C-u>QuickRun<Space>phpunit<CR>
-
     let quickrun_config = {
     \   "_" : {
     \       "outputter/buffer/close_on_empty" : 1,
@@ -364,6 +362,10 @@ hook_add = '''
     \       'exec':      '%c %s',
     \       'outputter': 'buffer',
     \       "outputter/buffer/split" : ""
+    \   },
+    \   'plantuml': {
+    \       'exec':      'java -jar /usr/share/plantuml/plantuml.jar -Djava.awt.headless=true -tsvg %s',
+    \       'outputter': 'message'
     \   }
     \}
 '''
