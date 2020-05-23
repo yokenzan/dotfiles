@@ -360,14 +360,16 @@ hook_add = '''
     \   'phpunit': {
     \       'command':   'vendor/bin/phpunit',
     \       'exec':      '%c %s',
-    \       'outputter': 'buffer',
-    \       "outputter/buffer/split" : ""
+    \       'outputter': 'quickfix',
     \   },
     \   'plantuml': {
     \       'exec':      'java -jar /usr/share/plantuml/plantuml.jar -Djava.awt.headless=true -tsvg %s',
     \       'outputter': 'message'
     \   }
     \}
+
+autocmd FileType php nnoremap <buffer> <Space>bt :<C-u>QuickRun phpunit<CR>
+autocmd FileType php nnoremap <buffer> <Space>bl :<C-u>QuickRun -exec "php -l %s" -outputter "quickfix"<CR>
 '''
 
 
