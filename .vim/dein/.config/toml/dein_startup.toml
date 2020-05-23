@@ -364,6 +364,10 @@ hook_add = '''
     \       'exec':      '%c %s',
     \       'outputter': 'buffer',
     \       "outputter/buffer/split" : ""
+    \   },
+    \   'plantuml': {
+    \       'exec':      'java -jar /usr/share/plantuml/plantuml.jar -Djava.awt.headless=true -tsvg %s',
+    \       'outputter': 'message'
     \   }
     \}
 '''
