@@ -42,16 +42,16 @@ font pango:Iosevka TermLig Curly Slab Medium 9
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -modi drun -show drun
-bindsym $mod+w exec rofi -show window
+bindsym $mod+d exec rofi -show-icons -theme gruvbox-dark -modi drun -show drun
+bindsym $mod+w exec rofi -show-icons -theme Paper -show window
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -110,13 +110,13 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -194,3 +194,15 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #ff00ff #ffa0ff #000000 #2e0e04   #280507
+client.focused_inactive #ffa0ff #ff00ff #ffffff #480e00   #5f070a
+client.unfocused        #cc00cc #cc00cc #cccccc #290d0e   #220202
+client.urgent           #2f340a #900000 #ffff0f #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+
+focus_follows_mouse no
