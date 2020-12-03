@@ -80,3 +80,6 @@ hook_add = '''
     let g:zenburn_enable_TagHighlight=1
     let g:zenburn_high_Contrast=1
 '''
+
+[[plugins]]
+repo = 'croaker/mustang-vim'
