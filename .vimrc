@@ -342,6 +342,11 @@ nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 
 snoremap <silent><C-b> <S-Left>
 snoremap <silent><C-f> <S-Right>
 
+nnoremap [j F<C-k>_.
+nnoremap ]j f<C-k>_.
+nnoremap [J F<C-k>_,
+nnoremap ]J f<C-k>_,
+
 
 " camel -> snake
 "
