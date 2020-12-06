@@ -5,6 +5,6 @@ set tab-size     = 4
 set ignore-space = all
 
 bind main ! ?git revert %(commit)
-bind main $ +sh -c "git log --pretty='format:%h %s %b' -1 %(commit) | xsel -bi"
+bind main $ +sh -c "git log --pretty='format:%h %s %b' -1 %(commit) | cp2clip"
 
 bind status C !git commit -v

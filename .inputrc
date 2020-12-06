@@ -95,7 +95,7 @@ $if mode=emacs
     #
 
     "\C-xl":  " | l\n"
-    "\C-xc":  " | xsel -bi\n"
+    "\C-xc":  " | cp2clip\n"
     "\C-xv":  " | v -\n"
     "\C-xG":  " | grep "
     "\C-xn":  " > /dev/null\n"
