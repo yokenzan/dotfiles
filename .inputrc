@@ -107,10 +107,10 @@ $if mode=emacs
     # Function key key maps
     #
 
-    "\e[15~": " source ~/.bash_profile\n"  # F5
-    "\e[11~": " sshinit\n"                 # F1
-    "\e[17~": " sshinit\n"                 # F6
-    "\e[24~": " here\n"                  # F12
+    "\e[15~": " source ~/.bash_profile\n"  # F5
+    "\e[11~": " sshinit\n"                 # F1
+    "\e[17~": " sshinit\n"                 # F6
+    "\e[24~": " here\n"                    # F12
 
     "\C-^":   "~/"
 
