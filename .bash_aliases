@@ -127,6 +127,7 @@ alias gmsf='git merge --squash --ff'
 alias gcd='git checkout develop'
 alias gc-='git checkout -'
 alias gm-='git merge -'
+alias gf='git fetch -ap'
 
 
 # Ruby
