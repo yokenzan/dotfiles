@@ -77,13 +77,20 @@
 ;;; Input Method Configuration
 
 ;; SKK
+
+(global-set-key "\C-x\C-j" 'skk-mode)
+(global-set-key "\C-xj" 'skk-auto-fill-mode)
+
 (setq skk-server-host "localhost")
 (setq skk-server-portnum 55100)
 (setq skk-share-private-jisyo t)
 (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
 (setq skk-show-icon t)
 (setq skk-show-annotation t)
-; (setq default-input-method "japanese-skk")
+(setq default-input-method "japanese-skk")
+
+(setq skk-jisyo (cons "~/.skk-jisyo" 'utf-8))
+
 
 ;; pyim
 (require 'pyim)
