@@ -14,9 +14,17 @@
 
 
 ;; Modify Default Key Maps
+; (global-set-key "\C-h" 'delete-backward-char)
 (define-key key-translation-map [?\C-h] [?\C-?])
 (define-key global-map [?¥] [?\\])
+(global-set-key (kbd "C-M-h") 'backward-kill-word)
+(global-set-key (kbd "C-x C-M-f") 'project-find-file)
+(global-set-key (kbd "C-c t") 'recentf-open-files)
 
+; バックアップファイルをつくらない
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq next-line-add-newlines nil)
 
 ;; File Loading
 
@@ -74,6 +82,8 @@
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
 
+(ivy-mode 1)
+
 ;;; Input Method Configuration
 
 ;; SKK
@@ -81,15 +91,50 @@
 (global-set-key "\C-x\C-j" 'skk-mode)
 (global-set-key "\C-xj" 'skk-auto-fill-mode)
 
-(setq skk-server-host "localhost")
-(setq skk-server-portnum 55100)
-(setq skk-share-private-jisyo t)
-(setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
-(setq skk-show-icon t)
-(setq skk-show-annotation t)
-(setq default-input-method "japanese-skk")
+(when (require 'skk nil t)
+  (setq skk-server-host "localhost")
+  (setq skk-server-portnum 55100)
+  (setq skk-share-private-jisyo t)
+  (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
+  (setq skk-show-icon t)
+  (setq skk-show-annotation t)
+  (setq default-input-method "japanese-skk")
 
-(setq skk-jisyo (cons "~/.skk-jisyo" 'utf-8))
+  (setq skk-jisyo (cons "~/.skk-jisyo" 'utf-8))
+)
+
+(global-company-mode t)
+
+(global-set-key (kbd "C-M-i") 'company-complete)
+
+;; C-n, C-pで補完候補を次/前の候補を選択
+(define-key company-active-map (kbd "C-n") 'company-select-next)
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+(define-key company-search-map (kbd "C-n") 'company-select-next)
+(define-key company-search-map (kbd "C-p") 'company-select-previous)
+
+;; C-sで絞り込む
+(define-key company-active-map (kbd "C-s") 'company-filter-candidates)
+
+;; TABで候補を設定
+(define-key company-active-map (kbd "C-i") 'company-complete-selection)
+
+;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
+(define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete)
+
+(with-eval-after-load 'php-mode
+  (define-key php-mode-map (kbd "C-M-i") 'company-phpactor))
+
+(setq frame-title-format "%f")
+(setq text-mode-hook 'turn-off-auto-fill)
+
+;; The following lines are always needed.  Choose your own keys.
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
+
+(define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
 
 
 ;; pyim
