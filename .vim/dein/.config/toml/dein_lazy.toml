@@ -107,15 +107,15 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -smartcase -reversed command_history<CR>
 
         " ファイル関係
-        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -no-empty -smartcase -vertical-preview file<CR>
-        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file<CR>
-        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -no-empty -smartcase -vertical-preview file_mru<CR>
-        au VimEnter * nested nnoremap <silent><Space>up  :<C-u>Denite           -no-empty -smartcase -vertical-preview -matchers=matcher/project_files,matcher/ignore_current_buffer,matcher/substring file_mru<CR>
-        au VimEnter * nested nnoremap <silent><Space>uA  :<C-u>Denite           -no-empty -smartcase -vertical-preview file/rec<CR>
-        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -no-empty -smartcase -vertical-preview -start_filter file/rec<CR>
-        au VimEnter * nested nnoremap <silent><Space>uG  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview file/git<CR>
-        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview -start_filter file/git<CR>
-        au VimEnter * nested nnoremap <silent><Space>uv  :<C-u>DeniteProjectDir -no-empty -smartcase -vertical-preview -start-filter file/rec:vendor<CR>
+        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -expand -no-empty -smartcase -vertical-preview file<CR>
+        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file<CR>
+        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>up  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -matchers=matcher/project_files,matcher/ignore_current_buffer,matcher/substring file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>uA  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -start_filter file/rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>uG  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start_filter file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>uv  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter file/rec:vendor<CR>
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -auto-action=preview  grep/git<CR>
