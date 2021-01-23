@@ -346,6 +346,14 @@ nnoremap [j F<C-k>_.
 nnoremap ]j f<C-k>_.
 nnoremap [J F<C-k>_,
 nnoremap ]J f<C-k>_,
+onoremap [j F<C-k>_.
+onoremap ]j f<C-k>_.
+onoremap [J F<C-k>_,
+onoremap ]J f<C-k>_,
+vnoremap [j F<C-k>_.
+vnoremap ]j f<C-k>_.
+vnoremap [J F<C-k>_,
+vnoremap ]J f<C-k>_,
 
 
 " camel -> snake
