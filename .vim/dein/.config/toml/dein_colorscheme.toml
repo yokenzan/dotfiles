@@ -83,3 +83,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'croaker/mustang-vim'
+
+
+[[plugins]]
+repo = 'axvr/photon.vim'
