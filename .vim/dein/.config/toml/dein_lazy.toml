@@ -335,3 +335,11 @@ on_ft = ['kotlin']
 [[plugins]]
 repo  = 'nelsyeung/twig.vim'
 on_ft = ['twig']
+
+
+[[plugins]]
+repo  = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+hook_source = '''
+    let g:javascript_plugin_jsdoc = 1
+'''
