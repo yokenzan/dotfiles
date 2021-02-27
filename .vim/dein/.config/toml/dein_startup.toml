@@ -375,6 +375,7 @@ autocmd FileType php nnoremap <buffer> <Space>bl :<C-u>QuickRun -exec "php -l %s
 
 [[plugins]]
 repo = 'tyru/eskk.vim'
+rev  = '97f6138'
 hook_add = '''
     let g:eskk#directory = "~/.skk"
     let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8', }
