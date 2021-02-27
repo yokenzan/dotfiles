@@ -72,4 +72,12 @@ if [ $SHLVL = 1 ]; then
     tmux -2
 fi
 
-export DISPLAY=127.0.0.1:0.0
+
+# if using WSL2
+
+LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+export DISPLAY=$LOCAL_IP:0
+
+# in other envs
+
+# export DISPLAY=127.0.0.1:0.0
