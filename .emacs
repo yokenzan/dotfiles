@@ -111,6 +111,9 @@
 (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
 (setq skk-show-icon t)
 (setq skk-show-annotation t)
+(setq skk-show-mode-show t)
+(setq skk-show-candidates-nth-henkan-char 2)
+(setq skk-henkan-number-to-display-candidates 4)
 
 
 
@@ -162,3 +165,15 @@
 (global-set-key "\C-cb" 'org-switchb)
 
 (define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
+
+;; カーソル位置の復旧で、
+;; C-u C-SPC C-u C-SPC C-u C-SPC .. と押す必要があるのを、
+;; C-u C-SPC C-SPC C-SPC .. ですむようにする。
+;; http://emacs.rubikitch.com/sd1509-safeguard-undo-redo/
+(setq set-mark-command-repeat-pop t)
+
+
+(defun x-clipboard-copy ()
+  (interactive)
+  (when (region-active-p)
+    (shell-command-on-region (region-beginning) (region-end) "xsel -bi" nil nil)))
