@@ -66,6 +66,11 @@ alias gvs='gvim -S Session.vim'
 alias gvu='gvim -u NONE -N'
 alias gvq='gvim -c :q'
 
+# Emacs
+
+alias e='emacs -nw'
+alias eg='emacs'
+
 # tmux
 
 alias t='tmux -2'
