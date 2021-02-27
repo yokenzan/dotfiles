@@ -102,6 +102,7 @@ function llal() {
 }
 
 function sshinit() {
+    pkill ssh-agent
     ps aux | grep ssh-agent | grep -v grep > /dev/null 2>&1
     if [ ! $? = 0 ]; then
         eval `ssh-agent`
