@@ -120,6 +120,8 @@ $if mode=emacs
     "\C-x\"": "\"\"\C-b"
     # Quote the current or previous word
     "\C-xq": "\eb\"\ef\""
+    "\C-x(": "()\C-b"
+    "\C-x)": "()\C-b"
 
     # Common to Console & RXVT
     "\C-?": backward-kill-line         # Ctrl-BackSpace
