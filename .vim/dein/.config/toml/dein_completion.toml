@@ -48,7 +48,12 @@ hook_add = '''
     endfunction
 
     " Highlight symbol under cursor on CursorHold
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+    augroup CocGroup
+        autocmd!
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+        autocmd BufEnter,WinEnter *.csv,*.uke CocDisable
+        autocmd BufLeave,WinLeave *.csv,*.uke CocEnable
+    augroup end
 
     " Remap for rename current word
     " nmap <Space>cr <Plug>(coc-rename)

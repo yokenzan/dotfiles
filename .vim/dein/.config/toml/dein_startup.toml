@@ -79,6 +79,7 @@ hook_add = '''
         nmap <silent><Space>ab :<C-u>ALEDisableBuffer<CR>
         nmap <silent>[a        :<C-u>ALEPrevious<CR>
         nmap <silent>]a        :<C-u>ALENext<CR>
+        autocmd BufEnter,WinEnter *.csv,*.uke ALEDisableBuffer
     aug END
 '''
 
