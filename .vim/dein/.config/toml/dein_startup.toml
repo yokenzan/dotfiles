@@ -32,11 +32,11 @@ hook_add = '''
       return join(split(a:output, "\n")[5 :], "\n")
     endfunction
 
-    aug enableRefKeyMaps
-        au!
+    augroup enableRefKeyMaps
+        autocmd!
         nnoremap <Space>re :<C-u>Ref webdict ee
         nnoremap <Space>rw :<C-u>Ref webdict wiki
-    aug END
+    augroup end
 '''
 
 
