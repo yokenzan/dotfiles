@@ -94,11 +94,11 @@ function gongkai() {
 # ls with less
 
 function lll() {
-    ls -lA --color=always $* | less -RNSJFX
+    ls -hlA --color=always $* | less -RNSJFX
 }
 
 function llal() {
-    ls -la --color=always $* | less -RNSJFX
+    ls -hla --color=always $* | less -RNSJFX
 }
 
 function sshinit() {
