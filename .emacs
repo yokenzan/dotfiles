@@ -1,82 +1,142 @@
+;; Package Configuration
+
+(require 'package)
+(add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(package-initialize)
+
+
+;; Modify Default Key Maps
+
 ; (global-set-key "\C-h" 'delete-backward-char)
+(global-set-key "\C-h" 'delete-backward-char)
 (define-key key-translation-map [?\C-h] [?\C-?])
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
 (global-set-key (kbd "C-x C-M-f") 'project-find-file)
 (global-set-key (kbd "C-c t") 'recentf-open-files)
 
 
-; バックアップファイルをつくらない
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-(setq next-line-add-newlines nil)
+;; Backup Files
+
+; (setq make-backup-files nil)
+(setq backup-directory-alist '((".*" . "~/.ehist")))
+; (setq auto-save-default nil)
+; (setq next-line-add-newlines nil)
 (setq create-lockfiles nil)
 
 
-; フォント
-; (add-to-list 'default-frame-alist '(font . "Osaka―等幅-11"))
+;; Define "quit" Command
 
+(defalias 'quit 'kill-emacs)
+
+
+;; TAB SPACE Config
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
 
-;; 行番号
+;; File Loading
+
+; Follow Symbolic Links When Opening Files
+(setq vc-follow-symlinks t)
+; (setq debug-on-error t)
+(when (< emacs-major-version 23)
+  (defvar user-emacs-directory "~/.emacs.d/"))
+
+(defun yokenzan/add-to-load-path (&rest paths)
+  (let (path)
+    (dolist (path paths paths)
+      (let ((default-directory
+              (expand-file-name (concat user-emacs-directory path))))
+        (unless (file-exists-p default-directory)
+          (make-directory default-directory))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+            (normal-top-level-add-subdirs-to-load-path))))))
+
+(yokenzan/add-to-load-path "elisp" "conf")
+
+
+;; Modificaions or Settings Written by Emacs Automatically
+
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
+(load custom-file)
+
+
+;; Line Number Configurations
+
+(column-number-mode t)
 (global-linum-mode t)
 (setq linum-format "%4d ")
-(column-number-mode t)
-
 (show-paren-mode t)
-
-
 (setq scroll-conservatively 1)
 (setq scroll-margin 4)
-
-;; カーソル行ハイライトON
+; highlight cursor line
 (global-hl-line-mode)
-;; メニューバーOFF
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(package-initialize)
+;; 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(column-number-mode t)
- '(custom-enabled-themes (quote (moe-light)))
- '(custom-safe-themes
-   (quote
-    ("a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" "595617a3c537447aa7e76ce05c8d43146a995296ea083211225e7efc069c598f" "fd3c7bd752f48dcb7efa5f852ef858c425b1c397b73851ff8816c0580eab92f1" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "a622aaf6377fe1cd14e4298497b7b2cae2efc9e0ce362dade3a58c16c89e089c" "2a9039b093df61e4517302f40ebaf2d3e95215cb2f9684c8c1a446659ee226b9" default)))
- '(display-time-mode t)
- '(package-selected-packages
-   (quote
-    (projectile flycheck-phpstan magit gruvbox-theme ivy company-phpactor company-phpactor\
-		phpactor company ## php-mode ddskk)))
- '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#1d2021")))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Sarasa Mono T J" :foundry "CYEL" :slant normal :weight normal :height 113 :width normal)))))
+(setq inhibit-startup-message t)
 
+
+;; MRU
+
+(setq recentf-max-saved-items 2000)
+(setq recentf-auto-cleanup 'never)
+(recentf-mode 1)
+
+
+(ivy-mode 1)
+
+
+;;; Input Method Configuration
+
+;; SKK
+
+(global-set-key "\C-x\C-j" 'skk-mode)
+(global-set-key "\C-xj" 'skk-auto-fill-mode)
 
 (when (require 'skk nil t)
-  (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
-  ; (setq default-input-method "japanese-skk")
-  (require 'skk-study)
   (setq skk-server-host "localhost")
   (setq skk-server-portnum 55100)
+  (setq skk-share-private-jisyo t)
+  (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
+  (setq skk-show-icon t)
+  (setq skk-show-annotation t)
+  (setq default-input-method "japanese-skk")
+
+  (setq skk-jisyo (cons "~/.skk-jisyo" 'utf-8))
 )
+
+
+;; PYIM
+
+;; (require 'pyim)
+;; (require 'pyim-basedict) ; 拼音词库设置，五笔用户 *不需要* 此行设置
+;; (pyim-basedict-enable)   ; 拼音词库，五笔用户 *不需要* 此行设置
+;; (setq default-input-method "pyim")
+;; 
+;; 
+;; (defun my-converter (string)
+;;   (mapconcat
+;;    #'(lambda (x)
+;;        (let ((str (cdr (assoc (char-to-string x) mytable))))
+;;          (or (when (and str (stringp str))
+;;                (car (split-string str " ")))
+;;              (char-to-string x))))
+;;    string ""))
+;; 
+;; (setq pyim-magic-converter #'my-converter)
+
+
+;; Company
+
 (global-company-mode t)
 
 (global-set-key (kbd "C-M-i") 'company-complete)
@@ -99,44 +159,54 @@
 (with-eval-after-load 'php-mode
   (define-key php-mode-map (kbd "C-M-i") 'company-phpactor))
 
-(setq vc-follow-symlinks t)
 
-(ivy-mode 1)
+;;; Org Mode
 
-
-;; MRUリストの設定
-(setq recentf-max-saved-items 2000)
-(setq recentf-auto-cleanup 'never)
-(recentf-mode 1)
-
-
-;; SKKの設定
-(setq skk-server-host "localhost")
-(setq skk-server-portnum 55100)
-(setq skk-share-private-jisyo t)
-(setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
-(setq skk-show-icon t)
-(setq skk-show-annotation t)
-(setq skk-show-mode-show t)
-(setq skk-show-candidates-nth-henkan-char 2)
-(setq skk-henkan-number-to-display-candidates 4)
+;; The following lines are always needed.  Choose your own keys.
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
 
 
+(setq org-directory "~/winhome/GoogleDrive/org")
+(setq org-default-notes-file "notes.org")
 
-;; PHPのLINT設定
- (defun my-php-mode-hook ()
+;; Org-capture
+
+; Org-captureを呼び出すキーシーケンス
+(define-key global-map "\C-cc" 'org-capture)
+; Org-captureのテンプレート（メニュー）の設定
+(setq org-capture-templates
+      '(("n" "Note" entry (file+headline "~/winhome/GoogleDrive/org/notes.org" "Notes")
+         "* %?\nEntered on %U\n %i\n %a")
+        ))
+
+
+;; FlyCheck
+
+;; PHP
+(defun my-php-mode-hook ()
    "My PHP-mode hook."
    ;(require 'flycheck-phpstan)
    ;(flycheck-mode t)
    ;(flycheck-select-checker 'phpstan))
 )
- (add-hook 'php-mode-hook 'my-php-mode-hook)
+(add-hook 'php-mode-hook 'my-php-mode-hook)
 
 
 (global-flycheck-mode)
 (setq flycheck-indication-mode 'left-fringe)
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 
+
+;; (define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
+
+;; カーソル位置の復旧で、
+;; C-u C-SPC C-u C-SPC C-u C-SPC .. と押す必要があるのを、
+;; C-u C-SPC C-SPC C-SPC .. ですむようにする。
+;; http://emacs.rubikitch.com/sd1509-safeguard-undo-redo/
+(setq set-mark-command-repeat-pop t)
 
 (setq display-time-day-and-date t)  ;; 曜日・月・日
 (setq display-time-24hr-format t)   ;; 24時表示
@@ -145,39 +215,6 @@
 
 (setq frame-title-format "%f")
 (setq text-mode-hook 'turn-off-auto-fill)
-(require 'pyim)
-(require 'pyim-basedict) ; 拼音词库设置，五笔用户 *不需要* 此行设置
-(pyim-basedict-enable)   ; 拼音词库，五笔用户 *不需要* 此行设置
-(setq default-input-method "pyim")
-
-
-
-(defun my-converter (string)
-  (mapconcat
-   #'(lambda (x)
-       (let ((str (cdr (assoc (char-to-string x) mytable))))
-         (or (when (and str (stringp str))
-               (car (split-string str " ")))
-             (char-to-string x))))
-   string ""))
-
-(setq pyim-magic-converter #'my-converter)
-
-
-;; The following lines are always needed.  Choose your own keys.
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-switchb)
-
-(define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
-
-;; カーソル位置の復旧で、
-;; C-u C-SPC C-u C-SPC C-u C-SPC .. と押す必要があるのを、
-;; C-u C-SPC C-SPC C-SPC .. ですむようにする。
-;; http://emacs.rubikitch.com/sd1509-safeguard-undo-redo/
-(setq set-mark-command-repeat-pop t)
-
 
 (defun x-clipboard-copy ()
   (interactive)
@@ -185,6 +222,9 @@
     (shell-command-on-region (region-beginning) (region-end) "xsel -bi" nil nil)))
 
 
-
-;; よくわからない挨拶メッセージは非表示
-(setq inhibit-startup-message t)
+;; Font Configuration
+; (create-fontset-from-ascii-font "Iosevka TermLig Curly Slab-11:weight=normal:slant=normal" nil "myfontset")
+; (set-fontset-font "fontset-myfontset" 'japanese-jisx0213.2004-1 "Sarasa Mono T J-11"  nil 'append)
+; (set-fontset-font "fontset-myfontset" 'big5-hkscs               "Sarasa Mono T TC-11" nil 'append)
+; (set-fontset-font "fontset-myfontset" 'chinese-gb2312           "Sarasa Mono T SC-11" nil 'append)
+                                        ; (add-to-list 'default-frame-alist '(font . "fontset-myfontset"))
