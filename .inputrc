@@ -102,6 +102,8 @@ $if mode=emacs
     "\C-xN":  " > /dev/null 2>&1\n"
     "\C-xp":  " $(pwd) "
     "\C-xs":  "sudo "
+    "\C-xQ": "\eb'\ef'"
+    "\C-xf": "for i in $() ; do : $i ; done\e)"
 
     #
     # Function key key maps
