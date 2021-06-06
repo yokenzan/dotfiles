@@ -83,7 +83,8 @@
 ;; 
 
 (setq inhibit-startup-message t)
-
+(setq initial-major-mode 'markdown-mode)
+(setq initial-scratch-message nil)
 
 ;; MRU
 
