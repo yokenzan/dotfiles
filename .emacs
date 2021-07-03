@@ -8,7 +8,6 @@
 
 ;; Modify Default Key Maps
 
-; (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-h" 'delete-backward-char)
 (define-key key-translation-map [?\C-h] [?\C-?])
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
@@ -74,13 +73,16 @@
 (show-paren-mode t)
 (setq scroll-conservatively 1)
 (setq scroll-margin 4)
-; highlight cursor line
+
+
+;; highlight cursor line
+
 (global-hl-line-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
 
-;; 
+;;
 
 (setq inhibit-startup-message t)
 (setq initial-major-mode 'markdown-mode)
@@ -100,20 +102,20 @@
 
 ;; SKK
 
-(global-set-key "\C-x\C-j" 'skk-mode)
-(global-set-key "\C-xj" 'skk-auto-fill-mode)
-
-(when (require 'skk nil t)
-  (setq skk-server-host "localhost")
-  (setq skk-server-portnum 55100)
-  (setq skk-share-private-jisyo t)
-  (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
-  (setq skk-show-icon t)
-  (setq skk-show-annotation t)
-  (setq default-input-method "japanese-skk")
-
-  (setq skk-jisyo (cons "~/.skk-jisyo" 'utf-8))
-)
+; (global-set-key "\C-x\C-j" 'skk-mode)
+; (global-set-key "\C-xj" 'skk-auto-fill-mode)
+;
+; (when (require 'skk nil t)
+;   (setq skk-server-host "localhost")
+;   (setq skk-server-portnum 55100)
+;   (setq skk-share-private-jisyo t)
+;   (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
+;   (setq skk-show-icon t)
+;   (setq skk-show-annotation t)
+;   (setq default-input-method "japanese-skk")
+;
+;   (setq skk-jisyo (cons "~/.skk-jisyo" 'utf-8))
+; )
 
 
 ;; PYIM
@@ -196,9 +198,9 @@
 (add-hook 'php-mode-hook 'my-php-mode-hook)
 
 
-(global-flycheck-mode)
-(setq flycheck-indication-mode 'left-fringe)
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
+; (global-flycheck-mode)
+; (setq flycheck-indication-mode 'left-fringe)
+; (setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 
 ;; (define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
@@ -224,8 +226,9 @@
 
 
 ;; Font Configuration
+;
 ; (create-fontset-from-ascii-font "Iosevka TermLig Curly Slab-11:weight=normal:slant=normal" nil "myfontset")
 ; (set-fontset-font "fontset-myfontset" 'japanese-jisx0213.2004-1 "Sarasa Mono T J-11"  nil 'append)
 ; (set-fontset-font "fontset-myfontset" 'big5-hkscs               "Sarasa Mono T TC-11" nil 'append)
 ; (set-fontset-font "fontset-myfontset" 'chinese-gb2312           "Sarasa Mono T SC-11" nil 'append)
-                                        ; (add-to-list 'default-frame-alist '(font . "fontset-myfontset"))
+; (add-to-list 'default-frame-alist '(font . "fontset-myfontset"))
