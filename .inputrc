@@ -124,6 +124,8 @@ $if mode=emacs
     "\C-xq": "\eb\"\ef\""
     "\C-x(": "()\C-b"
     "\C-x)": "()\C-b"
+    "\C-xC": "$()\C-b"
+    "\C-xQ": "\eb$(\ef)"
 
     # Common to Console & RXVT
     "\C-?": backward-kill-line         # Ctrl-BackSpace
