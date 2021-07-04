@@ -174,6 +174,10 @@ if [ -f /etc/bashrc ]; then
 fi
 
 
+# Load my config
+source $HOME/.bash-env
+
+
 # Setting prompt
 source $HOME/.config/git/completion/git-prompt.sh
 source $HOME/.config/git/completion/git-completion.bash
