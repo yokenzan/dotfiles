@@ -371,6 +371,8 @@ hook_add = '''
 
 autocmd FileType php nnoremap <buffer> <Space>bt :<C-u>QuickRun phpunit<CR>
 autocmd FileType php nnoremap <buffer> <Space>bl :<C-u>QuickRun -exec "php -l %s" -outputter "quickfix"<CR>
+
+nnoremap <Leader>r :<C-u>QuickRun<CR>
 '''
 
 
