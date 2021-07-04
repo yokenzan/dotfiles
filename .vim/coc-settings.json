@@ -24,11 +24,23 @@
             "deprecated": false
         }
     },
+    "phpls": {
+        "enable": false
+    },
+    "phpactor": {
+        "enable": true,
+        "path": "/home/yosuke/.vim/dein/repos/github.com/phpactor/phpactor/bin/phpactor"
+    },
     "languageserver": {
         "kotlin": {
             "command": "~/.vim/dein/repos/github.com/fwcd/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
             "filetypes": ["kotlin"]
+        },
+        "phpactor": {
+            "command": "/home/yosuke/.vim/dein/repos/github.com/phpactor/phpactor/bin/phpactor",
+            "args": ["language-server"],
+            "trace.server": "verbose",
+            "filetypes": ["php"]
         }
     }
 }
-
