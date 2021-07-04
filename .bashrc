@@ -239,10 +239,14 @@ if [[ $(uname) = "Darwin" ]]; then
 fi
 
 
-if ps aux | grep google-ime-skk | grep -vqs grep; then
-    : nothing todo
+if [ $BASH_ENV_USE_GOOGLE_IME_SKK -eq 1 ]; then
+    if ps aux | grep google-ime-skk | grep -vqs grep ; then
+        : nothing todo
+    else
+        google-ime-skk >/dev/null 2>&1 &
+    fi
 else
-    google-ime-skk >/dev/null 2>&1 &
+    pkill google-ime-skk
 fi
 
 which symfony-autocomplete > /dev/null 2>&1
