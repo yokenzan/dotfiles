@@ -589,3 +589,7 @@ hook_post_source = '''
     \    'layout': 'vertical',
     \}
 '''
+
+
+[[plugins]]
+repo = 'kkoomen/vim-doge'
