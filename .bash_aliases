@@ -68,7 +68,7 @@ alias gvq='gvim -c :q'
 
 # Emacs
 
-alias e='emacs -nw'
+alias e='TERM=xterm-direct emacs -nw'
 alias eg='emacs'
 
 # tmux
