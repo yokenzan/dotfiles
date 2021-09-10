@@ -37,21 +37,33 @@ let g:gruvbox_contrast_dark  = "soft"
 " set background=light
 
 " colorscheme PaperColor
+" colorscheme antiphoton
+" colorscheme autumnleaf
 " colorscheme badwolf
+" colorscheme buttercream
 " colorscheme cake
+" colorscheme default
 " colorscheme desert
 " colorscheme distinguished
+" colorscheme dream
+" colorscheme dream-light
 " colorscheme gruvbox
 " colorscheme koehler
 " colorscheme molokai
 " colorscheme nefertiti
+" colorscheme nuvola
 " colorscheme phd
 " colorscheme pyte
 " colorscheme rupza
 " colorscheme solarized8_flat
 " colorscheme solarized8_high
 " colorscheme solarized8_low
+" colorscheme summerfruit256
 " colorscheme zenburn
+
+if exists('g:colors_name') && g:colors_name=~'dream'
+    set notermguicolors
+endif
 
 " Background Transparency Setting
 

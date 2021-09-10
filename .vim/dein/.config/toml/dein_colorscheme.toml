@@ -87,3 +87,19 @@ repo = 'croaker/mustang-vim'
 
 [[plugins]]
 repo = 'axvr/photon.vim'
+
+
+[[plugins]]
+repo = 'vim-scripts/buttercream.vim'
+
+
+[[plugins]]
+repo = 'vim-scripts/AutumnLeaf'
+
+
+[[plugins]]
+repo = 'vim-scripts/nuvola.vim'
+
+
+[[plugins]]
+repo = 'vim-scripts/summerfruit256.vim'
