@@ -3,7 +3,7 @@
 
 # colored less
 function c() {
-    pygmentize -O style=monokai -f console256 -g $1 | less -NR
+    pygmentize -O style=monokai -f console256 -g $1 | less -NRFXS
 }
 
 
