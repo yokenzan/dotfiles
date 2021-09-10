@@ -97,12 +97,12 @@ $if mode=emacs
     "\C-xl":  " | l\n"
     "\C-xc":  " | cp2clip\n"
     "\C-xv":  " | v -\n"
+    "\C-xV":  " | view -\n"
     "\C-xG":  " | grep "
     "\C-xn":  " > /dev/null\n"
     "\C-xN":  " > /dev/null 2>&1\n"
     "\C-xp":  " $(pwd) "
     "\C-xs":  "sudo "
-    "\C-xQ": "\eb'\ef'"
     "\C-xf": "for i in $() ; do : $i ; done\e)"
 
     #
@@ -122,6 +122,7 @@ $if mode=emacs
     "\C-x\"": "\"\"\C-b"
     # Quote the current or previous word
     "\C-xq": "\eb\"\ef\""
+    # "\C-xQ": "\eb'\ef'"
     "\C-x(": "()\C-b"
     "\C-x)": "()\C-b"
     "\C-xC": "$()\C-b"
