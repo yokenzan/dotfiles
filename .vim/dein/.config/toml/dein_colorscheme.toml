@@ -103,3 +103,7 @@ repo = 'vim-scripts/nuvola.vim'
 
 [[plugins]]
 repo = 'vim-scripts/summerfruit256.vim'
+
+
+[[plugins]]
+repo = 'Rigellute/rigel'
