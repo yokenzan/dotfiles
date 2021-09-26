@@ -111,3 +111,13 @@ function sshinit() {
         && ssh -T git@github.com \
         && ssh -T git@bitbucket.org
 }
+
+
+function release_note() {
+    RELEASE_NOTE_FILENAME=release_$(basename $(pwd))_$(date +%Y.%m.%d_%T).log
+
+    git co master && git pull \
+        && git co develop && git pull \
+        && git log --oneline master..develop --merges > $RELEASE_NOTE_FILENAME \
+        && vim $RELEASE_NOTE_FILENAME -c new -c GBrowse
+}
