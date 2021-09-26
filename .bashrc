@@ -255,3 +255,4 @@ if [ $? = 0 ]; then
     eval "$(symfony-autocomplete)"
 fi
 
+eval "$(gh completion -s bash)"
