@@ -108,14 +108,14 @@ hook_add = '''
 '''
 
 
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-    aug enableNERDTree
-        au!
-        au VimEnter * nested noremap <Space>nt :NERDTreeToggle<Return>
-    aug END
-'''
+# [[plugins]]
+# repo = 'scrooloose/nerdtree'
+# hook_add = '''
+#     aug enableNERDTree
+#         au!
+#         au VimEnter * nested noremap <Space>nt :NERDTreeToggle<Return>
+#     aug END
+# '''
 
 
 [[plugins]]
