@@ -261,7 +261,7 @@ set thesaurus=~/.vim/thesaurus.txt
 " for phpactor
 
 autocmd FileType php setlocal omnifunc=phpactor#Complete
-autocmd FileType php setlocal iskeyword+=$
+" autocmd FileType php setlocal iskeyword+=$
 
 set completeopt=noinsert,menuone,noselect
 set shortmess+=a
