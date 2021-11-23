@@ -248,9 +248,9 @@ repo = 'vim-airline/vim-airline-themes'
 repo     = 'tpope/vim-fugitive'
 if       = 'executable("git")'
 hook_add = '''
-    nnoremap <Space>fs :<C-u>belowright Gstatus<CR>
+    nnoremap <Space>fs :<C-u>belowright Git<CR>
     nnoremap <Space>fr :<C-u>Gread<CR>
-    nnoremap <Space>fb :<C-u>Gblame<CR>
+    nnoremap <Space>fb :<C-u>Git blame<CR>
     nnoremap <Space>fd :<C-u>Gdiff<CR>
 '''
 
