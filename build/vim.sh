@@ -60,6 +60,7 @@ else
   exit 1
 fi
 
-vim -c "call dein#install()"
+vim -c "quit"
+vim -c "call dein#install()" -c "quit"
 
 : ========== Completed Installing VIM ==========
