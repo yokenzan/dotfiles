@@ -94,14 +94,14 @@ $if mode=emacs
     # Redirection key maps
     #
 
-    "\C-xl":  " | l\n"
-    "\C-xc":  " | cp2clip\n"
-    "\C-xv":  " | v -\n"
-    "\C-xV":  " | view -\n"
-    "\C-xG":  " | grep "
-    "\C-xn":  " > /dev/null\n"
-    "\C-xN":  " > /dev/null 2>&1\n"
-    "\C-xp":  " $(pwd) "
+    "\C-xrl":  " | l\n"
+    "\C-xrc":  " | cp2clip\n"
+    "\C-xrv":  " | v -\n"
+    "\C-xrV":  " | view -\n"
+    "\C-xrG":  " | grep "
+    "\C-xrn":  " > /dev/null\n"
+    "\C-xrN":  " > /dev/null 2>&1\n"
+    "\C-xpp":  " $(pwd) "
     "\C-xs":  "sudo "
     "\C-xf": "for i in $() ; do : $i ; done\e)"
 
@@ -119,14 +119,18 @@ $if mode=emacs
     # prepare to type a quoted word --
     # insert open and close double quotes
     # and move to just after the open quote
-    "\C-x\"": "\"\"\C-b"
+    "\C-xq\'": "\'\'\C-b"
+    "\C-xq\"": "\"\"\C-b"
+    "\C-xq(": "()\C-b"
+    "\C-xq)": "()\C-b"
+    "\C-xq$": "$\C-xq)"
     # Quote the current or previous word
-    "\C-xq": "\eb\"\ef\""
-    # "\C-xQ": "\eb'\ef'"
-    "\C-x(": "()\C-b"
-    "\C-x)": "()\C-b"
-    "\C-xC": "$()\C-b"
-    "\C-xQ": "\eb$(\ef)"
+    "\C-xqq": "\eb\'\ef\'"
+    "\C-xqQ": "\eb\"\ef\""
+    "\C-xqC": "\eb$(\ef)"
+
+    # macros for psql
+    "\C-xpl": " name like '%%' \e3\C-b"
 
     # Common to Console & RXVT
     "\C-?": backward-kill-line         # Ctrl-BackSpace
