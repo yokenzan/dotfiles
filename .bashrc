@@ -222,6 +222,7 @@ fi
 stty stop undef
 stty discard undef
 export EDITOR=vim
+export MANPAGER="vim +MANPAGER -"
 
 
 complete -cf sudo
