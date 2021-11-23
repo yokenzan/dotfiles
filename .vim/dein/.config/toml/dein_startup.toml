@@ -542,8 +542,8 @@ rev      = 'customize'
 hook_add = '''
     nmap ga <Plug>(EasyAlign)
     xmap ga <Plug>(EasyAlign)
-    nmap g$ visbga<C-l>1<CR><C-r>0<CR><C-x>\$<CR>
-    xmap g$ ga<C-l>1<CR><C-r>0<CR><C-x>\$<CR>
+    nmap gx visbga<C-l>1<CR><C-r>0<CR><C-x>\$<CR>
+    xmap gx ga<C-l>1<CR><C-r>0<CR><C-x>\$<CR>
 '''
 
 
