@@ -361,9 +361,10 @@ vnoremap [J F<C-k>_,
 vnoremap ]J f<C-k>_,
 
 
-" camel -> snake
-"
-" :s/\<[a-z]\+\zs\(\([A-Z]\)\([a-z]\+\)\)\+/_\l\2\3/g
+augroup MyCmdGroup
+    " camel -> snake
+    command! -range Camel2Snake :s/\%V\(_\|\<\)\([a-zA-Z0-9]\)\([a-zA-Z0-9]\+\)\?/\u\2\L\3\E/g
+augroup END
 
 
 " set gdefault
