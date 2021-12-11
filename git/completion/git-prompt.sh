@@ -519,6 +519,7 @@ __git_ps1 ()
 		   git rev-parse --verify --quiet refs/stash >/dev/null
 		then
 			s="$"
+			s="S"
 		fi
 
 		if [ -n "${GIT_PS1_SHOWUNTRACKEDFILES-}" ] &&
@@ -526,6 +527,7 @@ __git_ps1 ()
 		   git ls-files --others --exclude-standard --directory --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>/dev/null
 		then
 			u="%${ZSH_VERSION+%}"
+			u="余${ZSH_VERSION+%}"
 		fi
 
 		if [ -n "${GIT_PS1_SHOWUPSTREAM-}" ]; then
