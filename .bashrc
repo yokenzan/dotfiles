@@ -76,7 +76,7 @@ function share_history {
 }
 export PROMPT_COMMAND='share_history'
 shopt -u histappend
-export HISTSIZE=100000
+export HISTSIZE=500000
 
 # Umask
 #
