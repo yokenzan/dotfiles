@@ -345,3 +345,10 @@ on_ft = ['javascript']
 hook_source = '''
     let g:javascript_plugin_jsdoc = 1
 '''
+
+[[plugins]]
+repo  = 'mattn/vim-sqlfmt'
+on_ft = ['sql']
+hook_source = '''
+let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
+'''
