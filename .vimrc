@@ -167,6 +167,9 @@ nnoremap Y y$
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
+" https://zenn.dev/kato_k/articles/vim-tips-no002
+inoremap <C-v>u <C-r>=nr2char(0x)<Left>
+
 
 function! ToggleCursorLineAndColumn()
     if &cursorcolumn && &cursorline
