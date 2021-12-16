@@ -19,6 +19,14 @@ if [ -d "$HOME/.pyenv/bin" ]; then
 fi
 
 
+# Initialize PHP environment
+if [ -d "$HOME/.phpenv/bin" ]; then
+    export PHPENV_ROOT="$HOME/.phpenv"
+    export PATH="$PHPENV_ROOT/bin:$PATH"
+    eval "$(phpenv init -)"
+fi
+
+
 uname | grep -q 'Darwin' > /dev/null 2>&1
 if [ $? = 0 ]; then
     # coreutils
