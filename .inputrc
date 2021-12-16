@@ -110,7 +110,7 @@ $if mode=emacs
     #
 
     "\e[15~": " source ~/.bash_profile\n"  # F5
-    "\e[11~": " sshinit\n"                 # F1
+    "\e[18~": " exec $SHELL -l\n"          # F7
     "\e[17~": " sshinit\n"                 # F6
     "\e[24~": " here\n"                    # F12
 
@@ -135,7 +135,7 @@ $if mode=emacs
     # Common to Console & RXVT
     "\C-?": backward-kill-line         # Ctrl-BackSpace
     "\e[2~": paste-from-clipboard      # "Ins. Key"
-    "\e[5~": beginning-of-histpory      # Page up
+    "\e[5~": beginning-of-histpory     # Page up
     "\e[6~": end-of-history            # Page down
 
     # $if term=msys # RXVT
