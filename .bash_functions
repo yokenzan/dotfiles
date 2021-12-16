@@ -43,7 +43,7 @@ function mkcd() {
 
 
 function fcd() {
-    cd "$(find -H -type d | grep -v .git | fzy --lines=30)"
+    cd "$(find $1 -type d --exclude=.git | fzy --lines=30)"
 }
 
 
