@@ -7,6 +7,7 @@ mkdir -p \
     $HOME/.config/ranger    \
     $HOME/.config/gtk-3.0   \
     $HOME/.config/phpactor  \
+    $HOME/.config/pgcli     \
     $HOME/.mlterm
 
 mkdir -p $HOME/.emacs.d
@@ -43,6 +44,8 @@ ln -sf $HOME/.dotfiles/.config/gtk-3.0/settings.ini       $HOME/.config/gtk-3.0
 
 ln -sf $HOME/.dotfiles/.config/phpactor/phpactor.yml      $HOME/.config/phpactor
 ln -sf $HOME/.dotfiles/.config/phpactor/templates         $HOME/.config/phpactor
+
+ln -sf $HOME/.dotfiles/.config/pgcli/config               $HOME/.config/pgcli
 
 ln -sf $HOME/.dotfiles/.mlterm/aafont                     $HOME/.mlterm
 ln -sf $HOME/.dotfiles/.mlterm/main                       $HOME/.mlterm
