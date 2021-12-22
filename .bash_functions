@@ -121,3 +121,16 @@ function release_note() {
         && git log --oneline master..develop --merges > $RELEASE_NOTE_FILENAME \
         && vim $RELEASE_NOTE_FILENAME -c new -c GBrowse
 }
+
+function lsbinds() {
+    bind -p                             \
+        | grep -av '#'                  \
+        | grep -av self-insert          \
+        | grep -av do-lowercase-version \
+        | grep -av '\[\S'               \
+        | cut -d: -f1,2                 \
+        | sed 's/[":]//g'               \
+        | sed 's/\\e/M-/g'              \
+        | xargs printf "%-10s  -  %s\n" \
+        | less -NF
+}
