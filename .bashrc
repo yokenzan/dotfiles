@@ -256,4 +256,8 @@ if [ $? = 0 ]; then
     eval "$(symfony-autocomplete)"
 fi
 
-eval "$(gh completion -s bash)"
+which gh > /dev/null 2>&1
+
+if [ $? = 0 ]; then
+    eval "$(gh completion -s bash)"
+fi
