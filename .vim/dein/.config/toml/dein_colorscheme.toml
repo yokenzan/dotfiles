@@ -107,3 +107,7 @@ repo = 'vim-scripts/summerfruit256.vim'
 
 [[plugins]]
 repo = 'Rigellute/rigel'
+
+
+[[plugins]]
+repo = 'creasty/candle.vim'
