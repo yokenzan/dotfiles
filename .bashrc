@@ -64,7 +64,9 @@ COMP_CONFIGURE_HINTS=1
 # History Options
 #
 # Don't put duplicate lines in the history.
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups,ignoreboth
+
+export HISTTIMEFORMAT='%F %T '
 #
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
@@ -81,7 +83,7 @@ function share_history {
     history -r
 }
 export PROMPT_COMMAND='share_history'
-shopt -u histappend
+shopt -s histappend
 export HISTSIZE=500000
 
 # Umask
