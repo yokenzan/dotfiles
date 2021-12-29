@@ -1,4 +1,6 @@
-# vim: ft=sh
+color cursor      230 94
+color title-focus 194 56
+color title-blur  194 17
 
 set main-view    = id date author commit-title:graph=yes,refs=yes
 set tab-size     = 4
