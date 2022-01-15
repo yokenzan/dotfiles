@@ -41,29 +41,68 @@ function mkcd() {
 }
 
 
+# function using fuzzy finder
 
-function fcd() {
-    cd "$(find $1 -type d --exclude=.git | fzy --lines=30)"
+
+export FUZZY_FINDER_COMMAND="fzy --line=30"
+
+function f-cd() {
+    DIR="$(find . -type d | grep -v .git | $FUZZY_FINDER_COMMAND)"
+
+    if [ "x$DIR" != "x" ]; then
+        cd "$DIR"
+    else
+        echo "operation was cancelled."
+    fi
 }
 
 
-function fv() {
-    vim "$(find -type f | grep -v .git | fzy --lines=30)"
+function f-vf() {
+    FILE="$(find . -type f | grep -v .git | $FUZZY_FINDER_COMMAND)"
+
+    if [ "x$FILE" != "x" ]; then
+        vim "$FILE"
+    else
+        echo "operation was cancelled."
+    fi
 }
 
 
-function fgl() {
-    git ls-files | fzy --lines=30
+function f-gl() {
+    git ls-files | $FUZZY_FINDER_COMMAND
 }
 
 
-function vfg() {
-    vim "$(git ls-files | fzy --lines=30)"
+function f-vgl() {
+    FILE="$(f-gl)"
+
+    if [ "x$FILE" != "x" ]; then
+        vim "$FILE"
+    else
+        echo "operation was cancelled."
+    fi
 }
 
 
-function fgc() {
-    git checkout $(git branch -a --format='%(refname:lstrip=2)' | sed -e 's/^origin\///g' | sort -u | fzy --lines=30)
+function f-gc() {
+    BRANCH_LIST="$(git branch -a --format='%(refname:lstrip=2)' | sed -e 's/^origin\///g' | sort -u | $FUZZY_FINDER_COMMAND)"
+
+    if [ "x$FILE" != "x" ]; then
+        git checkout "$FILE"
+    else
+        echo "operation was cancelled."
+    fi
+}
+
+
+function f-henry() {
+    REPOSITORY="$(find ~/wk/projects/bw/ -maxdepth 1 -type d | $FUZZY_FINDER_COMMAND)"
+
+    if [ "x$REPOSITORY" != "x" ]; then
+        cd "$REPOSITORY"
+    else
+        echo "operation was cancelled."
+    fi
 }
 
 
