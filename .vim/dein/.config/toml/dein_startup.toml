@@ -221,7 +221,6 @@ hook_add = '''
     " let g:airline#extensions#ale#close_lnum_symbol = ''
 
     let g:airline_theme     = 'xtermlight'
-    " let g:airline_section_a = airline#section#create(['mode', 'paste', 'spell'])
     let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_b = airline#section#create([
                 \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{fugitive#head()}', ' %n', '%{Padspace()}',
@@ -229,8 +228,6 @@ hook_add = '''
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
-
-    " call extend(g:airline_symbols, { 'paste': ' P', 'spell': ' S' }, 'force')
 
     let g:airline#extensions#default#layout = [
         \ ['a', 'b', 'c'],
