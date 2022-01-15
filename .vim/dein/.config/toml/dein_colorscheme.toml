@@ -111,3 +111,33 @@ repo = 'Rigellute/rigel'
 
 [[plugins]]
 repo = 'creasty/candle.vim'
+
+
+[[plugins]]
+repo = 'kaicataldo/material.vim'
+hook_add = '''
+    " 'default'
+    " 'palenight'
+    " 'ocean'
+    " 'lighter'
+    " 'darker'
+    " 'default-community'
+    " 'palenight-community'
+    " 'ocean-community'
+    " 'lighter-community'
+    " 'darker-community'
+    let g:material_theme_style      = 'ocean'
+    let g:material_terminal_italics = 1
+'''
+
+
+[[plugins]]
+repo = 'dracula/vim'
+
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+
+[[plugins]]
+repo = 'jonathanfilip/vim-lucius'

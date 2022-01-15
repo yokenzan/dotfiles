@@ -42,23 +42,34 @@ let g:gruvbox_contrast_dark  = "soft"
 " colorscheme badwolf
 " colorscheme buttercream
 " colorscheme cake
+" colorscheme candle
 " colorscheme default
 " colorscheme desert
 " colorscheme distinguished
+" colorscheme dracula
 " colorscheme dream
 " colorscheme dream-light
 " colorscheme gruvbox
 " colorscheme koehler
+" colorscheme lucius
+" colorscheme lucius
+" colorscheme material
 " colorscheme molokai
+" colorscheme mustang
 " colorscheme nefertiti
 " colorscheme nuvola
+" colorscheme peachpuff
 " colorscheme phd
+" colorscheme photon
+" colorscheme proton
 " colorscheme pyte
+" colorscheme rigel
 " colorscheme rupza
 " colorscheme solarized8_flat
 " colorscheme solarized8_high
 " colorscheme solarized8_low
 " colorscheme summerfruit256
+" colorscheme tender
 " colorscheme zenburn
 
 if exists('g:colors_name') && g:colors_name=~'dream'
