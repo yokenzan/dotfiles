@@ -102,16 +102,18 @@ $if mode=emacs
     # Redirection key maps
     #
 
-    "\C-xrl":  " | l\n"
-    "\C-xrc":  " | cp2clip\n"
-    "\C-xrv":  " | v -\n"
-    "\C-xrV":  " | view -\n"
-    "\C-xrg":  " | grep "
+    "\C-xrl":  " | less\n"
+    "\C-xrc":  " | cp2clip\n"
+    "\C-xrv":  " | vim -\n"
+    "\C-xrV":  " | view -\n"
+    "\C-xrg":  " | grep "
     "\C-xrn":  " > /dev/null\n"
     "\C-xrN":  " > /dev/null 2>&1\n"
     "\C-xpp":  " $(pwd) "
+    "\C-x:":  ": "
     "\C-xs":  "sudo "
-    "\C-xf": "for i in $() ; do : $i ; done\e)"
+    "\C-xm":  "man "
+    "\C-xf": "for i in $() ; do echo $i ; done\e)"
 
     #
     # Function key key maps
