@@ -1,0 +1,23 @@
+-- set ft=postgresql
+
+\set PROMPT1 '\n[%[%033[1;21m%]PSQL%[%033[0m%]] %[%033[38;5;202m%`date +%Y\/%m\/%d` %`date +%T`%[%033[0m%] %[%033[1;38;5;208m%]%n@%/%[%033[0m%] %[%033[3;38;5;214m%]%M:%>%[%033[0m%]% \n%[%033[33m%]%R%# %[%033[0m%]'
+\set PROMPT2 '%[%033[33m%]%R%# %[%033[0m%]%'
+
+\pset null '[NULL]'
+
+-- \x auto
+
+\setenv PAGER 'less -NFXS'
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+\timing on
+
+
+/**
+ * CSV format
+ */
+-- \pset border 1
+-- \pset format csv
+-- \pset tuples_only
