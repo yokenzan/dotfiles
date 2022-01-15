@@ -79,7 +79,7 @@
     (redraw-frame))
   :bind (("M-ESC ESC" . c/redraw-frame))
   :custom '((user-full-name . "Onuki Yosuke")
-            (user-mail-address . "vallota.112@gmail.com")
+            (user-mail-address . "31175068+yokenzan@users.noreply.github.com")
             (user-login-name . "yokenzan")
             (create-lockfiles . nil)
             (debug-on-error . t)
