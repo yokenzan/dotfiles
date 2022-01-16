@@ -106,6 +106,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-action=highlight -smartcase line<CR>
 
         au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -smartcase -reversed command_history<CR>
+        au VimEnter * nested nnoremap <silent><Space>q*  :<C-u>Denite -smartcase -reversed -start_filter command_history<CR>
 
         " ファイル関係
         au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -expand -no-empty -smartcase -vertical-preview file<CR>
