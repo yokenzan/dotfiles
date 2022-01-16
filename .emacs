@@ -142,11 +142,18 @@
 
 ;; paren
 
-(leaf paren
-  :doc "highlight matching paren"
-  :tag "builtin"
-  :custom ((show-paren-delay . 0.1))
-  :global-minor-mode show-paren-mode)
+(leaf *paren-config
+  :config
+  (leaf paren
+    :doc "highlight matching paren"
+    :tag "builtin"
+    :custom ((show-paren-delay . 0.1))
+    :global-minor-mode show-paren-mode)
+  ; (leaf smartparens
+  ;   :ensure t
+  ;   :require smartparens-config
+  ;   :global-minor-mode smartparens-mode)
+  )
 
 
 ;; simple
@@ -280,6 +287,18 @@
   :defvar company-backends
   :config
   (add-to-list 'company-backends 'company-c-headers))
+
+
+(leaf flycheck
+  :doc "On-the-fly syntax checking"
+  :req "dash-2.12.1" "pkg-info-0.4" "let-alist-1.0.4" "seq-1.11" "emacs-24.3"
+  :tag "minor-mode" "tools" "languages" "convenience" "emacs>=24.3"
+  :url "http://www.flycheck.org"
+  :emacs>= 24.3
+  :ensure t
+  ;; :bind (("M-n" . flycheck-next-error)
+  ;;        ("M-p" . flycheck-previous-error))
+  :global-minor-mode global-flycheck-mode)
 
 ;;
 ;;
