@@ -118,6 +118,7 @@ hook_add = '''
         au VimEnter * nested nnoremap <silent><Space>uG  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file/git<CR>
         au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start_filter file/git<CR>
         au VimEnter * nested nnoremap <silent><Space>uv  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter file/rec:vendor<CR>
+        au VimEnter * nested nnoremap <silent><Space>uS  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter -input=!bin\ !build\  file/git<CR>
 
         " git
         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -auto-action=preview  grep/git<CR>
