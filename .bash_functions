@@ -44,27 +44,69 @@ function mkcd() {
 # function using fuzzy finder
 
 
-export FUZZY_FINDER_COMMAND="fzy --line=30"
+export FUZZY_FINDER_COMMAND="fzy --show-scores --line=30"
+export FUZZY_FINDER_COMMAND_WITH_QUERY="fzy --show-scores --line=30 --query="
 
-function f-cd() {
-    DIR="$(find . -type d | grep -v .git | $FUZZY_FINDER_COMMAND)"
 
-    if [ "x$DIR" != "x" ]; then
-        cd "$DIR"
+# make user choise one from candidate list and return it
+function __fuzzy() {
+    CANDIDATE_FILEPATH="$1"
+    QUERY="$2"
+    COMMAND_WITH_QUERY="$FUZZY_FINDER_COMMAND_WITH_QUERY"$QUERY""
+
+    COMMAND=
+
+    if [ "x$QUERY" == "x" ]; then
+        COMMAND="$FUZZY_FINDER_COMMAND"
     else
-        echo "operation was cancelled."
+        COMMAND="$COMMAND_WITH_QUERY"
+    fi
+
+    RESULT="$(cat $CANDIDATE_FILEPATH | $COMMAND)"
+
+    if [ "x$RESULT" != "x" -a  "x$RESULT" != "xcat $CANDIDATE_FILEPATH | $COMMAND" ]; then
+        echo $RESULT
     fi
 }
 
 
-function f-vf() {
-    FILE="$(find . -type f | grep -v .git | $FUZZY_FINDER_COMMAND)"
+function f-cd() {
+    QUERY="$1"
+    TEMPFILE=$(mktemp)
 
-    if [ "x$FILE" != "x" ]; then
-        vim "$FILE"
+    # create candidate list and write it into tempfile
+    find . -type d | grep -v .git | grep -v cache > $TEMPFILE
+
+    # item chosen by user
+    CHOSEN="$(__fuzzy "$TEMPFILE" "$QUERY")"
+
+    if [ "x$CHOSEN" != "x" ]; then
+        cd "$CHOSEN"
     else
         echo "operation was cancelled."
     fi
+
+    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
+}
+
+
+function f-vf() {
+    QUERY="$1"
+    TEMPFILE=$(mktemp)
+
+    # create candidate list and write it into tempfile
+    find . -type f | grep -v .git | grep -v cache > $TEMPFILE
+
+    # item chosen by user
+    CHOSEN="$(__fuzzy "$TEMPFILE" "$QUERY")"
+
+    if [ "x$CHOSEN" != "x" ]; then
+        $EDITOR "$CHOSEN"
+    else
+        echo "operation was cancelled."
+    fi
+
+    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
 }
 
 
@@ -96,10 +138,17 @@ function f-gc() {
 
 
 function f-henry() {
-    REPOSITORY="$(find ~/wk/projects/bw/ -maxdepth 1 -type d | $FUZZY_FINDER_COMMAND)"
+    QUERY="$1"
+    TEMPFILE=$(mktemp)
 
-    if [ "x$REPOSITORY" != "x" ]; then
-        cd "$REPOSITORY"
+    # create candidate list and write it into tempfile
+    find ~/wk/projects/bw/ -maxdepth 1 -type d > $TEMPFILE
+
+    # item chosen by user
+    CHOSEN="$(__fuzzy "$TEMPFILE" "$QUERY")"
+
+    if [ "x$CHOSEN" != "x" ]; then
+        cd "$CHOSEN"
     else
         echo "operation was cancelled."
     fi
