@@ -329,7 +329,8 @@
 
 (leaf atomic-chrome
   :ensure t
-  :custom (atomic-chrome-start-server))
+  :hook
+  (after-init-hook . atomic-chrome-start-server))
 
 
 (leaf linum
