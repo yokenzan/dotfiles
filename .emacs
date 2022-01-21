@@ -584,6 +584,8 @@
 ;;; 
 
 
+;; https://qiita.com/minoruGH/items/20d7664a3a57c7365ebc
+
 (defun ytn-ivy-migemo-re-builder (str)
   (let* ((sep " \\|\\^\\|\\.\\|\\*")
          (splitted (--map (s-join "" it)
