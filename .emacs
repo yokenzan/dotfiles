@@ -362,6 +362,72 @@
   )
 
 
+(leaf ddskk
+  :ensure t
+  :custom
+  (skk-init-file . "~/.skk/init")
+  (default-input-method . "japanese-skk")
+  (skk-share-private-jisyo . t)
+  ;; (skk-jisyo-code . 'utf-8)
+  ;; (skk-jisyo . "~/SKKFEP/skkuser.txt")
+  ;; (skk-large-jisyo . "c:/Windows/IME/SKK0/DICTS/SKK-JISYO.L")
+  (skk-server-host . "localhost")
+  (skk-server-portnum . 55100)
+  (skk-server-prog . "/home/yosuke/.rbenv/shims/google-ime-skk")
+  (skk skk-dcomp-activate . t) ;; 動的補完
+  (skk-sticky-key . ";") ; sticky shift
+  (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
+  ;;(skk-henkan-number-to-display-candidates . 8) ;;
+  (skk-use-jisx0201-input-method . t)
+  (skk-show-inline . 'vertical)
+  (skk-show-tooltip . t)
+  (skk-show-mode-show . t)
+  (skk-use-look . t) ;; 英単語
+  (skk-show-candidates-nth-henkan-char . 2)
+  ;; インジケータ表示のカスタマイズ
+  ;; (skk-latin-mode-string . "[_A]")
+  ;; (skk-hiragana-mode-string . "[あ]")
+  ;; (skk-katakana-mode-string . "[ア]")
+  ;; (skk-jisx0208-latin-mode-string . "[Ａ]")
+  ;; (skk-jisx0201-mode-string . "[_ｱ]")
+  ;; (skk-abbrev-mode-string . "[aA]")
+  ;; (skk-indicator-use-cursor-color . nil)
+  (skk-status-indicator . 'left)
+  (skk-server-inhibit-startup-server . nil)
+  (skk-use-jisx0201-input-method . t)
+)
+
+;; https://uwabami.github.io/cc-env/Emacs.html
+(leaf migemo
+  :if (executable-find "cmigemo")
+  :ensure t
+  ;; :require t
+  :custom
+  '((migemo-user-dictionary  . nil)
+    (migemo-regex-dictionary . nil)
+    (migemo-options          . '("-q" "--emacs"))
+    (migemo-command          . "cmigemo")
+    (migemo-coding-system    . 'utf-8-unix)
+    (file-directory-p . "/usr/share/cmigemo/utf-8/")
+    (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict"))
+  :hook
+  (after-init-hook . migemo-init))
+
+
+(leaf beacon
+  :ensure t
+  :custom
+  `((beacon-color              . "#aa3400")
+    ;; (beacon-size               . 64)
+    (beacon-blink-when-focused . t)
+    )
+  :custom-face
+  `((beacon-fallback-background . '((t (:background "#556b2f")))))
+  :config
+  (beacon-mode t)
+  )
+
+
 (leaf *color-themes
   :config
   (leaf gruvbox-theme
@@ -390,6 +456,30 @@
 
   (leaf molokai-theme
     :ensure t))
+
+
+(leaf persistent-scratch
+  :ensure t
+  :custom (persistent-scratch-setup-default . t))
+
+
+(leaf highlight-indent-guides
+  :ensure t
+  :hook
+  (prog-mode-hook . highlight-indent-guides-mode)
+  :custom
+  (highlight-indent-guides-method . 'character)
+  )
+
+
+(leaf which-key
+  :ensure t
+  :global-minor-mode which-key-mode)
+
+
+(leaf s
+  :ensure t
+  :require t)
 
 
 (leaf *local-variables
@@ -487,28 +577,34 @@
 ;;; ; (setq flycheck-indication-mode 'left-fringe)
 ;;; ; (setq flycheck-check-syntax-automatically '(mode-enabled save))
 ;;; 
-;;; 
 ;;; ;; (define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
-;;; 
-;;; ;; カーソル位置の復旧で、
-;;; ;; C-u C-SPC C-u C-SPC C-u C-SPC .. と押す必要があるのを、
-;;; ;; C-u C-SPC C-SPC C-SPC .. ですむようにする。
-;;; ;; http://emacs.rubikitch.com/sd1509-safeguard-undo-redo/
-;;; (setq set-mark-command-repeat-pop t)
-;;; 
 ;;; 
 ;;; (setq frame-title-format "%f")
 ;;; (setq text-mode-hook 'turn-off-auto-fill)
 ;;; 
-;;; (defun x-clipboard-copy ()
-;;;   (interactive)
-;;;   (when (region-active-p)
-;;;     (shell-command-on-region (region-beginning) (region-end) "clip.exe" nil nil)))
-;;; 
+
+
+(defun ytn-ivy-migemo-re-builder (str)
+  (let* ((sep " \\|\\^\\|\\.\\|\\*")
+         (splitted (--map (s-join "" it)
+                          (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
+                                          (s-split "" str t)))))
+    (s-join "" (--map (cond ((s-equals? it " ") ".*?")
+                            ((s-matches? sep it) it)
+                            (t (migemo-get-pattern it)))
+                      splitted))))
+
+(setq ivy-re-builders-alist '((t . ivy--regex-plus)
+                              (swiper . ytn-ivy-migemo-re-builder)))
 
 
 
 
+
+(defun x-clipboard-copy ()
+  (interactive)
+  (when (region-active-p)
+    (shell-command-on-region (region-beginning) (region-end) "clip.exe" nil nil)))
 
 ;; End:
 
