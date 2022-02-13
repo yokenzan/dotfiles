@@ -194,6 +194,42 @@ GIT_PS1_SHOWDIRTYSTATE=1        # * / +
 GIT_PS1_SHOWSTASHSTATE=1        # $
 GIT_PS1_SHOWUPSTREAM=1          # < / > / = / <>
 
+function __get_return() {
+    if [ $? = 0 ]; then
+        echo ✅
+    else
+        echo 🚫
+    fi
+}
+
+# https://www.ryotosaito.com/blog/?p=455
+#
+# PROMPT_COMMAND=__prompt_command
+__prompt_command() {
+    # 最初に直前コマンドの終了ステータスを記録
+    local status=$?
+    # SGRパラメータ（文字装飾：色付けを行うためのエスケープシーケンス）
+    local reset='\e[m' red='\e[31m' green='\e[32m' blue='\e[34m'
+    # 連想配列で終了ステータスとシグナル名の対応を管理
+    local -A err_code=(
+    [1]=error [2]='builtin error' [126]='not executable'[127]='command not found'
+    [128]=SIGHUP [129]=SIGINT [130]=SIGQUIT [131]=SIGILL [132]=SIGTRAP
+    [133]=SIGABRT [134]=SIGEMT [135]=SIGFPE [136]=SIGKILL [137]=SIGBUS
+    [138]=SIGSEGV [139]=SIGSYS [140]=SIGPIPE [141]=SIGALRM [142]=SIGTERM
+    [143]=SIGURG [144]=SIGSTOP [145]=SIGTSTP [146]=SIGCONT [147]=SIGCHLD
+    [148]=SIGTTIN [149]=SIGTTOU [150]=SIGIO [151]=SIGXCPU [152]=SIGXFSZ
+    [153]=SIGVTALRM [154]=SIGPROF [155]=SIGWINCH [156]=SIGINFO [157]=SIGUSR1
+    [158]=SIGUSR2
+    )
+    if [[ $status -eq 0 ]]; then
+        echo "✅"
+    elif [[ $status -eq 130 ]]; then
+        echo "🚫"
+    else
+        echo -e "❗$status[${err_code[$status]}]"
+    fi
+}
+
 
 uname | grep -q 'NT' > /dev/null 2>&1
 if [ $? = 0 ]; then
