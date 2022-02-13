@@ -39,7 +39,7 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
-#$if Bash
+$if Bash
   # Don't ring bell on completion
   set bell-style none
 
@@ -92,56 +92,75 @@ set convert-meta off
   # Insert a space character then performs
   # a history expansion in the line
   #Space: magic-space
-#$endif
+$endif
 
 # MSYSTEM is emacs based
 #
 # @see https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File.html
 $if mode=emacs
-    #
-    # Redirection key maps
-    #
+    # My key maps
+    # Start with "C-x Space"
 
-    "\C-xrl":  " | less\n"
-    "\C-xrc":  " | cp2clip\n"
-    "\C-xrv":  " | vim -\n"
-    "\C-xrV":  " | view -\n"
-    "\C-xrg":  " | grep "
-    "\C-xrn":  " > /dev/null\n"
-    "\C-xrN":  " > /dev/null 2>&1\n"
-    "\C-xpp":  " $(pwd) "
-    "\C-x:":  ": "
-    "\C-xs":  "sudo "
-    "\C-xm":  "man "
-    "\C-xf": "for i in $() ; do echo $i ; done\e)"
+    # Redirections frequently used
 
-    #
-    # Function key key maps
-    #
+    "\C-x rl": " | less"
+    "\C-x rc": " | cp2clip"
+    "\C-x rv": " | vim -"
+    "\C-x rV": " | view -"
+    "\C-x rg": " | grep "
+    "\C-x rx": " | xargs "
+    "\C-x rn": " > /dev/null"
+    "\C-x rN": " > /dev/null 2>&1"
 
-    "\e[15~": " source ~/.bash_profile\n"  # F5
-    "\e[18~": " exec $SHELL -l\n"          # F7
-    "\e[17~": " sshinit\n"                 # F6
-    "\e[24~": " here\n"                    # F12
+    # Complete and execute
 
-    "\C-^":   "~/"
+    "\C-x e:":  ": "
+    "\C-x es":  "sudo "
+    "\C-x em":  "man "
+    "\C-x e ":  " "
 
-    # prepare to type a quoted word --
-    # insert open and close double quotes
-    # and move to just after the open quote
-    "\C-xq\'": "\'\'\C-b"
-    "\C-xq\"": "\"\"\C-b"
-    "\C-xq(": "()\C-b"
-    "\C-xq)": "()\C-b"
-    "\C-xq$": "$\C-xq)"
-    # Quote the current or previous word
-    "\C-xqq": "\eb\'\ef\'"
-    "\C-xqQ": "\eb\"\ef\""
-    "\C-xqC": "\eb$(\ef)"
-    "\C-xqc": "\C-a$(\C-e)\C-a"
+    # Other key maps
 
-    # macros for psql
-    "\C-xpl": " name like '%%' \e3\C-b"
+    "\C-x pp": " $(pwd) "
+    "\C-x f":  "for i in $() ; do echo $i ; done\e)"
+    "\C-^":    "~/winhome"
+
+    # Function key
+
+    "\e[11~": " f-h"                     # F1
+    "\e[15~": " source ~/.bash_profile"  # F5
+    "\e[18~": " exec $SHELL -l"          # F7
+    "\e[17~": " sshinit"                 # F6
+    "\e[24~": " here"                    # F12
+
+    # Complete quotation marks
+
+    "\C-x qs": "\'\'\C-b"
+    "\C-x qd": "\"\"\C-b"
+    "\C-x qp": "()\C-b"
+    "\C-x q3": "$()\C-b"
+
+    # Surround current or previous word with quotation marks
+
+    "\C-x ss": "\eb\'\ef\'"
+    "\C-x sd": "\eb\"\ef\""
+    "\C-x s3": "\eb$(\ef)"
+    "\C-x s$": "\C-a$(\C-e)\C-a"
+
+    # Complete SQL
+
+    "\C-x Sl": " name like '%%' \e3\C-b"
+    "\C-x So": " order by "
+    "\C-x Ss": " select * from "
+    "\C-x Sj": " inner join  on \eb\C-b"
+
+    # Commands with fuzzy finder
+
+    "\C-x fh":  " f-h"
+    "\C-x fc":  " f-cd"
+    "\C-x fgc": " f-gc"
+    "\C-x fvf": " f-vf"
+    "\C-x fvg": " f-vgl"
 
     # Common to Console & RXVT
     "\C-?": backward-kill-line         # Ctrl-BackSpace
