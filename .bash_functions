@@ -119,7 +119,7 @@ function f-vgl() {
     FILE="$(f-gl)"
 
     if [ "x$FILE" != "x" ]; then
-        vim "$FILE"
+        $EDITOR "$FILE"
     else
         echo "operation was cancelled."
     fi
@@ -129,15 +129,15 @@ function f-vgl() {
 function f-gc() {
     BRANCH_LIST="$(git branch -a --format='%(refname:lstrip=2)' | sed -e 's/^origin\///g' | sort -u | $FUZZY_FINDER_COMMAND)"
 
-    if [ "x$FILE" != "x" ]; then
-        git checkout "$FILE"
+    if [ "x$BRANCH_LIST" != "x" ]; then
+        git checkout "$BRANCH_LIST"
     else
         echo "operation was cancelled."
     fi
 }
 
 
-function f-henry() {
+function f-h() {
     QUERY="$1"
     TEMPFILE=$(mktemp)
 
