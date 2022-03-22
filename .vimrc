@@ -213,9 +213,6 @@ nnoremap ?/ ?\V
 nnoremap <silent><C-[><C-[> :<C-u>noh<CR><Esc>
 
 
-command! -count=1 Glo :r! git log --oneline --no-merges -<count>
-
-
 " 手動のクリップボード連携
 if !has('clipboard')
     function! YankToSharedFile() range
@@ -272,7 +269,6 @@ set shortmess-=w
 set shortmess-=c
 
 
-command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
 
 nnoremap <Space><Space>s  :<C-u>source Session.vim<CR>
 
@@ -364,12 +360,6 @@ vnoremap [J F<C-k>_,
 vnoremap ]J f<C-k>_,
 
 
-augroup MyCmdGroup
-    " camel -> snake
-    command! -range Camel2Snake :s/\%V\(_\|\<\)\([a-zA-Z0-9]\)\([a-zA-Z0-9]\+\)\?/\u\2\L\3\E/g
-augroup END
-
-
 " set gdefault
 set colorcolumn=100
 " needed for showing ^X mode in completion
@@ -394,3 +384,38 @@ nnoremap <Leader>C :<C-u>Copen<CR>
 if filereadable('./.vimrc.project')
     source ./.vimrc.project
 endif
+
+
+function! UkeGetPreviewedText(uke_text) abort
+    return system('cd ~/wk/repos/recediff && bundle exec bin/recediff --receipt-preview', a:uke_text)
+endfunction
+
+function! UkePopupPreview(start, end) abort
+    let l:uke_text = getline(a:start, a:end)
+
+    if empty(l:uke_text)
+        call echomsg('text is empty')
+        return
+    endif
+
+    let l:previewed_text = UkeGetPreviewedText(l:uke_text)
+
+    call popup_atcursor(split(l:previewed_text, "\n"), {})
+endfunction
+
+augroup MyCmdGroup
+    " camel -> snake
+    command! -range Camel2Snake :<line1>,<line2>s/\%V\(_\|\<\)\([a-zA-Z0-9]\)\([a-zA-Z0-9]\+\)\?/\u\2\L\3\E/g
+
+    command! -count=1 Glo :r! git log --oneline --no-merges -<count>
+
+    command! -range WhiteSpaceToTab :<line1>,<line2>s/    /\t/g
+
+    command! -range UkePreview call UkePopupPreview(<line1>, <line2>)
+
+    command! -range RemoveExtraCR :<line1>,<line2>s///g
+augroup END
+
+
+au BufNewFile,BufRead *.uke setf uke
+au BufNewFile,BufRead *.UKE setf uke
