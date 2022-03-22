@@ -350,7 +350,7 @@ hook_add = '''
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
-    let quickrun_config = {
+    let g:quickrun_config = {
     \   "_" : {
     \       "outputter/buffer/close_on_empty" : 1,
     \       "runner" : "vimproc"
@@ -363,6 +363,17 @@ hook_add = '''
     \   'plantuml': {
     \       'exec':      'java -jar /usr/share/plantuml/plantuml.jar -Djava.awt.headless=true -tsvg %s',
     \       'outputter': 'message'
+    \   },
+    \   'python': {
+    \       'command':   'python3'
+    \   },
+    \   'uke': {
+    \       'command':                     'bin/recediff',
+    \       'exec':                        'bundle exec %c %o %s',
+    \       'cmdopt':                      '--receipt-preview --from=1',
+    \       'outputter':                   'quickfix',
+    \       'hook/cd/directory':           '~/wk/repos/recediff',
+    \       'hook/output_encode/encoding': 'cp932:cp932'
     \   }
     \}
 
@@ -370,6 +381,7 @@ autocmd FileType php nnoremap <buffer> <Space>bt :<C-u>QuickRun phpunit<CR>
 autocmd FileType php nnoremap <buffer> <Space>bl :<C-u>QuickRun -exec "php -l %s" -outputter "quickfix"<CR>
 
 nnoremap <Leader>r :<C-u>QuickRun<CR>
+xnoremap <Leader>r :<C-u>'<,'>QuickRun<CR>
 '''
 
 
