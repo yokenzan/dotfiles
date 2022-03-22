@@ -111,7 +111,8 @@ hook_add = '''
         " ファイル関係
         au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -expand -no-empty -smartcase -vertical-preview file<CR>
         au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file<CR>
-        au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>umm :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>umo :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/old<CR>
         au VimEnter * nested nnoremap <silent><Space>up  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -matchers=matcher/project_files,matcher/ignore_current_buffer,matcher/substring file_mru<CR>
         au VimEnter * nested nnoremap <silent><Space>uA  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/rec<CR>
         au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -start_filter file/rec<CR>
@@ -138,6 +139,7 @@ hook_post_source = '''
 
     call denite#custom#option('default', 'preview_width', winwidth(0) / 2)
     call denite#custom#option('default', 'winwidth', winwidth(0))
+    call denite#custom#option('default', 'winwidth', 160)
 
     " file/git
 
@@ -285,7 +287,7 @@ hook_post_source = '''
     call denite#custom#var('menu', 'menus', s:menus)
 
 '''
-depends  = ['neoyank.vim', 'neomru.vim', 'denite-git']
+depends  = ['neoyank.vim', 'neomru.vim', 'denite-git', 'denite-receipt-mhlw']
 
 
 [[plugins]]
