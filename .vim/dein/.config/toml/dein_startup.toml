@@ -370,7 +370,7 @@ hook_add = '''
     \   'uke': {
     \       'command':                     'bin/recediff',
     \       'exec':                        'bundle exec %c %o %s',
-    \       'cmdopt':                      '--receipt-preview --from=1',
+    \       'cmdopt':                      '--receipt-preview --from=0',
     \       'outputter':                   'quickfix',
     \       'hook/cd/directory':           '~/wk/repos/recediff',
     \       'hook/output_encode/encoding': 'cp932:cp932'
