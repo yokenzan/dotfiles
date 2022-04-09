@@ -1,0 +1,124 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+
+[[plugins]]
+repo = 'vim-denops/denops-helloworld.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+hook_add = '''
+    " Use ddc.
+    call ddc#enable()
+'''
+
+
+[[plugins]]
+repo        = 'LumaKernel/ddc-file'
+hook_add = '''
+    call ddc#custom#patch_global('sources', ['file'])
+    call ddc#custom#patch_global('sourceOptions', {
+          \ 'file': {'mark': 'FILE'},
+          \ })
+'''
+
+
+[[plugins]]
+repo        = 'Shougo/ddc-around'
+hook_add = '''
+    call ddc#custom#patch_global('sources', ['around'])
+    call ddc#custom#patch_global('sourceOptions', {
+          \ 'around': {'mark': 'AROUND'},
+          \ })
+'''
+
+
+[[plugins]]
+repo        = 'delphinus/ddc-tmux'
+hook_add = '''
+    call ddc#custom#patch_global('sources', ['tmux'])
+    call ddc#custom#patch_global('sourceOptions', {
+          \ 'tmux': {'mark': 'TMUX'},
+          \ })
+'''
+
+
+[[plugins]]
+repo        = 'Shougo/ddc-matcher_head'
+hook_add = '''
+    call ddc#custom#patch_global('sourceOptions', {
+          \ '_': {
+          \   'matchers': ['matcher_head']}
+          \ })
+'''
+
+
+[[plugins]]
+repo        = 'Shougo/ddc-sorter_rank'
+hook_add = '''
+    call ddc#custom#patch_global('sourceOptions', {
+          \ '_': {
+          \   'sorters': ['sorter_rank']},
+          \ })
+
+    " <TAB>: completion.
+    inoremap <silent><expr> <TAB>
+        \ ddc#map#pum_visible() ? '<C-n>' :
+        \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+        \ '<TAB>' : ddc#map#manual_complete()
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+'''
+
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+hook_add = '''
+    call popup_preview#enable()
+'''
+
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+hook_add = '''
+    imap <C-j> <Plug>(skkeleton-toggle)
+    cmap <C-j> <Plug>(skkeleton-toggle)
+
+    " 例
+    call ddc#custom#patch_global('sources', ['skkeleton'])
+    call ddc#custom#patch_global('sourceOptions', {
+        \   '_': {
+        \     'matchers': ['matcher_head'],
+        \     'sorters': ['sorter_rank']
+        \   },
+        \   'skkeleton': {
+        \     'mark': 'skkeleton',
+        \     'matchers': ['skkeleton'],
+        \     'sorters': [],
+        \     'minAutoCompleteLength': 2,
+        \   },
+        \ })
+    call skkeleton#config({
+        \   'globalJisyo': '~/.skk/SKK-JISYO.L',
+        \ })
+
+    " 例
+    function! s:skkeleton_init() abort
+      call skkeleton#config({
+        \ 'eggLikeNewline': v:true
+        \ })
+      call skkeleton#register_kanatable('rom', {
+        \ "z\<Space>": ["\u3000", ''],
+        \ })
+    endfunction
+    augroup skkeleton-initlaize-pre
+      autocmd!
+      autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+    augroup END
+'''

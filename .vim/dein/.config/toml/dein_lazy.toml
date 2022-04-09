@@ -358,3 +358,26 @@ on_ft = ['sql']
 hook_source = '''
 let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
 '''
+
+
+[[plugins]]
+repo = 'jwalton512/vim-blade'
+on_ft = ['blade']
+hook_add = '''
+    syntax on
+    let g:blade_custom_directives = ['datetime', 'namespaced::directive']
+    let g:blade_custom_directives_pairs = {'cache': 'endcache'}
+'''
+
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['plantuml']
+
+
+[[plugins]]
+repo = 'othree/html5.vim'
+
+
+[[plugins]]
+repo = 'yokenzan/denite-receipt-mhlw'

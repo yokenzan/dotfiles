@@ -1,0 +1,126 @@
+[[plugins]]
+repo     = 'hewes/unite-gtags'
+if       = '!has("python3")'
+hook_add = '''
+    nnoremap <silent><Space>gf :<C-u>Unite gtags/file<CR>
+    nnoremap <silent><Space>gr :<C-u>Unite -resume -auto-preview gtags/ref<CR>
+'''
+
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+hook_add = '''
+    let g:ref_source_webdict_sites = {
+    \   'wiki': {
+    \     'url': 'http://ja.wikipedia.org/wiki/%s',
+    \   },
+    \   'ee': {
+    \     'url': 'http://googledictionary.freecollocation.com/meaning?word=%s',
+    \   },
+    \ }
+
+    "デフォルト
+    let g:ref_source_webdict_sites.default = 'ee'
+
+    function! g:ref_source_webdict_sites.ee.filter(output)
+      return join(split(a:output, "\n")[5 :], "\n")
+    endfunction
+
+    function! g:ref_source_webdict_sites.wiki.filter(output)
+      return join(split(a:output, "\n")[5 :], "\n")
+    endfunction
+
+    augroup enableRefKeyMaps
+        autocmd!
+        nnoremap <Space>re :<C-u>Ref webdict ee
+        nnoremap <Space>rw :<C-u>Ref webdict wiki
+    augroup end
+'''
+
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    aug enableNERDTree
+        au!
+        au VimEnter * nested noremap <Space>nt :NERDTreeToggle<Return>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'tyru/eskk.vim'
+# rev  = '97f6138'
+hook_add = '''
+    let g:eskk#directory = "~/.eskk"
+    let g:eskk#dictionary = { 'path': "~/winhome/AppData/Roaming/SKKFEP/skkuser.txt", 'sorted': 0, 'encoding': 'utf-8', }
+    let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
+    set imdisable
+    let g:eskk#enable_completion = 0
+    let g:eskk#server = {
+    \   'host': 'localhost',
+    \   'port': 55100,
+    \}
+    " let g:eskk#marker_henkan         = '＃'
+    " let g:eskk#marker_henkan_select  = '＠'
+    let g:eskk#show_candidates_count = 2
+    let g:eskk#show_annotation       = 1
+
+
+    function! DisableCocNvim()
+        if exists(':CocDisable') == 2
+            CocDisable
+        endif
+    endfunction
+
+    function! EnableCocNvim()
+        if exists(':CocEnable') == 2
+            CocEnable
+        endif
+    endfunction
+
+    autocmd  User eskk-enable-post  call DisableCocNvim()
+    autocmd  User eskk-disable-post call EnableCocNvim()
+'''
+
+
+[[plugins]]
+repo = 'NLKNguyen/pipe.vim'
+
+
+[[plugins]]
+repo  = 'vim-vdebug/vdebug'
+if    = 'has("python3")'
+hook_post_source = '''
+    let g:vdebug_options= {
+    \    'port' : 9000,
+    \    'timeout' : 20,
+    \    'server' : 'localhost',
+    \    'on_close' : 'stop',
+    \    'break_on_open' : 1,
+    \    'ide_key' : 'XDEBUG_VIM',
+    \    'debug_window_level' : 0,
+    \    'debug_file_level' : 0,
+    \    'debug_file' : '',
+    \    'path_maps' : {},
+    \    'watch_window_style' : 'expanded',
+    \    'marker_default' : '⬦',
+    \    'marker_closed_tree' : '▸',
+    \    'marker_open_tree' : '▾',
+    \    'sign_breakpoint' : '▷',
+    \    'sign_current' : '▶',
+    \    'sign_disabled': 'X',
+    \    'continuous_mode'  : 1,
+    \    'simplified_status': 1,
+    \    'layout': 'vertical',
+    \}
+'''
+
+
+[[plugins]]
+repo = 'kkoomen/vim-doge'
+
+
+[[plugins]]
+repo  = 'hdiniz/vim-gradle'
+on_ft = ['java', 'kotlin']
