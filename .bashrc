@@ -69,27 +69,34 @@ fi
 # History Options
 #
 # Don't put duplicate lines in the history.
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups,ignoreboth
+export HISTCONTROL=erasedups,ignoreboth,ignorespace
+# export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups,ignorespace
 
-export HISTTIMEFORMAT='%F %T '
+export HISTTIMEFORMAT='%F %T: '
 #
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:e:v:vs:gs:rm -rf*:r:git push:*--force*:gcmn:gcm:gsp:git stash drop*' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:rm -rf*:r:git push:*--force*:git push -f:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...'
 #
 # Whenever displaying the prompt, write the previous line to disk
-# export PROMPT_COMMAND="history -a"
-
+if [ "x$BASH_ENV_SHARE_HISTORY" == "x1" ]; then
+    export PROMPT_COMMAND='share_history'
+    shopt -u histappend
+    echo share
+else
+    export PROMPT_COMMAND=
+    shopt -s histappend
+    echo not share
+fi
 
 function share_history {
     history -a
     history -c
     history -r
 }
-export PROMPT_COMMAND='share_history'
-shopt -s histappend
-export HISTSIZE=500000
+export HISTSIZE=9999
+
 
 # Umask
 #
