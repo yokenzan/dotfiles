@@ -31,9 +31,6 @@
 # Use case-insensitive filename globbing
 # shopt -s nocaseglob
 #
-# Make bash append rather than overwrite the history on disk
-# shopt -s histappend
-#
 # When changing directory small typos can be ignored by bash
 # for example, cd /vr/lgo/apaache would find /var/log/apache
 # shopt -s cdspell
@@ -62,7 +59,7 @@ COMP_CONFIGURE_HINTS=1
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
 # Load my config
 if [ -f "${HOME}/.bash-env" ]; then
-    source $HOME/.bash-env
+    . $HOME/.bash-env
 fi
 
 
@@ -78,24 +75,21 @@ export HISTTIMEFORMAT='%F %T: '
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:rm -rf*:r:git push:*--force*:git push -f:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...'
-#
-# Whenever displaying the prompt, write the previous line to disk
+
 if [ "x$BASH_ENV_SHARE_HISTORY" == "x1" ]; then
     export PROMPT_COMMAND='share_history'
     shopt -u histappend
-    echo share
 else
     export PROMPT_COMMAND=
     shopt -s histappend
-    echo not share
 fi
 
-function share_history {
+share_history() {
     history -a
     history -c
     history -r
 }
-export HISTSIZE=9999
+export HISTSIZE=20000
 
 
 # Umask
@@ -110,7 +104,7 @@ export HISTSIZE=9999
 #
 # Some people use a different file for functions
 if [ -f "${HOME}/.bash_functions" ]; then
-  source "${HOME}/.bash_functions"
+    . "${HOME}/.bash_functions"
 fi
 #
 # Some example functions:
@@ -121,71 +115,11 @@ fi
 #   echo -ne "\e]2;$@\a\e]1;$@\a"; 
 # }
 # 
-# b) function cd_func
-# This function defines a 'cd' replacement function capable of keeping, 
-# displaying and accessing history of visited directories, up to 10 entries.
-# To use it, uncomment it, source this file and try 'cd --'.
-# acd_func 1.0.5, 10-nov-2004
-# Petar Marinov, http:/geocities.com/h2428, this is public domain
-# cd_func ()
-# {
-#   local x2 the_new_dir adir index
-#   local -i cnt
-#
-#   if [[ $1 ==  "--" ]]; then
-#     dirs -v
-#     return 0
-#   fi
-#
-#   the_new_dir=$1
-#   [[ -z $1 ]] && the_new_dir=$HOME
-#
-#   if [[ ${the_new_dir:0:1} == '-' ]]; then
-#     #
-#     # Extract dir N from dirs
-#     index=${the_new_dir:1}
-#     [[ -z $index ]] && index=1
-#     adir=$(dirs +$index)
-#     [[ -z $adir ]] && return 1
-#     the_new_dir=$adir
-#   fi
-#
-#   #
-#   # '~' has to be substituted by ${HOME}
-#   [[ ${the_new_dir:0:1} == '~' ]] && the_new_dir="${HOME}${the_new_dir:1}"
-#
-#   #
-#   # Now change to the new dir and add to the top of the stack
-#   pushd "${the_new_dir}" > /dev/null
-#   [[ $? -ne 0 ]] && return 1
-#   the_new_dir=$(pwd)
-#
-#   #
-#   # Trim down everything beyond 11th entry
-#   popd -n +11 2>/dev/null 1>/dev/null
-#
-#   #
-#   # Remove any other occurence of this dir, skipping the top of the stack
-#   for ((cnt=1; cnt <= 10; cnt++)); do
-#     x2=$(dirs +${cnt} 2>/dev/null)
-#     [[ $? -ne 0 ]] && return 0
-#     [[ ${x2:0:1} == '~' ]] && x2="${HOME}${x2:1}"
-#     if [[ "${x2}" == "${the_new_dir}" ]]; then
-#       popd -n +$cnt 2>/dev/null 1>/dev/null
-#       cnt=cnt-1
-#     fi
-#   done
-#
-#   return 0
-# }
-# 
-# alias cd=cd_func
-
 
 
 # Some people use a different file for aliases
 if [ -f "${HOME}/.bash_aliases" ]; then
-  source "${HOME}/.bash_aliases"
+    . "${HOME}/.bash_aliases"
 fi
 
 # Source global definitions
@@ -195,14 +129,14 @@ fi
 
 # Setting prompt
 if [ -f "${HOME}/.dotfiles/gradle-completion.bash" ]; then
-    source $HOME/.dotfiles/gradle-completion.bash
+    . $HOME/.dotfiles/gradle-completion.bash
 fi
 
 if [ -f "${HOME}/.config/git/completion/git-prompt.sh" ]; then
-    source $HOME/.config/git/completion/git-prompt.sh
+    . $HOME/.config/git/completion/git-prompt.sh
 fi
 if [ -f "${HOME}/.config/git/completion/git-completion.bash" ]; then
-    source $HOME/.config/git/completion/git-completion.bash
+    . $HOME/.config/git/completion/git-completion.bash
 fi
 
 GIT_PS1_SHOWUNTRACKEDFILES=1    # %
