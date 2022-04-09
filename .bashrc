@@ -234,7 +234,7 @@ if [[ $(uname) = "Darwin" ]]; then
 fi
 
 
-if [ $BASH_ENV_USE_GOOGLE_IME_SKK -eq 1 ]; then
+if [ "x$BASH_ENV_USE_GOOGLE_IME_SKK" == "x1" ]; then
     if ps aux | grep google-ime-skk | grep -vqs grep ; then
         : nothing todo
     else
