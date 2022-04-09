@@ -221,18 +221,25 @@ export MANPAGER="vim +MANPAGER -"
 
 complete -cf sudo
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/.config/alacritty/alacritty.bash:$PATH"
+PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+PATH="$HOME/.config/alacritty/alacritty.bash:$PATH"
 
 if [[ $(uname) = "Darwin" ]]; then
     export PATH="$HOME/.nodebrew/current/bin:$PATH"
 fi
 
+PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+export GOPATH="$HOME/.go"
+PATH="$PATH:$HOME/go/bin"
+PATH="$GOPATH/bin:$PATH"
+
+export DENO_INSTALL="/home/yosuke/.deno"
+PATH="$DENO_INSTALL/bin:$PATH"
 
 if [ "x$BASH_ENV_USE_GOOGLE_IME_SKK" == "x1" ]; then
     if ps aux | grep google-ime-skk | grep -vqs grep ; then

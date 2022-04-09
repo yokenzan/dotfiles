@@ -58,19 +58,11 @@ fi
 
 # User specific environment and startup programs
 PATH=$PATH:$HOME/bin:/usr/local/bin
-
-export DENO_INSTALL="/home/yosuke/.deno"
-
-PATH="$PATH:$HOME/.cargo/bin"
-PATH="$PATH:$HOME/.config/composer/vendor/bin"
 PATH="$PATH:$HOME/.local/bin"
-PATH="$PATH:$HOME/go/bin"
-PATH="$DENO_INSTALL/bin:$PATH"
-export PATH
 
+export PATH
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export CMPSDIR=$HOME/wk/projects/cmps
 
 
 if [ -f ~/.Xmodmap ]; then
