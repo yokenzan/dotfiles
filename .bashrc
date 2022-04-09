@@ -60,6 +60,11 @@ COMP_CONFIGURE_HINTS=1
 # Uncomment to turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
+# Load my config
+if [ -f "${HOME}/.bash-env" ]; then
+    source $HOME/.bash-env
+fi
+
 
 # History Options
 #
@@ -181,9 +186,6 @@ if [ -f /etc/bashrc ]; then
     .  /etc/bashrc
 fi
 
-
-# Load my config
-source $HOME/.bash-env
 
 
 # Setting prompt
