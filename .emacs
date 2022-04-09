@@ -303,16 +303,18 @@
   :global-minor-mode recentf-mode)
 
 
-;; (leaf find-file-in-project
-;;   :ensure t
-;;   :bind ("C-x C-M-f" . project-find-file))
 
 
 (leaf projectile
-  :ensure t)
+  :ensure t
+  :bind ("C-x C-M-f" . projectile-find-file))
 
 
 (leaf kotlin-mode
+  :ensure t)
+
+
+(leaf php-mode
   :ensure t)
 
 
@@ -333,9 +335,9 @@
 
 (leaf markdown-mode
   :ensure t
-  :setq (initial-major-mode . 'markdown-mode) ;; set markdown-mode as major mode when opening scratch buffer
-        (initial-scratch-message . nil)       ;; empty scratch buffer
-        )
+  :custom (initial-major-mode . 'markdown-mode) ;; set markdown-mode as major mode when opening scratch buffer
+          (initial-scratch-message . nil)       ;; empty scratch buffer
+          )
 
 
 (leaf hl-line
@@ -382,7 +384,7 @@
   ;; (skk-abbrev-mode-string . "[aA]")
   ;; (skk-indicator-use-cursor-color . nil)
   (skk-status-indicator . 'left)
-  (skk-server-inhibit-startup-server . nil)
+  (skk-server-inhibit-startup-server . t)
   (skk-use-jisx0201-input-method . t)
 )
 
@@ -390,7 +392,6 @@
 (leaf migemo
   :if (executable-find "cmigemo")
   :ensure t
-  ;; :require t
   :custom
   '((migemo-user-dictionary  . nil)
     (migemo-regex-dictionary . nil)
@@ -407,7 +408,7 @@
   :ensure t
   :custom
   `((beacon-color              . "#aa3400")
-    ;; (beacon-size               . 64)
+    (beacon-size               . 96)
     (beacon-blink-when-focused . t)
     )
   :custom-face
