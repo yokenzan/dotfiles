@@ -58,17 +58,15 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
+
 ;; ここにいっぱい設定を書く
 
-;; cus-edit.c
 
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :tag "builtin" "faces" "help"
   :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
 
-
-;; cus-start.c
 
 (leaf cus-start
   :doc "define customization properties of builtins"
@@ -96,7 +94,7 @@
             (truncate-lines . t)
             ;; (use-dialog-box . nil)
             ;; (use-file-dialog . nil)
-            ;; (menu-bar-mode . t)
+            (menu-bar-mode . nil)
             (tool-bar-mode . nil)
             (scroll-bar-mode . nil)
             (indent-tabs-mode . nil))
@@ -104,8 +102,6 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   (keyboard-translate ?\C-h ?\C-?))
 
-
-;; autorevert
 
 ;; Emacsの外でファイルが書き変わったときに自動的に読み直すマイナーモードです。 もちろん、Emacsで編集している場合は外の変更で上書きされることはありません。
 
@@ -115,8 +111,6 @@
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
 
-
-;; cc-mode
 
 (leaf cc-mode
   :doc "major mode for editing C and similar languages"
@@ -130,7 +124,6 @@
   (c++-mode-hook . ((c-set-style "bsd")
                     (setq c-basic-offset 4))))
 
-;; delsel
 
 ;; 選択している状態で入力したときに、regionを削除して挿入するマイナーモードです。 おそらくこの挙動のほうが現代人の意図に合っていると思います。
 
@@ -139,8 +132,6 @@
   :tag "builtin"
   :global-minor-mode delete-selection-mode)
 
-
-;; paren
 
 (leaf *paren-config
   :config
@@ -156,8 +147,6 @@
   )
 
 
-;; simple
-
 (leaf simple
   :doc "basic editing commands for Emacs"
   :tag "builtin" "internal"
@@ -170,7 +159,10 @@
   (emacs-startup-hook . transient-mark-mode))
 
 
+;;
 ;; files
+;;
+
 
 (leaf files
   :doc "file input and output commands for Emacs"
@@ -184,15 +176,11 @@
             (delete-old-versions . t)))
 
 
-;; startup
-
 (leaf startup
   :doc "process Emacs shell arguments"
   :tag "builtin" "internal"
   :custom `((auto-save-list-file-prefix . ,(locate-user-emacs-file "backup/.saves-"))))
 
-
-;; ivy
 
 (leaf ivy
   :doc "Incremental Vertical completYon"
@@ -216,6 +204,7 @@
     :ensure t
     :bind (("C-s" . swiper)))
 
+
   (leaf counsel
     :doc "Various completion functions using Ivy"
     :req "emacs-24.5" "swiper-0.13.0"
@@ -230,6 +219,7 @@
               (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
     :global-minor-mode t))
 
+
 (leaf prescient
   :doc "Better sorting and filtering"
   :req "emacs-25.1"
@@ -239,6 +229,7 @@
   :ensure t
   :custom ((prescient-aggressive-file-save . t))
   :global-minor-mode prescient-persist-mode)
+
 
 (leaf ivy-prescient
   :doc "prescient.el + Ivy"
@@ -276,6 +267,7 @@
            (company-transformers . '(company-sort-by-occurrence)))
   :global-minor-mode global-company-mode)
 
+
 (leaf company-c-headers
   :doc "Company mode backend for C/C++ header files"
   :req "emacs-24.1" "company-0.8"
@@ -300,9 +292,6 @@
   ;;        ("M-p" . flycheck-previous-error))
   :global-minor-mode global-flycheck-mode)
 
-;;
-;;
-;;
 
 (leaf recentf
   :ensure t
