@@ -85,10 +85,9 @@ fi
 
 
 # if using WSL2
-
-LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
-export DISPLAY=$LOCAL_IP:0
-
-# in other envs
-
-# export DISPLAY=127.0.0.1:0.0
+if [ "x$BASH_ENV_WSL2_LOCAL_IP" == "x1" ]; then
+    LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+    export DISPLAY=$LOCAL_IP:0
+else
+    export DISPLAY=127.0.0.1:0.0
+fi
