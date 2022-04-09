@@ -387,7 +387,7 @@ endif
 
 
 function! UkeGetPreviewedText(uke_text) abort
-    return system('cd ~/wk/repos/recediff && bundle exec bin/recediff --receipt-preview', a:uke_text)
+    return system('recediff --preview', a:uke_text)
 endfunction
 
 function! UkePopupPreview(start, end) abort

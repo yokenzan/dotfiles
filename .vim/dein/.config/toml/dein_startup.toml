@@ -368,11 +368,10 @@ hook_add = '''
     \       'command':   'python3'
     \   },
     \   'uke': {
-    \       'command':                     'bin/recediff',
-    \       'exec':                        'bundle exec %c %o %s',
-    \       'cmdopt':                      '--receipt-preview --from=0',
+    \       'command':                     'recediff',
+    \       'exec':                        '%c %o %s %a',
+    \       'cmdopt':                      '--preview --from=0',
     \       'outputter':                   'quickfix',
-    \       'hook/cd/directory':           '~/wk/repos/recediff',
     \       'hook/output_encode/encoding': 'cp932:cp932'
     \   }
     \}
