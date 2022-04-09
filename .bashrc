@@ -193,11 +193,18 @@ if [ -f /etc/bashrc ]; then
     .  /etc/bashrc
 fi
 
-
-
 # Setting prompt
-source $HOME/.config/git/completion/git-prompt.sh
-source $HOME/.config/git/completion/git-completion.bash
+if [ -f "${HOME}/.dotfiles/gradle-completion.bash" ]; then
+    source $HOME/.dotfiles/gradle-completion.bash
+fi
+
+if [ -f "${HOME}/.config/git/completion/git-prompt.sh" ]; then
+    source $HOME/.config/git/completion/git-prompt.sh
+fi
+if [ -f "${HOME}/.config/git/completion/git-completion.bash" ]; then
+    source $HOME/.config/git/completion/git-completion.bash
+fi
+
 GIT_PS1_SHOWUNTRACKEDFILES=1    # %
 GIT_PS1_SHOWDIRTYSTATE=1        # * / +
 GIT_PS1_SHOWSTASHSTATE=1        # $
