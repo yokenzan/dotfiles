@@ -78,3 +78,8 @@ hook_add = '''
                 \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
                 \ coc#refresh()
 '''
+depends = ['wellle/tmux-complete.vim']
+
+
+[[plugins]]
+repo  = 'wellle/tmux-complete.vim'
