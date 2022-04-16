@@ -76,10 +76,12 @@ if [ $SHLVL = 1 ]; then
 fi
 
 
-# if using WSL2
+# if using WSL2 and not using WSLg
 if [ "x$BASH_ENV_WSL2_LOCAL_IP" == "x1" ]; then
     LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY=$LOCAL_IP:0
-else
+fi
+
+if [ "x$BASH_ENV_WSL_LOCALHOST_IP" == "x1" ]; then
     export DISPLAY=127.0.0.1:0.0
 fi
