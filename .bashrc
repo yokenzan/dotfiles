@@ -144,7 +144,7 @@ GIT_PS1_SHOWDIRTYSTATE=1        # * / +
 GIT_PS1_SHOWSTASHSTATE=1        # $
 GIT_PS1_SHOWUPSTREAM=1          # < / > / = / <>
 
-function __get_return() {
+__get_return() {
     if [ $? = 0 ]; then
         echo ✅
     else
