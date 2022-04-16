@@ -44,8 +44,8 @@ mkcd() {
 # function using fuzzy finder
 
 
-export FUZZY_FINDER_COMMAND="fzy --show-scores --line=30"
-export FUZZY_FINDER_COMMAND_WITH_QUERY="fzy --show-scores --line=30 --query="
+export FUZZY_FINDER_COMMAND="fzy --show-scores --line=20"
+export FUZZY_FINDER_COMMAND_WITH_QUERY="fzy --show-scores --line=20 --query="
 
 
 # make user choise one from candidate list and return it
