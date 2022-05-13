@@ -1,0 +1,31 @@
+[[plugins]]
+repo  = 'cespare/vim-toml'
+on_ft = ['toml', 'conf']
+rev   = 'main'
+
+
+[[plugins]]
+repo  = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
+
+
+[[plugins]]
+repo  = 'nelsyeung/twig.vim'
+on_ft = ['twig']
+
+
+[[plugins]]
+repo  = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+hook_source = '''
+    let g:javascript_plugin_jsdoc = 1
+'''
+
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['plantuml']
+
+
+[[plugins]]
+repo = 'othree/html5.vim'
