@@ -1,16 +1,10 @@
 [[plugins]]
-repo  = 'cespare/vim-toml'
-on_ft = ['toml', 'conf']
-rev   = 'main'
-
-
-[[plugins]]
 repo  = 'phpactor/phpactor'
 if    = 'executable("php")'
 on_ft = ['php']
 build = 'composer install'
 hook_add = '''
-    let g:phpactorBranch               = 'develop'
+    " let g:phpactorBranch               = 'develop'
     let g:phpactorOmniAutoClassImport  = v:true
     let g:phpactorCompletionIgnoreCase = 0
 
@@ -275,6 +269,9 @@ hook_post_source = '''
                 \ ['lazy loaded libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
                 \ ['completion libraries',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
                 \ ['colorscheme libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
+                \ ['syntax libraries',         '~/.dotfiles/.vim/dein/.config/toml/dein_syntax.toml'],
+                \ ['disabled libraries',       '~/.dotfiles/.vim/dein/.config/toml/dein_disabled.toml'],
+                \ ['denops libraries',         '~/.dotfiles/.vim/dein/.config/toml/dein_disabled_denops.toml'],
                 \]
 
     let s:menus.misc = {
@@ -329,28 +326,11 @@ hook_add = '''
 
 
 [[plugins]]
-repo  = 'udalov/kotlin-vim'
-on_ft = ['kotlin']
-
-
-[[plugins]]
 repo  = 'fwcd/kotlin-language-server'
 build = './gradlew :server:installDist'
 on_ft = ['kotlin']
 rev   = 'main'
 
-
-[[plugins]]
-repo  = 'nelsyeung/twig.vim'
-on_ft = ['twig']
-
-
-[[plugins]]
-repo  = 'pangloss/vim-javascript'
-on_ft = ['javascript']
-hook_source = '''
-    let g:javascript_plugin_jsdoc = 1
-'''
 
 [[plugins]]
 repo  = 'mattn/vim-sqlfmt'
@@ -368,15 +348,6 @@ hook_add = '''
     let g:blade_custom_directives = ['datetime', 'namespaced::directive']
     let g:blade_custom_directives_pairs = {'cache': 'endcache'}
 '''
-
-
-[[plugins]]
-repo = 'aklt/plantuml-syntax'
-on_ft = ['plantuml']
-
-
-[[plugins]]
-repo = 'othree/html5.vim'
 
 
 [[plugins]]

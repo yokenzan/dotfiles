@@ -178,7 +178,7 @@ hook_add = '''
     let g:airline_theme     = 'xtermlight'
     let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_b = airline#section#create([
-                \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{fugitive#head()}', ' %n', '%{Padspace()}',
+                \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{FugitiveHead()}', ' %n', '%{Padspace()}',
                 \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}'
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
@@ -316,11 +316,16 @@ hook_add = '''
     \   'uke': {
     \       'command':                     'recediff',
     \       'exec':                        '%c %o %s %a',
-    \       'cmdopt':                      '--preview --from=0',
-    \       'outputter':                   'quickfix',
+    \       'cmdopt':                      '--preview --color --from=0',
+    \       'runner':                      'terminal',
+    \       'runner/terminal/opener':      'vnew',
+    \       'runner/terminal/into':        1,
     \       'hook/output_encode/encoding': 'cp932:cp932'
     \   }
     \}
+    " \       'exec':                        'bundle exec %c %o %s %a',
+    " \       'outputter':                   'quickfix',
+    " \       'hook/cd/directory':           '~/wk/repos/recediff',
 
 nnoremap <Leader>r :<C-u>QuickRun<CR>
 xnoremap <Leader>r :<C-u>'<,'>QuickRun<CR>
@@ -455,4 +460,12 @@ repo = 'vim-test/vim-test'
 hook_add = '''
     let g:test#preserve_screen = 1
     let g:test#strategy = 'dispatch'
+'''
+
+
+[[plugins]]
+repo = 'DanilaMihailov/beacon.nvim'
+hook_add = '''
+    let g:beacon_size    = 100
+    let g:beacon_timeout = 400
 '''
