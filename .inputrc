@@ -102,71 +102,78 @@ $if mode=emacs
 
 
     # My key maps
-    # Start with "C-x Space"
+    # Start with "C-Space"
 
     # Redirections frequently used
 
-    "\C-x rl": " | less"
-    "\C-x rc": " | cp2clip"
-    "\C-x rv": " | vim -"
-    "\C-x rV": " | view -"
-    "\C-x rg": " | grep "
-    "\C-x rx": " | xargs "
-    "\C-x rn": " > /dev/null"
-    "\C-x rN": " > /dev/null 2>&1"
+    "\C- rp": " | "
+    "\C- rl": " | less"
+    "\C- rv": " | vim -"
+    "\C- rV": " | view -"
+    "\C- rg": " | grep "
+    "\C- rx": " | xargs "
+    "\C- rc": " | cp2clip"
+    "\C- ru": " | j2u "
+    "\C- rj": " | u2j "
+    "\C- rn": " > /dev/null"
+    "\C- rN": " > /dev/null 2>&1"
 
     # Complete and execute
 
-    "\C-x e:":  ": "
-    "\C-x es":  "sudo "
-    "\C-x em":  "man "
-    "\C-x e ":  " "
+    "\C- o:":  ": "
+    "\C- os":  "sudo "
+    "\C- om":  "man "
+    "\C- ov":  "vim "
+    "\C- o ":  " "
 
     # Other key maps
 
-    "\C-x pp": " $(pwd) "
-    "\C-x f":  "for i in $() ; do echo $i ; done\e)"
+    "\C- pp": " $(pwd) "
+    "\C- f":  "for i in $() ; do echo $i ; done\e)"
     "\C-^":    "~/winhome"
 
     # Function key
 
-    "\e[11~": " f-h"                     # F1
+    "\eOP":   " f-h"                     # F1
+    "\eOQ":   " f-hist"                  # F2
+    "\eOR":   " f-s"                     # F3
     "\e[15~": " source ~/.bash_profile"  # F5
-    "\e[18~": " exec $SHELL -l"          # F7
     "\e[17~": " sshinit"                 # F6
+    "\e[18~": " exec $SHELL -l"          # F7
     "\e[24~": " here"                    # F12
 
     # Complete quotation marks
 
-    "\C-x qs": "\'\'\C-b"
-    "\C-x qd": "\"\"\C-b"
-    "\C-x qp": "()\C-b"
-    "\C-x q3": "$()\C-b"
+    "\C- qs": "\'\'\C-b"
+    "\C- qd": "\"\"\C-b"
+    "\C- qp": "()\C-b"
+    "\C- q3": "$()\C-b"
 
     # Surround current or previous word with quotation marks
 
-    "\C-x ss": "\eb\'\ef\'"
-    "\C-x sd": "\eb\"\ef\""
-    "\C-x s3": "\eb$(\ef)"
-    "\C-x s$": "\C-a$(\C-e)\C-a"
+    "\C- ss": "\eb\'\ef\'"
+    "\C- sd": "\eb\"\ef\""
+    "\C- s3": "\eb$(\ef)"
+    "\C- s$": "\C-a$(\C-e)\C-a"
 
     # Complete SQL
 
-    "\C-x Sl": " name like '%%' \e3\C-b"
-    "\C-x So": " order by "
-    "\C-x Ss": " select * from "
-    "\C-x Sj": " inner join  on \eb\C-b"
+    "\C- Sl": " name like '%%' \e3\C-b"
+    "\C- So": " order by "
+    "\C- Ss": " select * from "
+    "\C- Sj": " inner join  on \eb\C-b"
 
     # Commands with fuzzy finder
 
-    "\C-x fh":  " f-h"
-    "\C-x fc":  " f-cd"
-    "\C-x fgc": " f-gc"
-    "\C-x fvf": " f-vf"
-    "\C-x fvg": " f-vgl"
+    "\C- fh":  " f-h"
+    "\C- fc":  " f-cd"
+    "\C- fgc": " f-gc"
+    "\C- fvf": " f-vf"
+    "\C- fvg": " f-vgl"
+    "\C- fvl": " f-vl"
 
     # Common to Console & RXVT
-    "\C-?": backward-kill-line         # Ctrl-BackSpace
+    "\C-?":  backward-kill-line        # Ctrl-BackSpace
     "\e[2~": paste-from-clipboard      # "Ins. Key"
     "\e[5~": beginning-of-histpory     # Page up
     "\e[6~": end-of-history            # Page down
