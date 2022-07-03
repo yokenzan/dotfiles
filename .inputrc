@@ -98,6 +98,9 @@ $endif
 #
 # @see https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File.html
 $if mode=emacs
+    "\es": menu-complete
+
+
     # My key maps
     # Start with "C-x Space"
 
