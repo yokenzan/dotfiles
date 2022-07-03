@@ -174,12 +174,14 @@ f-vl() {
 
 
 f-hist() {
-    # item chosen by user
-    CHOSEN="$(history | tac | __fuzzy)"
+    tempfile=$(mktemp)
+    tmux popup -E " tac ~/.bash_history | sed -e '/^#[0-9]\+$/d' | uniq | $FUZZY_FINDER_COMMAND > $tempfile"
+
+    CHOSEN=$(head -1 $tempfile)
 
     if [ "x$CHOSEN" != "x" ]; then
-        history -s ${CHOSEN:25}
-        ${CHOSEN:25}
+        echo -e "\e[1mselected:\e[0m \e[36;3m${CHOSEN}\e[0m"
+        history -s "$CHOSEN"
     else
         echo "operation was cancelled."
     fi
