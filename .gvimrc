@@ -1,7 +1,7 @@
 " font config
 "
-set guifont=Iosevka\ TermLig\ Curly\ Slab\ 9
-set guifontwide=Sarasa\ Mono\ T\ J\ 9
+set guifont=Sarasa\ Term\ Slab\ J\ 11
+set guifontwide=Sarasa\ Term\ Slab\ J\ 11
 
 set mouse=a
 set columns=150
