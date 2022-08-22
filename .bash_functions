@@ -256,3 +256,34 @@ lsbinds() {
         | xargs printf "%-10s  -  %s\n" \
         | less -NF
 }
+ring_start() {
+    local osc="]440;Ring10.wav:loop"
+    __run_on_tmux
+    if [ $? = 0 ]; then
+        echo $osc
+    else
+        __tmux_escape $osc
+    fi
+}
+
+ring_stop() {
+    local osc="]440;"
+    __run_on_tmux
+    if [ $? = 0 ]; then
+        echo $osc
+    else
+        __tmux_escape $osc
+    fi
+}
+
+__run_on_tmux() {
+    if [ "x$TMUX" == "x" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+__tmux_escape() {
+    echo "Ptmux;${1//}\\"
+}
