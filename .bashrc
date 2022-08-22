@@ -74,7 +74,8 @@ export HISTTIMEFORMAT='%F %T: '
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:rm -rf*:r:git push:*--force*:git push -f:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...'
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:rm -rf*:r:git push:*--force*:git push -f:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...:t:l'
+# shopt -s histverify
 
 if [ "x$BASH_ENV_SHARE_HISTORY" == "x1" ]; then
     export PROMPT_COMMAND='share_history'
