@@ -184,7 +184,7 @@ hook_post_source = '''
     call denite#custom#var('igrep/git', 'default_opts',   ['-inH'])
 
 
-    for source in ['jump', 'register', 'neoyank', 'mark', 'line', 'file_mru', 'grep', 'grep/git', 'igrep/git', 'gitlog', 'gitstatus', 'gitbranch']
+    for source in ['jump', 'register', 'neoyank', 'mark', 'line', 'grep', 'grep/git', 'igrep/git', 'gitlog', 'gitstatus', 'gitbranch']
         call denite#custom#source(source, 'matchers', ['matcher/substring'])
     endfor
 
@@ -284,7 +284,7 @@ hook_post_source = '''
     call denite#custom#var('menu', 'menus', s:menus)
 
 '''
-depends  = ['neoyank.vim', 'neomru.vim', 'denite-git', 'denite-receipt-mhlw']
+depends  = ['neoyank.vim', 'neomru.vim', 'denite-git', 'denite-receipt-mhlw', 'denite-migemo']
 
 
 [[plugins]]
@@ -352,3 +352,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'yokenzan/denite-receipt-mhlw'
+
+
+[[plugins]]
+repo = 'nekowasabi/denite-migemo'
