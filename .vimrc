@@ -421,3 +421,19 @@ augroup END
 
 au BufNewFile,BufRead *.uke setf uke
 au BufNewFile,BufRead *.UKE setf uke
+
+
+" manage IME states
+" https://www.regentechlog.com/2022/06/30/control-ime-by-vim/#%E8%A7%A3%E6%B1%BA%E7%AD%96
+if exists('$TMUX')
+    " when start insert mode
+    let &t_SI.="Ptmux;[<r\\"
+    " when leave from insert mode
+    let &t_EI.="Ptmux;[<s[<0t\\"
+    " when quit Vim
+    let &t_te.="Ptmux;[<0t[<s\\"
+else
+    let &t_SI.="[<r"
+    let &t_EI.="[<s[<0t"
+    let &t_te.="[<0t[<s"
+end
