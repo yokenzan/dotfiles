@@ -74,7 +74,7 @@ $if Bash
   set show-mode-in-prompt on
   set vi-cmd-mode-string "\e[34;1m[N]\e[0m "
   set vi-ins-mode-string "\e[38;5;40;7m I \e[0m "
-  set emacs-mode-string  "\1\e[4m\2 E \1\e[0m\2:"
+  set emacs-mode-string  "\1\e[34m\2 e \1\e[0m\2"
 
   set enable-bracketed-paste off
   set history-preserve-point on
