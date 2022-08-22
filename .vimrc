@@ -100,7 +100,7 @@ set hlsearch
 " Setting Parens
 
 set showmatch
-set matchpairs+=（:）,「:」,『:』,｛:｝
+set matchpairs+=（:）,「:」,『:』,｛:｝,＜:＞,【:】,〔:〕,“:”
 set matchtime=1
 
 source $VIMRUNTIME/macros/matchit.vim
