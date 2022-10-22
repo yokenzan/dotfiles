@@ -54,6 +54,7 @@ alias ppd='popd'
 # Vim
 
 alias v='vim'
+alias vl='vim -u ~/.rcfiles/.vimrc'
 alias vo='vim -O'
 alias vs='vim -S Session.vim'
 alias vu='vim -u NONE -N'
