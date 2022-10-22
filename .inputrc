@@ -111,6 +111,7 @@ $if mode=emacs
     "\C- rv": " | vim -"
     "\C- rV": " | view -"
     "\C- rg": " | grep "
+    "\C- rr": " ; ring_start "
     "\C- rx": " | xargs "
     "\C- rc": " | cp2clip"
     "\C- ru": " | j2u "
@@ -140,6 +141,7 @@ $if mode=emacs
     "\e[15~": " source ~/.bash_profile"  # F5
     "\e[17~": " sshinit"                 # F6
     "\e[18~": " exec $SHELL -l"          # F7
+    "\e[19~": " ring_stop"               # F8
     "\e[24~": " here"                    # F12
 
     # Complete quotation marks
