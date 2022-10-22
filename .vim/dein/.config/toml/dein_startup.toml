@@ -88,12 +88,22 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
+    let g:skk_mode_strings = {
+                \ 'hira'    : 'あ',
+                \ 'kata'    : 'ア',
+                \ 'hankata' : 'ｱ_',
+                \ 'zenkaku' : 'Ａ',
+                \ 'addrev'  : 'addrev',
+                \ }
     function! SkkStatusline()
         try
+            " return skkeleton#is_enabled()
+            "             \ ? g:skk_mode_strings[skkeleton#mode()] . ' '
+            "             \ : ''
             return ''
-            return eskk#is_enabled()
-                        \ ? g:eskk#statusline_mode_strings[eskk#get_mode()] . ' '
-                        \ : ''
+            " return eskk#is_enabled()
+            "             \ ? g:eskk#statusline_mode_strings[eskk#get_mode()] . ' '
+            "             \ : ''
         catch
             return ''
         endtry
@@ -348,6 +358,11 @@ hook_add = '''
     \   'python': {
     \       'command':   'python3'
     \   },
+    \   'javascript': {
+    \       'command':   '/mnt/c/Windows/System32/cscript.exe',
+    \       'exec':      '%c %o %{!wslpath -w %s}',
+    \       'cmdopt':    '//NoLogo',
+    \   },
     \   'uke': {
     \       'command':                     'recediff',
     \       'exec':                        '%c %o %s %a',
@@ -358,6 +373,7 @@ hook_add = '''
     \       'hook/output_encode/encoding': 'cp932:cp932'
     \   }
     \}
+    let g:quickrun_config.hen = g:quickrun_config.uke
     " \       'exec':                        'bundle exec %c %o %s %a',
     " \       'outputter':                   'quickfix',
     " \       'hook/cd/directory':           '~/wk/repos/recediff',
@@ -503,6 +519,13 @@ repo = 'DanilaMihailov/beacon.nvim'
 hook_add = '''
     let g:beacon_size    = 100
     let g:beacon_timeout = 400
+'''
+
+
+[[plugins]]
+repo = 'rhysd/migemo-search.vim'
+hook_add = '''
+    cnoremap <expr><CR> migemosearch#replace_search_word() . "\<CR>"
 '''
 
 

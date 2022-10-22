@@ -336,7 +336,8 @@ rev   = 'main'
 repo  = 'mattn/vim-sqlfmt'
 on_ft = ['sql']
 hook_source = '''
-let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
+    " let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
+    let g:sqlfmt_program = "sqlformat -k upper -r -o %s -"
 '''
 
 

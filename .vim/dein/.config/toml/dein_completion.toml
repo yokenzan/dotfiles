@@ -73,7 +73,7 @@ hook_add = '''
                 \ coc#refresh()
 
     imap <silent><expr><C-l>
-                \ pumvisible() ? coc#_select_confirm() :
+                \ coc#pum#visible() ? coc#pum#confirm() :
                 \ neosnippet#jumpable()   ? "\<Plug>(neosnippet_jump)"   :
                 \ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
                 \ coc#refresh()

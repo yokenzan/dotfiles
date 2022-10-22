@@ -20,6 +20,7 @@ if dein#load_state(s:dein_dir)
     let s:startup_toml     = s:toml_dir . '/' . 'dein_startup.toml'
     let s:syntax_toml      = s:toml_dir . '/' . 'dein_syntax.toml'
     let s:completion_toml  = s:toml_dir . '/' . 'dein_completion.toml'
+    " let s:completion_toml  = s:toml_dir . '/' . 'dein_completion_vim-lsp.toml'
     let s:colorscheme_toml = s:toml_dir . '/' . 'dein_colorscheme.toml'
     let s:lazy_toml        = s:toml_dir . '/' . 'dein_lazy.toml'
 
@@ -250,12 +251,12 @@ endif
 "     augroup END
 " endif
 
-if executable('pandoc')
-    augroup PandocAutoCommand
-        autocmd!
-        autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:r.html %:p
-    augroup END
-endif
+" if executable('pandoc')
+"     augroup PandocAutoCommand
+"         autocmd!
+"         autocmd! BufWritePost *.md !pandoc -f markdown -t html5 --css ~/.dotfiles/github.css --standalone -o %:r.html %:p
+"     augroup END
+" endif
 
 set dictionary=/usr/share/dict/words,spell
 set thesaurus=~/.vim/thesaurus.txt
@@ -421,6 +422,8 @@ augroup END
 
 au BufNewFile,BufRead *.uke setf uke
 au BufNewFile,BufRead *.UKE setf uke
+au BufNewFile,BufRead *.hen setf hen
+au BufNewFile,BufRead *.HEN setf hen
 
 
 " manage IME states

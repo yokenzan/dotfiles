@@ -1,0 +1,39 @@
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+    let g:neosnippet#snippets_directory = '~/.vim/snippets'
+'''
+
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+    set omnifunc=lsp#complete
+    set signcolumn=yes
+
+    nmap <buffer> <silent><space>cd  <plug>(lsp-definition)
+    nmap <buffer> <silent><space>cs  <plug>(lsp-document-symbol-search)
+    nmap <buffer> <silent><space>cS  <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> <silent><space>cfr <plug>(lsp-references)
+    nmap <buffer> <silent><space>ci  <plug>(lsp-implementation)
+    nmap <buffer> <silent><space>ct  <plug>(lsp-type-definition)
+    nmap <buffer> <silent><space>cr  <plug>(lsp-rename)
+    nmap <buffer> <silent><space>[A  <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <silent><space>]A  <plug>(lsp-next-diagnostic)
+    nmap <buffer> <silent><space>K   <plug>(lsp-hover)
+
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+'''
+
+
+[[plugins]]
+repo = 'vim-lsp-neosnippet'
+
+
+[[plugins]]
+repo = 'thomasfaingnaert/vim-lsp-snippets'
+
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'

@@ -50,7 +50,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tyru/eskk.vim'
-# rev  = '97f6138'
 hook_add = '''
     let g:eskk#directory = "~/.eskk"
     let g:eskk#dictionary = { 'path': "~/winhome/AppData/Roaming/SKKFEP/skkuser.txt", 'sorted': 0, 'encoding': 'utf-8', }
