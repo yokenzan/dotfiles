@@ -329,7 +329,6 @@ hook_add = '''
 repo  = 'fwcd/kotlin-language-server'
 build = './gradlew :server:installDist'
 on_ft = ['kotlin']
-rev   = 'main'
 
 
 [[plugins]]
