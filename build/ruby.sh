@@ -1,23 +1,28 @@
 #!/bin/bash
 
-: ========== Installing Ruby.. ==========
+echo ========== Installing Ruby.. ==========
+
+# install packages needed to build ruby
+sudo apt install -y ruby-dev libssl-dev
 
 git clone git://github.com/rbenv/rbenv.git ~/.rbenv
 git clone git://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
+exec $SHELL -l
 eval "$(rbenv init -)"
-rbenv install $(rbenv install -l | grep "^[\d\.]+$" | tail -1)
+local ruby_version="$(rbenv install -l | grep '^[\d\.]+$' | tail -1)"
+rbenv install -v $ruby_version
+
+exec $SHELL -l
+
+rbenv global $ruby_version
 
 rbenv exec gem install \
     solargraph \
-    pry \
-    pry-doc \
-    pry-stack_explorer \
     color_echo \
     byebug \
-    pry-byebug \
     yard \
     bundler \
     google-ime-skk
 
-: ========== Completed Installing Ruby ==========
+echo ========== Completed Installing Ruby ==========

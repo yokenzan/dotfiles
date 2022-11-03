@@ -1,16 +1,21 @@
-#!/bin/bash
+#!/bin/bash -x
 
-: ========== Installing VIM.. ==========
+echo ========== Installing VIM.. ==========
+
+echo install packages needed to build vim
+sudo apt install -y gettext build-essential libtinfo-dev libacl1-dev libgpm-dev
+echo install Gtk3
+sudo apt install -y libxmu-dev libxpm-dev libgtk-3-0 libgtk-3-dev
 
 cd $HOME/wk/repos/oss
 
-#build VIM
+echo build VIM
 
-git clone --depth=5 git://github.com/vim/vim.git
+git clone git://github.com/vim/vim.git
 cd vim
 make distclean
 
-# build with GUI
+echo build with GUI
 ./configure \
     --prefix=/usr/local \
     --enable-fail-if-missing \
@@ -55,12 +60,9 @@ make distclean
 
 
 if [ $? ]; then
-    make && sudo make install
+    make -j$(nproc) && sudo make install
 else
   exit 1
 fi
 
-vim -c "quit"
-vim -c "call dein#install()" -c "quit"
-
-: ========== Completed Installing VIM ==========
+echo ========== Completed Installing VIM ==========
