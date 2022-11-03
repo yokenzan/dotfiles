@@ -175,5 +175,5 @@ uname | grep -q 'Darwin' > /dev/null 2>&1
 if [ $? = 0 ]; then
     alias cp2clip='pbcopy'
 else
-    alias cp2clip='xsel -bi'
+    alias cp2clip='win32clip'
 fi
