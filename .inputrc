@@ -126,6 +126,7 @@ $if mode=emacs
     "\C- om":  "man "
     "\C- ov":  "vim "
     "\C- o ":  " "
+    "\C- oS":  "d" # remove sudo and execute
 
     # Other key maps
 
@@ -173,6 +174,8 @@ $if mode=emacs
     "\C- fvf": " f-vf"
     "\C- fvg": " f-vgl"
     "\C- fvl": " f-vl"
+
+    "\C- \C- u": " uuidgen | cp2clip"
 
     # Common to Console & RXVT
     "\C-?":  backward-kill-line        # Ctrl-BackSpace
