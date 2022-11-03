@@ -523,11 +523,4 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'rhysd/migemo-search.vim'
-hook_add = '''
-    cnoremap <expr><CR> migemosearch#replace_search_word() . "\<CR>"
-'''
-
-
-[[plugins]]
 repo = 'raghur/vim-ghost'

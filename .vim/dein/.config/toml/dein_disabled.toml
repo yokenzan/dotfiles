@@ -123,3 +123,10 @@ repo = 'kkoomen/vim-doge'
 [[plugins]]
 repo  = 'hdiniz/vim-gradle'
 on_ft = ['java', 'kotlin']
+
+
+[[plugins]]
+repo = 'rhysd/migemo-search.vim'
+hook_add = '''
+    cnoremap <expr><CR> migemosearch#replace_search_word() . "\<CR>"
+'''
