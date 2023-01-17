@@ -141,3 +141,143 @@ repo = 'jacoborus/tender.vim'
 
 [[plugins]]
 repo = 'jonathanfilip/vim-lucius'
+
+
+[[plugins]]
+repo = 'rafalbromirski/vim-aurora'
+
+
+[[plugins]]
+repo = 'mswift42/vim-themes'
+
+
+[[plugins]]
+repo = 'yuttie/hydrangea-vim'
+
+
+[[plugins]]
+repo = 'kabbamine/yowish.vim'
+
+
+[[plugins]]
+repo = 'logico/typewriter'
+
+
+[[plugins]]
+repo = 'aktersnurra/no-clown-fiesta.nvim'
+
+
+[[plugins]]
+repo = 'thedenisnikulin/vim-cyberpunk'
+
+
+[[plugins]]
+repo = 'hardselius/warlock'
+
+
+[[plugins]]
+repo = 'zefei/cake16'
+
+
+[[plugins]]
+repo = 'pgdouyon/vim-yin-yang'
+
+
+[[plugins]]
+repo = 'marciomazza/vim-brogrammer-theme'
+
+
+[[plugins]]
+repo = 'rainglow/vim'
+
+
+[[plugins]]
+repo = 'haishanh/night-owl.vim'
+
+
+[[plugins]]
+repo = 'gosukiwi/vim-atom-dark'
+
+
+[[plugins]]
+repo = 'ackyshake/spacegray.vim'
+
+
+[[plugins]]
+repo = 'srcery-colors/srcery-vim'
+
+
+[[plugins]]
+repo = 'lourenci/github-colors'
+
+
+[[plugins]]
+repo = 'vv9k/vim-github-dark'
+
+
+[[plugins]]
+repo = 'savq/melange'
+
+
+[[plugins]]
+repo = 'fxn/vim-monochrome'
+
+
+[[plugins]]
+repo = 'junegunn/seoul256.vim'
+
+
+[[plugins]]
+repo = 'doums/darcula'
+
+
+[[plugins]]
+repo = 'frenzyexists/aquarium-vim'
+
+
+[[plugins]]
+repo = 'bluz71/vim-moonfly-colors'
+
+
+[[plugins]]
+repo = 'nlknguyen/papercolor-theme'
+
+
+[[plugins]]
+repo = 'beikome/cosme.vim'
+
+
+[[plugins]]
+repo = 'shaunsingh/nord.nvim'
+
+
+[[plugins]]
+repo = 'bluz71/vim-nightfly-colors'
+
+
+[[plugins]]
+repo = 'sainnhe/sonokai'
+
+
+[[plugins]]
+repo = 'catppuccin/vim'
+
+
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
+
+
+[[plugins]]
+repo = 'sainnhe/gruvbox-material'
+
+
+[[plugins]]
+repo = 'rebelot/kanagawa.nvim'
+
+
+[[plugins]]
+repo = 'sainnhe/everforest'
+
+
+[[plugins]]
+repo = 'edeneast/nightfox.nvim'

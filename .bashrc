@@ -23,13 +23,13 @@
 # See man bash for more options...
 #
 # Don't wait for job termination notification
-# set -o notify
+set -o notify
 #
 # Don't use ^D to exit
 # set -o ignoreeof
 #
 # Use case-insensitive filename globbing
-# shopt -s nocaseglob
+shopt -s nocaseglob
 #
 # When changing directory small typos can be ignored by bash
 # for example, cd /vr/lgo/apaache would find /var/log/apache
@@ -40,6 +40,10 @@ shopt -s globstar
 
 # enable to execute `cd` command without input `cd`
 shopt -s autocd
+
+shopt -s lithist # これを有効にして cmdhist オプションを有効にすると、可能な場合はセミコロン区切り記号を使用するのではなく、改行を埋め込んだ複数行コマンドが履歴に保存される。
+shopt -s cmdhist # 複数行のコマンドの全ての行を1つの履歴エントリに保存
+
 
 # Completion options
 #
@@ -258,4 +262,8 @@ which gh > /dev/null 2>&1
 
 if [ $? = 0 ]; then
     eval "$(gh completion -s bash)"
+fi
+
+if [ -f "${HOME}/.bashrc.local" ]; then
+    . "${HOME}/.bashrc.local"
 fi

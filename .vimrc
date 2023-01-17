@@ -387,6 +387,9 @@ nnoremap <Leader>C :<C-u>Copen<CR>
 if filereadable('./.vimrc.project')
     source ./.vimrc.project
 endif
+if filereadable('./.vim/.vimrc')
+    source ./.vim/.vimrc
+endif
 
 
 function! UkeGetPreviewedText(uke_text) abort
