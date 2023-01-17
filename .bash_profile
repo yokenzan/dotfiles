@@ -26,6 +26,12 @@ if [ -d "$HOME/.phpenv/bin" ]; then
     eval "$(phpenv init -)"
 fi
 
+# Initialize Node.js environment
+if [ -d "$HOME/.nodenv/bin" ]; then
+    export NODENV_ROOT="$HOME/.nodenv"
+    export PATH="$NODENV_ROOT/bin:$PATH"
+    eval "$(nodenv init -)"
+fi
 
 uname | grep -q 'Darwin' > /dev/null 2>&1
 if [ $? = 0 ]; then
@@ -48,7 +54,6 @@ if [ $? = 0 ]; then
     PATH=/usr/local/opt/grep/libexec/gnubin:${PATH}
     MANPATH=/usr/local/opt/grep/libexec/gnuman:${MANPATH}
 fi
-
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then

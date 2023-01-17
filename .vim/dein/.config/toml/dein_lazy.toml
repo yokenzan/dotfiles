@@ -258,6 +258,7 @@ hook_post_source = '''
                 \ ['Readline',        '~/.inputrc'],
                 \ ['Tmux',            '~/.tmux.conf'],
                 \ ['Git',             '~/.gitconfig'],
+                \ ['MinTTY',          '~/roaming/wsltty/config'],
                 \ ['Composer',        '~/.config/composer/composer.json'],
                 \ ['Phpactor',        '~/.config/phpactor/phpactor.yml'],
                 \]
