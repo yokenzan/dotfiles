@@ -259,3 +259,7 @@ which gh > /dev/null 2>&1
 if [ $? = 0 ]; then
     eval "$(gh completion -s bash)"
 fi
+
+if [ -f "${HOME}/.bashrc.local" ]; then
+    . "${HOME}/.bashrc.local"
+fi
