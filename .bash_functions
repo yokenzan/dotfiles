@@ -74,6 +74,8 @@ f-cd() {
     QUERY="$1"
     TEMPFILE=$(mktemp)
 
+    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
+
     # create candidate list and write it into tempfile
     find . -type d | grep -v .cache | grep -v .git | grep -v vendor > $TEMPFILE
 
@@ -94,6 +96,8 @@ f-vf() {
     QUERY="$1"
     TEMPFILE=$(mktemp)
 
+    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
+
     # create candidate list and write it into tempfile
     find . -type f | grep -v .git | grep -v cache > $TEMPFILE
 
@@ -105,8 +109,6 @@ f-vf() {
     else
         echo "operation was cancelled."
     fi
-
-    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
 }
 
 
@@ -128,6 +130,8 @@ f-vgl() {
 
 f-gc() {
     BRANCH_LIST="$(git branch -a --format='%(refname:lstrip=2)' | sed -e 's/^origin\///g' | sort -u | $FUZZY_FINDER_COMMAND)"
+
+    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
 
     if [ "x$BRANCH_LIST" != "x" ]; then
         git checkout "$BRANCH_LIST"
@@ -159,6 +163,8 @@ f-vl() {
     QUERY="$1"
     TEMPFILE=$(mktemp)
 
+    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
+
     # create candidate list and write it into tempfile
     find ~/.vim/dein/repos/github.com/ -maxdepth 2 -type d > $TEMPFILE
 
@@ -185,6 +191,8 @@ f-hist() {
     else
         echo "operation was cancelled."
     fi
+
+    trap 'rm -f $tempfile; echo aaaa' EXIT PIPE TERM INT
 }
 
 
@@ -256,6 +264,7 @@ lsbinds() {
         | xargs printf "%-10s  -  %s\n" \
         | less -NF
 }
+
 ring_start() {
     local osc="]440;Ring10.wav:loop"
     __run_on_tmux
@@ -286,4 +295,11 @@ __run_on_tmux() {
 
 __tmux_escape() {
     echo "Ptmux;${1//}\\"
+}
+
+port_is_busy() {
+    local port=$1
+    lsof -i:$port 1> /dev/null 2>&1
+
+    if [ "x$?" == "x1" ] ; then echo free; else echo busy; fi
 }
