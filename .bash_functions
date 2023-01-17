@@ -87,8 +87,6 @@ f-cd() {
     else
         echo "operation was cancelled."
     fi
-
-    trap 'rm -f $TEMPFILE; echo aaaa' EXIT PIPE TERM INT
 }
 
 
