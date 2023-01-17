@@ -364,19 +364,17 @@ hook_add = '''
     \       'cmdopt':    '//NoLogo',
     \   },
     \   'uke': {
-    \       'command':                     'recediff',
-    \       'exec':                        '%c %o %s %a',
-    \       'cmdopt':                      '--preview --color --from=0',
+    \       'hook/cd/directory':           '~/wk/repos/receiptisan-v0.1',
+    \       'exec':                        '%c %o %a %s',
+    \       'command':                     'bundle',
+    \       'cmdopt':                      'exec exe/recediff',
+    \       'args':                        '--preview --color --from=0',
     \       'runner':                      'terminal',
-    \       'runner/terminal/opener':      'vnew',
+    \       'runner/terminal/opener':      'new',
     \       'runner/terminal/into':        1,
     \       'hook/output_encode/encoding': 'cp932:cp932'
     \   }
     \}
-    let g:quickrun_config.hen = g:quickrun_config.uke
-    " \       'exec':                        'bundle exec %c %o %s %a',
-    " \       'outputter':                   'quickfix',
-    " \       'hook/cd/directory':           '~/wk/repos/recediff',
 
 nnoremap <Leader>r :<C-u>QuickRun<CR>
 xnoremap <Leader>r :<C-u>'<,'>QuickRun<CR>
