@@ -8,5 +8,6 @@ set ignore-space = all
 
 bind main ! ?git revert %(commit)
 bind main $ +sh -c "git log --pretty='format:%h %s %b' -1 %(commit) | cp2clip"
+bind main | +sh -c "git checkout %(commit)"
 
 bind status C !git commit -v
