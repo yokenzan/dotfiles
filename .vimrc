@@ -390,7 +390,7 @@ endif
 
 
 function! UkeGetPreviewedText(uke_text) abort
-    return system('recediff --preview', a:uke_text)
+    return system('receiptisan --preview', a:uke_text)
 endfunction
 
 function! UkePopupPreview(start, end) abort

@@ -244,6 +244,10 @@ else
     pkill google-ime-skk
 fi
 
+if [ "x$BASH_ENV_LAUNCH_RECEIPTISAN" == "x1" ]; then
+    if [ $(port_is_busy 4567) == "free" ] ; then __launch_receiptisan; fi
+fi
+
 which symfony-autocomplete > /dev/null 2>&1
 
 if [ $? = 0 ]; then
