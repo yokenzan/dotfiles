@@ -531,3 +531,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'raghur/vim-ghost'
+
+
+# Auto close parentheses and repeat by dot dot dot...
+[[plugins]]
+repo = 'cohama/lexima.vim'
