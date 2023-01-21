@@ -281,3 +281,7 @@ repo = 'sainnhe/everforest'
 
 [[plugins]]
 repo = 'edeneast/nightfox.nvim'
+
+
+[[plugins]]
+repo = 'ayu-theme/ayu-vim'

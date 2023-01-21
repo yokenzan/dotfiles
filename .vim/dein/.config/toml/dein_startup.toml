@@ -149,6 +149,12 @@ hook_add = '''
         return ''
     endfunction
 
+    function! NearestMethodOrFunction() abort
+      let nearest = get(b:, 'vista_nearest_method_or_function', '')
+
+      return nearest == '' ? '' : '[' . nearest . ']'
+    endfunction
+
     " let g:airline_mode_map = {
     "             \ '__' : '-',
     "             \ 'c'  : 'C',
@@ -224,7 +230,8 @@ hook_add = '''
     let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_b = airline#section#create([
                 \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{FugitiveHead()}', ' %n', '%{Padspace()}',
-                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}'
+                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}',
+                \   '%{NearestMethodOrFunction()}'
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create(['%l/%L:%c'])
@@ -524,3 +531,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'raghur/vim-ghost'
+
+
+# Auto close parentheses and repeat by dot dot dot...
+[[plugins]]
+repo = 'cohama/lexima.vim'
