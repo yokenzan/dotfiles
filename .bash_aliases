@@ -31,7 +31,8 @@ alias ll='ls -lA'
 alias lla='ls -la'
 alias lsl='ls -l'
 
-alias l='less'
+alias l='less -N'
+alias lr='less -NR'
 
 # find
 alias f='find . -name'
