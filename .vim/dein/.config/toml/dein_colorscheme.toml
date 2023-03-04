@@ -285,3 +285,7 @@ repo = 'edeneast/nightfox.nvim'
 
 [[plugins]]
 repo = 'ayu-theme/ayu-vim'
+
+
+[[plugins]]
+repo = 'agude/vim-eldar'
