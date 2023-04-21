@@ -200,10 +200,6 @@ repo = 'gosukiwi/vim-atom-dark'
 
 
 [[plugins]]
-repo = 'ackyshake/spacegray.vim'
-
-
-[[plugins]]
 repo = 'srcery-colors/srcery-vim'
 
 

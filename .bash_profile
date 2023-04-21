@@ -33,6 +33,11 @@ if [ -d "$HOME/.nodenv/bin" ]; then
     eval "$(nodenv init -)"
 fi
 
+which npm
+if [ $? = 0 ]; then
+    eval "$(npm completion)"
+fi
+
 uname | grep -q 'Darwin' > /dev/null 2>&1
 if [ $? = 0 ]; then
     # coreutils
@@ -62,7 +67,7 @@ fi
 
 
 # User specific environment and startup programs
-PATH=$PATH:$HOME/bin:/usr/local/bin
+PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH="$PATH:$HOME/.local/bin"
 
 export PATH

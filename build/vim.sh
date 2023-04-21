@@ -11,8 +11,8 @@ cd $HOME/wk/repos/oss
 
 echo build VIM
 
-git clone git://github.com/vim/vim.git
-cd vim
+git clone git@github.com:vim/vim.git $HOME/wk/oss/vim
+cd $HOME/wk/oss/vim
 make distclean
 
 echo build with GUI

@@ -22,7 +22,7 @@ ln -sf $HOME/.dotfiles/.vim/dein/.config      $HOME/.vim/dein
 cp -f $HOME/.dotfiles/.vimrc.colorscheme     $HOME
 cp -f $HOME/.dotfiles/.gvimrc.colorscheme    $HOME
 
-git clone -git@github.com:Shougo/dein.vim.git                                           $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
+git clone git@github.com:Shougo/dein.vim.git                                           $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 # git clone --depth=5 git@github.com:laravel/docs.git                                     $HOME/.vim/ref/laravel.doc
 # git clone --depth=5 git@github.com:mockery/mockery.git                                  $HOME/.vim/ref/mockery
 # git clone --depth=5 git@github.com:sebastianbergmann/phpunit-documentation-english.git  $HOME/.vim/ref/phpunit
