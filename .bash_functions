@@ -235,7 +235,7 @@ sshinit() {
         eval `ssh-agent`
     fi
     wait
-    ssh-add ~/.ssh/id_rsa.ppk \
+    ssh-add ~/.ssh/id_rsa \
         && ssh -T git@github.com \
         && ssh -T git@bitbucket.org
 }
