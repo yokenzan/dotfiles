@@ -243,7 +243,8 @@
           ("C-s" . company-filter-candidates)
           ("C-n" . company-select-next)
           ("C-p" . company-select-previous)
-          ("<tab>" . company-complete-selection))
+          ("<tab>" . company-complete-selection)
+          ("C-l" . company-complete-selection))
          (company-search-map
           ("C-n" . company-select-next)
           ("C-p" . company-select-previous)))
