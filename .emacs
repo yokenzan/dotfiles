@@ -287,8 +287,9 @@
            (recentf-auto-cleanup . 'never))
   :global-minor-mode recentf-mode)
 
-
-
+(leaf volatile-highlights
+  :ensure t
+  :global-minor-mode volatile-highlights-mode)
 
 (leaf projectile
   :ensure t
