@@ -467,6 +467,10 @@
 (leaf *line-number-config
  :global-minor-mode global-display-line-numbers-mode)
 
+(leaf *global-key-config
+  :bind (("M-[" . backward-paragraph)
+         ("M-]" . forward-paragraph)))
+
 ;; Font Configuration
 
 ;; config only when running on GUI
