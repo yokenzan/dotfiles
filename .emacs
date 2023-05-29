@@ -298,6 +298,8 @@
 (leaf kotlin-mode
   :ensure t)
 
+(leaf plantuml-mode
+  :ensure t)
 
 (leaf php-mode
   :ensure t)
