@@ -239,7 +239,7 @@ PATH="$PATH:$HOME/go/bin"
 PATH="$GOPATH/bin:$PATH"
 
 export DENO_INSTALL="/home/yosuke/.deno"
-PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 if [ "x$BASH_ENV_USE_GOOGLE_IME_SKK" == "x1" ]; then
     if ps aux | grep google-ime-skk | grep -vqs grep ; then
