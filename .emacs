@@ -309,11 +309,9 @@
   :hook
   (after-init-hook . atomic-chrome-start-server))
 
-
-(leaf linum
-  :ensure t
-  :global-minor-mode global-linum-mode)
-
+;; (leaf linum
+;;   :ensure t
+;;   :global-minor-mode global-linum-mode)
 
 (leaf magit
   :ensure t)
@@ -464,6 +462,8 @@
         (display-time-24hr-format . t)   ;; 24時間表示
   :global-minor-mode display-time-mode)
 
+(leaf *line-number-config
+ :global-minor-mode global-display-line-numbers-mode)
 
 ;; Font Configuration
 
