@@ -28,6 +28,7 @@
 
 ;;; Code:
 
+
 ;; this enables this running method
 ;;   emacs -q -l ~/.debug.emacs.d/init.el
 (eval-and-compile
@@ -43,8 +44,8 @@
                        ("org"   . "https://orgmode.org/elpa/")))
   (package-initialize)
   (unless (package-installed-p 'leaf)
-    (package-refresh-contents)
-    (package-install 'leaf))
+  (package-refresh-contents)
+  (package-install 'leaf))
 
   (leaf leaf-keywords
     :ensure t
@@ -61,12 +62,10 @@
 
 ;; ここにいっぱい設定を書く
 
-
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :tag "builtin" "faces" "help"
   :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
-
 
 (leaf cus-start
   :doc "define customization properties of builtins"
@@ -94,14 +93,13 @@
             (truncate-lines . t)
             ;; (use-dialog-box . nil)
             ;; (use-file-dialog . nil)
-            (menu-bar-mode . nil)
+            ;; (menu-bar-mode . nil)
             (tool-bar-mode . nil)
-            (scroll-bar-mode . nil)
+            ;; (scroll-bar-mode . nil)
             (indent-tabs-mode . nil))
   :config
   (defalias 'yes-or-no-p 'y-or-n-p)
   (keyboard-translate ?\C-h ?\C-?))
-
 
 ;; Emacsの外でファイルが書き変わったときに自動的に読み直すマイナーモードです。 もちろん、Emacsで編集している場合は外の変更で上書きされることはありません。
 
@@ -110,7 +108,6 @@
   :tag "builtin"
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
-
 
 (leaf cc-mode
   :doc "major mode for editing C and similar languages"
@@ -124,14 +121,12 @@
   (c++-mode-hook . ((c-set-style "bsd")
                     (setq c-basic-offset 4))))
 
-
 ;; 選択している状態で入力したときに、regionを削除して挿入するマイナーモードです。 おそらくこの挙動のほうが現代人の意図に合っていると思います。
 
 (leaf delsel
   :doc "delete selection if you insert"
   :tag "builtin"
   :global-minor-mode delete-selection-mode)
-
 
 (leaf *paren-config
   :config
@@ -146,7 +141,6 @@
   ;   :global-minor-mode smartparens-mode)
   )
 
-
 (leaf simple
   :doc "basic editing commands for Emacs"
   :tag "builtin" "internal"
@@ -158,11 +152,9 @@
   :hook
   (emacs-startup-hook . transient-mark-mode))
 
-
 ;;
 ;; files
 ;;
-
 
 (leaf files
   :doc "file input and output commands for Emacs"
@@ -175,12 +167,10 @@
             (version-control . t)
             (delete-old-versions . t)))
 
-
 (leaf startup
   :doc "process Emacs shell arguments"
   :tag "builtin" "internal"
   :custom `((auto-save-list-file-prefix . ,(locate-user-emacs-file "backup/.saves-"))))
-
 
 (leaf ivy
   :doc "Incremental Vertical completYon"
@@ -203,8 +193,6 @@
     :emacs>= 24.5
     :ensure t
     :bind (("C-s" . swiper)))
-
-
   (leaf counsel
     :doc "Various completion functions using Ivy"
     :req "emacs-24.5" "swiper-0.13.0"
@@ -219,7 +207,6 @@
               (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
     :global-minor-mode t))
 
-
 (leaf prescient
   :doc "Better sorting and filtering"
   :req "emacs-25.1"
@@ -229,7 +216,6 @@
   :ensure t
   :custom ((prescient-aggressive-file-save . t))
   :global-minor-mode prescient-persist-mode)
-
 
 (leaf ivy-prescient
   :doc "prescient.el + Ivy"
@@ -241,7 +227,6 @@
   :after prescient ivy
   :custom ((ivy-prescient-retain-classic-highlighting . t))
   :global-minor-mode t)
-
 
 (leaf company
   :doc "Modular text completion framework"
@@ -258,7 +243,8 @@
           ("C-s" . company-filter-candidates)
           ("C-n" . company-select-next)
           ("C-p" . company-select-previous)
-          ("<tab>" . company-complete-selection))
+          ("<tab>" . company-complete-selection)
+          ("C-l" . company-complete-selection))
          (company-search-map
           ("C-n" . company-select-next)
           ("C-p" . company-select-previous)))
@@ -266,7 +252,6 @@
            (company-minimum-prefix-length . 1)
            (company-transformers . '(company-sort-by-occurrence)))
   :global-minor-mode global-company-mode)
-
 
 (leaf company-c-headers
   :doc "Company mode backend for C/C++ header files"
@@ -302,36 +287,34 @@
            (recentf-auto-cleanup . 'never))
   :global-minor-mode recentf-mode)
 
-
-
+(leaf volatile-highlights
+  :ensure t
+  :global-minor-mode volatile-highlights-mode)
 
 (leaf projectile
   :ensure t
   :bind ("C-x C-M-f" . projectile-find-file))
 
-
 (leaf kotlin-mode
   :ensure t)
 
+(leaf plantuml-mode
+  :ensure t)
 
 (leaf php-mode
   :ensure t)
-
 
 (leaf atomic-chrome
   :ensure t
   :hook
   (after-init-hook . atomic-chrome-start-server))
 
-
-(leaf linum
-  :ensure t
-  :global-minor-mode global-linum-mode)
-
+;; (leaf linum
+;;   :ensure t
+;;   :global-minor-mode global-linum-mode)
 
 (leaf magit
   :ensure t)
-
 
 (leaf markdown-mode
   :ensure t
@@ -339,12 +322,10 @@
           (initial-scratch-message . nil)       ;; empty scratch buffer
           )
 
-
 (leaf hl-line
   :ensure t
   :hook (emacs-startup-hook . global-hl-line-mode)
   )
-
 
 (leaf paren
   :ensure t
@@ -352,20 +333,20 @@
   :hook (emacs-startup-hook . show-paren-mode)
   )
 
-
 (leaf ddskk
   :ensure t
   :custom
   (skk-init-file . "~/.skk/init")
   (default-input-method . "japanese-skk")
   (skk-share-private-jisyo . t)
-  ;; (skk-jisyo-code . 'utf-8)
-  ;; (skk-jisyo . "~/SKKFEP/skkuser.txt")
-  ;; (skk-large-jisyo . "c:/Windows/IME/SKK0/DICTS/SKK-JISYO.L")
-  (skk-server-host . "localhost")
-  (skk-server-portnum . 55100)
-  (skk-server-prog . "/home/yosuke/.rbenv/shims/google-ime-skk")
+  (skk-save-jisyo-instantly . t)
+  ;; (skk-jisyo-code . 'utf-16le-with-signature)
+  (skk-large-jisyo . "~/.dotfiles/SKK-JISYO.L")
+  ;; (skk-server-host . "localhost")
+  ;; (skk-server-portnum . 55100)
+  ;; (skk-server-prog . "/home/yosuke/.rbenv/shims/google-ime-skk")
   (skk skk-dcomp-activate . t) ;; 動的補完
+  (skk-dcomp-multiple-activate . t) ;; 動的補完の複数候補表示
   (skk-sticky-key . ";") ; sticky shift
   (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
   ;;(skk-henkan-number-to-display-candidates . 8) ;;
@@ -385,7 +366,9 @@
   ;; (skk-indicator-use-cursor-color . nil)
   (skk-status-indicator . 'left)
   (skk-server-inhibit-startup-server . t)
-  (skk-use-jisx0201-input-method . t)
+  :config
+  (setq skk-jisyo
+        (cons "/mnt/c/Users/ballo/AppData/Roaming/SKKFEP/skkuser.txt" 'utf-16le-with-signature))
 )
 
 ;; https://uwabami.github.io/cc-env/Emacs.html
@@ -410,13 +393,14 @@
   `((beacon-color              . "#aa3400")
     (beacon-size               . 96)
     (beacon-blink-when-focused . t)
+    (beacon-blink-duration     . 0.1)
+    (beacon-blink-delay        . 0.1)
     )
   :custom-face
   `((beacon-fallback-background . '((t (:background "#556b2f")))))
   :config
   (beacon-mode t)
   )
-
 
 (leaf *color-themes
   :config
@@ -447,11 +431,9 @@
   (leaf molokai-theme
     :ensure t))
 
-
 (leaf persistent-scratch
   :ensure t
   :custom (persistent-scratch-setup-default . t))
-
 
 (leaf highlight-indent-guides
   :ensure t
@@ -461,16 +443,13 @@
   (highlight-indent-guides-method . 'character)
   )
 
-
 (leaf which-key
   :ensure t
   :global-minor-mode which-key-mode)
 
-
 (leaf s
   :ensure t
   :require t)
-
 
 (leaf *local-variables
   :setq (inhibit-startup-message . t)     ;; Don't show startup page when launch Emacs
@@ -480,12 +459,17 @@
   :custom (display-time-mode . t)
   :global-minor-mode column-number-mode)
 
-
 (leaf *date-time-config
   :setq (display-time-day-and-date . t)  ;; 曜日・月・日
         (display-time-24hr-format . t)   ;; 24時間表示
   :global-minor-mode display-time-mode)
 
+(leaf *line-number-config
+ :global-minor-mode global-display-line-numbers-mode)
+
+(leaf *global-key-config
+  :bind (("M-[" . backward-paragraph)
+         ("M-]" . forward-paragraph)))
 
 ;; Font Configuration
 

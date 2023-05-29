@@ -33,7 +33,7 @@ if [ -d "$HOME/.nodenv/bin" ]; then
     eval "$(nodenv init -)"
 fi
 
-which npm
+which npm > /dev/null 2>&1
 if [ $? = 0 ]; then
     eval "$(npm completion)"
 fi
