@@ -28,6 +28,7 @@
 
 ;;; Code:
 
+
 ;; this enables this running method
 ;;   emacs -q -l ~/.debug.emacs.d/init.el
 (eval-and-compile
@@ -43,8 +44,8 @@
                        ("org"   . "https://orgmode.org/elpa/")))
   (package-initialize)
   (unless (package-installed-p 'leaf)
-    (package-refresh-contents)
-    (package-install 'leaf))
+  (package-refresh-contents)
+  (package-install 'leaf))
 
   (leaf leaf-keywords
     :ensure t
@@ -61,12 +62,10 @@
 
 ;; ここにいっぱい設定を書く
 
-
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :tag "builtin" "faces" "help"
   :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
-
 
 (leaf cus-start
   :doc "define customization properties of builtins"
@@ -102,7 +101,6 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   (keyboard-translate ?\C-h ?\C-?))
 
-
 ;; Emacsの外でファイルが書き変わったときに自動的に読み直すマイナーモードです。 もちろん、Emacsで編集している場合は外の変更で上書きされることはありません。
 
 (leaf autorevert
@@ -110,7 +108,6 @@
   :tag "builtin"
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
-
 
 (leaf cc-mode
   :doc "major mode for editing C and similar languages"
@@ -124,14 +121,12 @@
   (c++-mode-hook . ((c-set-style "bsd")
                     (setq c-basic-offset 4))))
 
-
 ;; 選択している状態で入力したときに、regionを削除して挿入するマイナーモードです。 おそらくこの挙動のほうが現代人の意図に合っていると思います。
 
 (leaf delsel
   :doc "delete selection if you insert"
   :tag "builtin"
   :global-minor-mode delete-selection-mode)
-
 
 (leaf *paren-config
   :config
@@ -146,7 +141,6 @@
   ;   :global-minor-mode smartparens-mode)
   )
 
-
 (leaf simple
   :doc "basic editing commands for Emacs"
   :tag "builtin" "internal"
@@ -158,11 +152,9 @@
   :hook
   (emacs-startup-hook . transient-mark-mode))
 
-
 ;;
 ;; files
 ;;
-
 
 (leaf files
   :doc "file input and output commands for Emacs"
@@ -175,12 +167,10 @@
             (version-control . t)
             (delete-old-versions . t)))
 
-
 (leaf startup
   :doc "process Emacs shell arguments"
   :tag "builtin" "internal"
   :custom `((auto-save-list-file-prefix . ,(locate-user-emacs-file "backup/.saves-"))))
-
 
 (leaf ivy
   :doc "Incremental Vertical completYon"
@@ -203,8 +193,6 @@
     :emacs>= 24.5
     :ensure t
     :bind (("C-s" . swiper)))
-
-
   (leaf counsel
     :doc "Various completion functions using Ivy"
     :req "emacs-24.5" "swiper-0.13.0"
@@ -219,7 +207,6 @@
               (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
     :global-minor-mode t))
 
-
 (leaf prescient
   :doc "Better sorting and filtering"
   :req "emacs-25.1"
@@ -229,7 +216,6 @@
   :ensure t
   :custom ((prescient-aggressive-file-save . t))
   :global-minor-mode prescient-persist-mode)
-
 
 (leaf ivy-prescient
   :doc "prescient.el + Ivy"
@@ -241,7 +227,6 @@
   :after prescient ivy
   :custom ((ivy-prescient-retain-classic-highlighting . t))
   :global-minor-mode t)
-
 
 (leaf company
   :doc "Modular text completion framework"
@@ -266,7 +251,6 @@
            (company-minimum-prefix-length . 1)
            (company-transformers . '(company-sort-by-occurrence)))
   :global-minor-mode global-company-mode)
-
 
 (leaf company-c-headers
   :doc "Company mode backend for C/C++ header files"
@@ -309,14 +293,12 @@
   :ensure t
   :bind ("C-x C-M-f" . projectile-find-file))
 
-
 (leaf kotlin-mode
   :ensure t)
 
 
 (leaf php-mode
   :ensure t)
-
 
 (leaf atomic-chrome
   :ensure t
@@ -332,26 +314,22 @@
 (leaf magit
   :ensure t)
 
-
 (leaf markdown-mode
   :ensure t
   :custom (initial-major-mode . 'markdown-mode) ;; set markdown-mode as major mode when opening scratch buffer
           (initial-scratch-message . nil)       ;; empty scratch buffer
           )
 
-
 (leaf hl-line
   :ensure t
   :hook (emacs-startup-hook . global-hl-line-mode)
   )
-
 
 (leaf paren
   :ensure t
   :custom ((show-paren-style . 'mixed))
   :hook (emacs-startup-hook . show-paren-mode)
   )
-
 
 (leaf ddskk
   :ensure t
@@ -417,7 +395,6 @@
   (beacon-mode t)
   )
 
-
 (leaf *color-themes
   :config
   (leaf gruvbox-theme
@@ -447,11 +424,9 @@
   (leaf molokai-theme
     :ensure t))
 
-
 (leaf persistent-scratch
   :ensure t
   :custom (persistent-scratch-setup-default . t))
-
 
 (leaf highlight-indent-guides
   :ensure t
@@ -461,16 +436,13 @@
   (highlight-indent-guides-method . 'character)
   )
 
-
 (leaf which-key
   :ensure t
   :global-minor-mode which-key-mode)
 
-
 (leaf s
   :ensure t
   :require t)
-
 
 (leaf *local-variables
   :setq (inhibit-startup-message . t)     ;; Don't show startup page when launch Emacs
@@ -479,7 +451,6 @@
         (scroll-margin . 4)
   :custom (display-time-mode . t)
   :global-minor-mode column-number-mode)
-
 
 (leaf *date-time-config
   :setq (display-time-day-and-date . t)  ;; 曜日・月・日
