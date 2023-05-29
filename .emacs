@@ -393,6 +393,8 @@
   `((beacon-color              . "#aa3400")
     (beacon-size               . 96)
     (beacon-blink-when-focused . t)
+    (beacon-blink-duration     . 0.1)
+    (beacon-blink-delay        . 0.1)
     )
   :custom-face
   `((beacon-fallback-background . '((t (:background "#556b2f")))))
