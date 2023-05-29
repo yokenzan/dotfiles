@@ -341,13 +341,14 @@
   (skk-init-file . "~/.skk/init")
   (default-input-method . "japanese-skk")
   (skk-share-private-jisyo . t)
-  ;; (skk-jisyo-code . 'utf-8)
-  ;; (skk-jisyo . "~/SKKFEP/skkuser.txt")
-  ;; (skk-large-jisyo . "c:/Windows/IME/SKK0/DICTS/SKK-JISYO.L")
-  (skk-server-host . "localhost")
-  (skk-server-portnum . 55100)
-  (skk-server-prog . "/home/yosuke/.rbenv/shims/google-ime-skk")
+  (skk-save-jisyo-instantly . t)
+  ;; (skk-jisyo-code . 'utf-16le-with-signature)
+  (skk-large-jisyo . "~/.dotfiles/SKK-JISYO.L")
+  ;; (skk-server-host . "localhost")
+  ;; (skk-server-portnum . 55100)
+  ;; (skk-server-prog . "/home/yosuke/.rbenv/shims/google-ime-skk")
   (skk skk-dcomp-activate . t) ;; 動的補完
+  (skk-dcomp-multiple-activate . t) ;; 動的補完の複数候補表示
   (skk-sticky-key . ";") ; sticky shift
   (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
   ;;(skk-henkan-number-to-display-candidates . 8) ;;
@@ -367,7 +368,9 @@
   ;; (skk-indicator-use-cursor-color . nil)
   (skk-status-indicator . 'left)
   (skk-server-inhibit-startup-server . t)
-  (skk-use-jisx0201-input-method . t)
+  :config
+  (setq skk-jisyo
+        (cons "/mnt/c/Users/ballo/AppData/Roaming/SKKFEP/skkuser.txt" 'utf-16le-with-signature))
 )
 
 ;; https://uwabami.github.io/cc-env/Emacs.html
