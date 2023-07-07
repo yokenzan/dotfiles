@@ -36,6 +36,7 @@ fi
 which npm > /dev/null 2>&1
 if [ $? = 0 ]; then
     eval "$(npm completion)"
+    export PATH="$(npm prefix --location=global)/bin:$PATH"
 fi
 
 uname | grep -q 'Darwin' > /dev/null 2>&1
