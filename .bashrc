@@ -140,8 +140,13 @@ fi
 if [ -f "${HOME}/.config/git/completion/git-prompt.sh" ]; then
     . $HOME/.config/git/completion/git-prompt.sh
 fi
+
 if [ -f "${HOME}/.config/git/completion/git-completion.bash" ]; then
     . $HOME/.config/git/completion/git-completion.bash
+fi
+
+if [ -f "${HOME}/.dotfiles/npm-completion.bash" ]; then
+    . $HOME/.dotfiles/npm-completion.bash
 fi
 
 GIT_PS1_SHOWUNTRACKEDFILES=1    # %
