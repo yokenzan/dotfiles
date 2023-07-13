@@ -125,6 +125,7 @@ $if mode=emacs
     "\C- os":  "sudo "
     "\C- om":  "man "
     "\C- ov":  "vim "
+    "\C- ot":  "type "
     "\C- o ":  " "
     "\C- oS":  "d" # remove sudo and execute
 
