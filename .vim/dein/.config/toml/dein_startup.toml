@@ -111,7 +111,7 @@ hook_add = '''
 
     function! CocNvimStatusline()
         try
-            return g:coc_enabled ? '補 ': ''
+            return (exists("g:coc_enabled") && g:coc_enabled) ? '補 ': ''
         catch
             return ''
         endtry
@@ -139,6 +139,10 @@ hook_add = '''
         return &paste
                     \ ? '貼'
                     \ : ''
+    endfunction
+
+    function! AleStatusline()
+        return (exists("g:ale_enabled") && g:ale_enabled) ? '解' : ''
     endfunction
 
     function! Padspace()
@@ -226,11 +230,11 @@ hook_add = '''
     let g:airline#extensions#tabline#enabled       = 0
     let g:airline#extensions#wordcount#enabled     = 0
 
-    let g:airline_theme     = 'xtermlight'
+    let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_b = airline#section#create([
                 \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{FugitiveHead()}', ' %n', '%{Padspace()}',
-                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}',
+                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}', '%{AleStatusline()}',
                 \   '%{NearestMethodOrFunction()}'
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
