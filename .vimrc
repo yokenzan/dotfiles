@@ -260,6 +260,7 @@ endif
 
 set dictionary=/usr/share/dict/words,spell
 set thesaurus=~/.vim/thesaurus.txt
+set spelllang=en_us,cjk,medical
 
 " for phpactor
 
