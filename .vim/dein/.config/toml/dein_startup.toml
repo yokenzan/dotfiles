@@ -111,7 +111,7 @@ hook_add = '''
 
     function! CocNvimStatusline()
         try
-            return g:coc_enabled ? '補 ': ''
+            return (exists("g:coc_enabled") && g:coc_enabled) ? '補 ': ''
         catch
             return ''
         endtry
@@ -141,6 +141,10 @@ hook_add = '''
                     \ : ''
     endfunction
 
+    function! AleStatusline()
+        return (exists("g:ale_enabled") && g:ale_enabled) ? '解' : ''
+    endfunction
+
     function! Padspace()
         if &paste || &spell || &conceallevel == 2 || &wrap
             return ' '
@@ -155,26 +159,6 @@ hook_add = '''
       return nearest == '' ? '' : '[' . nearest . ']'
     endfunction
 
-    " let g:airline_mode_map = {
-    "             \ '__' : '-',
-    "             \ 'c'  : 'C',
-    "             \ 'i'  : 'I',
-    "             \ 'ic' : 'IC',
-    "             \ 'ix' : 'IX',
-    "             \ 'n'  : 'N',
-    "             \ 'ni' : 'i',
-    "             \ 'no' : 'o',
-    "             \ 'o' :  'o',
-    "             \ 'R'  : 'R',
-    "             \ 'Rv' : 'RV',
-    "             \ 's'  : 'S',
-    "             \ 'S'  : 'SL',
-    "             \ '' : 'SB',
-    "             \ 't'  : 'T',
-    "             \ 'v'  : 'V',
-    "             \ 'V'  : 'VL',
-    "             \ '' : 'VB',
-    "             \ }
     let g:airline_mode_map = {
         \ '__'    : '-',
         \ 'n'     : 'N',
@@ -226,11 +210,11 @@ hook_add = '''
     let g:airline#extensions#tabline#enabled       = 0
     let g:airline#extensions#wordcount#enabled     = 0
 
-    let g:airline_theme     = 'xtermlight'
+    let g:airline_theme     = 'light'
     let g:airline_section_a = airline#section#create(['mode'])
     let g:airline_section_b = airline#section#create([
                 \   '%{SkkStatusline()}', '%{CocNvimStatusline()}', '%{FugitiveHead()}', ' %n', '%{Padspace()}',
-                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}',
+                \   '%{ConcealLevelStatusLine()}', '%{WrapStatusLine()}', '%{PasteStatusLine()}', '%{SpellStatusLine()}', '%{AleStatusline()}',
                 \   '%{NearestMethodOrFunction()}'
                 \   ])
     let g:airline_section_x = airline#section#create(['filetype'])
@@ -288,53 +272,6 @@ hook_add = '''
     vmap <silent>]ib <Plug>CamelCaseMotion_ib
     omap <silent>]ie <Plug>CamelCaseMotion_ie
     vmap <silent>]ie <Plug>CamelCaseMotion_ie
-'''
-
-
-[[plugins]]
-repo     = 'Shougo/unite.vim'
-hook_add = '''
-    if !has('python3')
-        let g:unite_split_rule = 'rightbelow'
-        let g:unite_winwidth   = 45
-        let g:unite_source_history_yank_enable = 1
-        let g:unite_source_file_mru_limit      = 1000
-
-        aug enableUniteKeyBindingsUnlessHasPython
-            au!
-            au VimEnter * nested nnoremap <silent><Space>ut  :<C-u>Unite tab<CR>
-            au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Unite buffer<CR>
-            au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Unite -buffer-name=register register<CR>
-            au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Unite jump<CR>
-            " ファイル関係
-            au VimEnter * nested nnoremap <silent><Space>um  :<C-u>Unite file_mru<CR>
-            au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>Unite -buffer-name=files file_rec/git<CR>
-            au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Unite -buffer-name=files file_rec<CR>
-            au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>UniteWithBufferDir  -buffer-name=files file<CR>
-            au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
-            " grep関係
-            au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Unite -auto-preview grep/git<CR>
-            au VimEnter * nested nnoremap <silent><Space>gp  :<C-u>Unite -auto-preview grep<CR>
-            au VimEnter * nested nnoremap <silent><Space>rg  :<C-u>Unite -resume -auto-preview grep/git<CR>
-            au VimEnter * nested nnoremap <silent><Space>rp  :<C-u>Unite -resume -auto-preview grep<CR>
-
-            au VimEnter * nested nnoremap <silent><Space>uy :<C-u>Unite history/yank<CR>
-        aug END
-    endif
-'''
-depends  = ['unite-outline', 'unite-gtags', 'neoyank.vim']
-
-
-[[plugins]]
-repo     = 'Shougo/unite-outline'
-hook_add = '''
-    " 常にunite-outlineをつかう
-    aug enableUniteOutline
-        au!
-        " with auto highlight
-        au VimEnter * nested nnoremap <silent><Space>uO :<C-u>Unite -winwidth=50 -vertical -no-empty -no-quit -auto-highlight outline<CR>
-        au VimEnter * nested nnoremap <silent><Space>uo :<C-u>Unite -winwidth=50 -vertical -no-empty outline<CR>
-    aug END
 '''
 
 

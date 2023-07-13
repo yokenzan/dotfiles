@@ -90,11 +90,14 @@ repo  = 'wellle/tmux-complete.vim'
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
 hook_add = '''
+    au VimEnter * nested nnoremap <silent><Space>uo :<C-u>Vista coc<CR>
     let g:vista_default_executive = 'coc'
     let g:vista_sidebar_width = 45
-    let g:vista_icon_indent = [">", "v"]
+    let g:vista_icon_indent = ["->", "▼"]
     let g:vista#renderer#icons = {
     \   "function": "関数",
     \   "variable": "変数",
     \  }
+
+    au VimEnter * nested nnoremap <silent><Space>uo :<C-u>Vista coc<CR>
 '''
