@@ -159,26 +159,6 @@ hook_add = '''
       return nearest == '' ? '' : '[' . nearest . ']'
     endfunction
 
-    " let g:airline_mode_map = {
-    "             \ '__' : '-',
-    "             \ 'c'  : 'C',
-    "             \ 'i'  : 'I',
-    "             \ 'ic' : 'IC',
-    "             \ 'ix' : 'IX',
-    "             \ 'n'  : 'N',
-    "             \ 'ni' : 'i',
-    "             \ 'no' : 'o',
-    "             \ 'o' :  'o',
-    "             \ 'R'  : 'R',
-    "             \ 'Rv' : 'RV',
-    "             \ 's'  : 'S',
-    "             \ 'S'  : 'SL',
-    "             \ '' : 'SB',
-    "             \ 't'  : 'T',
-    "             \ 'v'  : 'V',
-    "             \ 'V'  : 'VL',
-    "             \ '' : 'VB',
-    "             \ }
     let g:airline_mode_map = {
         \ '__'    : '-',
         \ 'n'     : 'N',
