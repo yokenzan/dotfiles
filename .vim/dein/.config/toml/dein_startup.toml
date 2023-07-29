@@ -317,6 +317,9 @@ hook_add = '''
     \       'runner/terminal/opener':      'new',
     \       'runner/terminal/into':        1,
     \       'hook/output_encode/encoding': 'cp932:cp932'
+    \   },
+    \   'typescript': {
+    \       'exec':      'npx ts-node %s'
     \   }
     \}
 
