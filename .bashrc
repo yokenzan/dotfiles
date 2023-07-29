@@ -78,7 +78,7 @@ export HISTTIMEFORMAT='%F %T: '
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:*rm -rf*:r:git push*:*--force*:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...:t:l'
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:*rm -rf*:r:git push*:*--force*:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...:t:l:~:git*--no-verify*:*APP_ENV=production *'
 # shopt -s histverify
 
 if [ "x$BASH_ENV_SHARE_HISTORY" == "x1" ]; then
@@ -140,8 +140,18 @@ fi
 if [ -f "${HOME}/.config/git/completion/git-prompt.sh" ]; then
     . $HOME/.config/git/completion/git-prompt.sh
 fi
+
 if [ -f "${HOME}/.config/git/completion/git-completion.bash" ]; then
     . $HOME/.config/git/completion/git-completion.bash
+fi
+
+if [ -f "${HOME}/.dotfiles/npm-completion.bash" ]; then
+    . $HOME/.dotfiles/npm-completion.bash
+fi
+
+# https://gist.github.com/gibatronic/44073260ffdcbd122e9520756c8e35a1
+if [ -f "${HOME}/.dotfiles/npx-completion.bash" ]; then
+    . $HOME/.dotfiles/npx-completion.bash
 fi
 
 GIT_PS1_SHOWUNTRACKEDFILES=1    # %

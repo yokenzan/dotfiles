@@ -40,3 +40,8 @@ on_ft = ['mermaid']
 [[plugins]]
 repo = 'jparise/vim-graphql'
 on_ft = ['graphql']
+
+
+[[plugins]]
+repo = 'prisma/vim-prisma'
+on_ft = ['prisma']
