@@ -30,6 +30,11 @@ if dein#load_state(s:dein_dir)
     call dein#load_toml(s:colorscheme_toml, { 'lazy' : 0 })
     call dein#load_toml(s:lazy_toml,        { 'lazy' : 1 })
 
+    if v:version >= 900
+        let s:denops_toml = s:toml_dir . '/' . 'dein_denops.toml'
+        call dein#load_toml(s:denops_toml, { 'lazy' : 0 })
+    endif
+
     call dein#end()
     call dein#save_state()
 endif
