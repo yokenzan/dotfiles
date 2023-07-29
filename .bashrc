@@ -149,6 +149,11 @@ if [ -f "${HOME}/.dotfiles/npm-completion.bash" ]; then
     . $HOME/.dotfiles/npm-completion.bash
 fi
 
+# https://gist.github.com/gibatronic/44073260ffdcbd122e9520756c8e35a1
+if [ -f "${HOME}/.dotfiles/npx-completion.bash" ]; then
+    . $HOME/.dotfiles/npx-completion.bash
+fi
+
 GIT_PS1_SHOWUNTRACKEDFILES=1    # %
 GIT_PS1_SHOWDIRTYSTATE=1        # * / +
 GIT_PS1_SHOWSTASHSTATE=1        # $
