@@ -213,7 +213,7 @@ nnoremap /  /\v
 nnoremap // /\V
 nnoremap ?  ?\v
 nnoremap ?/ ?\V
-nnoremap <silent><C-[><C-[> :<C-u>noh<CR><Esc>
+" nnoremap <silent><C-[><C-[> :<C-u>noh<CR><Esc>
 
 
 " 手動のクリップボード連携
@@ -260,7 +260,7 @@ endif
 
 set dictionary=/usr/share/dict/words,spell
 set thesaurus=~/.vim/thesaurus.txt
-set spelllang=en_us,cjk,medical
+set spelllang=en,cjk,medical
 
 " for phpactor
 
