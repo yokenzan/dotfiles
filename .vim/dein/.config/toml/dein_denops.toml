@@ -13,7 +13,7 @@ hook_add = '''
         \   'ui': 'ff',
         \   'sources': [
         \       {
-        \           'name': 'file_rec',
+        \           'name': 'file',
         \           'params': {
         \           },
         \       },
@@ -23,6 +23,12 @@ hook_add = '''
         \       'matchers': ['matcher_substring'],
         \     },
         \     'file': {
+        \       'path': expand('~'),
+        \     },
+        \     'file_rec': {
+        \       'path': expand('~'),
+        \     },
+        \     'file_old': {
         \       'path': expand('~'),
         \     },
         \   },
@@ -39,6 +45,17 @@ hook_add = '''
         \     'help': {
         \       'defaultAction': 'open',
         \     },
+        \     'colorscheme': {
+        \       'defaultAction': 'set',
+        \     },
+        \     'search_history': {
+        \       'defaultAction': 'edit',
+        \     },
+        \   },
+        \   'actionOptions': {
+        \     'set': {
+        \       'quit': v:false,
+        \     },
         \   },
         \   'uiParams': {
         \     'ff': {
@@ -47,9 +64,10 @@ hook_add = '''
         \   },
         \ })
 
-    autocmd FileType ddu-ff call s:ddu_my_settings()
+    autocmd FileType ddu-ff call s:ddu_ff_settings()
+    autocmd FileType ddu-ff-filter call s:ddu_ff_filter_settings()
 
-    function! s:ddu_my_settings() abort
+    function! s:ddu_ff_settings() abort
       nnoremap <buffer><silent> <CR>
         \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
       nnoremap <buffer><silent> <C-m>
@@ -76,24 +94,38 @@ hook_add = '''
         \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
       nnoremap <buffer><silent> <Tab>
         \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
-      nnoremap <buffer><silent> q
-          \ <Cmd>close<CR>
+    endfunction
+
+    function! s:ddu_ff_filter_settings() abort
+      nnoremap <buffer> <CR>
+          \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+      nnoremap <buffer> <C-m>
+          \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+
       inoremap <buffer> <CR>
           \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-      nnoremap <buffer> <CR>
-          \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+      inoremap <buffer> <C-m>
+          \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+      inoremap <buffer><silent> <C-c>
+        \ <Cmd>call ddu#ui#do_action('quit')<CR>
     endfunction
 
     aug enableDduKeuMap
         au!
-        au VimEnter * nested nnoremap <silent><Space>Uo <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_old' }] })<CR>
         au VimEnter * nested nnoremap <silent><Space>Uf <Cmd>call ddu#start({ 'sources': [{ 'name': 'file' }] })<CR>
         au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_rec' }], 'uiParams': { 'ff': { 'startFilter': v:true } } })<CR>
-        au VimEnter * nested nnoremap <silent><Space>Ur <Cmd>call ddu#start({ 'resume': v:true })<CR>
-        au VimEnter * nested nnoremap <silent><Space>UR <Cmd>call ddu#start({ 'sources': [{ 'name': 'register' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uo <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_old' }] })<CR>
+
         au VimEnter * nested nnoremap <silent><Space>Ub <Cmd>call ddu#start({ 'sources': [{ 'name': 'buffer' }] })<CR>
+
         au VimEnter * nested nnoremap <silent><Space>Ul <Cmd>call ddu#start({ 'sources': [{ 'name': 'line' }] })<CR>
-        au VimEnter * nested nnoremap <silent><Space>Uh <Cmd>call ddu#start({ 'sources': [{ 'name': 'help' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>UR <Cmd>call ddu#start({ 'sources': [{ 'name': 'register' }] })<CR>
+
+        au VimEnter * nested nnoremap <silent><Space>US <Cmd>call ddu#start({ 'sources': [{ 'name': 'search_history' }] })<CR>
+
+        au VimEnter * nested nnoremap <silent><Space>Ur <Cmd>call ddu#start({ 'resume': v:true })<CR>
+        au VimEnter * nested nnoremap <silent><Space>UC <Cmd>call ddu#start({ 'sources': [{ 'name': 'colorscheme' }] })<CR>
+
         au VimEnter * nested nnoremap <silent>[U <Cmd>call ddu#ui#do_action('cursorNext')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
         au VimEnter * nested nnoremap <silent>]U <Cmd>call ddu#ui#do_action('cursorPrevious')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
     aug END
@@ -109,7 +141,7 @@ repo = 'Shougo/ddu-ui-ff'
 
 
 [[plugins]]
-repo = 'Shougo/ddu-filter-matcher_substring'
+repo = 'Shougo/ddu-source-file'
 
 
 [[plugins]]
@@ -137,8 +169,24 @@ repo = 'Shougo/ddu-source-buffer'
 
 
 [[plugins]]
+repo = '4513ECHO/ddu-source-colorscheme'
+
+
+[[plugins]]
+repo = 'uga-rosa/ddu-source-search_history'
+
+
+[[plugins]]
 repo = 'Shougo/ddu-kind-file'
 
 
 [[plugins]]
 repo = 'Shougo/ddu-kind-word'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_files'
