@@ -1,0 +1,144 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+
+[[plugins]]
+repo = 'vim-denops/denops-helloworld.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+hook_add = '''
+    call ddu#custom#patch_global({
+        \   'ui': 'ff',
+        \   'sources': [
+        \       {
+        \           'name': 'file_rec',
+        \           'params': {
+        \           },
+        \       },
+        \   ],
+        \   'sourceOptions': {
+        \     '_': {
+        \       'matchers': ['matcher_substring'],
+        \     },
+        \     'file': {
+        \       'path': expand('~'),
+        \     },
+        \   },
+        \   'kindOptions': {
+        \     'file': {
+        \       'defaultAction': 'open',
+        \     },
+        \     'action': {
+        \       'defaultAction': 'do',
+        \     },
+        \     'word': {
+        \       'defaultAction': 'append',
+        \     },
+        \     'help': {
+        \       'defaultAction': 'open',
+        \     },
+        \   },
+        \   'uiParams': {
+        \     'ff': {
+        \       'previewSplit': 'vertical',
+        \     }
+        \   },
+        \ })
+
+    autocmd FileType ddu-ff call s:ddu_my_settings()
+
+    function! s:ddu_my_settings() abort
+      nnoremap <buffer><silent> <CR>
+        \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+      nnoremap <buffer><silent> <C-m>
+        \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+      nnoremap <buffer><silent> +
+        \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+      nnoremap <buffer><silent> i
+        \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+      nnoremap <buffer><silent> q
+        \ <Cmd>call ddu#ui#do_action('quit')<CR>
+      nnoremap <buffer><silent> <C-c>
+        \ <Cmd>call ddu#ui#do_action('quit')<CR>
+      nnoremap <buffer><silent> y
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'yank' })<CR>
+      nnoremap <buffer><silent> a
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'append' })<CR>
+      nnoremap <buffer><silent> P
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'insert' })<CR>
+      nnoremap <buffer><silent> -
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'delete' })<CR>
+      nnoremap <buffer><silent> p
+        \ <Cmd>call ddu#ui#do_action('togglePreview')<CR>
+      nnoremap <buffer><silent> <C-i>
+        \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+      nnoremap <buffer><silent> <Tab>
+        \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+      nnoremap <buffer><silent> q
+          \ <Cmd>close<CR>
+      inoremap <buffer> <CR>
+          \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+      nnoremap <buffer> <CR>
+          \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+    endfunction
+
+    aug enableDduKeuMap
+        au!
+        au VimEnter * nested nnoremap <silent><Space>Uo <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_old' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uf <Cmd>call ddu#start({ 'sources': [{ 'name': 'file' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_rec' }], 'uiParams': { 'ff': { 'startFilter': v:true } } })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ur <Cmd>call ddu#start({ 'resume': v:true })<CR>
+        au VimEnter * nested nnoremap <silent><Space>UR <Cmd>call ddu#start({ 'sources': [{ 'name': 'register' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ub <Cmd>call ddu#start({ 'sources': [{ 'name': 'buffer' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ul <Cmd>call ddu#start({ 'sources': [{ 'name': 'line' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uh <Cmd>call ddu#start({ 'sources': [{ 'name': 'help' }] })<CR>
+        au VimEnter * nested nnoremap <silent>[U <Cmd>call ddu#ui#do_action('cursorNext')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
+        au VimEnter * nested nnoremap <silent>]U <Cmd>call ddu#ui#do_action('cursorPrevious')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
+    aug END
+'''
+
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_old'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-source-register'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-source-buffer'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-word'
