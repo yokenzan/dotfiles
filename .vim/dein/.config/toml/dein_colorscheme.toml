@@ -268,15 +268,7 @@ repo = 'sainnhe/gruvbox-material'
 
 
 [[plugins]]
-repo = 'rebelot/kanagawa.nvim'
-
-
-[[plugins]]
 repo = 'sainnhe/everforest'
-
-
-[[plugins]]
-repo = 'edeneast/nightfox.nvim'
 
 
 [[plugins]]
