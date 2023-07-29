@@ -429,6 +429,12 @@
     :ensure t)
 
   (leaf molokai-theme
+    :ensure t)
+
+  (leaf poet-theme
+    :ensure t)
+
+  (leaf ef-themes
     :ensure t))
 
 (leaf persistent-scratch
