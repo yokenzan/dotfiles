@@ -315,6 +315,9 @@ hook_add = '''
     \       'runner/terminal/opener':      'vnew',
     \       'runner/terminal/into':        1,
     \       'hook/output_encode/encoding': 'cp932:cp932'
+    \   },
+    \   'typescript': {
+    \       'exec':      'npx ts-node %s'
     \   }
     \}
     let g:quickrun_config.hen = g:quickrun_config.uke
