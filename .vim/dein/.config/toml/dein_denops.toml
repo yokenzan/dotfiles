@@ -3,10 +3,6 @@ repo = 'vim-denops/denops.vim'
 
 
 [[plugins]]
-repo = 'vim-denops/denops-helloworld.vim'
-
-
-[[plugins]]
 repo = 'Shougo/ddu.vim'
 hook_add = '''
     call ddu#custom#patch_global({
@@ -19,48 +15,91 @@ hook_add = '''
         \       },
         \   ],
         \   'sourceOptions': {
-        \     '_': {
-        \       'matchers': ['matcher_substring'],
-        \     },
-        \     'file': {
-        \       'path': expand('~'),
-        \     },
-        \     'file_rec': {
-        \       'path': expand('~'),
-        \     },
-        \     'file_old': {
-        \       'path': expand('~'),
-        \     },
+        \       '_': {
+        \           'matchers': ['matcher_substring'],
+        \       },
+        \       'file_rec': {
+        \           'matchers': ['matcher_ignore_current_buffer', 'matcher_substring'],
+        \       },
+        \       'file_old': {
+        \           'matchers': ['matcher_ignore_current_buffer', 'matcher_substring'],
+        \       },
+        \       'line': {
+        \           'sorters': [],
+        \       },
         \   },
         \   'kindOptions': {
-        \     'file': {
-        \       'defaultAction': 'open',
-        \     },
-        \     'action': {
-        \       'defaultAction': 'do',
-        \     },
-        \     'word': {
-        \       'defaultAction': 'append',
-        \     },
-        \     'help': {
-        \       'defaultAction': 'open',
-        \     },
-        \     'colorscheme': {
-        \       'defaultAction': 'set',
-        \     },
-        \     'search_history': {
-        \       'defaultAction': 'edit',
-        \     },
+        \       'file': {
+        \           'defaultAction': 'open',
+        \       },
+        \       'action': {
+        \           'defaultAction': 'do',
+        \       },
+        \       'word': {
+        \           'defaultAction': 'append',
+        \       },
+        \       'help': {
+        \           'defaultAction': 'open',
+        \       },
+        \       'colorscheme': {
+        \           'defaultAction': 'set',
+        \       },
+        \       'window': {
+        \           'defaultAction': 'open',
+        \       },
+        \       'search_history': {
+        \           'defaultAction': 'edit',
+        \       },
+        \       'lsp': {
+        \           'defaultAction': 'open',
+        \       },
+        \       'lsp_codeAction': {
+        \           'defaultAction': 'apply',
+        \       },
         \   },
         \   'actionOptions': {
-        \     'set': {
-        \       'quit': v:false,
-        \     },
+        \       'set': {
+        \           'quit': v:false,
+        \       },
         \   },
         \   'uiParams': {
-        \     'ff': {
-        \       'previewSplit': 'vertical',
-        \     }
+        \       'ff': {
+        \           'previewSplit': 'vertical',
+        \           'displayTree': v:true,
+        \           'ignoreEmpty': v:true,
+        \           'prompt': '> ',
+        \           'autoAction': {
+        \               'name': 'preview',
+        \           },
+        \       }
+        \   },
+        \   'filterParams': {
+        \       'matcher_substring': {
+        \           'highlightMatched': 'Search',
+        \       },
+        \   },
+        \   'sourceParams': {
+        \       'lsp_definition': {
+        \           'clientName': 'coc.nvim',
+        \       },
+        \       'lsp_workspaceSymbol': {
+        \           'clientName': 'coc.nvim',
+        \       },
+        \       'lsp_documentSymbol': {
+        \           'clientName': 'coc.nvim',
+        \       },
+        \       'lsp_codeAction': {
+        \           'clientName': 'coc.nvim',
+        \       },
+        \       'lsp_references': {
+        \           'clientName': 'coc.nvim',
+        \       },
+        \       'lsp_callHierarchy': {
+        \           'clientName': 'coc.nvim',
+        \       },
+        \       'lsp_diagnostic': {
+        \           'clientName': 'coc.nvim',
+        \       },
         \   },
         \ })
 
@@ -72,62 +111,176 @@ hook_add = '''
         \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
       nnoremap <buffer><silent> <C-m>
         \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
-      nnoremap <buffer><silent> +
-        \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+
+      nnoremap <buffer><silent> o
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'open' })<CR>
+      nnoremap <buffer><silent> O
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'open', 'params': { 'command': 'new' } })<CR>
+      nnoremap <buffer><silent> s
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'open', 'params': { 'command': 'split' } })<CR>
+      nnoremap <buffer><silent> v
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'open', 'params': { 'command': 'vsplit' } })<CR>
+      nnoremap <buffer><silent> t
+        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'open', 'params': { 'command': 'tabedit' } })<CR>
       nnoremap <buffer><silent> i
         \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+
+      " nnoremap <buffer><silent> :
+      "   \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+
       nnoremap <buffer><silent> q
+        \ <Cmd>call ddu#ui#do_action('closePreviewWindow')<CR>
         \ <Cmd>call ddu#ui#do_action('quit')<CR>
       nnoremap <buffer><silent> <C-c>
+        \ <Cmd>call ddu#ui#do_action('closePreviewWindow')<CR>
         \ <Cmd>call ddu#ui#do_action('quit')<CR>
+
       nnoremap <buffer><silent> y
         \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'yank' })<CR>
       nnoremap <buffer><silent> a
         \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'append' })<CR>
       nnoremap <buffer><silent> P
         \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'insert' })<CR>
-      nnoremap <buffer><silent> -
-        \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'delete' })<CR>
+      " nnoremap <buffer><silent> -
+      "   \ <Cmd>call ddu#ui#do_action('itemAction', { 'name': 'delete' })<CR>
       nnoremap <buffer><silent> p
         \ <Cmd>call ddu#ui#do_action('togglePreview')<CR>
       nnoremap <buffer><silent> <C-i>
         \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
       nnoremap <buffer><silent> <Tab>
         \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+      nnoremap <buffer><silent> T
+        \ <Cmd>call ddu#ui#do_action('toggleAutoAction')<CR>
+      nnoremap <buffer><silent> zo
+        \ <Cmd>call ddu#ui#do_action('expandItem')<CR>
+      nnoremap <buffer><silent> zf
+        \ <Cmd>call ddu#ui#do_action('collapseItem')<CR>
+      nnoremap <buffer><silent> zR
+        \ <Cmd>call ddu#ui#do_action('collapseItem', { 'maxLevel': 3 })<CR>
+      nnoremap <buffer><silent> =
+        \ <Cmd>call ddu#ui#do_action('expandItem', { 'mode': 'toggle' })<CR>
+
+      nnoremap <buffer><silent> +
+        \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
     endfunction
 
     function! s:ddu_ff_filter_settings() abort
       nnoremap <buffer> <CR>
-          \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+          \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
       nnoremap <buffer> <C-m>
-          \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+          \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
 
       inoremap <buffer> <CR>
           \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
       inoremap <buffer> <C-m>
           \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
       inoremap <buffer><silent> <C-c>
-        \ <Cmd>call ddu#ui#do_action('quit')<CR>
+        \ <Esc><Cmd>call ddu#ui#do_action('closePreviewWindow')<CR>
+        \ <Esc><Cmd>call ddu#ui#do_action('quit')<CR>
     endfunction
 
-    aug enableDduKeuMap
+    aug enableDduKeyMap
         au!
-        au VimEnter * nested nnoremap <silent><Space>Uf <Cmd>call ddu#start({ 'sources': [{ 'name': 'file' }] })<CR>
-        au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_rec' }], 'uiParams': { 'ff': { 'startFilter': v:true } } })<CR>
-        au VimEnter * nested nnoremap <silent><Space>Uo <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_old' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uf <Cmd>Ddu file     -source-option-path=`expand('%:h')`<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>Ddu file_rec -source-option-path=`getcwd()`<CR>
+        " au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_rec' }], 'uiParams': { 'ff': { 'startFilter': v:true } } })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uo <Cmd>call ddu#start({ 'name': 'MRU', 'sources': [{ 'name': 'file_old' }] })<CR>
 
-        au VimEnter * nested nnoremap <silent><Space>Ub <Cmd>call ddu#start({ 'sources': [{ 'name': 'buffer' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ub <Cmd>call ddu#start({ 'name': 'buffers', 'sources': [{ 'name': 'buffer' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uw <Cmd>call ddu#start({ 'name': 'windows', 'sources': [{ 'name': 'window' }] })<CR>
 
-        au VimEnter * nested nnoremap <silent><Space>Ul <Cmd>call ddu#start({ 'sources': [{ 'name': 'line' }] })<CR>
-        au VimEnter * nested nnoremap <silent><Space>UR <Cmd>call ddu#start({ 'sources': [{ 'name': 'register' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ul <Cmd>call ddu#start({ 'name': 'line', 'sources': [{ 'name': 'line' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>UR <Cmd>call ddu#start({ 'name': 'registers', 'sources': [{ 'name': 'register' }] })<CR>
 
-        au VimEnter * nested nnoremap <silent><Space>US <Cmd>call ddu#start({ 'sources': [{ 'name': 'search_history' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>US <Cmd>call ddu#start({ 'name': 'search_histories', 'sources': [{ 'name': 'search_history' }] })<CR>
 
         au VimEnter * nested nnoremap <silent><Space>Ur <Cmd>call ddu#start({ 'resume': v:true })<CR>
-        au VimEnter * nested nnoremap <silent><Space>UC <Cmd>call ddu#start({ 'sources': [{ 'name': 'colorscheme' }] })<CR>
+        au VimEnter * nested nnoremap <silent><Space>UC <Cmd>call ddu#start({ 'name': 'colorschemes', 'sources': [{ 'name': 'colorscheme' }] })<CR>
 
-        au VimEnter * nested nnoremap <silent>[U <Cmd>call ddu#ui#do_action('cursorNext')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
-        au VimEnter * nested nnoremap <silent>]U <Cmd>call ddu#ui#do_action('cursorPrevious')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uld
+                    \   <Cmd>call ddu#start({
+                    \       'name': 'diagnostics',
+                    \       'sources': [
+                    \           {
+                    \               'name': 'lsp_diagnostic',
+                    \           },
+                    \       ],
+                    \   })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ucd
+                    \   <Cmd>call ddu#start({
+                    \       'name': 'definitions',
+                    \       'sources': [
+                    \           {
+                    \               'name': 'lsp_definition',
+                    \           },
+                    \       ],
+                    \       'uiParams': {
+                    \           'ff': {
+                    \               'immediateAction': 'open',
+                    \           },
+                    \       },
+                    \   })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uds
+                    \   <Cmd>call ddu#start({
+                    \       'name': 'symbols',
+                    \       'sources': [
+                    \           {
+                    \               'name': 'lsp_documentSymbol',
+                    \           },
+                    \       ],
+                    \       'soureceOptions': {
+                    \           'lsp': {
+                    \               'volatile': v:true,
+                    \           },
+                    \       },
+                    \       'uiParams': {
+                    \           'ff': {
+                    \               'immediateAction': 'open',
+                    \           },
+                    \       },
+                    \   })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Uch
+                    \   <Cmd>call ddu#start({
+                    \       'sources': [
+                    \           {
+                    \               'name': 'lsp_callHierarchy',
+                    \               'params': {
+                    \                   'method': 'callHierarchy/outgoingCalls',
+                    \               },
+                    \           },
+                    \       ],
+                    \       'uiParams': {
+                    \           'ff': {
+                    \               'displayTree': v:true,
+                    \               'startilter': v:false,
+                    \           },
+                    \       },
+                    \   })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ufr
+                    \   <Cmd>call ddu#start({
+                    \       'name': 'references',
+                    \       'sources': [
+                    \           {
+                    \               'name': 'lsp_references',
+                    \               'params': {
+                    \                   'method': 'references',
+                    \               },
+                    \           },
+                    \       ],
+                    \   })<CR>
+
+        " au VimEnter * nested nnoremap <silent>[U <Cmd>call ddu#start(
+        "             \   {
+        "             \       'resume': v:true,
+        "             \       'uiParams': {
+        "             \           'ff': {
+        "             \               'startAutoAction': v:true,
+        "             \               'autoAction': { 'name': 'open' },
+        "             \           },
+        "             \       },
+        "             \   })<CR> <Cmd>call ddu#ui#do_action('cursorPrevious')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
+        " au VimEnter * nested nnoremap <silent>[U <Cmd>call ddu#start({ 'resume': v:true })<CR> <Cmd>call ddu#ui#do_action('cursorPrevious')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
+        " au VimEnter * nested nnoremap <silent>[U <Cmd>call ddu#ui#do_action('resume', 'cursorPrevious')<CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
     aug END
 '''
 
@@ -173,7 +326,19 @@ repo = '4513ECHO/ddu-source-colorscheme'
 
 
 [[plugins]]
+repo = 'kbwo/ddu-source-coc'
+
+
+[[plugins]]
 repo = 'uga-rosa/ddu-source-search_history'
+
+
+[[plugins]]
+repo = 'kamecha/ddu-source-window'
+
+
+[[plugins]]
+repo = 'uga-rosa/ddu-source-lsp'
 
 
 [[plugins]]
@@ -190,3 +355,7 @@ repo = 'Shougo/ddu-filter-matcher_substring'
 
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_files'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_ignore_current_buffer'

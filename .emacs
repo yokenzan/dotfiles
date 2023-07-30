@@ -265,19 +265,6 @@
   :config
   (add-to-list 'company-backends 'company-c-headers))
 
-
-(leaf flycheck
-  :doc "On-the-fly syntax checking"
-  :req "dash-2.12.1" "pkg-info-0.4" "let-alist-1.0.4" "seq-1.11" "emacs-24.3"
-  :tag "minor-mode" "tools" "languages" "convenience" "emacs>=24.3"
-  :url "http://www.flycheck.org"
-  :emacs>= 24.3
-  :ensure t
-  ;; :bind (("M-n" . flycheck-next-error)
-  ;;        ("M-p" . flycheck-previous-error))
-  :global-minor-mode global-flycheck-mode)
-
-
 (leaf recentf
   :ensure t
   :bind (
@@ -339,8 +326,7 @@
   (skk-init-file . "~/.skk/init")
   (default-input-method . "japanese-skk")
   (skk-share-private-jisyo . t)
-  (skk-save-jisyo-instantly . t)
-  ;; (skk-jisyo-code . 'utf-16le-with-signature)
+  ; (skk-save-jisyo-instantly . t)
   (skk-large-jisyo . "~/.dotfiles/SKK-JISYO.L")
   ;; (skk-server-host . "localhost")
   ;; (skk-server-portnum . 55100)
@@ -349,7 +335,6 @@
   (skk-dcomp-multiple-activate . t) ;; 動的補完の複数候補表示
   (skk-sticky-key . ";") ; sticky shift
   (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
-  ;;(skk-henkan-number-to-display-candidates . 8) ;;
   (skk-use-jisx0201-input-method . t)
   (skk-show-inline . 'vertical)
   (skk-show-tooltip . t)
@@ -370,22 +355,6 @@
   (setq skk-jisyo
         (cons "/mnt/c/Users/ballo/AppData/Roaming/SKKFEP/skkuser.txt" 'utf-16le-with-signature))
 )
-
-;; https://uwabami.github.io/cc-env/Emacs.html
-(leaf migemo
-  :if (executable-find "cmigemo")
-  :ensure t
-  :custom
-  '((migemo-user-dictionary  . nil)
-    (migemo-regex-dictionary . nil)
-    (migemo-options          . '("-q" "--emacs"))
-    (migemo-command          . "cmigemo")
-    (migemo-coding-system    . 'utf-8-unix)
-    (file-directory-p . "/usr/share/cmigemo/utf-8/")
-    (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict"))
-  :hook
-  (after-init-hook . migemo-init))
-
 
 (leaf beacon
   :ensure t
@@ -500,93 +469,6 @@
 
 (load-theme 'flatui t)
 
-;; Undelivered Configuration
-
-;;; ;;; Org Mode
-;;; 
-;;; ;; The following lines are always needed.  Choose your own keys.
-;;; (global-set-key "\C-cl" 'org-store-link)
-;;; (global-set-key "\C-ca" 'org-agenda)
-;;; (global-set-key "\C-cc" 'org-capture)
-;;; (global-set-key "\C-cb" 'org-switchb)
-;;; 
-;;; 
-;;; (setq org-directory "~/winhome/OneDrive/org")
-;;; (setq org-default-notes-file "notes.org")
-;;; 
-;;; ;; Org-capture
-;;; 
-;;; ; Org-captureを呼び出すキーシーケンス
-;;; (define-key global-map "\C-cc" 'org-capture)
-;;; ; Org-captureのテンプレート（メニュー）の設定
-;;; (setq org-capture-templates
-;;;       '(("n" "Note" entry (file+headline "~/winhome/OneDrive/org/notes.org" "Notes")
-;;;          "* %?\nEntered on %U\n %i\n %a")
-;;;         ))
-;;; 
-;;; 
-;;; ;; メモをC-M-^一発で見るための設定
-;;; ;; https://qiita.com/takaxp/items/0b717ad1d0488b74429d から拝借
-;;; (defun show-org-buffer (file)
-;;;   "Show an org-file FILE on the current buffer."
-;;;   (interactive)
-;;;   (if (get-buffer file)
-;;;       (let ((buffer (get-buffer file)))
-;;;         (switch-to-buffer buffer)
-;;;         (message "%s" file))
-;;;     (find-file (concat "~/winhome/OneDrive/org/" file))))
-;;; (global-set-key (kbd "C-M-^") '(lambda () (interactive)
-;;;                                  (show-org-buffer "notes.org")))
-;;; 
-;;; 
-;;; 
-;;; 
-;;; ;; FlyCheck
-;;; 
-;;; ;; PHP
-;;; (defun my-php-mode-hook ()
-;;;    "My PHP-mode hook."
-;;;    ;(require 'flycheck-phpstan)
-;;;    ;(flycheck-mode t)
-;;;    ;(flycheck-select-checker 'phpstan))
-;;; )
-;;; (add-hook 'php-mode-hook 'my-php-mode-hook)
-;;; 
-;;; 
-;;; ; (global-flycheck-mode)
-;;; ; (setq flycheck-indication-mode 'left-fringe)
-;;; ; (setq flycheck-check-syntax-automatically '(mode-enabled save))
-;;; 
-;;; ;; (define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
-;;; 
-;;; (setq frame-title-format "%f")
-;;; (setq text-mode-hook 'turn-off-auto-fill)
-;;; 
-
-
-;; https://qiita.com/minoruGH/items/20d7664a3a57c7365ebc
-
-(defun ytn-ivy-migemo-re-builder (str)
-  (let* ((sep " \\|\\^\\|\\.\\|\\*")
-         (splitted (--map (s-join "" it)
-                          (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
-                                          (s-split "" str t)))))
-    (s-join "" (--map (cond ((s-equals? it " ") ".*?")
-                            ((s-matches? sep it) it)
-                            (t (migemo-get-pattern it)))
-                      splitted))))
-
-(setq ivy-re-builders-alist '((t . ivy--regex-plus)
-                              (swiper . ytn-ivy-migemo-re-builder)))
-
-
-
-
-
-(defun x-clipboard-copy ()
-  (interactive)
-  (when (region-active-p)
-    (shell-command-on-region (region-beginning) (region-end) "clip.exe" nil nil)))
 
 ;; End:
 
