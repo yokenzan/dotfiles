@@ -20,35 +20,74 @@ hook_add = '''
     let g:coc_border_joinchars = ['+', '+', '+', '+']
 
     " Use <c-space> to trigger completion.
-    inoremap <silent><expr><c-space> coc#refresh()
+    inoremap <silent><expr><C-@> coc#refresh()
 
     " diagnostics
 
     nmap <silent>[A            <Plug>(coc-diagnostic-prev)
     nmap <silent>]A            <Plug>(coc-diagnostic-next)
-    nmap <silent><space>cd     :<C-u>CocList diagnostics<CR>
-    nmap <silent><space>cD     <Plug>(coc-diagnostic-info)
+    nmap <silent><space>cd     <Cmd>CocDiagnostics<CR>
+    " nmap <silent><space>cd     :<C-u>CocList diagnostics<CR>
+    " nmap <silent><space>cD     <Plug>(coc-diagnostic-info)
 
     nmap <silent><space>cr     <Plug>(coc-rename)
     nmap <silent><space>cf     <Plug>(coc-float-jump)
 
-    nmap <silent><space>c<C-]> <Plug>(coc-definition)
-    nmap <silent><space>ctd    <Plug>(coc-type-definition)
-    nmap <silent><space>ci     <Plug>(coc-implementation)
-    nmap <silent><space>cfr    <Plug>(coc-references)
-    nmap <silent><space>ch     :<C-u>call CocAction("showSignatureHelp")<CR>
-    nmap <silent><space>cl     :<C-u>call CocAction("workspaceSymbols")<CR>
-    nmap <silent><space>co     :<C-u>CocList outline<CR>
+    nmap <silent><space>c<C-]>  <Plug>(coc-definition)
+    nmap <silent><space>ctd     <Plug>(coc-type-definition)
+    nmap <silent><space>cg<C-]> <Plug>(coc-implementation)
+    nmap <silent><space>cfr     <Plug>(coc-references)
+    nmap <silent><space>ch      :<C-u>call CocAction("showSignatureHelp")<CR>
 
-    nnoremap <silent><space>K :call <SID>show_documentation()<CR>
+    nmap <silent><space>cs      :<C-u>CocList -I symbols<CR>
+    nmap <silent><space>co      :<C-u>CocList outline<CR>
+    nmap <silent><space>cD     <Cmd>CocList diagnostics<CR>
 
-    function! s:show_documentation()
-      if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-      else
-        call CocAction('doHover')
-      endif
+    " Applying code actions to the selected code block
+    " Example: `<leader>aap` for current paragraph
+    xmap <space>cca <Plug>(coc-codeaction-selected)
+    nmap <space>cca <Plug>(coc-codeaction-selected)
+
+    " Remap keys for applying code actions at the cursor position
+    nmap <space>ccc <Plug>(coc-codeaction-cursor)
+    " Remap keys for apply code actions affect whole buffer
+    nmap <space>ccs <Plug>(coc-codeaction-source)
+
+    nmap <silent><space>ccr <Plug>(coc-codeaction-refactor)
+    xmap <silent><space>ccr <Plug>(coc-codeaction-refactor-selected)
+    nmap <silent><space>ccR <Plug>(coc-codeaction-refactor-selected)
+
+    nmap <silent><space>cla <Plug>(coc-codelends-action)
+
+    xmap <silent><space>cF     <Plug>(coc-format-selected)
+    nmap <silent><space>cF     <Plug>(coc-format-selected)
+
+    " Remap <C-f> and <C-b> to scroll float windows/popups
+    if has('nvim-0.4.0') || has('patch-8.2.0750')
+      nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+      nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+      inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+      inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+      vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+      vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    endif
+
+    nnoremap <silent><space>K <Cmd>call ShowDocumentation()<CR>
+
+    function! ShowDocumentation()
+        if CocAction('hasProvider', 'hover')
+            call CocActionAsync('doHover')
+        else
+            call feedkeys('K', 'in')
+        endif
     endfunction
+    " function! s:show_documentation()
+    "   if (index(['vim','help'], &filetype) >= 0)
+    "     execute 'h '.expand('<cword>')
+    "   else
+    "     call CocAction('doHover')
+    "   endif
+    " endfunction
 
     " Highlight symbol under cursor on CursorHold
     augroup CocGroup
@@ -56,19 +95,10 @@ hook_add = '''
         autocmd CursorHold * silent call CocActionAsync('highlight')
         autocmd BufEnter,WinEnter *.csv,*.uke CocDisable
         autocmd BufLeave,WinLeave *.csv,*.uke CocEnable
+
+        " Update signature help on jump placeholder
+        autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
-
-    " Remap for rename current word
-    " nmap <Space>cr <Plug>(coc-rename)
-
-    " Remap for format selected region
-    " xmap <Space>cf <Plug>(coc-format-selected)
-    " nmap <Space>cf <Plug>(coc-format-selected)
-
-    " Remap for do codeAction of selected region
-    xmap <Space>ca <Plug>(coc-codeaction-selected)
-    nmap <Space>ca <Plug>(coc-codeaction-selected)
-
 
     smap <silent><expr><C-l>
                 \ neosnippet#jumpable()   ? "\<Plug>(neosnippet_jump)"   :
