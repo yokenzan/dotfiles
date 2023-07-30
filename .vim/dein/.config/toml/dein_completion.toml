@@ -16,6 +16,8 @@ rev   = 'release'
 # merge = 0
 # build = 'yarn install --frozen-lockfile'
 hook_add = '''
+    let g:coc_borderchars = ['-', '|', '-', '|', '+', '+', '+', '+']
+    let g:coc_border_joinchars = ['+', '+', '+', '+']
 
     " Use <c-space> to trigger completion.
     inoremap <silent><expr><c-space> coc#refresh()
