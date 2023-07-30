@@ -326,8 +326,7 @@
   (skk-init-file . "~/.skk/init")
   (default-input-method . "japanese-skk")
   (skk-share-private-jisyo . t)
-  (skk-save-jisyo-instantly . t)
-  ;; (skk-jisyo-code . 'utf-16le-with-signature)
+  ; (skk-save-jisyo-instantly . t)
   (skk-large-jisyo . "~/.dotfiles/SKK-JISYO.L")
   ;; (skk-server-host . "localhost")
   ;; (skk-server-portnum . 55100)
@@ -336,7 +335,6 @@
   (skk-dcomp-multiple-activate . t) ;; 動的補完の複数候補表示
   (skk-sticky-key . ";") ; sticky shift
   (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
-  ;;(skk-henkan-number-to-display-candidates . 8) ;;
   (skk-use-jisx0201-input-method . t)
   (skk-show-inline . 'vertical)
   (skk-show-tooltip . t)
