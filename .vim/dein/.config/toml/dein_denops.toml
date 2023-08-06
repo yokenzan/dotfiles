@@ -5,6 +5,9 @@ repo = 'vim-denops/denops.vim'
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 hook_add = '''
+    call ddu#custom#alias('source', 'file_git',           'file_external')
+    call ddu#custom#alias('source', 'directory_rec',      'file_external')
+    call ddu#custom#alias('source', 'file_git_untracked', 'file_external')
     call ddu#custom#patch_global({
         \   'ui': 'ff',
         \   'sources': [
@@ -22,6 +25,9 @@ hook_add = '''
         \           'matchers': ['matcher_ignore_current_buffer', 'matcher_substring'],
         \       },
         \       'file_old': {
+        \           'matchers': ['matcher_ignore_current_buffer', 'matcher_substring'],
+        \       },
+        \       'file_git': {
         \           'matchers': ['matcher_ignore_current_buffer', 'matcher_substring'],
         \       },
         \       'line': {
@@ -65,7 +71,7 @@ hook_add = '''
         \   'uiParams': {
         \       'ff': {
         \           'previewSplit': 'vertical',
-        \           'displayTree': v:true,
+        \           'displayTree': v:false,
         \           'ignoreEmpty': v:true,
         \           'prompt': '> ',
         \           'autoAction': {
@@ -99,6 +105,15 @@ hook_add = '''
         \       },
         \       'lsp_diagnostic': {
         \           'clientName': 'coc.nvim',
+        \       },
+        \       'file_git': {
+        \           'cmd': ['git', 'ls-files', '--exclude-standard'],
+        \       },
+        \       'file_git_untracked': {
+        \           'cmd': ['git', 'ls-files', '--others', '--exclude-standard'],
+        \       },
+        \       'directory_rec': {
+        \           'cmd': ['find', '.', 'type', 'd'],
         \       },
         \   },
         \ })
@@ -162,6 +177,9 @@ hook_add = '''
 
       nnoremap <buffer><silent> +
         \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+
+      nnoremap <silent><buffer> <C-l>
+        \ <Cmd>call ddu#ui#do_action('refreshItems')<CR>
     endfunction
 
     function! s:ddu_ff_filter_settings() abort
@@ -183,6 +201,11 @@ hook_add = '''
         au!
         au VimEnter * nested nnoremap <silent><Space>Uf <Cmd>Ddu file     -source-option-path=`expand('%:h')`<CR>
         au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>Ddu file_rec -source-option-path=`getcwd()`<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ud <Cmd>Ddu directory_rec -source-option-path=`getcwd()`<CR>
+
+        au VimEnter * nested nnoremap <silent><Space>Ug <Cmd>Ddu file_git -source-option-path=`getcwd()` -start<CR>
+        au VimEnter * nested nnoremap <silent><Space>UG <Cmd>Ddu file_git_untracked -source-option-path=`getcwd()`<CR>
+
         " au VimEnter * nested nnoremap <silent><Space>Ua <Cmd>call ddu#start({ 'sources': [{ 'name': 'file_rec' }], 'uiParams': { 'ff': { 'startFilter': v:true } } })<CR>
         au VimEnter * nested nnoremap <silent><Space>Uo <Cmd>call ddu#start({ 'name': 'MRU', 'sources': [{ 'name': 'file_old' }] })<CR>
 
@@ -194,7 +217,7 @@ hook_add = '''
 
         au VimEnter * nested nnoremap <silent><Space>US <Cmd>call ddu#start({ 'name': 'search_histories', 'sources': [{ 'name': 'search_history' }] })<CR>
 
-        au VimEnter * nested nnoremap <silent><Space>Ur <Cmd>call ddu#start({ 'resume': v:true })<CR>
+        au VimEnter * nested nnoremap <silent><Space>Ur <Cmd>Ddu -resume<CR>
         au VimEnter * nested nnoremap <silent><Space>UC <Cmd>call ddu#start({ 'name': 'colorschemes', 'sources': [{ 'name': 'colorscheme' }] })<CR>
 
         au VimEnter * nested nnoremap <silent><Space>Uld
@@ -287,6 +310,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/ddu-commands.vim'
+on_cmd   = ['Ddu']
 
 
 [[plugins]]
@@ -311,6 +335,10 @@ repo = 'Shougo/ddu-source-line'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-file_old'
+
+
+[[plugins]]
+repo = 'matsui54/ddu-source-file_external'
 
 
 [[plugins]]
