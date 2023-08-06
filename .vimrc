@@ -370,7 +370,7 @@ vnoremap ]J f<C-k>_,
 
 
 " set gdefault
-set colorcolumn=100
+" set colorcolumn=100
 " needed for showing ^X mode in completion
 set showmode
 set lazyredraw
