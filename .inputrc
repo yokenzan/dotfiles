@@ -110,6 +110,7 @@ $if mode=emacs
 
     "\C- rp": " | "
     "\C- rl": " | less"
+    "\C- rL": " | less -NR"
     "\C- rv": " | vim -"
     "\C- rV": " | view -"
     "\C- rg": " | grep "
