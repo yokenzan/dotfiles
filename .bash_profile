@@ -96,3 +96,4 @@ fi
 if [ "x$BASH_ENV_WSL_LOCALHOST_IP" == "x1" ]; then
     export DISPLAY=127.0.0.1:0.0
 fi
+export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"

@@ -81,8 +81,10 @@ $if Bash
   set horizontal-scroll-mode off
   set print-completions-horizontally on
 
-  # よくわからん
+  # Color the common prefix in menu-complete
   set menu-complete-display-prefix on
+  # タブ補完を実行するとき、タブを一回押すと入力している単語が部分的に補完されます。部分補完ができない場合、タブを二回押すと全ての補完候補が表示されます。
+  # タブを一回押した時に二回押したときと同じ補完を実行するには、以下を設定:
   set show-all-if-unmodified on
 
   # Match all files
@@ -108,6 +110,7 @@ $if mode=emacs
 
     "\C- rp": " | "
     "\C- rl": " | less"
+    "\C- rL": " | less -NR"
     "\C- rv": " | vim -"
     "\C- rV": " | view -"
     "\C- rg": " | grep "
@@ -177,6 +180,18 @@ $if mode=emacs
     "\C- fvl": " f-vl"
 
     "\C- \C- u": " uuidgen | tr -d '\n' | cp2clip"
+
+    # Commands with NPM
+
+    "\C- ng": " npm run gen"
+    "\C- nd": " npm run dev"
+    "\C- ns": " npm run staging"
+    "\C- nb": " npm run build"
+
+    "\C- \C-ng": " npm run gen"
+    "\C- \C-nd": " npm run dev"
+    "\C- \C-ns": " npm run staging"
+    "\C- \C-nb": " npm run build"
 
     # Common to Console & RXVT
     "\C-?":  backward-kill-line        # Ctrl-BackSpace

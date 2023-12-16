@@ -64,10 +64,6 @@ repo = 'vim-scripts/proton'
 
 
 [[plugins]]
-repo = 'vim-scripts/pyte'
-
-
-[[plugins]]
 repo = 'crusoexia/vim-dream'
 hook_add = '''
     let g:dream_italic = 1
@@ -98,10 +94,6 @@ repo = 'vim-scripts/AutumnLeaf'
 
 
 [[plugins]]
-repo = 'vim-scripts/nuvola.vim'
-
-
-[[plugins]]
 repo = 'vim-scripts/summerfruit256.vim'
 
 
@@ -126,7 +118,7 @@ hook_add = '''
     " 'ocean-community'
     " 'lighter-community'
     " 'darker-community'
-    let g:material_theme_style      = 'ocean'
+    let g:material_theme_style      = 'lighter'
     let g:material_terminal_italics = 1
 '''
 
@@ -165,6 +157,7 @@ repo = 'logico/typewriter'
 
 [[plugins]]
 repo = 'aktersnurra/no-clown-fiesta.nvim'
+if   = 'has("nvim")'
 
 
 [[plugins]]
@@ -189,6 +182,7 @@ repo = 'marciomazza/vim-brogrammer-theme'
 
 [[plugins]]
 repo = 'rainglow/vim'
+if   = 'has("gui_running")'
 
 
 [[plugins]]
@@ -204,15 +198,8 @@ repo = 'srcery-colors/srcery-vim'
 
 
 [[plugins]]
-repo = 'lourenci/github-colors'
-
-
-[[plugins]]
-repo = 'vv9k/vim-github-dark'
-
-
-[[plugins]]
 repo = 'savq/melange'
+if   = 'has("nvim")'
 
 
 [[plugins]]
@@ -244,10 +231,6 @@ repo = 'beikome/cosme.vim'
 
 
 [[plugins]]
-repo = 'shaunsingh/nord.nvim'
-
-
-[[plugins]]
 repo = 'bluz71/vim-nightfly-colors'
 
 
@@ -255,12 +238,8 @@ repo = 'bluz71/vim-nightfly-colors'
 repo = 'sainnhe/sonokai'
 
 
-[[plugins]]
-repo = 'catppuccin/vim'
-
-
-[[plugins]]
-repo = 'arcticicestudio/nord-vim'
+# [[plugins]]
+# repo = 'catppuccin/vim'
 
 
 [[plugins]]
@@ -277,3 +256,31 @@ repo = 'ayu-theme/ayu-vim'
 
 [[plugins]]
 repo = 'agude/vim-eldar'
+
+
+[[plugins]]
+repo = 'bringsrain/strawberry'
+
+
+[[plugins]]
+repo = 'hachy/eva01.vim'
+
+
+[[plugins]]
+repo = 'fcpg/vim-farout'
+
+
+[[plugins]]
+repo = 'Enonya/yuyuko.vim'
+
+
+[[plugins]]
+repo = 'abnt713/vim-hashpunk'
+
+
+[[plugins]]
+repo = 'uu59/vim-herokudoc-theme'
+
+
+[[plugins]]
+repo = 'freeo/vim-kalisi'
