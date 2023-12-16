@@ -61,19 +61,26 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'osyo-manga/vim-precious'
 
 
-[[plugins]]
-repo     = 'airblade/vim-gitgutter'
-if       = 'executable("git")'
-hook_add = '''
-    let s:gitgutter_sign_candidates         = ['ゝ', '', '〇', '●']
-    let s:gitgutter_sign_index              = 0
+# [[plugins]]
+# repo     = 'airblade/vim-gitgutter'
+# if       = 'executable("git")'
+# hook_add = '''
+#     let s:gitgutter_sign_candidates         = ['ゝ', '', '〇', '●']
+#     let s:gitgutter_sign_index              = 0
+#
+#     let s:gitgutter_sign_base               = s:gitgutter_sign_candidates[s:gitgutter_sign_index]
+#     let g:gitgutter_sign_added              = s:gitgutter_sign_base
+#     let g:gitgutter_sign_modified           = s:gitgutter_sign_base
+#     let g:gitgutter_sign_removed            = s:gitgutter_sign_base
+#     let g:gitgutter_sign_removed_first_line = s:gitgutter_sign_base
+#     let g:gitgutter_sign_modified_removed   = s:gitgutter_sign_base
+# '''
 
-    let s:gitgutter_sign_base               = s:gitgutter_sign_candidates[s:gitgutter_sign_index]
-    let g:gitgutter_sign_added              = s:gitgutter_sign_base
-    let g:gitgutter_sign_modified           = s:gitgutter_sign_base
-    let g:gitgutter_sign_removed            = s:gitgutter_sign_base
-    let g:gitgutter_sign_removed_first_line = s:gitgutter_sign_base
-    let g:gitgutter_sign_modified_removed   = s:gitgutter_sign_base
+
+[[plugins]]
+repo     = 'mhinz/vim-signify'
+if       = 'executable("git") && (has("nvim") || has("patch-8.0.902"))'
+hook_add = '''
 '''
 
 
@@ -302,11 +309,6 @@ hook_add = '''
     \   'python': {
     \       'command':   'python3'
     \   },
-    \   'javascript': {
-    \       'command':   '/mnt/c/Windows/System32/cscript.exe',
-    \       'exec':      '%c %o %{!wslpath -w %s}',
-    \       'cmdopt':    '//NoLogo',
-    \   },
     \   'uke': {
     \       'command':                     'recediff',
     \       'exec':                        '%c %o %s %a',
@@ -324,6 +326,12 @@ hook_add = '''
     " \       'exec':                        'bundle exec %c %o %s %a',
     " \       'outputter':                   'quickfix',
     " \       'hook/cd/directory':           '~/wk/repos/recediff',
+
+    " \   'javascript': {
+    " \       'command':   '/mnt/c/Windows/System32/cscript.exe',
+    " \       'exec':      '%c %o %{!wslpath -w %s}',
+    " \       'cmdopt':    '//NoLogo',
+    " \   },
 
 nnoremap <Leader>r :<C-u>QuickRun<CR>
 xnoremap <Leader>r :<C-u>'<,'>QuickRun<CR>
@@ -471,3 +479,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'raghur/vim-ghost'
+
+
+[[plugins]]
+repo = 'gaving/vim-textobj-argument'
