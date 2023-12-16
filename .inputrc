@@ -181,6 +181,18 @@ $if mode=emacs
 
     "\C- \C- u": " uuidgen | tr -d '\n' | cp2clip"
 
+    # Commands with NPM
+
+    "\C- ng": " npm run gen"
+    "\C- nd": " npm run dev"
+    "\C- ns": " npm run staging"
+    "\C- nb": " npm run build"
+
+    "\C- \C-ng": " npm run gen"
+    "\C- \C-nd": " npm run dev"
+    "\C- \C-ns": " npm run staging"
+    "\C- \C-nb": " npm run build"
+
     # Common to Console & RXVT
     "\C-?":  backward-kill-line        # Ctrl-BackSpace
     "\e[2~": paste-from-clipboard      # "Ins. Key"
