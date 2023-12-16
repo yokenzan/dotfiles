@@ -81,8 +81,10 @@ $if Bash
   set horizontal-scroll-mode off
   set print-completions-horizontally on
 
-  # よくわからん
+  # Color the common prefix in menu-complete
   set menu-complete-display-prefix on
+  # タブ補完を実行するとき、タブを一回押すと入力している単語が部分的に補完されます。部分補完ができない場合、タブを二回押すと全ての補完候補が表示されます。
+  # タブを一回押した時に二回押したときと同じ補完を実行するには、以下を設定:
   set show-all-if-unmodified on
 
   # Match all files
