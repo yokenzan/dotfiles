@@ -449,3 +449,12 @@ else
     let &t_EI.="[<s[<0t"
     let &t_te.="[<0t[<s"
 end
+
+function! RetrySpellCompletion()
+    if complete_info(['mode']).mode == 'spell' && !&spell
+        set spell
+        echo 'spell checking is enabled'
+    endif
+endfunction
+
+au CompleteDonePre * call RetrySpellCompletion()
