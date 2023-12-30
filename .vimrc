@@ -315,6 +315,9 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
+" Unicodeをコードポイントから入力する https://zenn.dev/kato_k/articles/vim-tips-no002
+inoremap <C-v>u <C-r>=nr2char(0x)<Left>
+
 nnoremap <silent><C-[>h <C-w>h
 nnoremap <silent><C-[>j <C-w>j
 nnoremap <silent><C-[>k <C-w>k
@@ -350,7 +353,7 @@ cnoremap <silent><C-[>f <S-Right>
 
 nnoremap <silent><C-s>s :<C-u>terminal ++rows=20<CR>
 nnoremap <silent><C-s>v :<C-u>vertical terminal<CR>
-nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns/2, minheight: &lines/2 })<CR>
+nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns*2/3, minheight: &lines*2/3 })<CR>
 
 snoremap <silent><C-b> <S-Left>
 snoremap <silent><C-f> <S-Right>
@@ -389,6 +392,7 @@ endif
 
 nnoremap <Leader>R <Nop>
 nnoremap <Leader>C :<C-u>Copen<CR>
+nnoremap <Leader>c :<C-u>cw<CR>
 
 if filereadable('./.vimrc.project')
     source ./.vimrc.project
