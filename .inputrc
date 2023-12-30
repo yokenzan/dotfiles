@@ -132,6 +132,20 @@ $if mode=emacs
     "\C- o ":  " "
     "\C- oS":  "d" # remove sudo and execute
 
+    "\C- \C-o:":  ": "
+    "\C- \C-os":  "sudo "
+    "\C- \C-om":  "man "
+    "\C- \C-ov":  "vim "
+    "\C- \C-ot":  "type "
+    "\C- \C-o ":  " "
+    "\C- \C-oS":  "d" # remove sudo and execute
+
+    # Git
+
+    "\C- gS":  " git submodule update -i"
+
+    "\C- \C-gS":  " git submodule update -i"
+
     # Other key maps
 
     "\C- pp": " $(pwd) "
