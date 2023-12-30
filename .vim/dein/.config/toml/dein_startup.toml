@@ -80,8 +80,6 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo     = 'mhinz/vim-signify'
 if       = 'executable("git") && (has("nvim") || has("patch-8.0.902"))'
-hook_add = '''
-'''
 
 
 [[plugins]]
