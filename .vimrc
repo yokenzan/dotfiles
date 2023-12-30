@@ -458,3 +458,5 @@ function! RetrySpellCompletion()
 endfunction
 
 au CompleteDonePre * call RetrySpellCompletion()
+
+set nofixeol
