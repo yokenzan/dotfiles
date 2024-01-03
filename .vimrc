@@ -464,3 +464,41 @@ endfunction
 au CompleteDonePre * call RetrySpellCompletion()
 
 set nofixeol
+
+
+" https://qiita.com/lighttiger2505/items/166a4705f852e8d7cd0d#%E4%BB%A5%E5%89%8D%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%89%E3%82%A5%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B
+if has('persistent_undo')
+  set undodir=./.vimundo,~/.vimundo
+  augroup SaveUndoFile
+    autocmd!
+    autocmd BufReadPre ~/* setlocal undofile
+  augroup END
+endif
+
+augroup GrepCmd
+    autocmd!
+    autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
+augroup END
+
+
+if exists('g:__QUICKFIX_TOGGLE__')
+    finish
+endif
+let g:__QUICKFIX_TOGGLE__ = 1
+
+function! ToggleQuickfix()
+    let l:nr = winnr('$')
+    cwindow
+    let l:nr2 = winnr('$')
+    if l:nr == l:nr2
+        cclose
+    endif
+endfunction
+nnoremap <script> <silent> <Space>tq :call ToggleQuickfix()<CR>
+
+
+augroup GitSpellCheck
+    autocmd!
+    autocmd FileType gitcommit setlocal spell
+augroup END
+
