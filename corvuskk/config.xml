@@ -211,6 +211,8 @@
       <row st="X" al="x" ok="s" />		<!-- x - sy/sh -->
       <row st="Y" al="y" ok="y" />
       <row st="Z" al="z" ok="z" />
+      <row st="`" al="@" ok="t" /> <!-- っ -->
+      <row st="_" al="\" ok="n" /> <!-- ん -->
     </list>
   </section>
   <section name="kana">
@@ -1048,7 +1050,7 @@
       <row ro="]" hi="」" ka="」" an="｣" so="0" />		<!-- 括弧 -->
       <row ro="^" hi="^" ka="^" an="^" so="0" />
       <row ro="_" hi="_" ka="_" an="_" so="0" />
-      <row ro="`" hi="`" ka="`" an="`" so="0" />
+      <row ro="x`" hi="`" ka="`" an="`" so="0" />
       <!-- <row ro="{" hi="{" ka="{" an="{" so="0" /> -->
       <row ro="x{" hi="{" ka="{" an="{" so="0" />		<!-- x前置 -->
 
