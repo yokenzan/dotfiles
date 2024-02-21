@@ -401,7 +401,6 @@
       <row ro="zz" hi="ざん" ka="ザン" an="ｻﾞﾝ" so="0" />
       <row ro="zn" hi="ざん" ka="ザン" an="ｻﾞﾝ" so="0" />
       <row ro="zk" hi="じん" ka="ジン" an="ｼﾞﾝ" so="0" />
-      <row ro="jk" hi="じん" ka="ジン" an="ｼﾞﾝ" so="0" />
       <row ro="zj" hi="ずん" ka="ズン" an="ｽﾞﾝ" so="0" />
       <row ro="zd" hi="ぜん" ka="ゼン" an="ｾﾞﾝ" so="0" />
       <row ro="zl" hi="ぞん" ka="ゾン" an="ｿﾞﾝ" so="0" />
@@ -513,6 +512,7 @@
       <row ro="xo" hi="しょ" ka="ショ" an="ｼｮ" so="0" />
       <row ro="xz" hi="しゃん" ka="シャン" an="ｼｬﾝ" so="0" />
       <row ro="xn" hi="しゃん" ka="シャン" an="ｼｬﾝ" so="0" />
+      <row ro="xk" hi="しん" ka="シン" an="ｼｭﾝ" so="0" />
       <row ro="xj" hi="しゅん" ka="シュン" an="ｼｭﾝ" so="0" />
       <row ro="xd" hi="しぇん" ka="シェン" an="ｼｪﾝ" so="0" />
       <row ro="xl" hi="しょん" ka="ション" an="ｼｮﾝ" so="0" />
@@ -697,6 +697,7 @@
 
       <row ro="jz" hi="じゃん" ka="ジャン" an="ｼﾞｬﾝ" so="0" />
       <row ro="jn" hi="じゃん" ka="ジャン" an="ｼﾞｬﾝ" so="0" />
+      <row ro="jk" hi="じん" ka="ジン" an="ｼﾞﾝ" so="0" />
       <row ro="jj" hi="じゅん" ka="ジュン" an="ｼﾞｭﾝ" so="0" />
       <row ro="jd" hi="じぇん" ka="ジェン" an="ｼﾞｪﾝ" so="0" />
       <row ro="jl" hi="じょん" ka="ジョン" an="ｼﾞｮﾝ" so="0" />
