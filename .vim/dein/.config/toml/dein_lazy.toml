@@ -136,7 +136,7 @@ hook_post_source = '''
 
     call denite#custom#option('default', 'preview_width', winwidth(0) / 2)
     call denite#custom#option('default', 'winwidth', winwidth(0))
-    call denite#custom#option('default', 'winwidth', 160)
+    call denite#custom#option('default', 'winwidth', 200)
 
     " file/git
 

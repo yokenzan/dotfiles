@@ -45,3 +45,13 @@ on_ft = ['graphql']
 [[plugins]]
 repo = 'prisma/vim-prisma'
 on_ft = ['prisma']
+
+
+[[plugins]]
+repo = 'dart-lang/dart-vim-plugin'
+on_ft = ['dart']
+
+
+[[plugins]]
+repo = 'thosakwe/vim-flutter'
+on_ft = ['dart']
