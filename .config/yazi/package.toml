@@ -1,0 +1,27 @@
+[plugin]
+deps = []
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "ca61658"
+hash = "1195ca9fc200feae4a6ea92356d1fd6"
+
+[[flavor.deps]]
+use = "muratoffalex/kanagawa-lotus"
+rev = "d1947d4"
+hash = "f93972a1c6793b9602c379b29f70a086"
+
+[[flavor.deps]]
+use = "gosxrgxx/flexoki-light"
+rev = "45eb0a0"
+hash = "1ee212b0799497b54c7e60bac8931e4e"
+
+[[flavor.deps]]
+use = "Mintass/rose-pine-dawn"
+rev = "d82f54f"
+hash = "eb2346fb43d962ddd2b08961c8d0b741"
+
+[[flavor.deps]]
+use = "hankertrix/bluloco-yazi:bluloco-light"
+rev = "dc47a6d"
+hash = "faf465d9c4f51aac27451ec7b9984920"
