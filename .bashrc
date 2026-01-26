@@ -247,6 +247,12 @@ PATH="$GOPATH/bin:$PATH"
 
 export DENO_INSTALL="/home/yosuke/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+# fzf keybindings
+export FZF_DEFAULT_OPTS='
+  --bind=ctrl-n:down,ctrl-p:up
+  --bind=ctrl-u:half-page-up,ctrl-d:half-page-down
+  --bind=ctrl-l:clear-query
+'
 
 if [ "x$BASH_ENV_USE_GOOGLE_IME_SKK" == "x1" ]; then
     if ps aux | grep google-ime-skk | grep -vqs grep ; then
