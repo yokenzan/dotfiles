@@ -1,0 +1,33 @@
+[manager]
+linemode = "size"
+show_hidden = false
+show_symlink = true
+sort_by = "natural"
+sort_dir_first = true
+sort_sensitive = false
+
+[plugin]
+prepend_fetchers = [
+	{ id = "git", name = "*", run = "git" },
+	{ id = "git", name = "*/", run = "git" },
+]
+
+[opener]
+open_windows = [
+	{ run = 'wslview "$@"', desc = "Open with Windows", orphan = true },
+]
+
+[open]
+prepend_rules = [
+	# HTML
+	{ mime = "text/html", use = "open_windows" },
+	# PDF
+	{ mime = "application/pdf", use = "open_windows" },
+	# Microsoft Office
+	{ mime = "application/vnd.openxmlformats-officedocument.*", use = "open_windows" },
+	{ mime = "application/vnd.ms-excel", use = "open_windows" },
+	{ mime = "application/vnd.ms-powerpoint", use = "open_windows" },
+	{ mime = "application/msword", use = "open_windows" },
+	# LibreOffice/OpenDocument
+	{ mime = "application/vnd.oasis.opendocument.*", use = "open_windows" },
+]
