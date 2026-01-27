@@ -70,6 +70,7 @@ fi
 # User specific environment and startup programs
 PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.bin"
 
 export PATH
 export LANG=en_US.UTF-8
@@ -96,4 +97,12 @@ fi
 if [ "x$BASH_ENV_WSL_LOCALHOST_IP" == "x1" ]; then
     export DISPLAY=127.0.0.1:0.0
 fi
+
+# https://github.com/microsoft/wslg/wiki/GPU-selection-in-WSLg
+export MESA_D3D12_DEFAULT_ADAPTER_NAME=RTX
+
 export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"
+
+# https://zenn.dev/cat2151/scraps/53076d45431d49
+export PULSE_SERVER=unix:$(sed 's/unix://g' <<< "$PULSE_SERVER")
+. "$HOME/.cargo/env"

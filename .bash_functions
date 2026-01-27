@@ -241,6 +241,10 @@ sshinit() {
 }
 
 
+__launch_receiptisan() {
+    cd ~/wk/repos/receiptisan-v0.1 && bundle exec public/index.rb 1> /dev/null 2>&1 &
+}
+
 release_note() {
     RELEASE_NOTE_FILENAME=release_$(basename $(pwd))_$(date +%Y.%m.%d_%T).log
 

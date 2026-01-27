@@ -202,9 +202,11 @@ if [ $? = 0 ]; then
         PS1=$PS1' \[\033[5;38;5;213m\](ranger)\[\033[00m\]'
     fi
 
-    export PS1=$PS1' \[\033[3;35m\]\w\[\033[00m\]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[38;5;213m\]\$\[\033[00m\] '
+    # export PS1=$PS1' \[\033[3;35m\]\w\[\033[00m\]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[38;5;213m\]\$\[\033[00m\] '
+    export PS1=$PS1' \[\033[3;35m\]\w\[\033[00m\]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$(__prompt_command) \[\033[38;5;213m\]\$\[\033[00m\] '
 else
-    PS1='\n\[\033[38;5;213m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[36m\]\u@\h\[\033[00m\]'
+    # PS1='\n\[\033[38;5;213m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[36m\]\u@\h\[\033[00m\]'
+    PS1='\n\[\033[38;5;69m\]\D{%Y/%m/%d %H:%M:%S}\[\033[00m\] \[\033[38;5;48m\]\u@\h\[\033[00m\]'
 
     # Vim
     if [[ $VIMRUNTIME != "" ]] ; then
@@ -216,7 +218,8 @@ else
         PS1=$PS1' \[\033[5;38;5;228m\](ranger)\[\033[00m\]'
     fi
 
-    export PS1=$PS1' \[\033[3;35m\]\w\[\033[00m\]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
+    # export PS1=$PS1' \[\033[3;35m\]\w\[\033[00m\]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\[\033[33m\]\$\[\033[00m\] '
+    export PS1=$PS1' \[\033[3;38;5;13m\]\w\[\033[00m\]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$(__prompt_command) \[\033[33m\]\$\[\033[00m\] '
 fi
 
 
@@ -262,6 +265,10 @@ if [ "x$BASH_ENV_USE_GOOGLE_IME_SKK" == "x1" ]; then
     fi
 else
     pkill google-ime-skk
+fi
+
+if [ "x$BASH_ENV_LAUNCH_RECEIPTISAN" == "x1" ]; then
+    if [ $(port_is_busy 4567) == "free" ] ; then __launch_receiptisan; fi
 fi
 
 which symfony-autocomplete > /dev/null 2>&1

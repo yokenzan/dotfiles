@@ -39,9 +39,12 @@ hook_add = '''
     nmap <silent><space>cfr     <Plug>(coc-references)
     nmap <silent><space>ch      :<C-u>call CocAction("showSignatureHelp")<CR>
 
-    nmap <silent><space>cs      :<C-u>CocList -I symbols<CR>
-    nmap <silent><space>co      :<C-u>CocList outline<CR>
-    nmap <silent><space>cD     <Cmd>CocList diagnostics<CR>
+    nmap <silent><space>cls      :<C-u>CocList -I symbols<CR>
+    nmap <silent><space>clo      :<C-u>CocList outline<CR>
+    nmap <silent><space>cld     <Cmd>CocList diagnostics<CR>
+    nmap <silent><space>clr     :<C-u>CocListResume<CR>
+    nmap <silent><space>[c      :<C-u>CocPrev<CR>
+    nmap <silent><space>]c      :<C-u>CocNext<CR>
 
     " Applying code actions to the selected code block
     " Example: `<leader>aap` for current paragraph
@@ -99,6 +102,17 @@ hook_add = '''
         " Update signature help on jump placeholder
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
+
+    " Remap for rename current word
+    nmap <Space>cr <Plug>(coc-rename)
+
+    " Remap for format selected region
+    xmap <Space>cf <Plug>(coc-format-selected)
+    nmap <Space>cf <Plug>(coc-format-selected)
+
+    " Remap for do codeAction of selected region
+    xmap <Space>ca <Plug>(coc-codeaction-selected)
+    nmap <Space>ca <Plug>(coc-codeaction-selected)
 
     smap <silent><expr><C-l>
                 \ neosnippet#jumpable()   ? "\<Plug>(neosnippet_jump)"   :

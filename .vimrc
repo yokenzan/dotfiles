@@ -315,6 +315,9 @@ autocmd BufLeave,WinLeave * setlocal nocursorcolumn
 imap <expr><C-v>  pumvisible() ? "\<C-n>\<C-n>\<C-n>\<C-n>" : "\<C-v>"
 imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 
+" Unicodeをコードポイントから入力する https://zenn.dev/kato_k/articles/vim-tips-no002
+inoremap <C-v>u <C-r>=nr2char(0x)<Left>
+
 nnoremap <silent><C-[>h <C-w>h
 nnoremap <silent><C-[>j <C-w>j
 nnoremap <silent><C-[>k <C-w>k
@@ -350,7 +353,7 @@ cnoremap <silent><C-[>f <S-Right>
 
 nnoremap <silent><C-s>s :<C-u>terminal ++rows=20<CR>
 nnoremap <silent><C-s>v :<C-u>vertical terminal<CR>
-nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns/2, minheight: &lines/2 })<CR>
+nnoremap <silent><C-s>p :<C-u>call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: &columns*2/3, minheight: &lines*2/3 })<CR>
 
 snoremap <silent><C-b> <S-Left>
 snoremap <silent><C-f> <S-Right>
@@ -389,6 +392,7 @@ endif
 
 nnoremap <Leader>R <Nop>
 nnoremap <Leader>C :<C-u>Copen<CR>
+nnoremap <Leader>c :<C-u>cw<CR>
 
 if filereadable('./.vimrc.project')
     source ./.vimrc.project
@@ -399,7 +403,7 @@ endif
 
 
 function! UkeGetPreviewedText(uke_text) abort
-    return system('recediff --preview', a:uke_text)
+    return system('receiptisan --preview', a:uke_text)
 endfunction
 
 function! UkePopupPreview(start, end) abort
@@ -458,3 +462,43 @@ function! RetrySpellCompletion()
 endfunction
 
 au CompleteDonePre * call RetrySpellCompletion()
+
+set nofixeol
+
+
+" https://qiita.com/lighttiger2505/items/166a4705f852e8d7cd0d#%E4%BB%A5%E5%89%8D%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%89%E3%82%A5%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B
+if has('persistent_undo')
+  set undodir=./.vimundo,~/.vimundo
+  augroup SaveUndoFile
+    autocmd!
+    autocmd BufReadPre ~/* setlocal undofile
+  augroup END
+endif
+
+augroup GrepCmd
+    autocmd!
+    autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
+augroup END
+
+
+if exists('g:__QUICKFIX_TOGGLE__')
+    finish
+endif
+let g:__QUICKFIX_TOGGLE__ = 1
+
+function! ToggleQuickfix()
+    let l:nr = winnr('$')
+    cwindow
+    let l:nr2 = winnr('$')
+    if l:nr == l:nr2
+        cclose
+    endif
+endfunction
+nnoremap <script> <silent> <Space>tq :call ToggleQuickfix()<CR>
+
+
+augroup GitSpellCheck
+    autocmd!
+    autocmd FileType gitcommit setlocal spell
+augroup END
+
