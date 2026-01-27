@@ -55,3 +55,8 @@ on_ft = ['dart']
 [[plugins]]
 repo = 'thosakwe/vim-flutter'
 on_ft = ['dart']
+
+
+[[plugins]]
+repo = 'Glench/Vim-Jinja2-Syntax'
+
