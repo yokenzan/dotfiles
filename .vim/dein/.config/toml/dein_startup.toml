@@ -446,17 +446,17 @@ hook_add = '''
 repo     = 'osyo-manga/vim-textobj-multiblock'
 
 
-# Disabled: was needed for Denite.nvim
-# [[plugins]]
-# repo    = 'roxma/vim-hug-neovim-rpc'
-# if      = '!has("nvim") && has("python3")'
-# depends = ['nvim-yarp']
+# Needed for Denite.nvim on Vim
+[[plugins]]
+repo    = 'roxma/vim-hug-neovim-rpc'
+if      = '!has("nvim") && has("python3")'
+depends = ['nvim-yarp']
 
 
-# Disabled: was needed for Denite.nvim
-# [[plugins]]
-# repo = 'roxma/nvim-yarp'
-# if   = '!has("nvim") && has("python3")'
+# Needed for Denite.nvim on Vim
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if   = '!has("nvim") && has("python3")'
 
 
 [[plugins]]
@@ -484,96 +484,96 @@ hook_add = '''
 repo = 'gaving/vim-textobj-argument'
 
 
-[[plugins]]
-repo     = 'junegunn/fzf'
-if       = 'executable("fzf")'
-merged   = 0
-hook_add = '''
-    set rtp+=/opt/homebrew/opt/fzf
-'''
-
-
-[[plugins]]
-repo     = 'junegunn/fzf.vim'
-depends  = ['fzf']
-hook_add = '''
-    " Preview window settings
-    let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-    " Layout
-    let g:fzf_layout = { 'down': '40%' }
-
-    " Colors to match colorscheme
-    let g:fzf_colors = {
-        \ 'fg':      ['fg', 'Normal'],
-        \ 'bg':      ['bg', 'Normal'],
-        \ 'hl':      ['fg', 'Search'],
-        \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-        \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-        \ 'hl+':     ['fg', 'Statement'],
-        \ 'info':    ['fg', 'PreProc'],
-        \ 'border':  ['fg', 'Ignore'],
-        \ 'prompt':  ['fg', 'Conditional'],
-        \ 'pointer': ['fg', 'Exception'],
-        \ 'marker':  ['fg', 'Keyword'],
-        \ 'spinner': ['fg', 'Label'],
-        \ 'header':  ['fg', 'Comment'],
-        \ }
-
-    " History directory
-    let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-    " Key mappings (similar to Denite)
-    nnoremap <silent><Space>uf :<C-u>exe 'Files' (empty(expand('%')) ? '.' : expand('%:h'))<CR>
-    " nnoremap <silent><Space>uc :<C-u>Files<CR>
-    nnoremap <silent><Space>ua :<C-u>Files<CR>
-    nnoremap <silent><Space>ug :<C-u>GFiles<CR>
-    nnoremap <silent><Space>uG :<C-u>GFiles?<CR>
-    nnoremap <silent><Space>ub :<C-u>Buffers<CR>
-    nnoremap <silent><Space>ul :<C-u>BLines<CR>
-    nnoremap <silent><Space>uL :<C-u>Lines<CR>
-    nnoremap <silent><Space>uR :<C-u>Registers<CR>
-    nnoremap <silent><Space>umm :<C-u>History<CR>
-    " nnoremap <silent><Space>umo :<C-u>History<CR>
-    nnoremap <silent><Space>uj :<C-u>Jumps<CR>
-    nnoremap <silent><Space>uM :<C-u>Marks<CR>
-    nnoremap <silent><Space>uh :<C-u>Helptags<CR>
-    nnoremap <silent><Space>ut :<C-u>Tags<CR>
-    nnoremap <silent><Space>uT :<C-u>BTags<CR>
-    nnoremap <silent><Space>uw :<C-u>Windows<CR>
-    nnoremap <silent><Space>uC :<C-u>Colors<CR>
-    nnoremap <silent><Space>u: :<C-u>History:<CR>
-    nnoremap <silent><Space>u/ :<C-u>History/<CR>
-    nnoremap <silent><Space>uc :<C-u>Commands<CR>
-
-    " Git integration
-    nnoremap <silent><Space>gl :<C-u>Commits<CR>
-    nnoremap <silent><Space>gL :<C-u>BCommits<CR>
-
-    " Grep with ripgrep (if available) or git grep
-    if executable('rg')
-        nnoremap <silent><Space>gg :<C-u>Rg<CR>
-        nnoremap <silent><Space>gG :<C-u>Rg <C-r><C-w><CR>
-    else
-        nnoremap <silent><Space>gg :<C-u>GGrep<CR>
-        nnoremap <silent><Space>gG :<C-u>GGrep <C-r><C-w><CR>
-    endif
-
-    " Search word under cursor
-    nnoremap <silent><Space>*  :<C-u>BLines <C-r><C-w><CR>
-
-    " Custom commands
-    command! -bang -nargs=? -complete=dir Files
-        \ call fzf#vim#files(<q-args>,
-        \   fzf#vim#with_preview(), <bang>0)
-
-    command! -bang -nargs=* GGrep
-        \ call fzf#vim#grep(
-        \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
-        \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-    command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg --column --line-number --no-heading --color=always --smart-case -- '.fzf#shellescape(<q-args>),
-        \   fzf#vim#with_preview(), <bang>0)
-'''
+# [[plugins]]
+# repo     = 'junegunn/fzf'
+# if       = 'executable("fzf")'
+# merged   = 0
+# hook_add = '''
+#     set rtp+=/opt/homebrew/opt/fzf
+# '''
+# 
+# 
+# [[plugins]]
+# repo     = 'junegunn/fzf.vim'
+# depends  = ['fzf']
+# hook_add = '''
+#     " Preview window settings
+#     let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+# 
+#     " Layout
+#     let g:fzf_layout = { 'down': '40%' }
+# 
+#     " Colors to match colorscheme
+#     let g:fzf_colors = {
+#         \ 'fg':      ['fg', 'Normal'],
+#         \ 'bg':      ['bg', 'Normal'],
+#         \ 'hl':      ['fg', 'Search'],
+#         \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+#         \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+#         \ 'hl+':     ['fg', 'Statement'],
+#         \ 'info':    ['fg', 'PreProc'],
+#         \ 'border':  ['fg', 'Ignore'],
+#         \ 'prompt':  ['fg', 'Conditional'],
+#         \ 'pointer': ['fg', 'Exception'],
+#         \ 'marker':  ['fg', 'Keyword'],
+#         \ 'spinner': ['fg', 'Label'],
+#         \ 'header':  ['fg', 'Comment'],
+#         \ }
+# 
+#     " History directory
+#     let g:fzf_history_dir = '~/.local/share/fzf-history'
+# 
+#     " Key mappings (similar to Denite)
+#     nnoremap <silent><Space>uf :<C-u>exe 'Files' (empty(expand('%')) ? '.' : expand('%:h'))<CR>
+#     " nnoremap <silent><Space>uc :<C-u>Files<CR>
+#     nnoremap <silent><Space>ua :<C-u>Files<CR>
+#     nnoremap <silent><Space>ug :<C-u>GFiles<CR>
+#     nnoremap <silent><Space>uG :<C-u>GFiles?<CR>
+#     nnoremap <silent><Space>ub :<C-u>Buffers<CR>
+#     nnoremap <silent><Space>ul :<C-u>BLines<CR>
+#     nnoremap <silent><Space>uL :<C-u>Lines<CR>
+#     nnoremap <silent><Space>uR :<C-u>Registers<CR>
+#     nnoremap <silent><Space>umm :<C-u>History<CR>
+#     " nnoremap <silent><Space>umo :<C-u>History<CR>
+#     nnoremap <silent><Space>uj :<C-u>Jumps<CR>
+#     nnoremap <silent><Space>uM :<C-u>Marks<CR>
+#     nnoremap <silent><Space>uh :<C-u>Helptags<CR>
+#     nnoremap <silent><Space>ut :<C-u>Tags<CR>
+#     nnoremap <silent><Space>uT :<C-u>BTags<CR>
+#     nnoremap <silent><Space>uw :<C-u>Windows<CR>
+#     nnoremap <silent><Space>uC :<C-u>Colors<CR>
+#     nnoremap <silent><Space>u: :<C-u>History:<CR>
+#     nnoremap <silent><Space>u/ :<C-u>History/<CR>
+#     nnoremap <silent><Space>uc :<C-u>Commands<CR>
+# 
+#     " Git integration
+#     nnoremap <silent><Space>gl :<C-u>Commits<CR>
+#     nnoremap <silent><Space>gL :<C-u>BCommits<CR>
+# 
+#     " Grep with ripgrep (if available) or git grep
+#     if executable('rg')
+#         nnoremap <silent><Space>gg :<C-u>Rg<CR>
+#         nnoremap <silent><Space>gG :<C-u>Rg <C-r><C-w><CR>
+#     else
+#         nnoremap <silent><Space>gg :<C-u>GGrep<CR>
+#         nnoremap <silent><Space>gG :<C-u>GGrep <C-r><C-w><CR>
+#     endif
+# 
+#     " Search word under cursor
+#     nnoremap <silent><Space>*  :<C-u>BLines <C-r><C-w><CR>
+# 
+#     " Custom commands
+#     command! -bang -nargs=? -complete=dir Files
+#         \ call fzf#vim#files(<q-args>,
+#         \   fzf#vim#with_preview(), <bang>0)
+# 
+#     command! -bang -nargs=* GGrep
+#         \ call fzf#vim#grep(
+#         \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
+#         \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+# 
+#     command! -bang -nargs=* Rg
+#         \ call fzf#vim#grep(
+#         \   'rg --column --line-number --no-heading --color=always --smart-case -- '.fzf#shellescape(<q-args>),
+#         \   fzf#vim#with_preview(), <bang>0)
+# '''

@@ -41,265 +41,265 @@ hook_add = '''
 
 
 # Disabled: replaced by fzf.vim
-# [[plugins]]
-# repo     = 'Shougo/denite.nvim'
-# on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteProjectDir', 'DeniteCursorWord']
-# on_func  = ['denite#']
-# if       = 'has("python3")'
-# hook_add = '''
-#
-#     " keymap within Denite
-#
-#     autocmd FileType denite        call s:denite_my_settings()
-#     autocmd FileType denite-filter call s:denite_filter_my_settings()
-#
-#     function! s:denite_my_settings() abort
-#         nnoremap <silent><buffer><expr><CR>    denite#do_map('do_action')
-#         nnoremap <silent><buffer><expr><C-m>   denite#do_map('do_action')
-#         nnoremap <silent><buffer><expr>-       denite#do_map('do_action', 'delete')
-#         nnoremap <silent><buffer><expr>p       denite#do_map('do_action', 'preview')
-#         nnoremap <silent><buffer><expr>v       denite#do_map('do_action', 'vsplitswitch')
-#         nnoremap <silent><buffer><expr>s       denite#do_map('do_action', 'splitswitch')
-#         nnoremap <silent><buffer><expr>t       denite#do_map('do_action', 'tabswitch')
-#         nnoremap <silent><buffer><expr>q       denite#do_map('quit')
-#         nnoremap <silent><buffer><expr>i       denite#do_map('open_filter_buffer')
-#         nnoremap <silent><buffer><expr>a       denite#do_map('do_action', 'append')
-#         nnoremap <silent><buffer><expr>y       denite#do_map('do_action', 'yank')
-#         nnoremap <silent><buffer><expr>r       denite#do_map('do_action', 'replace')
-#         nnoremap <silent><buffer><expr>K       denite#do_map('move_up_path')
-#         nnoremap <silent><buffer><expr>+       denite#do_map('toggle_select').'j'
-#         nnoremap <silent><buffer><expr><C-c>   denite#do_map('quit')
-#         nnoremap <silent><buffer><expr><C-i>   denite#do_map('choose_action')
-#         nnoremap <silent><buffer><expr><Tab>   denite#do_map('choose_action')
-#     endfunction
-#
-#     function! s:denite_filter_my_settings() abort
-#         nnoremap <silent><buffer><expr><C-c>   denite#do_map('quit')
-#     endfunction
-#
-#     " keymap calling Denite functions
-#
-#     aug enableDeniteKeyMap
-#         au!
-#         au VimEnter * nested nnoremap <silent><Space>mm  :<C-u>Denite menu<CR>
-#         au VimEnter * nested nnoremap <silent><Space>mpl :<C-u>Denite menu:laravel_dir<CR>
-#         au VimEnter * nested nnoremap <silent><Space>mpd :<C-u>Denite menu:php_document<CR>
-#         au VimEnter * nested nnoremap <silent><Space>mg  :<C-u>Denite menu:grep<CR>
-#         au VimEnter * nested nnoremap <silent><Space>mv  :<C-u>Denite menu:vim_config<CR>
-#         au VimEnter * nested nnoremap <silent><Space>mb  :<C-u>Denite menu:bash_config<CR>
-#
-#         au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase register<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase neoyank<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase -start_filter help<CR>
-#         au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase buffer<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uB  :<C-u>DeniteBufferDir -default-action=switch -smartcase -matchers=matcher/substring buffer<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview jump<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview mark<CR>
-#         au VimEnter * nested nnoremap <silent><Space>us  :<C-u>Denite spell<CR>
-#
-#         au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -no-empty -auto-action=highlight -smartcase -start_filter -auto-resize line<CR>
-#         au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-action=highlight -smartcase line<CR>
-#
-#         au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -smartcase -reversed command_history<CR>
-#         au VimEnter * nested nnoremap <silent><Space>q*  :<C-u>Denite -smartcase -reversed -start_filter command_history<CR>
-#
-#         " ファイル関係
-#         au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -expand -no-empty -smartcase -vertical-preview file<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file<CR>
-#         au VimEnter * nested nnoremap <silent><Space>umm :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file_mru<CR>
-#         au VimEnter * nested nnoremap <silent><Space>umo :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/old<CR>
-#         au VimEnter * nested nnoremap <silent><Space>up  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -matchers=matcher/project_files,matcher/ignore_current_buffer,matcher/substring file_mru<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uA  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/rec<CR>
-#         au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -start_filter file/rec<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uG  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file/git<CR>
-#         au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start_filter file/git<CR>
-#         au VimEnter * nested nnoremap <silent><Space>uv  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter file/rec:vendor<CR>
-#
-#         " Kotlin
-#         au VimEnter * nested nnoremap <silent><Space>ukg :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter -input=!bin\ !build\  file/git<CR>
-#         au VimEnter * nested nnoremap <silent><Space>ukp :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter -input=!bin\ !build\ .properties\  file/rec<CR>
-#
-#         " git
-#         au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -auto-action=preview  grep/git<CR>
-#         au VimEnter * nested nnoremap <silent><Space>gG  :<C-u>Denite -no-empty -smartcase -auto-action=preview  igrep/git<CR>
-#         au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitlog<CR>
-#         au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitstatus<CR>
-#         au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitbranch<CR>
-#         au VimEnter * nested nnoremap <silent><Space>gc  :<C-u>Denite -no-empty -smartcase -auto-action=highlight -auto-resize gitchanged<CR>
-#
-#         " 検索結果の再表示と移動
-#         au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
-#         au VimEnter * nested nnoremap <silent>[u         :<C-u>Denite -resume -no-empty -cursor-pos=-1 -immediately<CR>
-#         au VimEnter * nested nnoremap <silent>]u         :<C-u>Denite -resume -no-empty -cursor-pos=+1 -immediately<CR>
-#     aug END
-# '''
-# hook_post_source = '''
-#
-#     call denite#custom#option('default', 'preview_width', winwidth(0) / 2)
-#     call denite#custom#option('default', 'winwidth', winwidth(0))
-#     call denite#custom#option('default', 'winwidth', 200)
-#
-#     " file/git
-#
-#     call denite#custom#alias('source', 'file/git', 'file/rec')
-#     call denite#custom#var(
-#                 \ 'file/git', 'command',
-#                 \ ['git', 'ls-files', '-co', '--exclude-standard']
-#                 \)
-#
-#     " grep/git
-#
-#     call denite#custom#alias('source', 'grep/git', 'grep')
-#     call denite#custom#var('grep/git', 'command',
-#                 \ ['git', 'grep']
-#                 \)
-#     call denite#custom#var('grep/git', 'recursive_opts',  [])
-#     call denite#custom#var('grep/git', 'pattern_opt',     [])
-#     call denite#custom#var('grep/git', 'default_opts',    ['-nH'])
-#     call denite#custom#var('grep/git', 'max_path_length', 150)
-#
-#     " grep
-#
-#     call denite#custom#var('grep', 'default_opts',
-#                 \ [
-#                 \   '-nH',
-#                 \   '--exclude-dir=.git',
-#                 \   '--exclude-dir=storage',
-#                 \   '--exclude-dir=query',
-#                 \   '--exclude-dir=pdfjs',
-#                 \   '--exclude-dir=node_modules',
-#                 \   '--exclude=tags',
-#                 \   '--exclude=GPATH',
-#                 \   '--exclude=GTAGS',
-#                 \   '--exclude=GRTAGS',
-#                 \   '--exclude=_ide_helper.php',
-#                 \ ]
-#                 \)
-#     call denite#custom#var('grep', 'patten_opt', ['-E'])
-#
-#     " grep/git ignore case
-#
-#     call denite#custom#alias('source', 'igrep/git', 'grep')
-#     call denite#custom#var('igrep/git', 'command',
-#                 \ ['git', 'grep']
-#                 \)
-#     call denite#custom#var('igrep/git', 'recursive_opts', [])
-#     call denite#custom#var('igrep/git', 'pattern_opt',    [])
-#     call denite#custom#var('igrep/git', 'default_opts',   ['-inH'])
-#
-#
-#     for source in ['jump', 'register', 'neoyank', 'mark', 'line', 'grep', 'grep/git', 'igrep/git', 'gitlog', 'gitstatus', 'gitbranch']
-#         call denite#custom#source(source, 'matchers', ['matcher/substring'])
-#     endfor
-#
-#     for source in ['file_mru']
-#         call denite#custom#source(source, 'matchers', ['matcher/ignore_current_buffer', 'matcher/substring'])
-#     endfor
-#
-#     for source in ['buffer']
-#         call denite#custom#source(source, 'matchers', ['matcher/substring'])
-#         call denite#custom#source(source, 'sorters',  ['sorter/rank'])
-#     endfor
-#
-#     for source in ['file', 'file/rec', 'file/git']
-#         call denite#custom#source(source, 'matchers', ['matcher/ignore_current_buffer', 'matcher/substring'])
-#         call denite#custom#source(source, 'sorters',  ['sorter/word'])
-#     endfor
-#
-#
-#     " prompt
-#
-#     call denite#custom#option('default', 'prompt', '$')
-#
-#
-#     let s:menus = {}
-#
-#     let s:menus.laravel = {
-#                 \ 'description' : 'Laravel Operations'
-#                 \ }
-#     let s:menus.laravel.command_candidates = [
-#                 \ ['Open Controller',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
-#                 \ ['Open Domain',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
-#                 \ ['Open Service',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
-#                 \ ['Open Dao',         'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
-#                 \ ['Open Model',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Model$      -path=app/Models                   file/rec'],
-#                 \ ['Open Middleware',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
-#                 \ ['Open Request',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
-#                 \ ['Open View',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ View$       -path=resources/views              file/rec'],
-#                 \ ['Open Test',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Test$       -path=tests                        file/rec'],
-#                 \ ['Open Illuminate',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
-#                 \ ]
-#     let s:menus.php_document = {
-#                 \ 'description' : 'PHP Document Guide Operations'
-#                 \ }
-#     let s:menus.php_document.command_candidates = [
-#                 \ ['Laravel  Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc'],
-#                 \ ['Laravel  Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc'],
-#                 \ ['Mockery  Document',         'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/mockery/docs'],
-#                 \ ['PHPUnit  Document',         'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -vertical-preview file/rec:~/.vim/ref/phpunit/src'],
-#                 \ ['PHPactor Document',         'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -input=md -vertical-preview file/rec:~/.vim/ref/phpactor/doc'],
-#                 \]
-#
-#     let s:menus.grep = {
-#                 \ 'description' : 'Grep Operations'
-#                 \ }
-#     let s:menus.grep.command_candidates = [
-#                 \ ['Grep',                       'Denite -no-empty -smartcase -auto-action=preview   grep'],
-#                 \ ['Grep with directory config', 'Denite -no-empty -smartcase -auto-action=preview   grep::!'],
-#                 \]
-#
-#     let s:menus.bash_config = {
-#                 \ 'description' : 'Bash Config Operations'
-#                 \ }
-#     let s:menus.bash_config.file_candidates = [
-#                 \ ['.bashrc',         '~/.dotfiles/.bashrc'],
-#                 \ ['.bash_profile',   '~/.dotfiles/.bash_profile'],
-#                 \ ['.bash_functions', '~/.dotfiles/.bash_functions'],
-#                 \ ['.bash_aliases',   '~/.dotfiles/.bash_aliases'],
-#                 \ ['Readline',        '~/.inputrc'],
-#                 \ ['Tmux',            '~/.tmux.conf'],
-#                 \ ['Git',             '~/.gitconfig'],
-#                 \ ['MinTTY',          '~/roaming/wsltty/config'],
-#                 \ ['Composer',        '~/.config/composer/composer.json'],
-#                 \ ['Phpactor',        '~/.config/phpactor/phpactor.yml'],
-#                 \]
-#
-#     let s:menus.vim_config = {
-#                 \ 'description' : 'Vim Config Operations'
-#                 \ }
-#     let s:menus.vim_config.file_candidates = [
-#                 \ ['.vimrc',                   '~/.vimrc'],
-#                 \ ['.vimrc.colorscheme',       '~/.vimrc.colorscheme'],
-#                 \ ['startup loaded libraries', '~/.dotfiles/.vim/dein/.config/toml/dein_startup.toml'],
-#                 \ ['lazy loaded libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
-#                 \ ['completion libraries',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
-#                 \ ['colorscheme libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
-#                 \ ['syntax libraries',         '~/.dotfiles/.vim/dein/.config/toml/dein_syntax.toml'],
-#                 \ ['disabled libraries',       '~/.dotfiles/.vim/dein/.config/toml/dein_disabled.toml'],
-#                 \ ['denops libraries',         '~/.dotfiles/.vim/dein/.config/toml/dein_disabled_denops.toml'],
-#                 \]
-#
-#     let s:menus.misc = {
-#                 \ 'description' : 'Misc Operations'
-#                 \ }
-#     let s:menus.misc.command_candidates = [
-#                 \ ['Show messages','Denite output:messages'],
-#                 \]
-#
-#     call denite#custom#var('menu', 'menus', s:menus)
-#
-# '''
-# depends  = ['neoyank.vim', 'neomru.vim', 'denite-git', 'denite-receipt-mhlw', 'denite-migemo']
+[[plugins]]
+repo     = 'Shougo/denite.nvim'
+on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteProjectDir', 'DeniteCursorWord']
+on_func  = ['denite#']
+if       = 'has("python3")'
+hook_add = '''
+"
+    " keymap within Denite
+"
+    autocmd FileType denite        call s:denite_my_settings()
+    autocmd FileType denite-filter call s:denite_filter_my_settings()
+"
+    function! s:denite_my_settings() abort
+        nnoremap <silent><buffer><expr><CR>    denite#do_map('do_action')
+        nnoremap <silent><buffer><expr><C-m>   denite#do_map('do_action')
+        nnoremap <silent><buffer><expr>-       denite#do_map('do_action', 'delete')
+        nnoremap <silent><buffer><expr>p       denite#do_map('do_action', 'preview')
+        nnoremap <silent><buffer><expr>v       denite#do_map('do_action', 'vsplitswitch')
+        nnoremap <silent><buffer><expr>s       denite#do_map('do_action', 'splitswitch')
+        nnoremap <silent><buffer><expr>t       denite#do_map('do_action', 'tabswitch')
+        nnoremap <silent><buffer><expr>q       denite#do_map('quit')
+        nnoremap <silent><buffer><expr>i       denite#do_map('open_filter_buffer')
+        nnoremap <silent><buffer><expr>a       denite#do_map('do_action', 'append')
+        nnoremap <silent><buffer><expr>y       denite#do_map('do_action', 'yank')
+        nnoremap <silent><buffer><expr>r       denite#do_map('do_action', 'replace')
+        nnoremap <silent><buffer><expr>K       denite#do_map('move_up_path')
+        nnoremap <silent><buffer><expr>+       denite#do_map('toggle_select').'j'
+        nnoremap <silent><buffer><expr><C-c>   denite#do_map('quit')
+        nnoremap <silent><buffer><expr><C-i>   denite#do_map('choose_action')
+        nnoremap <silent><buffer><expr><Tab>   denite#do_map('choose_action')
+    endfunction
+"
+    function! s:denite_filter_my_settings() abort
+        nnoremap <silent><buffer><expr><C-c>   denite#do_map('quit')
+    endfunction
+"
+    " keymap calling Denite functions
+"
+    aug enableDeniteKeyMap
+        au!
+        au VimEnter * nested nnoremap <silent><Space>mm  :<C-u>Denite menu<CR>
+        au VimEnter * nested nnoremap <silent><Space>mpl :<C-u>Denite menu:laravel_dir<CR>
+        au VimEnter * nested nnoremap <silent><Space>mpd :<C-u>Denite menu:php_document<CR>
+        au VimEnter * nested nnoremap <silent><Space>mg  :<C-u>Denite menu:grep<CR>
+        au VimEnter * nested nnoremap <silent><Space>mv  :<C-u>Denite menu:vim_config<CR>
+        au VimEnter * nested nnoremap <silent><Space>mb  :<C-u>Denite menu:bash_config<CR>
+"
+        au VimEnter * nested nnoremap <silent><Space>uR  :<C-u>Denite -smartcase register<CR>
+        au VimEnter * nested nnoremap <silent><Space>uy  :<C-u>Denite -smartcase neoyank<CR>
+        au VimEnter * nested nnoremap <silent><Space>uh  :<C-u>Denite -smartcase -start_filter help<CR>
+        au VimEnter * nested nnoremap <silent><Space>ub  :<C-u>Denite -default-action=switch -smartcase buffer<CR>
+        au VimEnter * nested nnoremap <silent><Space>uB  :<C-u>DeniteBufferDir -default-action=switch -smartcase -matchers=matcher/substring buffer<CR>
+        au VimEnter * nested nnoremap <silent><Space>uj  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview jump<CR>
+        au VimEnter * nested nnoremap <silent><Space>uM  :<C-u>Denite -default-action=open   -smartcase -vertical-preview -auto-action=preview mark<CR>
+        au VimEnter * nested nnoremap <silent><Space>us  :<C-u>Denite spell<CR>
+"
+        au VimEnter * nested nnoremap <silent><Space>ul  :<C-u>Denite           -no-empty -auto-action=highlight -smartcase -start_filter -auto-resize line<CR>
+        au VimEnter * nested nnoremap <silent><Space>*   :<C-u>DeniteCursorWord -no-empty -auto-action=highlight -smartcase line<CR>
+"
+        au VimEnter * nested nnoremap <silent><Space>q:  :<C-u>Denite -smartcase -reversed command_history<CR>
+        au VimEnter * nested nnoremap <silent><Space>q*  :<C-u>Denite -smartcase -reversed -start_filter command_history<CR>
+"
+        " ファイル関係
+        au VimEnter * nested nnoremap <silent><Space>uf  :<C-u>DeniteBufferDir  -expand -no-empty -smartcase -vertical-preview file<CR>
+        au VimEnter * nested nnoremap <silent><Space>uc  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file<CR>
+        au VimEnter * nested nnoremap <silent><Space>umm :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>umo :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/old<CR>
+        au VimEnter * nested nnoremap <silent><Space>up  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -matchers=matcher/project_files,matcher/ignore_current_buffer,matcher/substring file_mru<CR>
+        au VimEnter * nested nnoremap <silent><Space>uA  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview file/rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>ua  :<C-u>Denite           -expand -no-empty -smartcase -vertical-preview -start_filter file/rec<CR>
+        au VimEnter * nested nnoremap <silent><Space>uG  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>ug  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start_filter file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>uv  :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter file/rec:vendor<CR>
+"
+        " Kotlin
+        au VimEnter * nested nnoremap <silent><Space>ukg :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter -input=!bin\ !build\  file/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>ukp :<C-u>DeniteProjectDir -expand -no-empty -smartcase -vertical-preview -start-filter -input=!bin\ !build\ .properties\  file/rec<CR>
+"
+        " git
+        au VimEnter * nested nnoremap <silent><Space>gg  :<C-u>Denite -no-empty -smartcase -auto-action=preview  grep/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>gG  :<C-u>Denite -no-empty -smartcase -auto-action=preview  igrep/git<CR>
+        au VimEnter * nested nnoremap <silent><Space>gl  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitlog<CR>
+        au VimEnter * nested nnoremap <silent><Space>gs  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitstatus<CR>
+        au VimEnter * nested nnoremap <silent><Space>gb  :<C-u>Denite -no-empty -smartcase -auto-action=preview  gitbranch<CR>
+        au VimEnter * nested nnoremap <silent><Space>gc  :<C-u>Denite -no-empty -smartcase -auto-action=highlight -auto-resize gitchanged<CR>
+"
+        " 検索結果の再表示と移動
+        au VimEnter * nested nnoremap <silent><Space>ur  :<C-u>Denite -resume -no-empty<CR>
+        au VimEnter * nested nnoremap <silent>[u         :<C-u>Denite -resume -no-empty -cursor-pos=-1 -immediately<CR>
+        au VimEnter * nested nnoremap <silent>]u         :<C-u>Denite -resume -no-empty -cursor-pos=+1 -immediately<CR>
+    aug END
+'''
+hook_post_source = '''
+"
+    call denite#custom#option('default', 'preview_width', winwidth(0) / 2)
+    call denite#custom#option('default', 'winwidth', winwidth(0))
+    call denite#custom#option('default', 'winwidth', 200)
+"
+    " file/git
+"
+    call denite#custom#alias('source', 'file/git', 'file/rec')
+    call denite#custom#var(
+                \ 'file/git', 'command',
+                \ ['git', 'ls-files', '-co', '--exclude-standard']
+                \)
+"
+    " grep/git
+"
+    call denite#custom#alias('source', 'grep/git', 'grep')
+    call denite#custom#var('grep/git', 'command',
+                \ ['git', 'grep']
+                \)
+    call denite#custom#var('grep/git', 'recursive_opts',  [])
+    call denite#custom#var('grep/git', 'pattern_opt',     [])
+    call denite#custom#var('grep/git', 'default_opts',    ['-nH'])
+    call denite#custom#var('grep/git', 'max_path_length', 150)
+"
+    " grep
+"
+    call denite#custom#var('grep', 'default_opts',
+                \ [
+                \   '-nH',
+                \   '--exclude-dir=.git',
+                \   '--exclude-dir=storage',
+                \   '--exclude-dir=query',
+                \   '--exclude-dir=pdfjs',
+                \   '--exclude-dir=node_modules',
+                \   '--exclude=tags',
+                \   '--exclude=GPATH',
+                \   '--exclude=GTAGS',
+                \   '--exclude=GRTAGS',
+                \   '--exclude=_ide_helper.php',
+                \ ]
+                \)
+    call denite#custom#var('grep', 'patten_opt', ['-E'])
+"
+    " grep/git ignore case
+"
+    call denite#custom#alias('source', 'igrep/git', 'grep')
+    call denite#custom#var('igrep/git', 'command',
+                \ ['git', 'grep']
+                \)
+    call denite#custom#var('igrep/git', 'recursive_opts', [])
+    call denite#custom#var('igrep/git', 'pattern_opt',    [])
+    call denite#custom#var('igrep/git', 'default_opts',   ['-inH'])
+"
+"
+    for source in ['jump', 'register', 'neoyank', 'mark', 'line', 'grep', 'grep/git', 'igrep/git', 'gitlog', 'gitstatus', 'gitbranch']
+        call denite#custom#source(source, 'matchers', ['matcher/substring'])
+    endfor
+"
+    for source in ['file_mru']
+        call denite#custom#source(source, 'matchers', ['matcher/ignore_current_buffer', 'matcher/substring'])
+    endfor
+"
+    for source in ['buffer']
+        call denite#custom#source(source, 'matchers', ['matcher/substring'])
+        call denite#custom#source(source, 'sorters',  ['sorter/rank'])
+    endfor
+"
+    for source in ['file', 'file/rec', 'file/git']
+        call denite#custom#source(source, 'matchers', ['matcher/ignore_current_buffer', 'matcher/substring'])
+        call denite#custom#source(source, 'sorters',  ['sorter/word'])
+    endfor
+"
+"
+    " prompt
+"
+    call denite#custom#option('default', 'prompt', '$')
+"
+"
+    let s:menus = {}
+"
+    let s:menus.laravel = {
+                \ 'description' : 'Laravel Operations'
+                \ }
+    let s:menus.laravel.command_candidates = [
+                \ ['Open Controller',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Controller$ -path=app/Http/Controllers         file/rec'],
+                \ ['Open Domain',      'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Domain$     -path=app/Domains                  file/rec'],
+                \ ['Open Service',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Service$    -path=app/Models/Service           file/rec'],
+                \ ['Open Dao',         'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Dao$        -path=app/Models/Dao               file/rec'],
+                \ ['Open Model',       'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Model$      -path=app/Models                   file/rec'],
+                \ ['Open Middleware',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Middleware$ -path=app/Http/Middleware          file/rec'],
+                \ ['Open Request',     'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Request$    -path=app/Http/Requests            file/rec'],
+                \ ['Open View',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ View$       -path=resources/views              file/rec'],
+                \ ['Open Test',        'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Test$       -path=tests                        file/rec'],
+                \ ['Open Illuminate',  'Denite -default-action=switch -auto-action=preview -vertical-preview -smartcase -start_filter -prompt=Open\ Illuminate$ -path=vendor/laravel/framework/src file/rec'],
+                \ ]
+    let s:menus.php_document = {
+                \ 'description' : 'PHP Document Guide Operations'
+                \ }
+    let s:menus.php_document.command_candidates = [
+                \ ['Laravel  Document titles',  'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/laravel.doc'],
+                \ ['Laravel  Document grep',    'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview grep:~/.vim/ref/laravel.doc'],
+                \ ['Mockery  Document',         'Denite -no-empty -default-action=split -smartcase -auto-action=preview -vertical-preview file/rec:~/.vim/ref/mockery/docs'],
+                \ ['PHPUnit  Document',         'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -vertical-preview file/rec:~/.vim/ref/phpunit/src'],
+                \ ['PHPactor Document',         'Denite -no-empty -default-action=split -smartcase -input=rst -auto-action=preview -input=md -vertical-preview file/rec:~/.vim/ref/phpactor/doc'],
+                \]
+"
+    let s:menus.grep = {
+                \ 'description' : 'Grep Operations'
+                \ }
+    let s:menus.grep.command_candidates = [
+                \ ['Grep',                       'Denite -no-empty -smartcase -auto-action=preview   grep'],
+                \ ['Grep with directory config', 'Denite -no-empty -smartcase -auto-action=preview   grep::!'],
+                \]
+"
+    let s:menus.bash_config = {
+                \ 'description' : 'Bash Config Operations'
+                \ }
+    let s:menus.bash_config.file_candidates = [
+                \ ['.bashrc',         '~/.dotfiles/.bashrc'],
+                \ ['.bash_profile',   '~/.dotfiles/.bash_profile'],
+                \ ['.bash_functions', '~/.dotfiles/.bash_functions'],
+                \ ['.bash_aliases',   '~/.dotfiles/.bash_aliases'],
+                \ ['Readline',        '~/.inputrc'],
+                \ ['Tmux',            '~/.tmux.conf'],
+                \ ['Git',             '~/.gitconfig'],
+                \ ['MinTTY',          '~/roaming/wsltty/config'],
+                \ ['Composer',        '~/.config/composer/composer.json'],
+                \ ['Phpactor',        '~/.config/phpactor/phpactor.yml'],
+                \]
+"
+    let s:menus.vim_config = {
+                \ 'description' : 'Vim Config Operations'
+                \ }
+    let s:menus.vim_config.file_candidates = [
+                \ ['.vimrc',                   '~/.vimrc'],
+                \ ['.vimrc.colorscheme',       '~/.vimrc.colorscheme'],
+                \ ['startup loaded libraries', '~/.dotfiles/.vim/dein/.config/toml/dein_startup.toml'],
+                \ ['lazy loaded libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_lazy.toml'],
+                \ ['completion libraries',     '~/.dotfiles/.vim/dein/.config/toml/dein_completion.toml'],
+                \ ['colorscheme libraries',    '~/.dotfiles/.vim/dein/.config/toml/dein_colorscheme.toml'],
+                \ ['syntax libraries',         '~/.dotfiles/.vim/dein/.config/toml/dein_syntax.toml'],
+                \ ['disabled libraries',       '~/.dotfiles/.vim/dein/.config/toml/dein_disabled.toml'],
+                \ ['denops libraries',         '~/.dotfiles/.vim/dein/.config/toml/dein_disabled_denops.toml'],
+                \]
+"
+    let s:menus.misc = {
+                \ 'description' : 'Misc Operations'
+                \ }
+    let s:menus.misc.command_candidates = [
+                \ ['Show messages','Denite output:messages'],
+                \]
+"
+    call denite#custom#var('menu', 'menus', s:menus)
+"
+'''
+depends  = ['neoyank.vim', 'neomru.vim', 'denite-git', 'denite-receipt-mhlw', 'denite-migemo']
 
 
 # Disabled: Denite dependency
-# [[plugins]]
-# repo = 'Shougo/neomru.vim'
+[[plugins]]
+repo = 'Shougo/neomru.vim'
 
 
 # Disabled: Denite dependency
-# [[plugins]]
-# repo     = 'Shougo/neoyank.vim'
+[[plugins]]
+repo     = 'Shougo/neoyank.vim'
 
 
 [[plugins]]
@@ -316,8 +316,8 @@ on_ft = ['ruby', 'eruby']
 
 
 # Disabled: Denite dependency
-# [[plugins]]
-# repo     = 'neoclide/denite-git'
+[[plugins]]
+repo     = 'neoclide/denite-git'
 
 
 [[plugins]]
@@ -333,10 +333,10 @@ hook_add = '''
 '''
 
 
-[[plugins]]
-repo  = 'fwcd/kotlin-language-server'
-build = './gradlew :server:installDist'
-on_ft = ['kotlin']
+# [[plugins]]
+# repo  = 'fwcd/kotlin-language-server'
+# build = './gradlew :server:installDist'
+# on_ft = ['kotlin']
 
 
 [[plugins]]
@@ -359,10 +359,10 @@ hook_add = '''
 
 
 # Disabled: Denite dependency
-# [[plugins]]
-# repo = 'yokenzan/denite-receipt-mhlw'
+[[plugins]]
+repo = 'yokenzan/denite-receipt-mhlw'
 
 
 # Disabled: Denite dependency
-# [[plugins]]
-# repo = 'nekowasabi/denite-migemo'
+[[plugins]]
+repo = 'nekowasabi/denite-migemo'
