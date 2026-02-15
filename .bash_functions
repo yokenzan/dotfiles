@@ -306,6 +306,12 @@ port_is_busy() {
     if [ "x$?" == "x1" ] ; then echo free; else echo busy; fi
 }
 
+git-prune-local() {
+    git fetch --prune
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -rp git branch -D
+}
+
+
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     command yazi "$@" --cwd-file="$tmp"
