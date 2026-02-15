@@ -103,8 +103,7 @@ export MESA_D3D12_DEFAULT_ADAPTER_NAME=RTX
 
 export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"
 
-export PATH="$HOME/.dotnet/tools:$PATH"
-
+export PATH="$HOME/.dotnet:$HOME/.dotnet/tools:$PATH"
 export DOTNET_ROOT="$HOME/.dotnet"
 export DOTNET_ROOT_X64="$HOME/.dotnet"
 

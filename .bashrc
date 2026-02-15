@@ -283,6 +283,17 @@ if [ $? = 0 ]; then
     eval "$(gh completion -s bash)"
 fi
 
+which dotnet > /dev/null 2>&1
+if [ $? = 0 ]; then
+    eval "$(dotnet completions script bash)"
+fi
+
+which uv > /dev/null 2>&1
+if [ $? = 0 ]; then
+    eval "$(uv generate-shell-completion bash)"
+fi
+
+
 if [ -f "${HOME}/.bashrc.local" ]; then
     . "${HOME}/.bashrc.local"
 fi
