@@ -103,6 +103,11 @@ export MESA_D3D12_DEFAULT_ADAPTER_NAME=RTX
 
 export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"
 
+export PATH="$HOME/.dotnet/tools:$PATH"
+
+export DOTNET_ROOT="$HOME/.dotnet"
+export DOTNET_ROOT_X64="$HOME/.dotnet"
+
 # https://zenn.dev/cat2151/scraps/53076d45431d49
 export PULSE_SERVER=unix:$(sed 's/unix://g' <<< "$PULSE_SERVER")
 . "$HOME/.cargo/env"
