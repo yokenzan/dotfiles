@@ -59,6 +59,16 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+hook_add = '''
+    " Avoid expensive filetype/syntax reloads on every cursor move in Markdown.
+    " Run :PreciousSwitch manually when code block context switching is needed.
+    let g:precious_enable_switch_CursorMoved = {
+    \   'markdown': 0,
+    \}
+    let g:precious_enable_switch_CursorMoved_i = {
+    \   'markdown': 0,
+    \}
+'''
 
 
 # [[plugins]]
@@ -80,6 +90,9 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo     = 'mhinz/vim-signify'
 if       = 'executable("git") && (has("nvim") || has("patch-8.0.902"))'
+hook_add = '''
+    let g:signify_skip = { 'vcs': { 'allow': ['git'] } }
+'''
 
 
 [[plugins]]
@@ -88,6 +101,12 @@ repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+name = 'vim-airline-themes'
+path = '~/.vim/dein/repos/github.com/vim-airline/vim-airline-themes'
 
 
 [[plugins]]
@@ -231,10 +250,6 @@ hook_add = '''
         \ ]
 '''
 depends = ['vim-airline-themes']
-
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
 
 
 [[plugins]]

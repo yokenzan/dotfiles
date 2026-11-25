@@ -54,7 +54,8 @@ scriptencoding utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
-set ambiwidth=double
+" set ambiwidth=double
+set ambiwidth=single
 set formatoptions+=mMj
 
 
@@ -79,6 +80,11 @@ set showbreak=↪
 " Setting TAB and Indent
 
 filetype plugin indent on
+
+augroup MarkdownSyntaxLimit
+    autocmd!
+    autocmd FileType markdown setlocal synmaxcol=200
+augroup END
 set autoindent
 set smartindent
 set breakindent
@@ -318,10 +324,12 @@ imap <expr><C-[>v pumvisible() ? "\<C-p>\<C-p>\<C-p>\<C-p>" : "\<C-[>v"
 " Unicodeをコードポイントから入力する https://zenn.dev/kato_k/articles/vim-tips-no002
 inoremap <C-v>u <C-r>=nr2char(0x)<Left>
 
+
 nnoremap <silent><C-[>h <C-w>h
 nnoremap <silent><C-[>j <C-w>j
 nnoremap <silent><C-[>k <C-w>k
 nnoremap <silent><C-[>l <C-w>l
+
 nnoremap <silent><C-[>c <C-w>c
 nnoremap <silent><C-[>r <C-w>r
 
@@ -437,22 +445,22 @@ au BufNewFile,BufRead *.uke setf uke
 au BufNewFile,BufRead *.UKE setf uke
 au BufNewFile,BufRead *.hen setf hen
 au BufNewFile,BufRead *.HEN setf hen
-
+au BufNewFile,BufRead *.xaml setf xml
 
 " manage IME states
 " https://www.regentechlog.com/2022/06/30/control-ime-by-vim/#%E8%A7%A3%E6%B1%BA%E7%AD%96
-if exists('$TMUX')
+" if exists('$TMUX')
     " when start insert mode
-    let &t_SI.="Ptmux;[<r\\"
+    " let &t_SI.="Ptmux;[<r\\"
     " when leave from insert mode
-    let &t_EI.="Ptmux;[<s[<0t\\"
+    " let &t_EI.="Ptmux;[<s[<0t\\"
     " when quit Vim
-    let &t_te.="Ptmux;[<0t[<s\\"
-else
-    let &t_SI.="[<r"
-    let &t_EI.="[<s[<0t"
-    let &t_te.="[<0t[<s"
-end
+    " let &t_te.="Ptmux;[<0t[<s\\"
+" else
+    " let &t_SI.="[<r"
+    " let &t_EI.="[<s[<0t"
+    " let &t_te.="[<0t[<s"
+" end
 
 function! RetrySpellCompletion()
     if complete_info(['mode']).mode == 'spell' && !&spell

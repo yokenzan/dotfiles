@@ -1,10 +1,11 @@
 # .bash_profile
 
 
+# コマンド追加後に見つからない場合は、対応する rbenv / pyenv / nodenv rehash を実行する。
 # Initialize Ruby environment
 if [ -d "$HOME/.rbenv/bin" ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+    eval "$(rbenv init - --no-rehash bash)"
 elif [ -d "$HOME/.gem/ruby/" ]; then
     export PATH=$PATH:$HOME/.gem/ruby/$(ls -r $HOME/.gem/ruby/ | head -1)/bin
 fi
@@ -14,8 +15,7 @@ fi
 if [ -d "$HOME/.pyenv/bin" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv init - --no-rehash bash)"
 fi
 
 
@@ -30,12 +30,11 @@ fi
 if [ -d "$HOME/.nodenv/bin" ]; then
     export NODENV_ROOT="$HOME/.nodenv"
     export PATH="$NODENV_ROOT/bin:$PATH"
-    eval "$(nodenv init -)"
+    eval "$(nodenv init - --no-rehash bash)"
 fi
 
 which npm > /dev/null 2>&1
 if [ $? = 0 ]; then
-    eval "$(npm completion)"
     export PATH="$(npm prefix --location=global)/bin:$PATH"
 fi
 
@@ -66,7 +65,6 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
-
 # User specific environment and startup programs
 PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH="$PATH:$HOME/.local/bin"
@@ -83,14 +81,15 @@ fi
 
 
 # 初回シェル時のみtmux実行
-if [ $SHLVL = 1 ]; then
-    tmux -2
-fi
+# if [ $SHLVL = 1 ]; then
+#     tmux -2
+# fi
 
 
 # if using WSL2 and not using WSLg
 if [ "x$BASH_ENV_WSL2_LOCAL_IP" == "x1" ]; then
-    LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+    # LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+    LOCAL_IP=192.168.0.238
     export DISPLAY=$LOCAL_IP:0
 fi
 

@@ -320,41 +320,50 @@
   :hook (emacs-startup-hook . show-paren-mode)
   )
 
-(leaf ddskk
-  :ensure t
-  :custom
-  (skk-init-file . "~/.skk/init")
-  (default-input-method . "japanese-skk")
-  (skk-share-private-jisyo . t)
-  ; (skk-save-jisyo-instantly . t)
-  (skk-large-jisyo . "~/.dotfiles/SKK-JISYO.L")
-  ;; (skk-server-host . "localhost")
-  ;; (skk-server-portnum . 55100)
-  ;; (skk-server-prog . "/home/yosuke/.rbenv/shims/google-ime-skk")
-  (skk skk-dcomp-activate . t) ;; 動的補完
-  (skk-dcomp-multiple-activate . t) ;; 動的補完の複数候補表示
-  (skk-sticky-key . ";") ; sticky shift
-  (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
-  (skk-use-jisx0201-input-method . t)
-  (skk-show-inline . 'vertical)
-  (skk-show-tooltip . t)
-  (skk-show-mode-show . t)
-  (skk-use-look . t) ;; 英単語
-  (skk-show-candidates-nth-henkan-char . 2)
-  ;; インジケータ表示のカスタマイズ
-  ;; (skk-latin-mode-string . "[_A]")
-  ;; (skk-hiragana-mode-string . "[あ]")
-  ;; (skk-katakana-mode-string . "[ア]")
-  ;; (skk-jisx0208-latin-mode-string . "[Ａ]")
-  ;; (skk-jisx0201-mode-string . "[_ｱ]")
-  ;; (skk-abbrev-mode-string . "[aA]")
-  ;; (skk-indicator-use-cursor-color . nil)
-  (skk-status-indicator . 'left)
-  (skk-server-inhibit-startup-server . t)
-  :config
-  (setq skk-jisyo
-        (cons "/mnt/c/Users/ballo/AppData/Roaming/SKKFEP/skkuser.txt" 'utf-16le-with-signature))
-)
+(leaf posframe
+  :ensure t)
+
+; (leaf ddskk
+;   :ensure t
+;   :custom
+;   ;; (skk-init-file . "~/.skk/init")
+;   (default-input-method . "japanese-skk")
+;   (skk-share-private-jisyo . t)
+;   ; (skk-save-jisyo-instantly . t)
+;   (skk-large-jisyo . "~/.dotfiles/SKK-JISYO.L")
+;   (skk-server-host . nil)
+;   (skk-server-portnum . nil)
+;   (skk-server-prog . nil)
+;   (skk skk-dcomp-activate . t) ;; 動的補完
+;   (skk-dcomp-multiple-activate . t) ;; 動的補完の複数候補表示
+;   (skk-sticky-key . ";") ; sticky shift
+;   (skk-show-candidates-always-pop-to-buffer . nil) ;; 変換候補の表示位置
+;   (skk-use-jisx0201-input-method . t)
+;   (skk-show-inline . 'vertical)
+;   (skk-show-tooltip . t)
+;   (skk-show-mode-show . t)
+;   (skk-use-look . t) ;; 英単語
+;   (skk-show-candidates-nth-henkan-char . 2)
+;   ;; インジケータ表示のカスタマイズ
+;   (skk-latin-mode-string . "[_A]")
+;   (skk-hiragana-mode-string . "[あ]")
+;   (skk-katakana-mode-string . "[ア]")
+;   (skk-jisx0208-latin-mode-string . "[Ａ]")
+;   (skk-jisx0201-mode-string . "[_ｱ]")
+;   (skk-abbrev-mode-string . "[aA]")
+;   (skk-indicator-use-cursor-color . nil)
+;   (skk-status-indicator . 'left)
+;   (skk-server-inhibit-startup-server . t)
+;   :config
+;   (setq skk-jisyo
+;         (cons "/mnt/c/Users/ballo/AppData/Roaming/SKKFEP/skkuser.txt" 'utf-16le-with-signature))
+;   (leaf ddskk-posframe
+;     :ensure t
+;     :global-minor-mode t
+;     :custom ((ddskk-posframe-border-width . 2))
+;     :custom-face ((ddskk-posframe . '((t (:background "#e16b8c"))))
+;                   (ddskk-posframe-border . '((t (:background "#d0104c"))))))
+; )
 
 (leaf beacon
   :ensure t
@@ -467,8 +476,13 @@
 
 (provide 'init)
 
-(load-theme 'flatui t)
+(load-theme 'ef-summer t)
 
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+(keyboard-translate ?\C-h ?\C-?)
+(persistent-scratch-autosave-mode)
+(async-shell-command "setxkbmap -layout jp")
 
 ;; End:
 

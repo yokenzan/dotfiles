@@ -352,7 +352,6 @@ hook_source = '''
 repo = 'jwalton512/vim-blade'
 on_ft = ['blade']
 hook_add = '''
-    syntax on
     let g:blade_custom_directives = ['datetime', 'namespaced::directive']
     let g:blade_custom_directives_pairs = {'cache': 'endcache'}
 '''

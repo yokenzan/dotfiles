@@ -156,10 +156,10 @@ elif [ "$XDG_SESSION_DESKTOP" = 'ubuntu' ]; then
     alias here='nautilus . &'
 elif [ $WSL_DISTRO_NAME ]; then
     # launch Explorer with pwd
-    alias here='explorer .'
+    alias here='wslview .'
 else
     # launch Explorer with pwd
-    alias here='explorer .'
+    alias here='wslview .'
 fi
 
 

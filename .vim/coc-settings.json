@@ -29,31 +29,85 @@
         }
     },
     "phpls": {
-        "enable": false
+        "enable": true
     },
     "phpactor": {
-        "enable": true,
+        "enable": false,
         "path": "/home/yosuke/.vim/dein/repos/github.com/phpactor/phpactor/bin/phpactor"
     },
     "languageserver": {
-        "kotlin": {
-            "command": "~/.vim/dein/repos/github.com/fwcd/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
-            "filetypes": ["kotlin"]
-        },
-        "phpactor": {
-            "command": "/home/yosuke/.vim/dein/repos/github.com/phpactor/phpactor/bin/phpactor",
-            "args": ["language-server"],
-            "trace.server": "verbose",
-            "filetypes": ["php"]
-        },
-        "graphql": {
-            "command": "graphql-lsp",
-            "args": ["server", "-m", "stream"],
-            "filetypes": ["typescript", "typescriptreact", "graphql"],
-            "settings": {
-                "graphql-config.load.legacy": true
-            }
-        }
+        // "sorbet": {
+        //     "command": "srb",
+        //     "args": ["tc", "--typed", "true", "--enable-all-experimental-lsp-features", "--lsp", "--disable-watchman"],
+        //     "filetypes": ["ruby"],
+        //     "rootPatterns": ["sorbet/config"],
+        //     "initializationOptions": {},
+        //     "settings": {}
+        // },
+        // "kotlin": {
+        //     "command": "/home/yosuke/.vim/dein/repos/github.com/fwcd/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+        //     "filetypes": ["kotlin"]
+        // },
+        // "phpactor": {
+        //     "command": "/home/yosuke/.vim/dein/repos/github.com/phpactor/phpactor/bin/phpactor",
+        //     "args": ["language-server"],
+        //     "trace.server": "verbose",
+        //     "filetypes": ["php"]
+        // },
+        // "graphql": {
+        //     "command": "graphql-lsp",
+        //     "args": ["server", "-m", "stream"],
+        //     "filetypes": ["typescript", "typescriptreact", "graphql"],
+        //     "settings": {
+        //         "graphql-config.load.legacy": true
+        //     }
+        // }
     },
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
+    // "ruby-lsp": {
+    //     "command": "ruby-lsp",
+    //     "initializationOptions": {
+    //         "experimentalFeaturesEnabled": false,
+    //         "enabledFeatures": [
+    //             "codeActions",
+    //             "diagnostics",
+    //             "documentHighlights",
+    //             "documentLink",
+    //             "documentSymbols",
+    //             "foldingRanges",
+    //             "formatting",
+    //             "hover",
+    //             "inlayHint",
+    //             "onTypeFormatting",
+    //             "selectionRanges",
+    //             "semanticHighlighting",
+    //             "completion"
+    //         ],
+    //         "formatter": "auto"
+    //     },
+    //     "filetypes": []
+    // },
+    "jedi": {
+        "enable": true,
+        "startupMessage": false,
+        "executable.command": "jedi-language-server"
+  },
+  "codeLens.enable": true,
+  "colors.enable": true,
+  "inlayHint.enable": true,
+  "semanticTokens.enable": true,
+  "typescript.format.enable": true,
+  "typescript.inlayHints.variableTypes.enabled": false,
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": true,
+  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://www.schemastore.org": true,
+    "https://json.schemastore.org": true,
+    "https://raw.githubusercontent.com": true
+  }
 }

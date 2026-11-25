@@ -125,6 +125,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'dracula/vim'
+name = 'dracula-vim'
+path = '~/.vim/dein/repos/github.com/dracula/vim'
 
 
 [[plugins]]
@@ -220,10 +222,6 @@ repo = 'frenzyexists/aquarium-vim'
 
 [[plugins]]
 repo = 'bluz71/vim-moonfly-colors'
-
-
-[[plugins]]
-repo = 'nlknguyen/papercolor-theme'
 
 
 [[plugins]]

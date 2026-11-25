@@ -73,13 +73,16 @@ fi
 export HISTCONTROL=erasedups,ignoreboth,ignorespace
 # export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups,ignorespace
 
-export HISTTIMEFORMAT='%F %T: '
+# export HISTTIMEFORMAT='%F %T: '
+export HISTTIMEFORMAT=
 #
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:*rm -rf*:r:git push*:*--force*:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...:t:l:~:git*--no-verify*:*APP_ENV=production *:git clean -f*'
-# shopt -s histverify
+# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:llal:emacs:vim:history:e:v:vs:gs:gv:tig:r:*rm -rf*:r:git push*:*--force*:gm-:git merge:gcmn:gcm:gsp:git stash drop*:..:...:t:l:~:git*--no-verify*:*APP_ENV=production *:git clean -f*'
+export HISTIGNORE=
+
+shopt -s histverify
 
 if [ "x$BASH_ENV_SHARE_HISTORY" == "x1" ]; then
     export PROMPT_COMMAND='share_history'
@@ -272,28 +275,41 @@ if [ "x$BASH_ENV_LAUNCH_RECEIPTISAN" == "x1" ]; then
 fi
 
 which symfony-autocomplete > /dev/null 2>&1
-
 if [ $? = 0 ]; then
     eval "$(symfony-autocomplete)"
 fi
 
-which gh > /dev/null 2>&1
-
-if [ $? = 0 ]; then
-    eval "$(gh completion -s bash)"
+# 補完の再生成: bash ~/.bash_completions/refresh.sh
+if [ -r "$HOME/.bash_completions/gh.bash" ]; then
+    . "$HOME/.bash_completions/gh.bash"
 fi
 
-which dotnet > /dev/null 2>&1
-if [ $? = 0 ]; then
-    eval "$(dotnet completions script bash)"
+if [ -r "$HOME/.bash_completions/dotnet.bash" ]; then
+    . "$HOME/.bash_completions/dotnet.bash"
 fi
 
-which uv > /dev/null 2>&1
-if [ $? = 0 ]; then
-    eval "$(uv generate-shell-completion bash)"
+if [ -r "$HOME/.bash_completions/uv.bash" ]; then
+    . "$HOME/.bash_completions/uv.bash"
 fi
 
+if [ -r "$HOME/.bash_completions/herdr.bash" ]; then
+    . "$HOME/.bash_completions/herdr.bash"
+fi
+
+which codex > /dev/null 2>&1
+if [ $? = 0 ]; then
+    [ ! -r "$HOME/.bash_completions/codex.bash" ] || . "$HOME/.bash_completions/codex.bash"
+    export PATH="$HOME/.agents/bin:$PATH"
+fi
 
 if [ -f "${HOME}/.bashrc.local" ]; then
     . "${HOME}/.bashrc.local"
 fi
+
+# pnpm
+export PNPM_HOME="/home/yosuke/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
